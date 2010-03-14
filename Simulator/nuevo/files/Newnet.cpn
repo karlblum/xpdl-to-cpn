@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://www.daimi.au.dk/~cpntools/bin/DTD/5/cpn.dtd">
+<workspaceElements>
+	<generator tool="CPN Tools" version="-1" format="5" />
+	<cpnet>
+		<globbox>
+			<block id="ID1">
+				<id>Standard declarations</id>
+				<color id="ID85042">
+					<id>UNIT</id>
+					<unit />
+					<layout>colset UNIT = unit;</layout>
+				</color>
+				<color id="ID3">
+					<id>INT</id>
+					<int />
+				</color>
+				<color id="ID4">
+					<id>BOOL</id>
+					<bool />
+				</color>
+				<color id="ID5">
+					<id>STRING</id>
+					<string />
+				</color>
+			</block>
+			<var id="v">
+				<type>
+					<id>UNIT</id>
+				</type>
+				<id>v</id>
+			</var>
+		</globbox>
+		<page id="ID6">
+			<pageattr name="proceso" />
+			<trans id="ID7004">
+				<posattr x="0.0" y="-108.0" />
+				<text>task a</text>
+				<box h="28.0" w="94.0" />
+				<subst subpage="ID7000"
+					portsock="(ID7002,ID7012)(ID7001,ID7013)">
+					<subpageinfo name="task a" />
+				</subst>
+			</trans>
+			<trans id="ID7010">
+				<posattr x="0.0" y="-324.0" />
+				<text>task b</text>
+				<box h="28.0" w="94.0" />
+				<subst subpage="ID7006"
+					portsock="(ID7007,ID7012)(ID7008,ID7014)">
+					<subpageinfo name="task b" />
+				</subst>
+			</trans>
+			<place id="ID7012">
+				<posattr x="0.0" y="-216.0" />
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-230.0" />
+					<text>UNIT</text>
+				</type>
+			</place>
+			<arc orientation="TtoP">
+				<transend idref="ID7004" />
+				<placeend idref="ID7012" />
+			</arc>
+			<arc orientation="PtoT">
+				<transend idref="ID7010" />
+				<placeend idref="ID7012" />
+			</arc>
+			<place id="ID7013">
+				<posattr x="0.0" y="0.0" />
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-14.0" />
+					<text>UNIT</text>
+				</type>
+			</place>
+			<arc orientation="PtoT">
+				<transend idref="ID7004" />
+				<placeend idref="ID7013" />
+			</arc>
+			<place id="ID7014">
+				<posattr x="0.0" y="-432.0" />
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-446.0" />
+					<text>UNIT</text>
+				</type>
+			</place>
+			<arc orientation="TtoP">
+				<transend idref="ID7010" />
+				<placeend idref="ID7014" />
+			</arc>
+		</page>
+		<page id="ID7000">
+			<pageattr name="task a_task" />
+			<place id="ID7001">
+				<posattr x="0.0" y="0.0" />
+				<text>task a_task_entry</text>
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-14.0" />
+					<text>UNIT</text>
+				</type>
+				<port type="In" />
+			</place>
+			<place id="ID7002">
+				<posattr x="0.0" y="-216.0" />
+				<text>task a_task_exit</text>
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-230.0" />
+					<text>UNIT</text>
+				</type>
+				<port type="Out" />
+			</place>
+			<trans id="ID7003">
+				<posattr x="0.0" y="-108.0" />
+				<text>task a_task</text>
+				<box h="28.0" w="94.0" />
+			</trans>
+			<arc orientation="PtoT">
+				<transend idref="ID7003" />
+				<placeend idref="ID7001" />
+				<annot>
+					<posattr x="10.0" y="-54.0" />
+					<text>v</text>
+				</annot>
+			</arc>
+			<arc orientation="TtoP">
+				<transend idref="ID7003" />
+				<placeend idref="ID7002" />
+				<annot>
+					<posattr x="10.0" y="-162.0" />
+					<text>v</text>
+				</annot>
+			</arc>
+		</page>
+		<page id="ID7006">
+			<pageattr name="task b_task" />
+			<place id="ID7007">
+				<posattr x="0.0" y="0.0" />
+				<text>task b_task_entry</text>
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-14.0" />
+					<text>UNIT</text>
+				</type>
+				<port type="In" />
+			</place>
+			<place id="ID7008">
+				<posattr x="0.0" y="-216.0" />
+				<text>task b_task_exit</text>
+				<ellipse h="28.0" w="94.0" />
+				<type>
+					<posattr x="47.0" y="-230.0" />
+					<text>UNIT</text>
+				</type>
+				<port type="Out" />
+			</place>
+			<trans id="ID7009">
+				<posattr x="0.0" y="-108.0" />
+				<text>task b_task</text>
+				<box h="28.0" w="94.0" />
+			</trans>
+			<arc orientation="PtoT">
+				<transend idref="ID7009" />
+				<placeend idref="ID7007" />
+				<annot>
+					<posattr x="10.0" y="-54.0" />
+					<text>v</text>
+				</annot>
+			</arc>
+			<arc orientation="TtoP">
+				<transend idref="ID7009" />
+				<placeend idref="ID7008" />
+				<annot>
+					<posattr x="10.0" y="-162.0" />
+					<text>v</text>
+				</annot>
+			</arc>
+		</page>
+		<instances>
+			<instance id="ID2149" page="ID6">
+				<instance id="ID7005" trans="ID7004" />
+				<instance id="ID7011" trans="ID7010" />
+			</instance>
+		</instances>
+		<options>
+			<option name="outputdirectory">
+				<value>
+					<text>&lt;same as model></text>
+				</value>
+			</option>
+			<option name="repavg">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="repciavg">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="repcount">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="repfirstval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="replastval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="repmax">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="repmin">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="repssquare">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="repssqdev">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="repstddev">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="repsum">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="repvariance">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="avg">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="ciavg">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="count">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="firstval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="lastval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="max">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="min">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="ssquare">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="ssqdev">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="stddev">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="sum">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="variance">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="firstupdate">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="interval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="lastupdate">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedavg">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="untimedciavg">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedcount">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="untimedfirstval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedlastval">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedmax">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="untimedmin">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="untimedssquare">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedssqdev">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedstddev">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+			<option name="untimedsum">
+				<value>
+					<boolean>true</boolean>
+				</value>
+			</option>
+			<option name="untimedvariance">
+				<value>
+					<boolean>false</boolean>
+				</value>
+			</option>
+		</options>
+		<binders>
+			<cpnbinder id="ID2222" x="257" y="122" width="600"
+				height="400">
+				<sheets>
+					<cpnsheet id="ID2215" panx="-6.000000"
+						pany="-5.000000" zoom="1.000000" instance="ID2149">
+						<zorder>
+							<position value="0" />
+						</zorder>
+					</cpnsheet>
+				</sheets>
+				<zorder>
+					<position value="0" />
+				</zorder>
+			</cpnbinder>
+		</binders>
+		<monitorblock name="Monitors" />
+		<IndexNode expanded="true">
+			<IndexNode expanded="false" />
+			<IndexNode expanded="false" />
+			<IndexNode expanded="false">
+				<IndexNode expanded="false" />
+				<IndexNode expanded="false">
+					<IndexNode expanded="false">
+						<IndexNode expanded="false">
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+						</IndexNode>
+						<IndexNode expanded="false">
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="false" />
+							<IndexNode expanded="true" />
+							<IndexNode expanded="false" />
+						</IndexNode>
+					</IndexNode>
+					<IndexNode expanded="false">
+						<IndexNode expanded="true" />
+						<IndexNode expanded="true" />
+						<IndexNode expanded="false" />
+						<IndexNode expanded="false" />
+						<IndexNode expanded="false" />
+						<IndexNode expanded="true" />
+						<IndexNode expanded="true" />
+						<IndexNode expanded="false" />
+						<IndexNode expanded="false" />
+						<IndexNode expanded="true" />
+						<IndexNode expanded="false" />
+						<IndexNode expanded="false" />
+					</IndexNode>
+				</IndexNode>
+			</IndexNode>
+			<IndexNode expanded="false" />
+			<IndexNode expanded="true">
+				<IndexNode expanded="false">
+					<IndexNode expanded="false" />
+					<IndexNode expanded="false" />
+					<IndexNode expanded="false" />
+					<IndexNode expanded="false" />
+				</IndexNode>
+			</IndexNode>
+			<IndexNode expanded="false" />
+			<IndexNode expanded="true" />
+		</IndexNode>
+	</cpnet>
+</workspaceElements>
