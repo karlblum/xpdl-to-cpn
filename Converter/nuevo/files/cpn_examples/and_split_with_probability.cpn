@@ -42,9 +42,12 @@
       <ml id="ID1264169218">fun ok() = uniform(0.0,1.0) &lt;= 0.9;
         <layout>fun ok() = uniform(0.0,1.0) &lt;= 0.9;</layout>
       </ml>
+      <ml id="ID1264201608">fun ok2() = uniform(0.0,1.0) &lt;= 0.3;
+        <layout>fun ok2() = uniform(0.0,1.0) &lt;= 0.3;</layout>
+      </ml>
     </globbox>
     <page id="ID6">
-      <pageattr name="New Page"/>
+      <pageattr name="Process 1"/>
       <place id="ID1002797339">
         <posattr x="-295.000000"
                  y="46.000000"/>
@@ -107,7 +110,7 @@
         <text>Place_end_1</text>
         <ellipse w="98.000000"
                  h="48.000000"/>
-        <token x="-10.000000"
+        <token x="-13.000000"
                y="0.000000"/>
         <marking x="0.000000"
                  y="0.000000"
@@ -384,7 +387,7 @@ else empty</text>
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="2.2.0">if ok()
+                version="2.2.0">if ok2()
 then 1`t
 else empty</text>
         </annot>
@@ -598,8 +601,8 @@ else empty</text>
     </options>
     <binders>
       <cpnbinder id="ID2222"
-                 x="381"
-                 y="311"
+                 x="458"
+                 y="288"
                  width="818"
                  height="412">
         <sheets>
@@ -618,8 +621,105 @@ else empty</text>
         </zorder>
       </cpnbinder>
     </binders>
-    <monitorblock name="Monitors"/>
-    <IndexNode expanded="true">
+    <monitorblock name="Monitors">
+      <monitor id="ID1264196677"
+               name="Marking_size_Process 1&apos;Place_end_1_1"
+               type="0"
+               typedescription="Marking size"
+               disabled="false">
+        <node idref="ID1002797429"
+              pageinstanceidref="ID2149"/>
+        <option name="Logging"
+                value="true"/>
+      </monitor>
+      <monitor id="ID1264197140"
+               name="Marking_size_Process 1&apos;Place_end_2_1"
+               type="0"
+               typedescription="Marking size"
+               disabled="false">
+        <node idref="ID1002797970"
+              pageinstanceidref="ID2149"/>
+        <option name="Logging"
+                value="true"/>
+      </monitor>
+      <monitor id="ID1264197625"
+               name="monitor_end1"
+               type="4"
+               typedescription="Write in file"
+               disabled="false">
+        <node idref="ID1002797429"
+              pageinstanceidref="ID2149"/>
+        <declaration name="Init">
+          <ml id="ID1264198185">fun init (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  &quot;&quot;
+            <layout>fun init (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  &quot;&quot;</layout>
+          </ml>
+        </declaration>
+        <declaration name="Predicate">
+          <ml id="ID1264198189">fun pred (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  true
+            <layout>fun pred (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  true</layout>
+          </ml>
+        </declaration>
+        <declaration name="Observer">
+          <ml id="ID1264198193">fun obs (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  &quot;&quot;
+            <layout>fun obs (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  &quot;&quot;</layout>
+          </ml>
+        </declaration>
+        <declaration name="Stop">
+          <ml id="ID1264198197">fun stop (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  &quot;&quot;
+            <layout>fun stop (Process_1&apos;Place_end_1_1_mark : TOKEN ms) = 
+  &quot;&quot;</layout>
+          </ml>
+        </declaration>
+        <option name="File extension"
+                value="txt"/>
+      </monitor>
+      <monitor id="ID1264198199"
+               name="monitor_end2"
+               type="4"
+               typedescription="Write in file"
+               disabled="false">
+        <node idref="ID1002797970"
+              pageinstanceidref="ID2149"/>
+        <declaration name="Init">
+          <ml id="ID1264198828">fun init (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  &quot;&quot;
+            <layout>fun init (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  &quot;&quot;</layout>
+          </ml>
+        </declaration>
+        <declaration name="Predicate">
+          <ml id="ID1264198832">fun pred (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  true
+            <layout>fun pred (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  true</layout>
+          </ml>
+        </declaration>
+        <declaration name="Observer">
+          <ml id="ID1264198836">fun obs (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  &quot;&quot;
+            <layout>fun obs (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  &quot;&quot;</layout>
+          </ml>
+        </declaration>
+        <declaration name="Stop">
+          <ml id="ID1264198840">fun stop (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  &quot;&quot;
+            <layout>fun stop (Process_1&apos;Place_end_2_1_mark : TOKEN ms) = 
+  &quot;&quot;</layout>
+          </ml>
+        </declaration>
+        <option name="File extension"
+                value="txt"/>
+      </monitor>
+    </monitorblock>
+    <IndexNode expanded="false">
       <IndexNode expanded="false"/>
       <IndexNode expanded="false"/>
       <IndexNode expanded="false">
@@ -678,7 +778,7 @@ else empty</text>
         <IndexNode expanded="false"/>
       </IndexNode>
       <IndexNode expanded="true">
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
@@ -687,8 +787,74 @@ else empty</text>
         </IndexNode>
         <IndexNode expanded="true"/>
         <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
       </IndexNode>
-      <IndexNode expanded="false"/>
+      <IndexNode expanded="true">
+        <IndexNode expanded="false">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="false">
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+        </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="false">
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+        </IndexNode>
+        <IndexNode expanded="true">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true">
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+        </IndexNode>
+        <IndexNode expanded="true">
+          <IndexNode expanded="true">
+            <IndexNode expanded="false"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true">
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+        </IndexNode>
+      </IndexNode>
       <IndexNode expanded="true"/>
     </IndexNode>
   </cpnet>
