@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http:///dk/au/daimi/ascoveco/cpn/model.ecore" 
+       class = "dk.au.daimi.ascoveco.cpn.model.ModelPackage"
+       genModel = "model/model.genmodel" /> 
+  </extension>
+  <extension
+        point="org.eclipse.ui.navigator.navigatorContent">
+	<navigatorContent
+       activeByDefault="true"
+       contentProvider="dk.au.daimi.ascoveco.cpn.model.cpnmodeluicontent.CPNModelContentProvider"
+       id="dk.au.daimi.ascoveco.cpn.model.cpnmodeluicontent"
+       labelProvider="dk.au.daimi.ascoveco.cpn.model.cpnmodeluicontent.CPNModelLabelProvider"
+       name="CPN Model Contents"
+       priority="normal">
+         <triggerPoints>
+            <or>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IResource">
+                  </instanceof>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="model">
+                  </test>
+               </and>
+               <instanceof
+                     value="dk.au.daimi.ascoveco.util.SimpleTree">
+               </instanceof>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+               <instanceof
+                     value="dk.au.daimi.ascoveco.util.SimpleTree">
+               </instanceof>
+            </or>
+         </possibleChildren>
+      </navigatorContent>
+  </extension>
+  <extension
+        point="org.eclipse.ui.navigator.viewer">
+     <viewerContentBinding
+           viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+        <includes>
+           <contentExtension
+                 pattern="dk.au.daimi.ascoveco.cpn.model.cpnmodeluicontent">
+           </contentExtension>
+        </includes>
+     </viewerContentBinding>
+  </extension>
+
+</plugin>
+
