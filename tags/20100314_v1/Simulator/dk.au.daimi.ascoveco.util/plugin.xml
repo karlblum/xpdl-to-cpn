@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="dk.au.daimi.ascoveco.util.development.DevelopmentPreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="dk.au.daimi.ascoveco.asap"
+            class="dk.au.daimi.ascoveco.util.development.DevelopmentPreferences"
+            id="dk.au.daimi.ascoveco.util.development.preferences"
+            name="Development">
+      </page>
+   </extension>
+
+</plugin>

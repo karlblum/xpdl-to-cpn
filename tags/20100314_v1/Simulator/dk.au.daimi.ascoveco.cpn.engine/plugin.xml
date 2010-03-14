@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="dk.au.daimi.ascoveco.cpn.engine.simulatorImplementation" name="simulatorImplementation" schema="schema/dk.au.daimi.ascoveco.cpn.engine.simulatorImplementation.exsd"/>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="dk.au.daimi.ascoveco.asap"
+            class="dk.au.daimi.ascoveco.cpn.engine.EnginePreferences"
+            id="dk.au.daimi.ascoveco.cpn.engine.preferences"
+            name="Engine">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="dk.au.daimi.ascoveco.cpn.engine.EnginePreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>
