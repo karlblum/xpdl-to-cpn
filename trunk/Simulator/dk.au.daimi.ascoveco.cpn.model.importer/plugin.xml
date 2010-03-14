@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+   <extension
+         id="dk.au.daimi.ascoveco.cpn.model.importer"
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="dk.au.daimi.ascoveco.cpn.model.importer.formalmodels.category"
+            name="Models">
+      </category>
+      <wizard
+            category="dk.au.daimi.ascoveco.cpn.model.importer.formalmodels.category"
+            class="dk.au.daimi.ascoveco.cpn.model.importer.importWizards.ImportCPNModelWizard"
+            icon="icons/cpntools16.gif"
+            id="dk.au.daimi.ascoveco.cpn.model.importer.cpntoolsmodel.wizard"
+            name="CPN Tools">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            type="import"
+            wizardId="dk.au.daimi.ascoveco.cpn.model.importer.cpntoolsmodel.wizard">
+         <enablement>
+            <and>
+               <instanceof
+                     value="org.eclipse.core.resources.IFolder">
+               </instanceof>
+               <test
+                     property="org.eclipse.core.resources.name"
+                     value="models">
+               </test>
+            </and></enablement>
+      </commonWizard>
+   </extension>
+
+
+</plugin>
