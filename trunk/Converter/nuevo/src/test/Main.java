@@ -162,6 +162,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
+		/*
 		File f = new File("./files/New net.cpn");
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
@@ -177,7 +178,7 @@ public class Main {
 		proc.setNumberOfCases("start", "10");
 		proc.setStartEventCDistribution("start", "round(erlang(10, 1.0))");
 		
-		/*
+		
 		proc.addStartEvent("start", "Phone_Call");
 		proc.addTask("task_a", "Enough_Information_Available");
 		proc.addXORGateway("gw1", "Split_1", GWType.SPLIT);
@@ -225,7 +226,7 @@ public class Main {
 		proc.setTransitionProbabilities("gw3", new Object[] {"gw4", 80, "gw6", 20});
 		proc.setNumberOfCases("start", "5");
 		proc.setStartEventCDistribution("start", "round(erlang(10, 1.0))");
-		*/
+		
 		for (Page p : cpnet.getPageArray())
 			doLayouting(p);
 		
@@ -233,10 +234,11 @@ public class Main {
 
 		doc.save(f);
 		System.out.println("Done");
+		*/
 		
 		System.out.println("Initializing simulator...");
 		
-		f = new File("./files/simple.cpn");
+		File f = new File("./files/test_examples/and_split_with_probability.cpn");
 		
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpPost method = new HttpPost("http://localhost:9080/bpmnsim");
