@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: dk.au.daimi.ascoveco.cpn.engine.daemon
+Bundle-SymbolicName: dk.au.daimi.ascoveco.cpn.engine.daemon;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: dk.au.daimi.ascoveco.cpn.engine.daemon.Activator
+Require-Bundle: dk.au.daimi.ascoveco.cpn.engine;bundle-version="1.0.0",
+ dk.au.daimi.ascoveco.util;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="3.5.0",
+ org.eclipse.ui;bundle-version="3.5.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: dk.au.daimi.ascoveco.cpn.engine.daemon
+Bundle-Vendor: CPN Group, University of Aarhus
+Bundle-RequiredExecutionEnvironment: J2SE-1.5,
+ JavaSE-1.6

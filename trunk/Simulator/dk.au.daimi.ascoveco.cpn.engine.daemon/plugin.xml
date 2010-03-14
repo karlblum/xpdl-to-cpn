@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="dk.au.daimi.ascoveco.cpn.engine.simulatorImplementation">
+      <simulatorImplementation
+            class="dk.au.daimi.ascoveco.cpn.engine.daemon.DaemonSimulator"
+            id="dk.au.daimi.ascoveco.cpn.engine.daemon.DaemonSimulator"
+            name="Daemon Engine">
+      </simulatorImplementation>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="dk.au.daimi.ascoveco.cpn.engine.daemon.DaemonEnginePreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="dk.au.daimi.ascoveco.cpn.engine.preferences"
+            class="dk.au.daimi.ascoveco.cpn.engine.daemon.DaemonEnginePreferences"
+            id="dk.au.daimi.ascoveco.cpn.engine.daemon.preferencePage"
+            name="Daemon Engine">
+      </page>
+   </extension>
+
+</plugin>

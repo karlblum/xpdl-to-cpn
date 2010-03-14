@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http:///dk/au/daimi/ascoveco/cpn/model.ecore" 
+       class = "dk.au.daimi.ascoveco.cpn.model.provider.ModelItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http:///dk/au/daimi/ascoveco/cpn/model/declaration.ecore" 
+       class = "dk.au.daimi.ascoveco.cpn.model.declaration.provider.DeclarationItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http:///dk/au/daimi/ascoveco/cpn/model/graphics.ecore" 
+       class = "dk.au.daimi.ascoveco.cpn.model.graphics.provider.GraphicsItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+</plugin>
