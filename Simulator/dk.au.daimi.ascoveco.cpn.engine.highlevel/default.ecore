@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <eClassifiers xsi:type="ecore:EClass" name="HighLevelSimulator">
+    <eOperations name="void initialize()"/>
+    <eOperations name="void initializeSyntaxCheck()"/>
+    <eOperations name="void checkDeclaration(HLDeclaration decl)"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simulator" eType="#//Simulator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packetGenerator" lowerBound="1"
+        eType="#//PacketGenerator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Simulator">
+    <eOperations name="String evaluate(String expr)"/>
+    <eOperations name="Packet send(Packet p)"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="#//SimulatorImplementation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimulatorImplementation" interface="true">
+    <eOperations name="Packet send(Packet p)"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DaemonSimulator" eSuperTypes="#//SimulatorImplementation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PacketGenerator">
+    <eOperations name="Packet constructInitialize()"/>
+    <eOperations name="Packet constructInitializeSyntaxCheck()"/>
+    <eOperations name="Packet constructCheckDeclaration(HLDeclaration decl)"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Packet">
+    <eOperations name="void addBoolean(boolean b)"/>
+    <eOperations name="void addInteger(int i)"/>
+    <eOperations name="void add"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Checker">
+    <eOperations name="void checkInitializing()"/>
+    <eOperations name="void checkDeclarations()"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simulator" lowerBound="1"
+        eType="#//HighLevelSimulator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petriNet" lowerBound="1"
+        eType="#//PetriNet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNet"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Job" interface="true">
+    <eOperations name="IStatus run(IProgressMonitor monitor)"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckerJob" eSuperTypes="#//Job">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checker" eType="#//Checker"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DOMParser">
+    <eOperations name="PetriNet parse(ULR url)"/>
+  </eClassifiers>
+  <eSubpackages name="cpn.engine"/>
+  <eSubpackages name="cpn.engine.daemon"/>
+  <eSubpackages name="cpn.engine.highlevel" nsPrefix=""/>
+  <eSubpackages name="cpn.model"/>
+  <eSubpackages name="cpn.model.importer"/>
+</ecore:EPackage>
