@@ -238,7 +238,7 @@ public class Main {
 		
 		System.out.println("Initializing simulator...");
 		
-		File f = new File("./files/test_examples/and_split_with_probability.cpn");
+		File f = new File("./files/cpn_examples/simplest.cpn");
 		
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpPost method = new HttpPost("http://localhost:9080/bpmnsim");

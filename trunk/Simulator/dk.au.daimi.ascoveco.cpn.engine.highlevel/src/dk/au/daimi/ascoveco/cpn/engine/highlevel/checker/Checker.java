@@ -224,8 +224,7 @@ public class Checker {
 			s.evaluate("structure CPN'Event = CPN'Event(structure CPN'NetCapture = CPN'NetCapture)");
 			s.evaluate("CPN'Env.use_string(CPN'Event.genBind(CPN'NetCapture.getNet()))");
 			s.evaluate("CPN'Env.use_string(CPN'Event.genEvent(CPN'NetCapture.getNet()))");
-			s
-			        .evaluate("structure CPNToolsModel = CPNToolsModel(structure CPNToolsState = CPNToolsState structure CPNToolsEvent = CPNToolsEvent)");
+			s.evaluate("structure CPNToolsModel = CPNToolsModel(structure CPNToolsState = CPNToolsState structure CPNToolsEvent = CPNToolsEvent)");
 			s.evaluate("structure CPN'HashFunction = CPN'HashFunction(structure CPN'NetCapture = CPN'NetCapture)");
 			s.evaluate("CPN'Env.use_string(CPN'HashFunction.genHashFunction(CPN'NetCapture.getNet()))");
 			s.evaluate("structure CPN'Serializer = CPN'Serializer(structure CPN'NetCapture = CPN'NetCapture)");
