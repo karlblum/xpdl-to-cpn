@@ -47,15 +47,13 @@ public class BPMNSimServlet extends HttpServlet implements Servlet {
 		// Parse the request
 		try {
 			List /* FileItem */ items = upload.parseRequest(req);
-			System.out.println("Number of items: " + items.size());
+			System.out.println("Parsing request");
 
 			FileItem fileItem = (FileItem)items.get(0);
-			System.out.println(fileItem.getName() + " " + fileItem.getSize());
+			System.out.println("Received file: " + fileItem.getName() + ", size:" + fileItem.getSize());
 			PetriNet pnet = DOMParser.parse(fileItem.getInputStream(), "Example");
-
-			//HighLevelSimulator s = HighLevelSimulator.getHighLevelSimulator(
-			//			new Simulator(new DaemonSimulator(InetAddress.getLocalHost(), 23456, new File("cpn.ML"))));
 			
+			System.out.println("Initializing simulator...");
 			HighLevelSimulator s = HighLevelSimulator.getHighLevelSimulator(
 					new Simulator(new DaemonSimulator(InetAddress.getLocalHost(), 23456, new File("cpn.ML"))),pnet);
 			
@@ -65,15 +63,14 @@ public class BPMNSimServlet extends HttpServlet implements Servlet {
 				checkerJob.join();
 
 				s.setModelNameModelDirOutputDir("Example",
-						"c:/Karl/Thesis/cpnsim/tmp",
-						"c:/Karl/Thesis/cpnsim/tmp/output");
+						"C:/Karl/Thesis/Source/Simulator/ee.ut.bpmnsim.servlet/tmp",
+						"C:/Karl/Thesis/Source/Simulator/ee.ut.bpmnsim.servlet/tmp/output");
 				s.setSimulationReportOptions(true, true, "");
+				s.saveSimulationReport(new File("C:/Karl/Thesis/Source/Simulator/ee.ut.bpmnsim.servlet/tmp/test.txt"));
 				s.initialState();
-				BigInteger i = s.getStep();
+				System.out.println("Executing steps...");
 				System.out.println(s.executeSteps(1000));
-				i = s.getStep();
-				System.out.println(i);
-				System.out.println("PNet: " + pnet.getName().asString());
+				System.out.println("Petri Net: " + pnet.getPage() );
 			} finally {
 				s.destroy();
 			}
