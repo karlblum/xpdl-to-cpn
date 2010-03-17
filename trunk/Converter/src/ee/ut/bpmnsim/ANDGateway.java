@@ -1,18 +1,12 @@
 package ee.ut.bpmnsim;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.xmlbeans.XmlObject;
-import org.apache.xmlbeans.XmlString;
-
-import noNamespace.Annot;
-import noNamespace.Arc;
-import noNamespace.Id;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Port;
 import noNamespace.Trans;
+
+import org.apache.xmlbeans.XmlObject;
+import org.apache.xmlbeans.XmlString;
 
 public class ANDGateway implements Gateway {
 	private String name;
