@@ -9,12 +9,10 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 
 import noNamespace.Arc;
-import noNamespace.Cpnet;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Posattr;
 import noNamespace.Trans;
-import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -28,7 +26,6 @@ import EDU.auburn.VGJ.graph.Graph;
 import EDU.auburn.VGJ.graph.Node;
 import EDU.auburn.VGJ.util.DDimension;
 import EDU.auburn.VGJ.util.DRect;
-import ee.ut.bpmnsim.Process;
 
 public class Main {
 
