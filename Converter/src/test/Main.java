@@ -235,7 +235,7 @@ public class Main {
 		
 		System.out.println("Initializing simulator...");
 		
-		File f = new File("./files/cpn_examples/simplest.cpn");
+		File f = new File("./files/simple.cpn");
 		
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpPost method = new HttpPost("http://localhost:9080/bpmnsim");

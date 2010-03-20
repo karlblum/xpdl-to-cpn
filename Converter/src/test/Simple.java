@@ -17,7 +17,7 @@ public class Simple {
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
 						
-		Process proc = new Process(cpnet, "proceso", "proceso");
+		Process proc = new Process(cpnet, "process", "process");
 
 		proc.addStartEvent("start", "Phone_Call");
 		proc.addTask("task_a", "Enough_Information_Available");
@@ -25,7 +25,7 @@ public class Simple {
 		proc.setExit("task_a");
 		proc.addEdge("start", "task_a");
 		
-		proc.setTaskDDistribution("task_a", "normal(30.0,5.0)");
+		//proc.setTaskDDistribution("task_a", "normal(30.0,5.0)");
 		
 		proc.setNumberOfCases("start", "5");
 		proc.setStartEventCDistribution("start", "round(erlang(10, 1.0))");
