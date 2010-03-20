@@ -34,5 +34,9 @@
 	<classpathentry kind="lib" path="lib/mx4j-jmx.jar"/>
 	<classpathentry kind="lib" path="lib/mx4j-tools.jar"/>
 	<classpathentry kind="lib" path="lib/apache-mime4j-0.6.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-dom.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jug.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
