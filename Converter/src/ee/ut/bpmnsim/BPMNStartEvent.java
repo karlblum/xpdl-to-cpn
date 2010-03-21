@@ -12,7 +12,7 @@ import org.apache.xmlbeans.XmlString;
 
 
 
-public class StartEvent {
+public class BPMNStartEvent {
 	private String name;
 	private Page page;
 	private XmlObject color;
@@ -22,27 +22,27 @@ public class StartEvent {
 	protected Place outputPlace;
 	private Place nextCasePlace;
 
-	public StartEvent(Page page, String name, XmlObject color, XmlObject variable, XmlObject counterType, String counterVar) {
+	public BPMNStartEvent(Page page, String name, XmlObject color, XmlObject variable, XmlObject counterType, String counterVar) {
 		this.page = page;
 		this.name = name;
 		this.color = color;
 		this.variable = variable;
 		this.counterVar = counterVar;
 		
-		transition = Util.createTrans(page, name);
+		transition = BPMNUtil.createTrans(page, name);
 
-		outputPlace = Util.createPlace(page, name + "_new_case");
+		outputPlace = BPMNUtil.createPlace(page, name + "_new_case");
 		outputPlace.getTypeArray()[0].getText().set(color.copy());		
 		outputPlace.addNewPort().setType("Out");
 
-		Util.createArc(page, transition, outputPlace, XmlString.Factory.newValue("initCaseInfo("+counterVar+")"));
+		BPMNUtil.createArc(page, transition, outputPlace, XmlString.Factory.newValue("initCaseInfo("+counterVar+")"));
 		
 		// --- case generation
-		nextCasePlace = Util.createPlace(page, "nextCase");
+		nextCasePlace = BPMNUtil.createPlace(page, "nextCase");
 		nextCasePlace.getTypeArray()[0].getText().set(counterType.copy());
 		nextCasePlace.getInitmarkArray(0).getText().set(XmlString.Factory.newValue("1"));
-		Util.createArc(page, nextCasePlace, transition, XmlString.Factory.newValue(counterVar));
-		Util.createArc(page, transition, nextCasePlace, XmlString.Factory.newValue(counterVar + " + 1"));
+		BPMNUtil.createArc(page, nextCasePlace, transition, XmlString.Factory.newValue(counterVar));
+		BPMNUtil.createArc(page, transition, nextCasePlace, XmlString.Factory.newValue(counterVar + " + 1"));
 	}
 	
 	public Place getExitPlace() {

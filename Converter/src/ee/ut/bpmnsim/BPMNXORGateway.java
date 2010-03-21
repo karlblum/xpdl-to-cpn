@@ -17,7 +17,7 @@ import noNamespace.Place;
 import noNamespace.Port;
 import noNamespace.Trans;
 
-public class XORGateway implements Gateway {
+public class BPMNXORGateway implements BPMNGateway {
 	private String name;
 	private Page page;
 	private GWType type;
@@ -30,28 +30,28 @@ public class XORGateway implements Gateway {
 	protected Place splittingPlace;
 	private Place joiningPlace;
 	
-	public XORGateway(Page page, String name, GWType type, XmlObject color, XmlObject variable) {
+	public BPMNXORGateway(Page page, String name, GWType type, XmlObject color, XmlObject variable) {
 		this.page = page;
 		this.name = name;
 		this.type = type;
 		this.color = color;
 		this.variable = variable;
 		
-		transition = Util.createTrans(page, name);
+		transition = BPMNUtil.createTrans(page, name);
 		
 		if (type == GWType.SPLIT || type == GWType.MIXED) {
-			splittingPlace = Util.createPlace(page, name + "_split");
+			splittingPlace = BPMNUtil.createPlace(page, name + "_split");
 			splittingPlace.getTypeArray(0).getText().set(color.copy());		
 
-			Arc a1 = Util.createArc(page, transition, splittingPlace, (XmlString)variable.copy());
+			Arc a1 = BPMNUtil.createArc(page, transition, splittingPlace, (XmlString)variable.copy());
 			splitArcs.add(a1);
 		}
 		
 		if (type == GWType.JOIN || type == GWType.MIXED) {
-			joiningPlace = Util.createPlace(page, name + "_join");
+			joiningPlace = BPMNUtil.createPlace(page, name + "_join");
 			joiningPlace.getTypeArray(0).getText().set(color.copy());
 			
-			Arc a1 = Util.createArc(page, joiningPlace, transition, (XmlString)variable.copy());
+			Arc a1 = BPMNUtil.createArc(page, joiningPlace, transition, (XmlString)variable.copy());
 			entryArc = a1;
 		}
 	}
@@ -62,16 +62,16 @@ public class XORGateway implements Gateway {
 		if (type == GWType.SPLIT) {
 			trans = transition;
 		} else {
-			trans = Util.createTrans(page, name + "\npath_from_" + from);
-			Util.createArc(page, trans, joiningPlace, (XmlString)variable.copy());
+			trans = BPMNUtil.createTrans(page, name + "\npath_from_" + from);
+			BPMNUtil.createArc(page, trans, joiningPlace, (XmlString)variable.copy());
 		}
 		
-		Place entryPlace = Util.createPlace(page, name + "_" + from);
+		Place entryPlace = BPMNUtil.createPlace(page, name + "_" + from);
 		entryPlace.getTypeArray(0).getText().set(color.copy());		
 		Port inPort = entryPlace.addNewPort();
 		inPort.setType("In");
 
-		Arc arc = Util.createArc(page, entryPlace, trans, (XmlString)variable.copy());
+		Arc arc = BPMNUtil.createArc(page, entryPlace, trans, (XmlString)variable.copy());
 		entryArc = arc;   // TODO: Verify this point
 		
 		return entryPlace;
@@ -83,17 +83,17 @@ public class XORGateway implements Gateway {
 		if (type == GWType.JOIN) {
 			trans = transition;
 		} else {
-			trans = Util.createTrans(page, name + "\npath_to_" + to);
-			Arc a1 = Util.createArc(page, splittingPlace, trans, (XmlString)variable.copy());
+			trans = BPMNUtil.createTrans(page, name + "\npath_to_" + to);
+			Arc a1 = BPMNUtil.createArc(page, splittingPlace, trans, (XmlString)variable.copy());
 			splitArcs.add(a1);
 		}
 		
-		Place exitPlace = Util.createPlace(page, name + "_" + to);
+		Place exitPlace = BPMNUtil.createPlace(page, name + "_" + to);
 		exitPlace.getTypeArray(0).getText().set(color.copy());
 		Port outPort = exitPlace.addNewPort();
 		outPort.setType("Out");
 		
-		Util.createArc(page, trans, exitPlace, (XmlString)variable.copy());
+		BPMNUtil.createArc(page, trans, exitPlace, (XmlString)variable.copy());
 		
 		exitTrans.put(to, trans);
 		return exitPlace;

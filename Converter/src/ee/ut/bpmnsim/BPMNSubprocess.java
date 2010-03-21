@@ -9,11 +9,11 @@ import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Port;
 
-public class Subprocess extends Process {
+public class BPMNSubprocess extends BPMNProcess {
 	private Place entryPlace;
 	private Place exitPlace;
 
-	public Subprocess(Cpnet cpnet, Page page, Instance instance, XmlString color, XmlString variable) {
+	public BPMNSubprocess(Cpnet cpnet, Page page, Instance instance, XmlString color, XmlString variable) {
 		super();
 		this.cpnet = cpnet;
 		this.page = page;
@@ -21,19 +21,19 @@ public class Subprocess extends Process {
 		this.caseType = color;
 		this.variable = variable;
 		
-		entryPlace = page.addNewPlace(); entryPlace.setId(IdGen.createId());
+		entryPlace = page.addNewPlace(); entryPlace.setId(BPMNIdGen.createId());
 		entryPlace.addNewType().addNewText().set(caseType.copy());
 		Port inPort = entryPlace.addNewPort();
 		inPort.setType("In");
 		
-		exitPlace = page.addNewPlace();  exitPlace.setId(IdGen.createId());
+		exitPlace = page.addNewPlace();  exitPlace.setId(BPMNIdGen.createId());
 		exitPlace.addNewType().addNewText().set(caseType.copy());
 		Port outPort = exitPlace.addNewPort();
 		outPort.setType("Out");
 	}
 	
 	public void setEntry(String entryId) {
-		Task entry = (Task)map.get(entryId);
+		BPMNTask entry = (BPMNTask)map.get(entryId);
 		
 		// -- entry transition
 		String psock = transitions.get(entryId).getSubst().getPortsock();
@@ -49,7 +49,7 @@ public class Subprocess extends Process {
 	}
 
 	public void setExit(String exitId) {
-		Task exit = (Task)map.get(exitId);
+		BPMNTask exit = (BPMNTask)map.get(exitId);
 		
 		// -- entry transition
 		String psock = transitions.get(exitId).getSubst().getPortsock();

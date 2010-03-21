@@ -34,8 +34,5 @@
 	<classpathentry kind="lib" path="lib/mx4j-jmx.jar"/>
 	<classpathentry kind="lib" path="lib/mx4j-tools.jar"/>
 	<classpathentry kind="lib" path="lib/apache-mime4j-0.6.jar"/>
-	<classpathentry kind="lib" path="lib/huihoo-commons-1.0.jar"/>
-	<classpathentry kind="lib" path="lib/commons-beanutils.jar"/>
-	<classpathentry kind="lib" path="lib/commons-digester-1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

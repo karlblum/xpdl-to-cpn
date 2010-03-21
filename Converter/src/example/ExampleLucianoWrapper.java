@@ -22,7 +22,7 @@ import noNamespace.Place;
 import noNamespace.Posattr;
 import noNamespace.Trans;
 import noNamespace.WorkspaceElementsDocument;
-import ee.ut.bpmnsim.Process;
+import ee.ut.bpmnsim.BPMNProcess;
 
 public class ExampleLucianoWrapper {
 
@@ -34,7 +34,7 @@ public class ExampleLucianoWrapper {
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
 						
-		Process proc = new Process(cpnet, "process", "process");
+		BPMNProcess proc = new BPMNProcess(cpnet, "process", "process");
 
 		proc.addStartEvent("start", "Phone_Call");
 		proc.addTask("task_a", "Enough_Information_Available");
