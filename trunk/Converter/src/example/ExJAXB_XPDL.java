@@ -19,7 +19,7 @@ import org.wfmc._2008.xpdl2.Transition;
 import org.wfmc._2008.xpdl2.Transitions;
 
 
-public class ExampleJAXB_XPDL {
+public class ExJAXB_XPDL {
 
 	public static void main(String[] args) {
 		

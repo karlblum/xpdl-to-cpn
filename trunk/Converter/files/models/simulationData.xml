@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tasks xsi:noNamespaceSchemaLocation="../schemas/simulation.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Task>
+		<Id>8</Id>
+		<ResourceWaitTime>P0DT10S</ResourceWaitTime>
+		<ProcessingTime>
+			<ActivityProccessingTimeType>String</ActivityProccessingTimeType>
+			<DistributedActivityProcessingTime/>
+		</ProcessingTime>
+	</Task>
+</Tasks>
