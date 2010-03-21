@@ -24,13 +24,13 @@ import noNamespace.Trans;
 import noNamespace.WorkspaceElementsDocument;
 import ee.ut.bpmnsim.BPMNProcess;
 
-public class ExampleLucianoWrapper {
+public class ExLucianoWrapper {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		File f = new File("./files/New net.cpn");
+		File f = new File("./files/Blank.cpn");
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
 						

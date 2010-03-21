@@ -26,11 +26,11 @@ import org.wfmc._2008.xpdl2.Transitions;
 
 import ee.ut.bpmnsim.BPMNProcess;
 
-public class ExampleXPDLtoCPN {
+public class ExXPDLtoCPN {
 	public static void main(String[] args) throws IOException, XmlException,
 			JAXBException {
 
-		File f = new File("./files/New net.cpn");
+		File f = new File("./files/Blank.cpn");
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory
 				.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
@@ -95,7 +95,7 @@ public class ExampleXPDLtoCPN {
 		}
 
 		for (Page p : cpnet.getPageArray())
-			ExampleLucianoWrapper.doLayouting(p);
+			ExLucianoWrapper.doLayouting(p);
 		f = new File("./files/ExampleXPDLtoCPN.cpn");
 
 		doc.save(f);
