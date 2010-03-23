@@ -11,12 +11,12 @@ import javax.xml.bind.Unmarshaller;
 import noNamespace.Cpnet;
 import noNamespace.WorkspaceElementsDocument;
 
-import org.wfmc._2008.xpdl2.Activities;
-import org.wfmc._2008.xpdl2.Activity;
-import org.wfmc._2008.xpdl2.PackageType;
-import org.wfmc._2008.xpdl2.ProcessType;
-import org.wfmc._2008.xpdl2.Transition;
-import org.wfmc._2008.xpdl2.Transitions;
+import ee.ut.model.xpdl2.Activities;
+import ee.ut.model.xpdl2.Activity;
+import ee.ut.model.xpdl2.PackageType;
+import ee.ut.model.xpdl2.ProcessType;
+import ee.ut.model.xpdl2.Transition;
+import ee.ut.model.xpdl2.Transitions;
 
 
 public class ExJAXB_XPDL {

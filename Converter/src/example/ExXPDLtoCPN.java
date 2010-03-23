@@ -16,15 +16,15 @@ import noNamespace.Page;
 import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlException;
-import org.wfmc._2008.xpdl2.Activities;
-import org.wfmc._2008.xpdl2.Activity;
-import org.wfmc._2008.xpdl2.Event;
-import org.wfmc._2008.xpdl2.PackageType;
-import org.wfmc._2008.xpdl2.ProcessType;
-import org.wfmc._2008.xpdl2.Transition;
-import org.wfmc._2008.xpdl2.Transitions;
 
-import ee.ut.bpmnsim.BPMNProcess;
+import ee.ut.model.bpmne.BPMNeProcess;
+import ee.ut.model.xpdl2.Activities;
+import ee.ut.model.xpdl2.Activity;
+import ee.ut.model.xpdl2.Event;
+import ee.ut.model.xpdl2.PackageType;
+import ee.ut.model.xpdl2.ProcessType;
+import ee.ut.model.xpdl2.Transition;
+import ee.ut.model.xpdl2.Transitions;
 
 public class ExXPDLtoCPN {
 	public static void main(String[] args) throws IOException, XmlException,
@@ -46,7 +46,7 @@ public class ExXPDLtoCPN {
 		ProcessType proc = root.getWorkflowProcesses().getWorkflowProcess()
 				.get(0);
 
-		BPMNProcess bpmnProc = new BPMNProcess(cpnet, proc.getName(), proc
+		BPMNeProcess bpmnProc = new BPMNeProcess(cpnet, proc.getName(), proc
 				.getName());
 
 		Map<String, Activity> map = new HashMap<String, Activity>();

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" elementFormDefault="qualified" jaxb:version="1.0">
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
-	
 	<xs:complexType name="Task">
 		<xs:sequence>
 			<xs:element name="Name" type="xs:string"/>
@@ -10,18 +9,13 @@
 			<xs:element name="ProcessingTime" type="xs:duration"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:element name="Task" type="Task"/>
-	
-	
 	<xs:complexType name="Tasks">
 		<xs:sequence>
 			<xs:element name="Task" type="Task" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:element name="Tasks" type="Tasks"/>
-
 	<xs:complexType name="Gateway">
 		<xs:sequence>
 			<xs:element name="Name" type="xs:string"/>
@@ -30,41 +24,31 @@
 			<xs:element name="GateRefs" type="GateRefs"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<xs:element name="Gateway"	type="Gateway"/>	
-	
-
+	<xs:element name="Gateway" type="Gateway"/>
 	<xs:complexType name="Gateways">
 		<xs:sequence>
 			<xs:element name="Gateway" type="Gateway" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<xs:element name="Gateways"	type="Gateways"/>	
-	
-	
+	<xs:element name="Gateways" type="Gateways"/>
 	<xs:complexType name="GateRefs">
 		<xs:sequence>
-			<xs:element name="GateRef"	type="GateRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GateRef" type="GateRef" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<xs:element name="GateRefs"	 type="GateRefs"/>
-	
-	
+	<xs:element name="GateRefs" type="GateRefs"/>
 	<xs:complexType name="GateRef">
 		<xs:sequence>
 			<xs:element name="IdRef" type="xs:string"/>
 			<xs:element name="Probability" type="xs:double"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:element name="GateRef" type="GateRef"/>
-	
+<xs:element name="SimulationData"	type="SimulationData"/>
 	<xs:complexType name="SimulationData">
 		<xs:sequence>
 			<xs:element name="Tasks" type="Tasks"/>
 			<xs:element name="Gateways" type="Gateways"/>
-		</xs:sequence>	
+		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
