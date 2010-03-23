@@ -16,16 +16,16 @@ import noNamespace.Page;
 import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlException;
-import org.wfmc._2008.xpdl2.Activities;
-import org.wfmc._2008.xpdl2.Activity;
-import org.wfmc._2008.xpdl2.Event;
-import org.wfmc._2008.xpdl2.PackageType;
-import org.wfmc._2008.xpdl2.ProcessType;
-import org.wfmc._2008.xpdl2.Transition;
-import org.wfmc._2008.xpdl2.Transitions;
 
-import ee.ut.bpmnsim.BPMNProcess;
-import ee.ut.simulation.Tasks;
+import ee.ut.model.bpmne.BPMNeProcess;
+import ee.ut.model.sim.Tasks;
+import ee.ut.model.xpdl2.Activities;
+import ee.ut.model.xpdl2.Activity;
+import ee.ut.model.xpdl2.Event;
+import ee.ut.model.xpdl2.PackageType;
+import ee.ut.model.xpdl2.ProcessType;
+import ee.ut.model.xpdl2.Transition;
+import ee.ut.model.xpdl2.Transitions;
 
 public class ExXPDLtoCPN_SimData {
 	public static void main(String[] args) throws IOException, XmlException,
@@ -39,13 +39,13 @@ public class ExXPDLtoCPN_SimData {
 		File xpdlFileIn = new File(
 				"C:/Karl/Thesis/Source/Converter/files/models/simplest_xpdl.xpdl");
 
-		JAXBContext jc = JAXBContext.newInstance("org.wfmc._2008.xpdl2");
+		JAXBContext jc = JAXBContext.newInstance("ee.ut.model.xpdl2");
 		Unmarshaller u = jc.createUnmarshaller();
 		JAXBElement rootElement = (JAXBElement) u.unmarshal(xpdlFileIn);
 		
 		File simFileIn = new File("C:/Karl/Thesis/Source/Converter/files/models/simulationData.xml");
 
-		JAXBContext jc2 = JAXBContext.newInstance("ee.ut.simulation");
+		JAXBContext jc2 = JAXBContext.newInstance("ee.ut.model.sim");
 		Unmarshaller u2 = jc2.createUnmarshaller();
 		JAXBElement rootElementSim = (JAXBElement) u2.unmarshal(simFileIn);
 		Tasks t = (Tasks)rootElementSim.getValue();
@@ -55,7 +55,7 @@ public class ExXPDLtoCPN_SimData {
 		ProcessType proc = root.getWorkflowProcesses().getWorkflowProcess()
 				.get(0);
 
-		BPMNProcess bpmnProc = new BPMNProcess(cpnet, proc.getName(), proc
+		BPMNeProcess bpmnProc = new BPMNeProcess(cpnet, proc.getName(), proc
 				.getName());
 
 		Map<String, Activity> map = new HashMap<String, Activity>();

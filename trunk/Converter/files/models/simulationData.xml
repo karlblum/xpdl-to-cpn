@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Tasks xsi:noNamespaceSchemaLocation="../schemas/simulation.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Task>
-		<Id>8</Id>
-		<ResourceWaitTime>P0DT10S</ResourceWaitTime>
-		<ProcessingTime>
-			<ActivityProccessingTimeType>String</ActivityProccessingTimeType>
-			<DistributedActivityProcessingTime/>
-		</ProcessingTime>
-	</Task>
-</Tasks>
+<SimulationData xsi:noNamespaceSchemaLocation="../schemas/simulation.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Tasks>
+		<Task>
+			<Name>8</Name>
+			<Id>8</Id>
+			<ResourceWaitTime>P0DT10S</ResourceWaitTime>
+			<ProcessingTime>P0DT20S</ProcessingTime>
+		</Task>
+	</Tasks>
+	<Gateways>
+		<Gateway>
+			<Name>String</Name>
+			<Id>String</Id>
+			<GatewayType>String</GatewayType>
+			<GateRefs>
+				<GateRef>
+					<IdRef>String</IdRef>
+					<Probability>3.14159265358979E0</Probability>
+				</GateRef>
+			</GateRefs>
+		</Gateway>
+	</Gateways>
+</SimulationData>
