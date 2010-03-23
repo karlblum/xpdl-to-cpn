@@ -30,7 +30,7 @@ public class ExXPDLtoCPN {
 	public static void main(String[] args) throws IOException, XmlException,
 			JAXBException {
 
-		File f = new File("./files/Blank.cpn");
+		File f = new File("./files/blank.cpn");
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory
 				.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
@@ -38,7 +38,8 @@ public class ExXPDLtoCPN {
 		File fIn = new File(
 				"C:/Karl/Thesis/Source/Converter/files/models/simplest_xpdl.xpdl");
 
-		JAXBContext jc = JAXBContext.newInstance("org.wfmc._2008.xpdl2");
+		
+		JAXBContext jc = JAXBContext.newInstance("ee.ut.model.xpdl2");
 		Unmarshaller u = jc.createUnmarshaller();
 		JAXBElement rootElement = (JAXBElement) u.unmarshal(fIn);
 
