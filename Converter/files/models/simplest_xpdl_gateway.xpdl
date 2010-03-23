@@ -44,8 +44,6 @@
           </TransitionRestrictions>
         </Activity>
         <Activity Id="41" Name="Activity2">
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
         </Activity>
       </Activities>
       <Transitions>
