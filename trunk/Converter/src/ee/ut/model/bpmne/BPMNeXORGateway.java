@@ -1,21 +1,18 @@
 package ee.ut.model.bpmne;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.xmlbeans.XmlObject;
-import org.apache.xmlbeans.XmlString;
-
-import noNamespace.Annot;
 import noNamespace.Arc;
-import noNamespace.Id;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Port;
 import noNamespace.Trans;
+
+import org.apache.xmlbeans.XmlObject;
+import org.apache.xmlbeans.XmlString;
 
 public class BPMNeXORGateway implements BPMNeGateway {
 	private String name;

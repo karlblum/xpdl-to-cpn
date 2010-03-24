@@ -16,7 +16,6 @@ import ee.ut.model.bpmne.BPMNeProcess;
 import ee.ut.model.bpmne.BPMNeGateway.GWType;
 import ee.ut.model.sim.GateRef;
 import ee.ut.model.sim.Gateway;
-import ee.ut.model.sim.Gateways;
 import ee.ut.model.sim.SimulationData;
 import ee.ut.model.sim.Task;
 import ee.ut.model.xpdl2.Activities;
@@ -31,20 +30,40 @@ import ee.ut.model.xpdl2.Transitions;
 import example.ExLucianoWrapper;
 
 /**
+ * This class provides high level access to the conversion and 
+ * merging process. Process model in XPDL and simulation data 
+ * in customized xml format are both needed to complete conversion.
+ * 
  * @author karl
  * 
  */
+/**
+ * @author karl
+ *
+ */
 public class CPNConverter {
 
+	// Input XPDL file with process data
 	File xpdlFile;
+	
+	// Input simulation data file
 	File simDataFile;
+	
+	// Generate blank CPN workspace
 	WorkspaceElementsDocument cpnWorkspace;
+	
+	// Generate blank CPN
 	Cpnet cpnet;
+	
+	// New wrapped BPMN process
 	BPMNeProcess process;
-
+	
+	
 	/**
-	 * @param xpdlFile
-	 * @param simDataFile
+	 * Converter initializer
+	 * 
+	 * @param xpdlFile Input XPDL file
+	 * @param simDataFile Input simulation data XML file
 	 */
 	public CPNConverter(File xpdlFile, File simDataFile) {
 		this.xpdlFile = xpdlFile;
@@ -61,7 +80,10 @@ public class CPNConverter {
 		cpnet = cpnWorkspace.getWorkspaceElements().getCpnet();
 	}
 
+	
 	/**
+	 * Runs the conversion process. Modifies the CPN workspace as the end result.
+	 * 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -71,45 +93,55 @@ public class CPNConverter {
 				"ee.ut.model.xpdl2");
 		JAXBElement<SimulationData> simDataRoot = unMasrhall(simDataFile,
 				"ee.ut.model.sim");
-		createBPMNeModel(xpdlRoot);
-		addSimulationData(simDataRoot);
+		createBPMNeModel(xpdlRoot.getValue());
+		addSimulationData(simDataRoot.getValue());
 	}
-
 	
 	
-	private void addSimulationData(JAXBElement<SimulationData> simDataRoot) {
-		for(Gateway gateway : simDataRoot.getValue().getGateways().getGateway()){
-			
-			List<GateRef> gatewayReferences = gateway.getGateRefs().getGateRef();
-			
-			Object[] transitionProbabilities = new Object[gatewayReferences.size()*2];
-			
-			int i = 0;
-			for(GateRef gatewayReference : gatewayReferences){
-				transitionProbabilities[i++] = gatewayReference.getIdRef();
-				transitionProbabilities[i++] = gatewayReference.getProbability();
+	/**
+	 * Adds simulation data to the in-memory process model
+	 *  
+	 * @param simulationData Simulation data model root element
+	 */
+	private void addSimulationData(SimulationData simulationData) {
+		
+		// if gateway data is available
+		if(simulationData.getGateways() != null){
+			for(Gateway gateway : simulationData.getGateways().getGateway()){
+				
+				List<GateRef> gatewayReferences = gateway.getGateRefs().getGateRef();
+				
+				Object[] transitionProbabilities = new Object[gatewayReferences.size()*2];
+				
+				int i = 0;
+				for(GateRef gatewayReference : gatewayReferences){
+					transitionProbabilities[i++] = gatewayReference.getIdRef();
+					transitionProbabilities[i++] = gatewayReference.getProbability();
+				}
+				
+				process.setTransitionProbabilities(gateway.getId(),transitionProbabilities );
 			}
-			
-			System.out.println("");
-			
-			process.setTransitionProbabilities(gateway.getId(),transitionProbabilities );
-			System.out.println("Gateway probabilities set!");
 		}
 		
-		for(Task task : simDataRoot.getValue().getTasks().getTask()){
-			
-			process.setTaskDDistribution(task.getId(), task.getProcessingTime().toString());
+		// if task data is available
+		if(simulationData.getTasks() != null){
+			for(Task task : simulationData.getTasks().getTask()){
+				
+				process.setTaskDDistribution(task.getId(), task.getProcessingTime());
+			}
 		}
-		
 	}
+	
 
 	/**
-	 * @param xpdlRoot
+	 * Creates a new BPMN process model from the XPDL data
+	 * 
+	 * @param packageType XPDL model root element
 	 * @return
 	 */
-	private void createBPMNeModel(JAXBElement<PackageType> xpdlRoot) {
+	private void createBPMNeModel(PackageType packageType) {
 
-		ProcessType xpdlProcess = xpdlRoot.getValue().getWorkflowProcesses()
+		ProcessType xpdlProcess = packageType.getWorkflowProcesses()
 				.getWorkflowProcess().get(0);
 
 		process = new BPMNeProcess(cpnet, xpdlProcess.getName(),
@@ -129,44 +161,46 @@ public class CPNConverter {
 		}
 
 	}
+	
 
 	/**
-	 * @param activity
-	 * @param process
+	 * Method adds an activity to a process. Activities can be in various types.
+	 * Gatways are also types here.
+	 * 
+	 * @param activity Activity to add to the BPMN process
+	 * @param process BPMN process
 	 */
 	private void addActivity(Activity activity, BPMNeProcess process) {
 
 		ActivityType type = getActivityType(activity);
+		String name = activity.getName();
+		String id = activity.getId();
 
-		if (type == ActivityType.START) {
-			process.addStartEvent(activity.getId(), activity.getName());
-			System.out.println("DEBUG: Found start event (?)");
-		} else if (type == ActivityType.END) {
-			process.addTask(activity.getId(), activity.getName());
-			process.setExit(activity.getId());
-			System.out.println("DEBUG: Found end event (?)");
-		} else if (type == ActivityType.SPLIT_XOR){
-			process.addXORGateway(activity.getId(), activity.getName(), GWType.SPLIT);
-			System.out.println("DEBUG: Found XOR split (?)");
-		} else if (type == ActivityType.SPLIT_INC){
-			process.addANDGateway(activity.getId(), activity.getName(), GWType.SPLIT);
-			System.out.println("DEBUG: Found AND split (?)");
-		} else if (type == ActivityType.JOIN_INC){
-			process.addXORGateway(activity.getId(), activity.getName(), GWType.JOIN);
-			System.out.println("DEBUG: Found XOR join (?)");
-		} else if (type == ActivityType.JOIN_INC){
-			process.addANDGateway(activity.getId(), activity.getName(), GWType.JOIN);
-			System.out.println("DEBUG: Found AND join (?)");
-		} else {
-			process.addTask(activity.getId(), activity.getName());
-			System.out.println("DEBUG: Found intermediate event (?)");
+		if (type == ActivityType.START) { // Start activity
+			process.addStartEvent(id, name);
+		} else if (type == ActivityType.END) { // End activity
+			process.addTask(id, name);
+			process.setExit(id);
+		} else if (type == ActivityType.SPLIT_XOR) { // XOR splitting
+			process.addXORGateway(id, name, GWType.SPLIT);
+		} else if (type == ActivityType.SPLIT_INC) { // AND splitting
+			process.addANDGateway(id, name, GWType.SPLIT);
+		} else if (type == ActivityType.JOIN_XOR) { // XOR join
+			process.addXORGateway(id, name, GWType.JOIN);
+		} else if (type == ActivityType.JOIN_INC) { // AND JOIN
+			process.addANDGateway(id, name, GWType.JOIN);
+		} else { // Intermediate activity (TASK)
+			process.addTask(id, name);
 		}
 
 	}
 
+	
 	/**
-	 * @param transition
-	 * @param process
+	 * Adds a transition between two elements
+	 * 
+	 * @param transition Transition to be added
+	 * @param process Process where to add transition
 	 */
 	private void addTransition(Transition transition, BPMNeProcess process) {
 		process.addEdge(transition.getFrom(), transition.getTo());
@@ -174,7 +208,11 @@ public class CPNConverter {
 
 	}
 
+	
 	/**
+	 * Determines the type of an activity. Activity can be start, end, 
+	 * intermediate task and join or split gateway
+	 * 
 	 * @param activity
 	 * @return
 	 */
@@ -187,20 +225,21 @@ public class CPNConverter {
 					return ActivityType.END;
 				}
 			} else if (aContent instanceof Route) {
-				if (((Route) aContent).getGatewayType().equals("Exclusive")){
-					if (isSplit(activity)){
-					return ActivityType.SPLIT_XOR;
+				if (((Route) aContent).getGatewayType().equals("Exclusive")) {
+					if (isSplit(activity)) {
+						return ActivityType.SPLIT_XOR;
 					} else {
 						return ActivityType.JOIN_XOR;
 					}
-				} else if (((Route) aContent).getGatewayType().equals("Inclusive")){
-					if (isSplit(activity)){
+				} else if (((Route) aContent).getGatewayType().equals(
+						"Inclusive")) {
+					if (isSplit(activity)) {
 						return ActivityType.SPLIT_INC;
-						} else {
-							return ActivityType.JOIN_INC;
-						}
+					} else {
+						return ActivityType.JOIN_INC;
+					}
 				}
-				
+
 			}
 		}
 		return ActivityType.TASK;
@@ -210,7 +249,7 @@ public class CPNConverter {
 	/**
 	 * We assume that only split activity has transition restrictions. 
 	 * So this method determines whether the activity is split or join based 
-	 * on the existence of transistinrestriction elements 
+	 * on the existence of transistionrestriction elements 
 	 * 
 	 * @param activity
 	 * @return
@@ -230,7 +269,13 @@ public class CPNConverter {
 	 * 
 	 */
 	public enum ActivityType {
-		START, END, TASK, SPLIT_XOR, SPLIT_INC, JOIN_XOR, JOIN_INC
+		START, 
+		END, 
+		TASK, 
+		SPLIT_XOR, 
+		SPLIT_INC, 
+		JOIN_XOR, 
+		JOIN_INC
 	}
 	
 
@@ -256,6 +301,12 @@ public class CPNConverter {
 		return null;
 	}
 
+	
+	/**
+	 * Saves current CPN workspace to the defined file.
+	 * 
+	 * @param convertedCPNFile
+	 */
 	public void saveToFile(File convertedCPNFile) {
 		for (Page p : cpnet.getPageArray())
 			ExLucianoWrapper.doLayouting(p);
