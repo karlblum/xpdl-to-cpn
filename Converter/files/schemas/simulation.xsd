@@ -3,7 +3,6 @@
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
 	<xs:complexType name="Task">
 		<xs:sequence>
-			<xs:element name="Name" type="xs:string"/>
 			<xs:element name="Id" type="xs:string"/>
 			<xs:element name="ResourceWaitTime" type="xs:duration"/>
 			<xs:element name="ProcessingTime" type="xs:duration"/>
@@ -18,9 +17,7 @@
 	<xs:element name="Tasks" type="Tasks"/>
 	<xs:complexType name="Gateway">
 		<xs:sequence>
-			<xs:element name="Name" type="xs:string"/>
 			<xs:element name="Id" type="xs:string"/>
-			<xs:element name="GatewayType" type="xs:string"/>
 			<xs:element name="GateRefs" type="GateRefs"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -40,11 +37,11 @@
 	<xs:complexType name="GateRef">
 		<xs:sequence>
 			<xs:element name="IdRef" type="xs:string"/>
-			<xs:element name="Probability" type="xs:double"/>
+			<xs:element name="Probability" type="xs:int"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="GateRef" type="GateRef"/>
-<xs:element name="SimulationData"	type="SimulationData"/>
+	<xs:element name="SimulationData" type="SimulationData"/>
 	<xs:complexType name="SimulationData">
 		<xs:sequence>
 			<xs:element name="Tasks" type="Tasks"/>

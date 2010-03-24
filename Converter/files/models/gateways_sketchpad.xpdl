@@ -60,7 +60,7 @@
           </NodeGraphicsInfos>
         </Activity>
         <Activity Id="9" Name="g1">
-          <Route GatewayType="Inclusive" />
+          <Route GatewayType="Exclusive" />
           <TransitionRestrictions>
             <TransitionRestriction>
               <Split Type="Exclusive">

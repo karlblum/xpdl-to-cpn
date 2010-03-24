@@ -2,6 +2,7 @@ package ee.ut.converter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -13,7 +14,11 @@ import noNamespace.Page;
 import noNamespace.WorkspaceElementsDocument;
 import ee.ut.model.bpmne.BPMNeProcess;
 import ee.ut.model.bpmne.BPMNeGateway.GWType;
+import ee.ut.model.sim.GateRef;
+import ee.ut.model.sim.Gateway;
+import ee.ut.model.sim.Gateways;
 import ee.ut.model.sim.SimulationData;
+import ee.ut.model.sim.Task;
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.Event;
@@ -67,7 +72,35 @@ public class CPNConverter {
 		JAXBElement<SimulationData> simDataRoot = unMasrhall(simDataFile,
 				"ee.ut.model.sim");
 		createBPMNeModel(xpdlRoot);
+		addSimulationData(simDataRoot);
+	}
 
+	
+	
+	private void addSimulationData(JAXBElement<SimulationData> simDataRoot) {
+		for(Gateway gateway : simDataRoot.getValue().getGateways().getGateway()){
+			
+			List<GateRef> gatewayReferences = gateway.getGateRefs().getGateRef();
+			
+			Object[] transitionProbabilities = new Object[gatewayReferences.size()*2];
+			
+			int i = 0;
+			for(GateRef gatewayReference : gatewayReferences){
+				transitionProbabilities[i++] = gatewayReference.getIdRef();
+				transitionProbabilities[i++] = gatewayReference.getProbability();
+			}
+			
+			System.out.println("");
+			
+			process.setTransitionProbabilities(gateway.getId(),transitionProbabilities );
+			System.out.println("Gateway probabilities set!");
+		}
+		
+		for(Task task : simDataRoot.getValue().getTasks().getTask()){
+			
+			process.setTaskDDistribution(task.getId(), task.getProcessingTime().toString());
+		}
+		
 	}
 
 	/**
@@ -95,7 +128,6 @@ public class CPNConverter {
 			}
 		}
 
-		//process.setTransitionProbabilities("39", new Object[] {"5", 90, "41", 10}); //TODO: MANUAL
 	}
 
 	/**

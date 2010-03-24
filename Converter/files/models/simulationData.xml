@@ -10,13 +10,17 @@
 	</Tasks>
 	<Gateways>
 		<Gateway>
-			<Name>String</Name>
-			<Id>String</Id>
-			<GatewayType>String</GatewayType>
+			<Name>suvaline nimi</Name>
+			<Id>9</Id>
+			<GatewayType>not needed</GatewayType>
 			<GateRefs>
 				<GateRef>
-					<IdRef>String</IdRef>
-					<Probability>3.14159265358979E0</Probability>
+					<IdRef>6</IdRef>
+					<Probability>90</Probability>
+				</GateRef>
+				<GateRef>
+					<IdRef>8</IdRef>
+					<Probability>10</Probability>
 				</GateRef>
 			</GateRefs>
 		</Gateway>
