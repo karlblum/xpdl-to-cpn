@@ -2,17 +2,14 @@
 <SimulationData xsi:noNamespaceSchemaLocation="../schemas/simulation.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Tasks>
 		<Task>
-			<Name>8</Name>
 			<Id>8</Id>
-			<ResourceWaitTime>P0DT10S</ResourceWaitTime>
-			<ProcessingTime>P0DT20S</ProcessingTime>
+			<ResourceWaitTime>normal(30.0,5.0)</ResourceWaitTime>
+			<ProcessingTime>normal(30.0,5.0)</ProcessingTime>
 		</Task>
 	</Tasks>
 	<Gateways>
 		<Gateway>
-			<Name>suvaline nimi</Name>
 			<Id>9</Id>
-			<GatewayType>not needed</GatewayType>
 			<GateRefs>
 				<GateRef>
 					<IdRef>6</IdRef>

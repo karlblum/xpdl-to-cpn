@@ -3,49 +3,50 @@
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
 	<xs:complexType name="Task">
 		<xs:sequence>
-			<xs:element name="Id" type="xs:string"/>
-			<xs:element name="ResourceWaitTime" type="xs:duration"/>
-			<xs:element name="ProcessingTime" type="xs:duration"/>
+			<xs:element name="Id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ResourceWaitTime" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ProcessingTime" type="xs:string" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Task" type="Task"/>
 	<xs:complexType name="Tasks">
 		<xs:sequence>
-			<xs:element name="Task" type="Task" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Task" type="Task" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Tasks" type="Tasks"/>
 	<xs:complexType name="Gateway">
 		<xs:sequence>
-			<xs:element name="Id" type="xs:string"/>
-			<xs:element name="GateRefs" type="GateRefs"/>
+			<xs:element name="Id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="GateRefs" type="GateRefs" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Gateway" type="Gateway"/>
 	<xs:complexType name="Gateways">
 		<xs:sequence>
-			<xs:element name="Gateway" type="Gateway" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Gateway" type="Gateway" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Gateways" type="Gateways"/>
 	<xs:complexType name="GateRefs">
 		<xs:sequence>
-			<xs:element name="GateRef" type="GateRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GateRef" type="GateRef" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="GateRefs" type="GateRefs"/>
 	<xs:complexType name="GateRef">
 		<xs:sequence>
-			<xs:element name="IdRef" type="xs:string"/>
-			<xs:element name="Probability" type="xs:int"/>
+			<xs:element name="IdRef" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Probability" type="xs:int" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="GateRef" type="GateRef"/>
 	<xs:element name="SimulationData" type="SimulationData"/>
 	<xs:complexType name="SimulationData">
 		<xs:sequence>
-			<xs:element name="Tasks" type="Tasks"/>
-			<xs:element name="Gateways" type="Gateways"/>
+			<xs:element name="SimulationProfile" type="SimulationProfile" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Tasks" type="Tasks" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Gateways" type="Gateways" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
