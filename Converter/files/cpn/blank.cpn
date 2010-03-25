@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://www.daimi.au.dk/~cpntools/bin/DTD/5/cpn.dtd">
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://www.daimi.au.dk/~cpntools/bin/DTD/6/cpn.dtd">
 
 <workspaceElements>
   <generator tool="CPN Tools"
-             version="-1"
-             format="5"/>
+             version="2.2.0"
+             format="6"/>
   <cpnet>
     <globbox>
       <block id="ID1">
@@ -26,6 +26,19 @@
           <id>STRING</id>
           <string/>
         </color>
+      </block>
+      <block id="ID1264190765">
+        <id>Simulation Logging</id>
+        <ml id="ID1264190746">val FILE = &quot;logs/logsCPN&quot;
+          <layout>val FILE = &quot;logs/logsCPN&quot;</layout>
+        </ml>
+        <ml id="ID1264190907">val FILE_EXTENSION = &quot;.cpnxml&quot;
+          <layout>val FILE_EXTENSION = &quot;.cpnxml&quot;</layout>
+        </ml>
+        <use id="ID1264191062">
+          <ml>&quot;loggingFunctionsMultipleFiles.sml&quot;</ml>
+          <layout>use &quot;loggingFunctionsMultipleFiles.sml&quot;;</layout>
+        </use>
       </block>
     </globbox>
     <page id="ID6">
@@ -239,8 +252,8 @@
     </options>
     <binders>
       <cpnbinder id="ID2222"
-                 x="257"
-                 y="122"
+                 x="331"
+                 y="121"
                  width="600"
                  height="400">
         <sheets>
@@ -315,13 +328,20 @@
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+      </IndexNode>
       <IndexNode expanded="true">
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
+        </IndexNode>
+        <IndexNode expanded="true">
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
         </IndexNode>
       </IndexNode>
       <IndexNode expanded="false"/>

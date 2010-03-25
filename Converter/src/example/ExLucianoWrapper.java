@@ -30,7 +30,7 @@ public class ExLucianoWrapper {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		File f = new File("./files/Blank.cpn");
+		File f = new File("./files/cpn/blank.cpn");
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
 						
@@ -50,7 +50,7 @@ public class ExLucianoWrapper {
 		for (Page p : cpnet.getPageArray())
 			doLayouting(p);
 		
-		f = new File("./files/simple.cpn");
+		f = new File("./files/cpn/ExLucianoWrapper.cpn");
 
 		doc.save(f);
 		System.out.println("Done");

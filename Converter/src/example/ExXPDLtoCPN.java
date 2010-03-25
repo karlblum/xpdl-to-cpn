@@ -30,7 +30,7 @@ public class ExXPDLtoCPN {
 	public static void main(String[] args) throws IOException, XmlException,
 			JAXBException {
 
-		File f = new File("./files/blank.cpn");
+		File f = new File("./files/cpn/blank.cpn");
 		WorkspaceElementsDocument doc = WorkspaceElementsDocument.Factory
 				.parse(f);
 		Cpnet cpnet = doc.getWorkspaceElements().getCpnet();
@@ -97,7 +97,7 @@ public class ExXPDLtoCPN {
 
 		for (Page p : cpnet.getPageArray())
 			ExLucianoWrapper.doLayouting(p);
-		f = new File("./files/ExampleXPDLtoCPN.cpn");
+		f = new File("./files/cpn/ExXPDLtoCPN.cpn");
 
 		doc.save(f);
 		System.out.println("Done");

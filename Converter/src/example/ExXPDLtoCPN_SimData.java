@@ -105,7 +105,7 @@ public class ExXPDLtoCPN_SimData {
 
 		for (Page p : cpnet.getPageArray())
 			ExLucianoWrapper.doLayouting(p);
-		f = new File("./files/ExampleXPDLtoCPN.cpn");
+		f = new File("./files/cpn/ExXPDLtoCPN_SimData.cpn");
 
 		doc.save(f);
 		System.out.println("Done");

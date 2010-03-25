@@ -79,6 +79,8 @@ public class BPMNeProcess {
 		field.addNewId().set(XmlString.Factory.newValue("CaseEndTime"));
 		field.addNewId().set(XmlString.Factory.newValue("INT"));
 
+		
+		
 		Var v = globbox.addNewVar();
 		v.setId2(BPMNeIdGen.createId());
 		v.addNewId().set(variable.copy());

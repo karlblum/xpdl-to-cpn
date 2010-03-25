@@ -15,17 +15,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for GateRef complex type.
+ * <p>Java class for Resource complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="GateRef">
+ * &lt;complexType name="Resource">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="IdRef" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Probability" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="TODO" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,55 +34,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GateRef", propOrder = {
-    "idRef",
-    "probability"
+@XmlType(name = "Resource", propOrder = {
+    "todo"
 })
-public class GateRef {
+public class Resource {
 
-    @XmlElement(name = "IdRef", required = true)
-    protected String idRef;
-    @XmlElement(name = "Probability")
-    protected int probability;
+    @XmlElement(name = "TODO", required = true)
+    protected String todo;
 
     /**
-     * Gets the value of the idRef property.
+     * Gets the value of the todo property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIdRef() {
-        return idRef;
+    public String getTODO() {
+        return todo;
     }
 
     /**
-     * Sets the value of the idRef property.
+     * Sets the value of the todo property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIdRef(String value) {
-        this.idRef = value;
-    }
-
-    /**
-     * Gets the value of the probability property.
-     * 
-     */
-    public int getProbability() {
-        return probability;
-    }
-
-    /**
-     * Sets the value of the probability property.
-     * 
-     */
-    public void setProbability(int value) {
-        this.probability = value;
+    public void setTODO(String value) {
+        this.todo = value;
     }
 
 }
