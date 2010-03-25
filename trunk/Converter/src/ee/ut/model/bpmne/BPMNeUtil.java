@@ -48,6 +48,8 @@ public class BPMNeUtil {
 		code.setId(BPMNeIdGen.createId());
 		code.addNewText();
 		
+		
+		
 		return t;
 	}
 	

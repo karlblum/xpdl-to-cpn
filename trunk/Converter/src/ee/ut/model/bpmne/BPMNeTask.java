@@ -42,6 +42,10 @@ public class BPMNeTask {
 		
 		transition = BPMNeUtil.createTrans(page, name);
 
+		// adds logging functionality to the task
+		XmlString addATE = XmlString.Factory.newValue("input (caseInfo);\noutput ();\naction (addATE(#Id(caseInfo),\"" + name + "\",[\"complete\"],calculateTimeStamp(),\"\",[]));");
+		transition.getCodeArray()[0].getText().set(addATE);
+
 		BPMNeUtil.createArc(page, entryPlace, transition, (XmlString) variable.copy());
 		
 		BPMNeUtil.createArc(page, transition, exitPlace, (XmlString) variable.copy());

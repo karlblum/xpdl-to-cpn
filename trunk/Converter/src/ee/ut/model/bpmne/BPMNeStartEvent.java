@@ -2,6 +2,7 @@ package ee.ut.model.bpmne;
 
 import noNamespace.Annot;
 import noNamespace.Arc;
+import noNamespace.Code;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Port;
@@ -30,6 +31,10 @@ public class BPMNeStartEvent {
 		this.counterVar = counterVar;
 		
 		transition = BPMNeUtil.createTrans(page, name);
+
+		// adds log file initializer to the case generator
+		XmlString createCaseFile = XmlString.Factory.newValue("input (caseId);\noutput ();\naction (createCaseFile(caseId));");
+		transition.getCodeArray()[0].getText().set(createCaseFile);
 
 		outputPlace = BPMNeUtil.createPlace(page, name + "_new_case");
 		outputPlace.getTypeArray()[0].getText().set(color.copy());		

@@ -105,6 +105,9 @@ public class CPNConverter {
 	 */
 	private void addSimulationData(SimulationData simulationData) {
 		
+		// add simulation profile data
+
+		
 		// if gateway data is available
 		if(simulationData.getGateways() != null){
 			for(Gateway gateway : simulationData.getGateways().getGateway()){
