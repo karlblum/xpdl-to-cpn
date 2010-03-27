@@ -13,21 +13,19 @@ public class BPMNeSubprocess extends BPMNeProcess {
 	private Place entryPlace;
 	private Place exitPlace;
 
-	public BPMNeSubprocess(Cpnet cpnet, Page page, Instance instance, XmlString color, XmlString variable) {
+	public BPMNeSubprocess(Cpnet cpnet, Page page, Instance instance) {
 		super();
 		this.cpnet = cpnet;
 		this.page = page;
 		this.rootInst = instance;
-		this.caseType = color;
-		this.variable = variable;
 		
 		entryPlace = page.addNewPlace(); entryPlace.setId(BPMNeIdGen.createId());
-		entryPlace.addNewType().addNewText().set(caseType.copy());
+		entryPlace.addNewType().addNewText().set(CASE_TYPE.copy());
 		Port inPort = entryPlace.addNewPort();
 		inPort.setType("In");
 		
 		exitPlace = page.addNewPlace();  exitPlace.setId(BPMNeIdGen.createId());
-		exitPlace.addNewType().addNewText().set(caseType.copy());
+		exitPlace.addNewType().addNewText().set(CASE_TYPE.copy());
 		Port outPort = exitPlace.addNewPort();
 		outPort.setType("Out");
 	}

@@ -42,160 +42,12 @@
       </block>
       <block id="ID1264191371">
         <id>Generator</id>
-        <ml id="ID1264250093">fun et(mean:INT,stdD:INT)=
-let
-val realMean = Real.fromInt mean
-val realStdD = Real.fromInt stdD
-in
-round(uniform(realMean-realStdD, realMean+realStdD))
-end;
-          <layout>fun et(mean:INT,stdD:INT)=
-let
-val realMean = Real.fromInt mean
-val realStdD = Real.fromInt stdD
-in
-round(uniform(realMean-realStdD, realMean+realStdD))
-end;</layout>
-        </ml>
-        <color id="ID1264248604">
-          <id>DTYPE</id>
-          <enum>
-            <id>specific</id>
-            <id>normal</id>
-          </enum>
-          <layout>colset DTYPE = with specific | normal;</layout>
-        </color>
-        <color id="ID1264249193">
-          <id>DISTRIBUTION</id>
-          <record>
-            <recordfield>
-              <id>dtype</id>
-              <id>DTYPE</id>
-            </recordfield>
-            <recordfield>
-              <id>specificValue</id>
-              <id>INT</id>
-            </recordfield>
-            <recordfield>
-              <id>mean</id>
-              <id>INT</id>
-            </recordfield>
-            <recordfield>
-              <id>std</id>
-              <id>INT</id>
-            </recordfield>
-          </record>
-          <layout>colset DISTRIBUTION = record dtype:DTYPE * specificValue:INT * mean:INT * std:INT;</layout>
-        </color>
-        <ml id="ID1264248029">fun intTime() = IntInf.toInt (time());
-          <layout>fun intTime() = IntInf.toInt (time());</layout>
-        </ml>
-        <ml id="ID1264246128">fun dateFromString(s:STRING) =
-let
-  val s1 = &quot;Sat Jan 01 10:51:07 2000&quot;
-  val dateSplit = String.tokens(fn(c) =&gt; c = #&quot; &quot;) s
-  val timeStr = List.nth(dateSplit, 3)
-  val time = String.tokens(fn(c) =&gt; c = #&quot;:&quot;) timeStr
-  val day = Option.getOpt(Int.fromString(List.nth(dateSplit, 2)), 0)
-
-  val hour = Option.getOpt(Int.fromString(List.nth(time, 0)), 0)
-  val minute = Option.getOpt(Int.fromString(List.nth(time, 1)), 0)
-  val second = Option.getOpt(Int.fromString(List.nth(time, 2)), 0)
-  val year = Option.getOpt(Int.fromString(List.nth(dateSplit, 4)), 0)
-  val monthStr = List.nth(dateSplit, 1)
-  val month = case monthStr of
-      &quot;Jan&quot; =&gt; Date.Jan
-    | &quot;Feb&quot; =&gt; Date.Feb
-    | &quot;Mar&quot; =&gt; Date.Mar
-    | &quot;Apr&quot; =&gt; Date.Apr
-    | &quot;May&quot; =&gt; Date.May
-    | &quot;Jun&quot; =&gt; Date.Jun
-    | &quot;Jul&quot; =&gt; Date.Jul
-    | &quot;Aug&quot; =&gt; Date.Aug
-    | &quot;Sep&quot; =&gt; Date.Sep
-    | &quot;Oct&quot; =&gt; Date.Oct
-    | &quot;Nov&quot; =&gt; Date.Nov
-    | &quot;Dec&quot; =&gt; Date.Dec
-    | _     =&gt; Date.Jan;
-in
-  Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
-end
-          <layout>fun dateFromString(s:STRING) =
-let
-  val s1 = &quot;Sat Jan 01 10:51:07 2000&quot;
-  val dateSplit = String.tokens(fn(c) =&gt; c = #&quot; &quot;) s
-  val timeStr = List.nth(dateSplit, 3)
-  val time = String.tokens(fn(c) =&gt; c = #&quot;:&quot;) timeStr
-  val day = Option.getOpt(Int.fromString(List.nth(dateSplit, 2)), 0)
-
-  val hour = Option.getOpt(Int.fromString(List.nth(time, 0)), 0)
-  val minute = Option.getOpt(Int.fromString(List.nth(time, 1)), 0)
-  val second = Option.getOpt(Int.fromString(List.nth(time, 2)), 0)
-  val year = Option.getOpt(Int.fromString(List.nth(dateSplit, 4)), 0)
-  val monthStr = List.nth(dateSplit, 1)
-  val month = case monthStr of
-      &quot;Jan&quot; =&gt; Date.Jan
-    | &quot;Feb&quot; =&gt; Date.Feb
-    | &quot;Mar&quot; =&gt; Date.Mar
-    | &quot;Apr&quot; =&gt; Date.Apr
-    | &quot;May&quot; =&gt; Date.May
-    | &quot;Jun&quot; =&gt; Date.Jun
-    | &quot;Jul&quot; =&gt; Date.Jul
-    | &quot;Aug&quot; =&gt; Date.Aug
-    | &quot;Sep&quot; =&gt; Date.Sep
-    | &quot;Oct&quot; =&gt; Date.Oct
-    | &quot;Nov&quot; =&gt; Date.Nov
-    | &quot;Dec&quot; =&gt; Date.Dec
-    | _     =&gt; Date.Jan;
-in
-  Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
-end</layout>
-        </ml>
-        <ml id="ID1264244852">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}
-          <layout>val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}</layout>
-        </ml>
-        <ml id="ID1264245607">val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2001}
-          <layout>val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2001}</layout>
-        </ml>
-        <ml id="ID1264247194">fun add2StartDate(ts:INT) =
-let
-val day = Date.day(startDate)
-val second = Date.second(startDate)
-val hour = Date.hour (startDate)
-val minute = Date.minute(startDate)
-val month = Date.month (startDate)
-val offset = Date.offset (startDate)
-val second = Date.second(startDate)+ ts
-val year = Date.year (startDate)
-in
-Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
-end;
-          <layout>fun add2StartDate(ts:INT) =
-let
-val day = Date.day(startDate)
-val second = Date.second(startDate)
-val hour = Date.hour (startDate)
-val minute = Date.minute(startDate)
-val month = Date.month (startDate)
-val offset = Date.offset (startDate)
-val second = Date.second(startDate)+ ts
-val year = Date.year (startDate)
-in
-Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
-end;</layout>
-        </ml>
-        <color id="ID1264240937">
-          <id>ID</id>
-          <timed/>
-          <int/>
-          <layout>colset ID = int timed;</layout>
-        </color>
         <var id="ID1264192808">
           <type>
-            <id>ID</id>
+            <id>INT</id>
           </type>
           <id>i</id>
-          <layout>var i:ID;</layout>
+          <layout>var i:INT;</layout>
         </var>
         <ml id="ID1264191349">val totalNoOfToken = 0;
           <layout>val totalNoOfToken = 0;</layout>
@@ -203,234 +55,49 @@ end;</layout>
         <ml id="ID1264191492">val noOfTokensPerBundle = 0;
           <layout>val noOfTokensPerBundle = 0;</layout>
         </ml>
-        <ml id="ID1264252608">val OneTimeCostPerToken = 0;
-          <layout>val OneTimeCostPerToken = 0;</layout>
+        <ml id="ID1264191566">val oneTimeCostPerToken = 0;
+          <layout>val oneTimeCostPerToken = 0;</layout>
         </ml>
-        <ml id="ID1264268322">val timeBetweenBundles = {dtype=specific, specificValue=3600, mean=0, std=0};
-          <layout>val timeBetweenBundles = {dtype=specific, specificValue=3600, mean=0, std=0};</layout>
-        </ml>
-        <color id="ID1264235176">
-          <id>CASE</id>
-          <timed/>
-          <record>
-            <recordfield>
-              <id>ID</id>
-              <id>INT</id>
-            </recordfield>
-            <recordfield>
-              <id>ats</id>
-              <id>INT</id>
-            </recordfield>
-            <recordfield>
-              <id>ts</id>
-              <id>INT</id>
-            </recordfield>
-          </record>
-          <layout>colset CASE = record ID:INT * ats:INT * ts:INT timed;</layout>
-        </color>
-        <var id="ID1264269685">
-          <type>
-            <id>CASE</id>
-          </type>
-          <id>c</id>
-          <layout>var c:CASE;</layout>
-        </var>
-        <ml id="ID1264250709">fun calcDisValue(value:DISTRIBUTION) =
-let
-  val dtype = #dtype(value)
-  val specificValue = #specificValue(value)
-  val mean = #mean(value)
-  val std = #std(value)
-in
-  case dtype of normal =&gt; et(mean, std) | specific =&gt; specificValue
-end;
-          <layout>fun calcDisValue(value:DISTRIBUTION) =
-let
-  val dtype = #dtype(value)
-  val specificValue = #specificValue(value)
-  val mean = #mean(value)
-  val std = #std(value)
-in
-  case dtype of normal =&gt; et(mean, std) | specific =&gt; specificValue
-end;</layout>
-        </ml>
-        <ml id="ID1264242992">fun generateCase(id:ID)=
-let
-
-val _ = createCaseFile(id);
-val curDate = add2StartDate(intTime()) ;
-val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
-val data = [&quot;Cost&quot;, Int.toString(OneTimeCostPerToken), &quot;ModelTimeStamp&quot;, Int.toString(intTime())];
-val _ = addATE(id, &quot;Generated input&quot;, [&quot;complete&quot;], timestamp, &quot;generator&quot;, data);
-in
-  {ID=id, ts=intTime(), ats=intTime()}
-end;
-          <layout>fun generateCase(id:ID)=
-let
-
-val _ = createCaseFile(id);
-val curDate = add2StartDate(intTime()) ;
-val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
-val data = [&quot;Cost&quot;, Int.toString(OneTimeCostPerToken), &quot;ModelTimeStamp&quot;, Int.toString(intTime())];
-val _ = addATE(id, &quot;Generated input&quot;, [&quot;complete&quot;], timestamp, &quot;generator&quot;, data);
-in
-  {ID=id, ts=intTime(), ats=intTime()}
-end;</layout>
-        </ml>
-        <ml id="ID1264253932">fun generatorGuard(i:ID) =
-let
-val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;&gt; GREATER;
-val tokenCheck = i + noOfTokensPerBundle &lt;= totalNoOfToken; 
-in
-if i &lt; totalNoOfToken andalso tokenCheck=true andalso dateCompare=true then true else false
-end;
-          <layout>fun generatorGuard(i:ID) =
-let
-val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;&gt; GREATER;
-val tokenCheck = i + noOfTokensPerBundle &lt;= totalNoOfToken; 
-in
-if i &lt; totalNoOfToken andalso tokenCheck=true andalso dateCompare=true then true else false
-end;</layout>
-        </ml>
-      </block>
-      <block id="ID1264235128">
-        <id>New Block</id>
       </block>
     </globbox>
-    <page id="PAGE_PROCESS">
+    <page id="ID1264218877">
       <pageattr name="Process"/>
-    </page>
-    <page id="PAGE_GENERATOR">
-      <pageattr name="Generator"/>
-      <place id="ID1264233943">
-        <posattr x="-544.000000"
-                 y="9.000000"/>
-        <fillattr colour="White"
-                  pattern=""
-                  filled="false"/>
-        <lineattr colour="Black"
-                  thick="1"
-                  type="Solid"/>
-        <textattr colour="Black"
-                  bold="false"/>
-        <text>Counter</text>
-        <ellipse w="82.000000"
-                 h="54.000000"/>
-        <token x="-10.000000"
-               y="0.000000"/>
-        <marking x="0.000000"
-                 y="0.000000"
-                 hidden="false"/>
-        <type id="ID1264233944">
-          <posattr x="-515.000000"
-                   y="-19.000000"/>
-          <fillattr colour="White"
-                    pattern="Solid"
-                    filled="false"/>
-          <lineattr colour="Black"
-                    thick="0"
-                    type="Solid"/>
-          <textattr colour="Black"
-                    bold="false"/>
-          <text tool="CPN Tools"
-                version="2.2.0">ID</text>
-        </type>
-        <initmark id="ID1264233945">
-          <posattr x="-480.000000"
-                   y="37.000000"/>
-          <fillattr colour="White"
-                    pattern="Solid"
-                    filled="false"/>
-          <lineattr colour="Black"
-                    thick="0"
-                    type="Solid"/>
-          <textattr colour="Black"
-                    bold="false"/>
-          <text tool="CPN Tools"
-                version="2.2.0"/>
-        </initmark>
-      </place>
-      <place id="ID1264234111">
-        <posattr x="22.000000"
-                 y="99.000000"/>
-        <fillattr colour="White"
-                  pattern=""
-                  filled="false"/>
-        <lineattr colour="Black"
-                  thick="1"
-                  type="Solid"/>
-        <textattr colour="Black"
-                  bold="false"/>
-        <text>start</text>
-        <ellipse w="46.000000"
-                 h="40.000000"/>
-        <token x="-10.000000"
-               y="0.000000"/>
-        <marking x="0.000000"
-                 y="0.000000"
-                 hidden="false"/>
-        <type id="ID1264234112">
-          <posattr x="57.500000"
-                   y="75.000000"/>
-          <fillattr colour="White"
-                    pattern="Solid"
-                    filled="false"/>
-          <lineattr colour="Black"
-                    thick="0"
-                    type="Solid"/>
-          <textattr colour="Black"
-                    bold="false"/>
-          <text tool="CPN Tools"
-                version="2.2.0">CASE</text>
-        </type>
-        <initmark id="PORT_GENERATOR">
-          <posattr x="73.000000"
-                   y="122.000000"/>
-          <fillattr colour="White"
-                    pattern="Solid"
-                    filled="false"/>
-          <lineattr colour="Black"
-                    thick="0"
-                    type="Solid"/>
-          <textattr colour="Black"
-                    bold="false"/>
-          <text tool="CPN Tools"
-                version="2.2.0"/>
-        </initmark>
-        <port id="PORT_GENERATOR"
-              type="Out">
-          <posattr x="2.000000"
-                   y="82.000000"/>
-          <fillattr colour="White"
-                    pattern="Solid"
-                    filled="false"/>
-          <lineattr colour="Black"
-                    thick="0"
-                    type="Solid"/>
-          <textattr colour="Black"
-                    bold="false"/>
-        </port>
-      </place>
-      <trans id="ID1264233938"
+      <trans id="ID1264226996"
              explicit="false">
-        <posattr x="-209.000000"
-                 y="99.000000"/>
+        <posattr x="-118.000000"
+                 y="60.000000"/>
         <fillattr colour="White"
                   pattern=""
                   filled="false"/>
         <lineattr colour="Black"
                   thick="1"
-                  type="solid"/>
+                  type="Solid"/>
         <textattr colour="Black"
                   bold="false"/>
-        <text>Generator</text>
-        <box w="90.000000"
-             h="36.000000"/>
+        <text>Generator_TASK</text>
+        <box w="170.000000"
+             h="42.000000"/>
+        <subst subpage="ID1264227003"
+               portsock="">
+          <subpageinfo id="ID1264227024"
+                       name="GeneratorSP">
+            <posattr x="-130.500000"
+                     y="35.000000"/>
+            <fillattr colour="White"
+                      pattern="Solid"
+                      filled="false"/>
+            <lineattr colour="Black"
+                      thick="0"
+                      type="Solid"/>
+            <textattr colour="Black"
+                      bold="false"/>
+          </subpageinfo>
+        </subst>
         <binding x="7.200000"
                  y="-3.000000"/>
-        <cond id="ID1264233939">
-          <posattr x="-263.000000"
-                   y="128.000000"/>
+        <cond id="ID1264226997">
+          <posattr x="-212.000000"
+                   y="92.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -442,9 +109,9 @@ end;</layout>
           <text tool="CPN Tools"
                 version="2.2.0"/>
         </cond>
-        <time id="ID1264233940">
-          <posattr x="-149.500000"
-                   y="128.000000"/>
+        <time id="ID1264226998">
+          <posattr x="-18.500000"
+                   y="92.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -456,9 +123,9 @@ end;</layout>
           <text tool="CPN Tools"
                 version="2.2.0"/>
         </time>
-        <code id="ID1264233941">
-          <posattr x="-104.500000"
-                   y="35.000000"/>
+        <code id="ID1264226999">
+          <posattr x="1.500000"
+                   y="7.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -468,16 +135,11 @@ end;</layout>
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="2.2.0">input (i);
-output (c);
-action
-(
-  generateCase(i)
-);</text>
+                version="2.2.0"/>
         </code>
-        <channel id="ID1264233942">
-          <posattr x="-287.500000"
-                   y="99.000000"/>
+        <channel id="ID1264227000">
+          <posattr x="-236.500000"
+                   y="60.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -490,7 +152,193 @@ action
                 version="2.2.0"/>
         </channel>
       </trans>
-      <arc id="ID1264233946"
+    </page>
+    <page id="ID1264227003">
+      <pageattr name="GeneratorSP"/>
+      <place id="ID1264227010">
+        <posattr x="24.000000"
+                 y="5.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>B</text>
+        <ellipse w="44.000000"
+                 h="40.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false"/>
+        <type id="ID1264227011">
+          <posattr x="79.000000"
+                   y="-18.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </type>
+        <initmark id="ID1264227012">
+          <posattr x="74.000000"
+                   y="28.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </initmark>
+        <port id="ID1264227037"
+              type="Out">
+          <posattr x="5.000000"
+                   y="-11.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </port>
+      </place>
+      <place id="ID1264227960">
+        <posattr x="-272.000000"
+                 y="13.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>A</text>
+        <ellipse w="44.000000"
+                 h="40.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false"/>
+        <type id="ID1264227961">
+          <posattr x="-216.000000"
+                   y="-10.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </type>
+        <initmark id="ID1264227962">
+          <posattr x="-221.000000"
+                   y="36.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </initmark>
+      </place>
+      <trans id="ID1264227005"
+             explicit="false">
+        <posattr x="-123.000000"
+                 y="5.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Generator</text>
+        <box w="86.000000"
+             h="42.000000"/>
+        <binding x="7.200000"
+                 y="-3.000000"/>
+        <cond id="ID1264227006">
+          <posattr x="-175.000000"
+                   y="37.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </cond>
+        <time id="ID1264227007">
+          <posattr x="-65.500000"
+                   y="37.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </time>
+        <code id="ID1264227008">
+          <posattr x="-45.500000"
+                   y="-48.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </code>
+        <channel id="ID1264227009">
+          <posattr x="-199.500000"
+                   y="5.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="2.2.0"/>
+        </channel>
+      </trans>
+      <arc id="ID1264227013"
            orientation="TtoP"
            order="1">
         <posattr x="0.000000"
@@ -505,24 +353,11 @@ action
                   bold="false"/>
         <arrowattr headsize="1.200000"
                    currentcyckle="2"/>
-        <transend idref="ID1264233938"/>
-        <placeend idref="ID1264233943"/>
-        <bendpoint id="ID1264283551"
-                   serial="1">
-          <posattr x="-224.000000"
-                   y="9.000000"/>
-          <fillattr colour="White"
-                    pattern="Solid"
-                    filled="false"/>
-          <lineattr colour="Black"
-                    thick="0"
-                    type="Solid"/>
-          <textattr colour="Black"
-                    bold="false"/>
-        </bendpoint>
-        <annot id="ID1264233947">
-          <posattr x="-311.000000"
-                   y="-37.000000"/>
+        <transend idref="ID1264227005"/>
+        <placeend idref="ID1264227010"/>
+        <annot id="ID1264227014">
+          <posattr x="-39.000000"
+                   y="16.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -532,15 +367,10 @@ action
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="2.2.0">i+1@+
-(
-  if i mod  noOfTokensPerBundle = 0
-    then 0
-  else calcDisValue(timeBetweenBundles)
-)</text>
+                version="2.2.0">i</text>
         </annot>
       </arc>
-      <arc id="ID1264233948"
+      <arc id="ID1264230307"
            orientation="PtoT"
            order="1">
         <posattr x="0.000000"
@@ -555,12 +385,12 @@ action
                   bold="false"/>
         <arrowattr headsize="1.200000"
                    currentcyckle="2"/>
-        <transend idref="ID1264233938"/>
-        <placeend idref="ID1264233943"/>
-        <bendpoint id="ID1264276323"
+        <transend idref="ID1264227005"/>
+        <placeend idref="ID1264227960"/>
+        <bendpoint id="ID1264231266"
                    serial="1">
-          <posattr x="-544.000000"
-                   y="99.000000"/>
+          <posattr x="-123.000000"
+                   y="81.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -570,9 +400,22 @@ action
           <textattr colour="Black"
                     bold="false"/>
         </bendpoint>
-        <annot id="ID1264233949">
-          <posattr x="-549.500000"
-                   y="67.000000"/>
+        <bendpoint id="ID1264230786"
+                   serial="2">
+          <posattr x="-272.000000"
+                   y="81.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1264230308">
+          <posattr x="-117.500000"
+                   y="54.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -585,7 +428,7 @@ action
                 version="2.2.0">i</text>
         </annot>
       </arc>
-      <arc id="ID1264234259"
+      <arc id="ID1264231758"
            orientation="TtoP"
            order="1">
         <posattr x="0.000000"
@@ -600,12 +443,12 @@ action
                   bold="false"/>
         <arrowattr headsize="1.200000"
                    currentcyckle="2"/>
-        <transend idref="ID1264233938"/>
-        <placeend idref="ID1264234111"/>
-        <bendpoint id="ID1264279865"
+        <transend idref="ID1264227005"/>
+        <placeend idref="ID1264227960"/>
+        <bendpoint id="ID1264232246"
                    serial="1">
-          <posattr x="-46.000000"
-                   y="99.000000"/>
+          <posattr x="-123.000000"
+                   y="-59.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -615,9 +458,22 @@ action
           <textattr colour="Black"
                     bold="false"/>
         </bendpoint>
-        <annot id="ID1264234260">
-          <posattr x="-105.000000"
-                   y="110.000000"/>
+        <bendpoint id="ID1264233225"
+                   serial="2">
+          <posattr x="-272.000000"
+                   y="-59.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1264231759">
+          <posattr x="-137.000000"
+                   y="-38.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -627,15 +483,16 @@ action
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="2.2.0">c</text>
+                version="2.2.0">i+1</text>
         </annot>
       </arc>
     </page>
     <instances>
       <instance id="ID1264218879"
-                page="PAGE_PROCESS"/>
-      <instance id="ID1264233961"
-                page="PAGE_GENERATOR"/>
+                page="ID1264218877">
+        <instance id="ID1264227025"
+                  trans="ID1264226996"/>
+      </instance>
     </instances>
     <options>
       <option name="outputdirectory">
@@ -841,33 +698,33 @@ action
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="329"
-                 y="238"
-                 width="729"
-                 height="348">
+                 x="163"
+                 y="131"
+                 width="600"
+                 height="480">
         <sheets>
           <cpnsheet id="ID1264219682"
-                    panx="23.000000"
-                    pany="23.000000"
+                    panx="0.000000"
+                    pany="0.000000"
                     zoom="1.000000"
                     instance="ID1264218879">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1264234772"
-                    panx="243.000000"
-                    pany="28.000000"
+          <cpnsheet id="ID1264227495"
+                    panx="105.000000"
+                    pany="14.000000"
                     zoom="1.000000"
-                    instance="ID1264233961">
+                    instance="ID1264227025">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
         </sheets>
         <zorder>
-          <position value="0"/>
           <position value="1"/>
+          <position value="0"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -930,8 +787,8 @@ action
       <IndexNode expanded="false">
         <IndexNode expanded="false"/>
       </IndexNode>
-      <IndexNode expanded="true">
-        <IndexNode expanded="false">
+      <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
@@ -943,31 +800,16 @@ action
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="true">
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
         </IndexNode>
-        <IndexNode expanded="true"/>
       </IndexNode>
       <IndexNode expanded="true"/>
-      <IndexNode expanded="true"/>
-      <IndexNode expanded="true"/>
+      <IndexNode expanded="true">
+        <IndexNode expanded="true"/>
+      </IndexNode>
     </IndexNode>
   </cpnet>
 </workspaceElements>

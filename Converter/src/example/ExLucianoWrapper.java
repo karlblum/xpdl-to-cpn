@@ -57,7 +57,7 @@ public class ExLucianoWrapper {
 	}
 	
 	public static void printNode(Node n) {
-		System.out.printf("(%f, %f): [%f, %f]\n", n.getPosition().x, n.getPosition().y, n.getBoundingBox().height, n.getBoundingBox().width);
+		//System.out.printf("(%f, %f): [%f, %f]\n", n.getPosition().x, n.getPosition().y, n.getBoundingBox().height, n.getBoundingBox().width);
 	}
 
 	public static void doLayouting(Page page) {
@@ -68,7 +68,8 @@ public class ExLucianoWrapper {
 		Font font = new Font("Serif", Font.PLAIN, 12);
 		FontMetrics fm = f.getFontMetrics(font);
 		for (Place p : page.getPlaceArray()) {
-			System.out.println("Place: " + p.getId());
+			
+			//System.out.println("Place: " + p.getId());
 			Node n = graph.createNode();
 			n.setLabel(p.getId()); n.setLabelPosition("IN"); n.setShape(Node.OVAL);
 			n.setBoundingBox(new DDimension(fm.stringWidth(n.getLabel())+60, fm.getHeight()+15));
@@ -76,7 +77,7 @@ public class ExLucianoWrapper {
 		}
 
 		for (Trans t : page.getTransArray()) {
-			System.out.println("Transitions: " + t.getId() + "  " + t.getText().copy());
+			//System.out.println("Transitions: " + t.getId() + "  " + t.getText().copy());
 			Node n = graph.createNode();
 			n.setLabel(t.getId()); n.setLabelPosition("IN"); n.setShape(Node.RECTANGLE);
 			n.setBoundingBox(new DDimension(fm.stringWidth(n.getLabel())+60, fm.getHeight()+15));

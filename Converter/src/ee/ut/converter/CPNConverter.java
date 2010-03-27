@@ -69,7 +69,7 @@ public class CPNConverter {
 		this.xpdlFile = xpdlFile;
 		this.simDataFile = simDataFile;
 
-		File blankCPN = new File("./files/blank.cpn");
+		File blankCPN = new File("./files/cpn/blank.cpn");
 
 		try {
 			cpnWorkspace = WorkspaceElementsDocument.Factory.parse(blankCPN);
@@ -94,7 +94,7 @@ public class CPNConverter {
 		JAXBElement<SimulationData> simDataRoot = unMasrhall(simDataFile,
 				"ee.ut.model.sim");
 		createBPMNeModel(xpdlRoot.getValue());
-		addSimulationData(simDataRoot.getValue());
+		//addSimulationData(simDataRoot.getValue());
 	}
 	
 	
@@ -207,8 +207,6 @@ public class CPNConverter {
 	 */
 	private void addTransition(Transition transition, BPMNeProcess process) {
 		process.addEdge(transition.getFrom(), transition.getTo());
-		System.out.println("DEBUG: Found transition (?)");
-
 	}
 
 	
@@ -312,6 +310,8 @@ public class CPNConverter {
 	 */
 	public void saveToFile(File convertedCPNFile) {
 		for (Page p : cpnet.getPageArray())
+
+			if(!p.getId().equals("PAGE_GENERATOR"))
 			ExLucianoWrapper.doLayouting(p);
 		
 		try {
