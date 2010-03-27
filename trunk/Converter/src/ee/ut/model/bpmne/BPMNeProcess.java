@@ -31,13 +31,14 @@ public class BPMNeProcess {
 	protected Cpnet cpnet;
 	protected Page page;
 	protected Instance rootInst;
-	protected XmlString caseType;
-	protected XmlString variable;
+	protected static final XmlString CASE_TYPE = XmlString.Factory
+			.newValue("CASE");
+	protected static final XmlString CASE_VAR = XmlString.Factory.newValue("c");
+
 	protected Map<String, Object> map = new HashMap<String, Object>();
 	protected Map<String, Trans> transitions = new HashMap<String, Trans>();
 	protected Map<BPMNeEBXORGateway, Place> ebxorgws = new HashMap<BPMNeEBXORGateway, Place>();
 
-	private XmlString caseIdType;
 	private String caseId = "caseId";
 
 	public BPMNeProcess() {
@@ -52,62 +53,17 @@ public class BPMNeProcess {
 		pattr.setName(name);
 		page.getPageattr().set(pattr);
 
-		caseIdType = XmlString.Factory.newValue("CASEID");
-		caseType = XmlString.Factory.newValue("CASE");
-		variable = XmlString.Factory.newValue("caseInfo");
-
 		Globbox globbox = cpnet.getGlobbox();
-
-		Color c = globbox.addNewColor();
-		c.setId2(BPMNeIdGen.createId());
-		c.addNewId().set(caseIdType.copy());
-		c.addNewTimed();
-		c.addNewAlias().addNewId().set(XmlString.Factory.newValue("INT"));
-
-		c = globbox.addNewColor();
-		c.setId2(BPMNeIdGen.createId());
-		c.addNewId().set(caseType.copy());
-		c.addNewTimed();
-		Record record = c.addNewRecord();
-		Recordfield field = record.addNewRecordfield();
-		field.addNewId().set(XmlString.Factory.newValue("Id"));
-		field.addNewId().set(caseIdType.copy());
-		field = record.addNewRecordfield();
-		field.addNewId().set(XmlString.Factory.newValue("CaseStartTime"));
-		field.addNewId().set(XmlString.Factory.newValue("INT"));
-		field = record.addNewRecordfield();
-		field.addNewId().set(XmlString.Factory.newValue("CaseEndTime"));
-		field.addNewId().set(XmlString.Factory.newValue("INT"));
-
-		
-		
-		Var v = globbox.addNewVar();
-		v.setId2(BPMNeIdGen.createId());
-		v.addNewId().set(variable.copy());
-		v.addNewType().addNewId().set(caseType.copy());
-
-		c = globbox.addNewColor();
-		c.setId2(BPMNeIdGen.createId());
-		c.addNewId().set(XmlString.Factory.newValue("CASExPATH"));
-		c.addNewTimed();
-		Product product = c.addNewProduct();
-		product.addNewId().set(XmlString.Factory.newValue("CASE"));
-		product.addNewId().set(XmlString.Factory.newValue("INT"));
 
 		Var vp = globbox.addNewVar();
 		vp.setId2(BPMNeIdGen.createId());
 		vp.addNewId().set(XmlString.Factory.newValue("caseInfop"));
-		vp.addNewType().addNewId().set(caseType.copy());
+		vp.addNewType().addNewId().set(CASE_TYPE.copy());
 
 		Var path = globbox.addNewVar();
 		path.setId2(BPMNeIdGen.createId());
 		path.addNewId().set(XmlString.Factory.newValue("path"));
 		path.addNewType().addNewId().set(XmlString.Factory.newValue("INT"));
-
-		Var v2 = globbox.addNewVar();
-		v2.setId2(BPMNeIdGen.createId());
-		v2.addNewId().set(XmlString.Factory.newValue(caseId));
-		v2.addNewType().addNewId().set(caseIdType.copy());
 
 		Ml ml = cpnet.getGlobbox().addNewMl();
 		ml.setId(BPMNeIdGen.createId());
@@ -117,6 +73,11 @@ public class BPMNeProcess {
 								.format("fun initCaseInfo(id) = {Id=id,CaseStartTime=IntInf.toInt(time()),CaseEndTime=0};")));
 	}
 
+	/**
+	 * @param name
+	 * @param childpage
+	 * @return
+	 */
 	protected Trans createSubstTrans(String name, Page childpage) {
 		Trans trans = BPMNeUtil.createTrans(page, name);
 
@@ -136,30 +97,24 @@ public class BPMNeProcess {
 		return instance;
 	}
 
-	protected Page createChildPage(String name) {
-		Page childpage = cpnet.addNewPage();
-		childpage.setId(BPMNeIdGen.createId());
-		childpage.addNewPageattr().setName(name);
-		return childpage;
-	}
-
 	public void addTask(String id, String name) {
-		Page childpage = createChildPage(name);
+		Page childpage = BPMNeUtil.createChildPage(cpnet, name);
 		Trans trans = createSubstTrans(name, childpage);
 		createInstance(trans);
 
-		BPMNeTask bPMNeTask = new BPMNeTask(childpage, name, caseType, variable);
+		BPMNeTask bPMNeTask = new BPMNeTask(childpage, name, CASE_TYPE,
+				CASE_VAR);
 		map.put(id, bPMNeTask);
 		transitions.put(id, trans);
 	}
 
 	public void addXORGateway(String id, String name, GWType type) {
-		Page childpage = createChildPage(name);
+		Page childpage = BPMNeUtil.createChildPage(cpnet, name);
 		Trans trans = createSubstTrans(name, childpage);
 		createInstance(trans);
 
-		BPMNeXORGateway gw = new BPMNeXORGateway(childpage, name, type, caseType,
-				variable);
+		BPMNeXORGateway gw = new BPMNeXORGateway(childpage, name, type,
+				CASE_TYPE, CASE_VAR);
 		map.put(id, gw);
 		transitions.put(id, trans);
 	}
@@ -170,23 +125,23 @@ public class BPMNeProcess {
 	}
 
 	public void addEBXORGateway(String id, String name, GWType type) {
-		Page childpage = createChildPage(name);
+		Page childpage = BPMNeUtil.createChildPage(cpnet, name);
 		Trans trans = createSubstTrans(name, childpage);
 		createInstance(trans);
 
 		BPMNeEBXORGateway gw = new BPMNeEBXORGateway(childpage, name, type,
-				caseType, variable);
+				CASE_TYPE, CASE_VAR);
 		map.put(id, gw);
 		transitions.put(id, trans);
 	}
 
 	public void addANDGateway(String id, String name, GWType type) {
-		Page childpage = createChildPage(name);
+		Page childpage = BPMNeUtil.createChildPage(cpnet, name);
 		Trans trans = createSubstTrans(name, childpage);
 		createInstance(trans);
 
-		BPMNeANDGateway gw = new BPMNeANDGateway(childpage, name, type, caseType,
-				variable);
+		BPMNeANDGateway gw = new BPMNeANDGateway(childpage, name, type,
+				CASE_TYPE, CASE_VAR);
 		map.put(id, gw);
 		transitions.put(id, trans);
 	}
@@ -203,7 +158,7 @@ public class BPMNeProcess {
 			requiresArc = true;
 			place = BPMNeUtil.createPlace(page, null);
 
-			place.getTypeArray(0).getText().set(caseType.copy());
+			place.getTypeArray(0).getText().set(CASE_TYPE.copy());
 
 			place.addNewText().set(XmlString.Factory.newValue(place.getId()));
 			if (source instanceof BPMNeEBXORGateway)
@@ -271,7 +226,7 @@ public class BPMNeProcess {
 		Object exit = map.get(exitId);
 
 		Place place = BPMNeUtil.createPlace(page, null);
-		place.getTypeArray(0).getText().set(caseType.copy());
+		place.getTypeArray(0).getText().set(CASE_TYPE.copy());
 
 		// -- exit transition
 		String psock = transitions.get(exitId).getSubst().getPortsock();
@@ -290,19 +245,16 @@ public class BPMNeProcess {
 		BPMNeUtil.createArc(page, transitions.get(exitId), place, null);
 	}
 
-	public void addStartEvent(String id) {
-		addStartEvent(id, id);
-	}
-
 	public void addStartEvent(String id, String name) {
-		Page childpage = createChildPage(name);
+		Page childpage = BPMNeUtil.createChildPage(cpnet, name);
 		Trans trans = createSubstTrans(name, childpage);
-		createInstance(trans);
+		Instance instance = createInstance(trans);
 
-		BPMNeStartEvent se = new BPMNeStartEvent(childpage, name, caseType,
-				variable, caseIdType, caseId);
+		BPMNeStartEvent se = new BPMNeStartEvent(childpage, cpnet, instance,
+				page, CASE_VAR, CASE_TYPE);
 		map.put(id, se);
 		transitions.put(id, trans);
+
 	}
 
 	public void setNumberOfCases(String id, String number) {
@@ -342,12 +294,11 @@ public class BPMNeProcess {
 	}
 
 	public BPMNeSubprocess addSubprocess(String id, String name) {
-		Page childpage = createChildPage(name);
+		Page childpage = BPMNeUtil.createChildPage(cpnet, name);
 		Trans trans = createSubstTrans(name, childpage);
 		Instance instance = createInstance(trans);
 
-		BPMNeSubprocess sub = new BPMNeSubprocess(cpnet, childpage, instance,
-				caseType, variable);
+		BPMNeSubprocess sub = new BPMNeSubprocess(cpnet, childpage, instance);
 		map.put(id, sub);
 		transitions.put(id, trans);
 		return sub;

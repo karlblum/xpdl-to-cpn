@@ -3,9 +3,14 @@ package ee.ut.model.bpmne;
 import noNamespace.Annot;
 import noNamespace.Arc;
 import noNamespace.Code;
+import noNamespace.Cpnet;
+import noNamespace.Instance;
 import noNamespace.Page;
+import noNamespace.Pageattr;
 import noNamespace.Place;
 import noNamespace.Port;
+import noNamespace.Subpageinfo;
+import noNamespace.Subst;
 import noNamespace.Trans;
 
 import org.apache.xmlbeans.XmlObject;
@@ -14,40 +19,49 @@ import org.apache.xmlbeans.XmlString;
 
 
 public class BPMNeStartEvent {
-	private String name;
-	private Page page;
-	private XmlObject color;
-	private XmlObject variable;
-	private String counterVar;
 	private Trans transition;
 	protected Place outputPlace;
-	private Place nextCasePlace;
 
-	public BPMNeStartEvent(Page page, String name, XmlObject color, XmlObject variable, XmlObject counterType, String counterVar) {
-		this.page = page;
-		this.name = name;
-		this.color = color;
-		this.variable = variable;
-		this.counterVar = counterVar;
+	/**
+	 * We will put standard generator into start event. Only one start event allowed currently.
+	 * 
+	 * @param page
+	 * @param cpnet
+	 * @param instance
+	 * @param rootPage
+	 * @param caseVar
+	 * @param caseType
+	 */
+	public BPMNeStartEvent(Page page, Cpnet cpnet, Instance instance, Page rootPage,XmlString caseVar, XmlString caseType) {
 		
-		transition = BPMNeUtil.createTrans(page, name);
+		Page generatorPage = null;
+		for (Page p : cpnet.getPageArray()) {
+			if (p.getId().equals("PAGE_GENERATOR")){
+				generatorPage = p;
+			}
+		}
+		
+		Trans transition = BPMNeUtil.createTrans(page, "Generator");
 
-		// adds log file initializer to the case generator
-		XmlString createCaseFile = XmlString.Factory.newValue("input (caseId);\noutput ();\naction (createCaseFile(caseId));");
-		transition.getCodeArray()[0].getText().set(createCaseFile);
-
-		outputPlace = BPMNeUtil.createPlace(page, name + "_new_case");
-		outputPlace.getTypeArray()[0].getText().set(color.copy());		
+		Subst subst = transition.addNewSubst();
+		subst.setSubpage(generatorPage.getId());
+		Subpageinfo subpageinfo = subst.addNewSubpageinfo();
+		subpageinfo.setId(BPMNeIdGen.createId());
+		
+		Instance i = instance.addNewInstance();
+		i.setId(BPMNeIdGen.createId());
+		i.setTrans(transition.getId());
+		
+		outputPlace = BPMNeUtil.createPlace(page, "new case");
 		outputPlace.addNewPort().setType("Out");
-
-		BPMNeUtil.createArc(page, transition, outputPlace, XmlString.Factory.newValue("initCaseInfo("+counterVar+")"));
+		outputPlace.getTypeArray()[0].getText().set(caseType.copy());
 		
-		// --- case generation
-		nextCasePlace = BPMNeUtil.createPlace(page, "nextCase");
-		nextCasePlace.getTypeArray()[0].getText().set(counterType.copy());
-		nextCasePlace.getInitmarkArray(0).getText().set(XmlString.Factory.newValue("1"));
-		BPMNeUtil.createArc(page, nextCasePlace, transition, XmlString.Factory.newValue(counterVar));
-		BPMNeUtil.createArc(page, transition, nextCasePlace, XmlString.Factory.newValue(counterVar + " + 1"));
+		
+		//TODO: THIS DOES NOT SEEM TO WORK!
+		transition.getSubst().setPortsock(String.format("(%s,%s)","PAGE_GENERATOR", outputPlace.getId()));
+		
+		BPMNeUtil.createArc(page, transition, outputPlace, caseVar);
+
 	}
 	
 	public Place getExitPlace() {

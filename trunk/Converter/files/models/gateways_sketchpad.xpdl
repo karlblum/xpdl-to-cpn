@@ -78,7 +78,7 @@
           </NodeGraphicsInfos>
         </Activity>
         <Activity Id="10" Name="g2">
-          <Route GatewayType="Inclusive" />
+          <Route GatewayType="Exclusive" />
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
               <Coordinates XCoordinate="530.0" YCoordinate="210.0" />
