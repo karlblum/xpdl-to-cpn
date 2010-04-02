@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="alias">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="and">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ml"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="annot">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="arc">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="arrowattr"/>
+				<xs:element ref="transend"/>
+				<xs:element ref="placeend"/>
+				<xs:element ref="bendpoint" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="annot" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="order" type="xs:string" use="optional"/>
+			<xs:attribute name="orientation" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="arrowattr">
+		<xs:complexType>
+			<xs:attribute name="headsize" type="xs:string" use="optional"/>
+			<xs:attribute name="currentcyckle" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Aux">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="label"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bendpoint">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="serial" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="binders">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cpnbinder"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="binding">
+		<xs:complexType>
+			<xs:attribute name="x" type="xs:string" use="optional"/>
+			<xs:attribute name="y" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="block">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+				<xs:choice>
+					<xs:element ref="block"/>
+					<xs:element ref="color"/>
+					<xs:element ref="var"/>
+					<xs:element ref="ml"/>
+					<xs:element ref="globref"/>
+					<xs:element ref="use"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bool">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="with"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="box">
+		<xs:complexType>
+			<xs:attribute name="w" type="xs:string" use="optional"/>
+			<xs:attribute name="h" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="by">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ml"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="channel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="channel-key">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="code">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="code-key">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="color">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+				<xs:element ref="declare" minOccurs="0"/>
+				<xs:element ref="timed" minOccurs="0"/>
+				<xs:choice>
+					<xs:element ref="unit"/>
+					<xs:element ref="bool"/>
+					<xs:element ref="int"/>
+					<xs:element ref="real"/>
+					<xs:element ref="string"/>
+					<xs:element ref="enum"/>
+					<xs:element ref="index"/>
+					<xs:element ref="product"/>
+					<xs:element ref="record"/>
+					<xs:element ref="list"/>
+					<xs:element ref="union"/>
+					<xs:element ref="alias"/>
+					<xs:element ref="subset"/>
+				</xs:choice>
+				<xs:element ref="layout" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cond">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cpnbinder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sheets"/>
+				<xs:element ref="zorder" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="height" type="xs:string" use="optional"/>
+			<xs:attribute name="x" type="xs:string" use="optional"/>
+			<xs:attribute name="width" type="xs:string" use="optional"/>
+			<xs:attribute name="y" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cpnet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="globbox"/>
+				<xs:element ref="page" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="fusion" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="instances"/>
+				<xs:element ref="options"/>
+				<xs:element ref="binders"/>
+				<xs:element ref="monitorblock"/>
+				<xs:element ref="IndexNode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cpnsheet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="zorder" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="instance" type="xs:IDREF" use="required"/>
+			<xs:attribute name="pany" type="xs:string" use="optional"/>
+			<xs:attribute name="panx" type="xs:string" use="optional"/>
+			<xs:attribute name="zoom" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="declaration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ml"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="declare">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ellipse">
+		<xs:complexType>
+			<xs:attribute name="w" type="xs:string" use="optional"/>
+			<xs:attribute name="h" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="enum">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fillattr">
+		<xs:complexType>
+			<xs:attribute name="filled" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="pattern" type="xs:string" use="optional"/>
+			<xs:attribute name="colour" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fusion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fusion_elm" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fusion_elm">
+		<xs:complexType>
+			<xs:attribute name="idref" type="xs:IDREF" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fusioninfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="generator">
+		<xs:complexType>
+			<xs:attribute name="version" type="xs:string" use="optional"/>
+			<xs:attribute name="tool" type="xs:string" use="optional"/>
+			<xs:attribute name="format" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="globbox">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="block"/>
+				<xs:element ref="color"/>
+				<xs:element ref="var"/>
+				<xs:element ref="ml"/>
+				<xs:element ref="globref"/>
+				<xs:element ref="use"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="globref">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="ml" minOccurs="0"/>
+				<xs:element ref="layout" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="group">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="group_elm"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="group_elm">
+		<xs:complexType>
+			<xs:attribute name="idref" type="xs:IDREF" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="guideline_elm">
+		<xs:complexType>
+			<xs:attribute name="idref" type="xs:IDREF" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="hguideline">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="guideline_elm"/>
+			</xs:sequence>
+			<xs:attribute name="y" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="id">
+		<xs:complexType mixed="true"/>
+	</xs:element>
+	<xs:element name="index">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ml"/>
+				<xs:element ref="ml"/>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IndexNode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="IndexNode"/>
+			</xs:sequence>
+			<xs:attribute name="expanded" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="initmark">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="instance">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="instance"/>
+			</xs:sequence>
+			<xs:attribute name="trans" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="page" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="instances">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="instance"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="int">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="with"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="label">
+		<xs:complexType>
+			<xs:attribute name="w" type="xs:string" use="optional"/>
+			<xs:attribute name="h" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="layout">
+		<xs:complexType mixed="true"/>
+	</xs:element>
+	<xs:element name="lineattr">
+		<xs:complexType>
+			<xs:attribute name="type" type="xs:string" use="optional"/>
+			<xs:attribute name="colour" type="xs:string" use="optional"/>
+			<xs:attribute name="thick" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:sequence>
+					<xs:element ref="with"/>
+				</xs:sequence>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="marking">
+		<xs:complexType>
+			<xs:attribute name="x" type="xs:string" use="optional"/>
+			<xs:attribute name="hidden" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="y" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ml">
+		<xs:complexType mixed="true">
+			<xs:choice>
+				<xs:element ref="layout"/>
+			</xs:choice>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="monitor">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:sequence>
+					<xs:element ref="node" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="declaration" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="option" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="disabled" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="type" type="xs:string" use="required"/>
+			<xs:attribute name="typedescription" type="xs:string" use="required"/>
+			<xs:attribute name="id" type="xs:ID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="monitorblock">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="monitor"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="node">
+		<xs:complexType>
+			<xs:attribute name="pageinstanceidref" type="xs:string" use="required"/>
+			<xs:attribute name="idref" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="option">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="value" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="option"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="page">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pageattr"/>
+				<xs:choice>
+					<xs:element ref="trans"/>
+					<xs:element ref="place"/>
+					<xs:element ref="arc"/>
+					<xs:element ref="Aux"/>
+					<xs:element ref="vguideline"/>
+					<xs:element ref="hguideline"/>
+					<xs:element ref="group"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pageattr">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="place">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+				<xs:element ref="ellipse"/>
+				<xs:choice>
+					<xs:element ref="token"/>
+					<xs:element ref="marking"/>
+					<xs:element ref="fusioninfo"/>
+					<xs:element ref="port"/>
+					<xs:element ref="type"/>
+					<xs:element ref="initmark"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="placeend">
+		<xs:complexType>
+			<xs:attribute name="idref" type="xs:IDREF" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="port">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+			</xs:sequence>
+			<xs:attribute name="type" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="posattr">
+		<xs:complexType>
+			<xs:attribute name="x" type="xs:string" use="optional"/>
+			<xs:attribute name="y" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="position">
+		<xs:complexType>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="product">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="real">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="with"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="record">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="recordfield"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="recordfield">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+				<xs:element ref="id"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sheets">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="cpnsheet"/>
+				<xs:element ref="textsheet"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="string">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="with"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="subpageinfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="subset">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:choice>
+					<xs:element ref="with"/>
+					<xs:element ref="by"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="subst">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="subpageinfo" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="portsock" type="xs:string" use="optional"/>
+			<xs:attribute name="subpage" type="xs:IDREF" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="text">
+		<xs:complexType mixed="true">
+			<xs:attribute name="version" type="xs:string" use="optional"/>
+			<xs:attribute name="tool" type="xs:string" use="optional" default="CPN Tools"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="textattr">
+		<xs:complexType>
+			<xs:attribute name="bold" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="colour" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="textsheet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="zorder" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="decl" type="xs:IDREF" use="required"/>
+			<xs:attribute name="pany" type="xs:string" use="optional"/>
+			<xs:attribute name="panx" type="xs:string" use="optional"/>
+			<xs:attribute name="zoom" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="time">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="timed" type="xs:string"/>
+	<xs:element name="token">
+		<xs:complexType>
+			<xs:attribute name="x" type="xs:string" use="optional"/>
+			<xs:attribute name="y" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="trans">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="posattr"/>
+				<xs:element ref="fillattr"/>
+				<xs:element ref="lineattr"/>
+				<xs:element ref="textattr"/>
+				<xs:element ref="text"/>
+				<xs:element ref="box"/>
+				<xs:element ref="subst" minOccurs="0"/>
+				<xs:element ref="binding" minOccurs="0"/>
+				<xs:choice>
+					<xs:element ref="time"/>
+					<xs:element ref="cond"/>
+					<xs:element ref="code-key"/>
+					<xs:element ref="code"/>
+					<xs:element ref="channel"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="explicit" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="transend">
+		<xs:complexType>
+			<xs:attribute name="idref" type="xs:IDREF" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="type">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="id"/>
+				<xs:sequence>
+					<xs:element ref="posattr"/>
+					<xs:element ref="fillattr"/>
+					<xs:element ref="lineattr"/>
+					<xs:element ref="textattr"/>
+					<xs:element ref="text"/>
+				</xs:sequence>
+			</xs:choice>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="union">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="unionfield"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="unionfield">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+				<xs:sequence>
+					<xs:element ref="type"/>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="unit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="with"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="use">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ml"/>
+				<xs:element ref="layout"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="value">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="text"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="var">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="type"/>
+				<xs:element ref="id" maxOccurs="unbounded"/>
+				<xs:element ref="layout" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vguideline">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="guideline_elm"/>
+			</xs:sequence>
+			<xs:attribute name="x" type="xs:string" use="optional"/>
+			<xs:attribute name="id" type="xs:ID" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="with">
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="ml"/>
+					<xs:choice>
+						<xs:element ref="ml" minOccurs="0"/>
+						<xs:element ref="and"/>
+					</xs:choice>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="id"/>
+					<xs:sequence>
+						<xs:element ref="id"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="workspaceElements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="generator"/>
+				<xs:element ref="cpnet"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="zorder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="position"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
