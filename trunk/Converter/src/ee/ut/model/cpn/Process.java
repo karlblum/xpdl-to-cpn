@@ -8,34 +8,22 @@ public class Process {
 	private HashMap<String,Activity> activities = new HashMap<String, Activity>();
 	private HashMap<String,Transition> transitions = new HashMap<String, Transition>();
 	private HashMap<String,Gateway> gateways = new HashMap<String,Gateway>();
-	private AbstractElementFactory elementFactory;
+	private BPMNFactory elementFactory;
 	
 	
-	public Process(AbstractElementFactory elementfactory){
+	public Process(){
 		this.cpnet = new CPNet();
-		this.elementFactory = elementfactory;
+		this.elementFactory = new BPMNFactory();
+		elementFactory.registerActivityFactory(new BPMNActivityFactory());
+		elementFactory.registerTransitionFactory(new BPMNTransitionFactory());
+		
+		BPMNActivity a = (BPMNActivity) elementFactory.create(new ee.ut.model.xpdl2.Activity(), cpnet, "Activity1");
+		
+		
 	}
 	
 	public void saveToCPN(){
 		cpnet.saveToFile("C:/Karl/Thesis/Source/Converter/files/cpn/TestCPNModel.cpn");
-	}
-
-	public Activity addActivity(String id, String name) {
-		Activity activity = elementFactory.makeActivity(cpnet,id,name);
-		activities.put(activity.getId(), activity);
-		return activity;
-	}
-	
-	public Transition addTransition(String id, String sourceId,String targetId){
-		Transition transition = elementFactory.makeTransition(cpnet,id,activities.get(sourceId).getFirstOutputPlace(),activities.get(targetId).getFirstInputPlace());
-		transitions.put(transition.getId(), transition);
-		return transition;
-	}
-	
-	public Gateway addGateway(String id, String name){
-		Gateway gateway = elementFactory.makeGateway(cpnet,id,name);
-		gateways.put(id, gateway);
-		return gateway;
 	}
 	
 }

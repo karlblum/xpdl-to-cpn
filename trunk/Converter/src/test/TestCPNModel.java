@@ -1,7 +1,7 @@
 package test;
 
 import ee.ut.model.cpn.Activity;
-import ee.ut.model.cpn.BPMNElementFactory;
+import ee.ut.model.cpn.BPMNFactory;
 import ee.ut.model.cpn.AbstractElementFactory;
 import ee.ut.model.cpn.Gateway;
 import ee.ut.model.cpn.Process;
@@ -9,7 +9,7 @@ import ee.ut.model.cpn.Process;
 public class TestCPNModel {
 
 	public static void main(String[] args) {
-		AbstractElementFactory factory = new BPMNElementFactory();
+		AbstractElementFactory factory = new BPMNFactory();
 		Process process = new Process(factory);
 		
 		Activity activity = process.addActivity("a1", "activity1");
