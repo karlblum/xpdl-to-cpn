@@ -10,7 +10,9 @@ public final class BPMNElementFactory implements AbstractElementFactory {
 		return new BPMNTransition(cpnet, id, sourceActivityId, targetActivityId);
 	}
 	
-	public BPMNGateway makeGateway(CPNet cpnet, String id, String name){
-		return new BPMNGateway(cpnet, id, name);
+	public Gateway makeGateway(CPNet cpnet, String id, String name){
+		return new BPMNGateway(cpnet, id, name, null,null,3,3);
 	}
+	
+	
 }
