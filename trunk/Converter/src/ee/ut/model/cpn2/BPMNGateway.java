@@ -5,17 +5,22 @@ import java.util.List;
 import ee.ut.model.xpdl2.Activity;
 
 import noNamespace.Place;
+import noNamespace.Trans;
 
-public final class BPMNActivity extends BPMNElement {
+/**
+ * @author karl This class has the same implementation as the activity class at
+ *         the moment!
+ */
+public class BPMNGateway extends BPMNElement {
 
 	private List<String> inputPlaceIds;
 	private List<String> outputPlaceIds;
 	private String transitionId;
 
-	public BPMNActivity(CPNet cpnet, Object o) {
+	public BPMNGateway(CPNet cpnet, Object obj) {
 		super(cpnet);
 
-		Activity xpdlActivity = ((Activity) o);
+		Activity xpdlActivity = ((Activity) obj);
 		setId(xpdlActivity.getId());
 
 		// We assume that we only need a transition, because all the inputs and

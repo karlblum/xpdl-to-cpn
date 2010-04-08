@@ -40,7 +40,7 @@
     </globbox>
     <page id="ID1264191320">
       <pageattr name="New Page"/>
-    <trans id="ID7000"><text>A1</text></trans><place id="ID7001"/><place id="ID7002"/><arc id="ID7003" orientation="PtoT"><transend idref="ID7000"/><placeend idref="ID7001"/></arc><arc id="ID7004" orientation="TtoP"><transend idref="ID7000"/><placeend idref="ID7002"/></arc><trans id="ID7005"><text>A2</text></trans><place id="ID7006"/><place id="ID7007"/><arc id="ID7008" orientation="PtoT"><transend idref="ID7005"/><placeend idref="ID7006"/></arc><arc id="ID7009" orientation="TtoP"><transend idref="ID7005"/><placeend idref="ID7007"/></arc><trans id="ID7010"/><arc id="ID7011" orientation="PtoT"><transend idref="ID7010"/><placeend idref="ID7002"/></arc><arc id="ID7012" orientation="TtoP"><transend idref="ID7010"/><placeend idref="ID7006"/></arc></page>
+    <trans id="ID7000"/><trans id="ID7001"/><trans id="ID7002"/><trans id="ID7003"/><trans id="ID7004"/><trans id="ID7005"/><trans id="ID7006"/><trans id="ID7007"/><trans id="ID7008"/><trans id="ID7009"/><trans id="ID7010"/><trans id="ID7011"/><trans id="ID7012"/><trans id="ID7013"/><trans id="ID7014"/><trans id="ID7015"/><trans id="ID7016"/><trans id="ID7017"/><trans id="ID7018"/></page>
     <instances>
       <instance id="ID1264191322" page="ID1264191320"/>
     </instances>
