@@ -1,11 +1,10 @@
-package ee.ut.model.cpn;
+package ee.ut.model.cpn2;
 
 public class BPMNActivityFactory implements AbstractElementFactory {
 
 	@Override
 	public Object create(Object obj, CPNet cpnet, String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new BPMNActivity(cpnet, id);
 	}
 
 }
