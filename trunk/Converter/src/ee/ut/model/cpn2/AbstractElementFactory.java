@@ -1,4 +1,4 @@
-package ee.ut.model.cpn;
+package ee.ut.model.cpn2;
 
 public interface AbstractElementFactory {
 

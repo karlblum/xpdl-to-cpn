@@ -1,4 +1,4 @@
-package ee.ut.model.cpn;
+package ee.ut.model.cpn2;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +45,6 @@ public class CPNet {
 		return place;
 	}
 
-
 	public Trans addTrans() {
 		String id = createId();
 		Trans trans = page.addNewTrans();
@@ -54,43 +53,44 @@ public class CPNet {
 		return trans;
 	}
 
-	
 	public Arc addArc(String sourceId, String targetId) {
 		String id = createId();
 		Arc arc = page.addNewArc();
 		arc.setId(id);
-		
-		if(places.get(sourceId) != null && transitions.get(targetId) != null){
+
+		if (places.get(sourceId) != null && transitions.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(sourceId);
 			arc.addNewTransend().setIdref(targetId);
 			arc.setOrientation("PtoT");
-		} else if(transitions.get(sourceId) != null && places.get(targetId) != null){
+		} else if (transitions.get(sourceId) != null
+				&& places.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(targetId);
 			arc.addNewTransend().setIdref(sourceId);
 			arc.setOrientation("TtoP");
 		} else {
-			System.out.println("ERROR in CPNet.addArc  source: " + sourceId + " target: " + targetId);
+			System.out.println("ERROR in CPNet.addArc  source: " + sourceId
+					+ " target: " + targetId);
 		}
-		
-		arcs.put(id,arc);
+
+		arcs.put(id, arc);
 		return arc;
 
 	}
-	
-	public String createId() { return "ID" + (currentId++);};
-	
 
+	public String createId() {
+		return "ID" + (currentId++);
+	};
 
 	public void saveToFile(String file) {
 		for (Page p : cpnet.getPageArray())
-		//	ExLucianoWrapper.doLayouting(p);
+			// ExLucianoWrapper.doLayouting(p);
 
-		try {
-			File convertedCPNFile = new File(file);
-			cpnWorkspace.save(convertedCPNFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			try {
+				File convertedCPNFile = new File(file);
+				cpnWorkspace.save(convertedCPNFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
 	}
 }
