@@ -18,12 +18,11 @@ public class BPMNProcess extends Process {
 
 	public BPMNProcess() {
 
-		this.cpnet = new CPNet();
-		this.elementFactory = new BPMNFactory(cpnet, this);
-		elementFactory.registerActivityFactory(new BPMNActivityFactory(cpnet,
-				this));
-		elementFactory.registerTransitionFactory(new BPMNTransitionFactory(
-				cpnet, this));
+		this.setCpnet(new CPNet());
+		
+		BPMNFactory elementFactory =  new BPMNFactory(this);
+		elementFactory.registerActivityFactory(new BPMNActivityFactory(this));
+		elementFactory.registerTransitionFactory(new BPMNTransitionFactory(this));
 
 		// Here we read in the XPDL file
 		File xpdlFile = new File(
@@ -42,14 +41,14 @@ public class BPMNProcess extends Process {
 					BPMNElement element = (BPMNElement) elementFactory
 							.create(activity);
 					if (element != null)
-						elements.put(element.getId(), element);
+						addElement(element.getId(), element);
 				}
 			} else if (o instanceof Transitions) {
 				for (Transition transition : ((Transitions) o).getTransition()) {
 					BPMNElement element = (BPMNElement) elementFactory
 							.create(transition);
 					if (element != null)
-						elements.put(element.getId(), element);
+						addElement(element.getId(), element);
 				}
 			}
 		}
