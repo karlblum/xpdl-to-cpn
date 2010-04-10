@@ -1,5 +1,6 @@
 package ee.ut.model.cpn2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ee.ut.model.xpdl2.Activity;
@@ -13,11 +14,11 @@ import noNamespace.Trans;
  */
 public class BPMNGateway extends BPMNElement {
 
-	private List<String> inputPlaceIds;
-	private List<String> outputPlaceIds;
+	private ArrayList<String> inputPlaceIds = new ArrayList<String>();
+	private ArrayList<String> outputPlaceIds = new ArrayList<String>();
 	private String transitionId;
 
-	public BPMNGateway(Process process,Object obj) {
+	public BPMNGateway(Process process, Object obj) {
 		super(process);
 
 		Activity xpdlActivity = ((Activity) obj);
@@ -36,18 +37,18 @@ public class BPMNGateway extends BPMNElement {
 	 * 
 	 * @return
 	 */
-	public String makeInput() {
+	public Place makeInputPlace() {
 		Place p = process.getCpnet().addPlace();
 		inputPlaceIds.add(p.getId());
 		process.getCpnet().addArc(p.getId(), transitionId);
-		return p.getId();
+		return p;
 	}
 
-	public String makeOutput() {
+	public Place makeOutputPlace() {
 		Place p = process.getCpnet().addPlace();
 		outputPlaceIds.add(p.getId());
 		process.getCpnet().addArc(transitionId, p.getId());
-		return p.getId();
+		return p;
 	}
 
 }

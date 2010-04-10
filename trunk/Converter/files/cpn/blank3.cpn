@@ -40,6 +40,35 @@
           <layout>use &quot;loggingFunctionsMultipleFiles.sml&quot;;</layout>
         </use>
       </block>
+      <block id="ID1264191648">
+        <id>Case</id>
+        <color id="ID1264191808">
+          <id>CASE</id>
+          <timed/>
+          <record>
+            <recordfield>
+              <id>ID</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ats</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ts</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset CASE = record ID:INT * ats:INT * ts:INT timed;</layout>
+        </color>
+        <var id="ID1264191895">
+          <type>
+            <id>CASE</id>
+          </type>
+          <id>c</id>
+          <layout>var c:CASE;</layout>
+        </var>
+      </block>
     </globbox>
     <page id="ID1264191320">
       <pageattr name="New Page"/>
@@ -307,7 +336,9 @@
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+      </IndexNode>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>
@@ -317,6 +348,10 @@
         </IndexNode>
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="true">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>

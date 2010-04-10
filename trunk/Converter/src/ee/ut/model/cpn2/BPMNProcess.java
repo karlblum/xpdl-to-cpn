@@ -19,10 +19,11 @@ public class BPMNProcess extends Process {
 	public BPMNProcess() {
 
 		this.setCpnet(new CPNet());
-		
-		BPMNFactory elementFactory =  new BPMNFactory(this);
+
+		BPMNFactory elementFactory = new BPMNFactory(this);
 		elementFactory.registerActivityFactory(new BPMNActivityFactory(this));
-		elementFactory.registerTransitionFactory(new BPMNTransitionFactory(this));
+		elementFactory
+				.registerTransitionFactory(new BPMNTransitionFactory(this));
 
 		// Here we read in the XPDL file
 		File xpdlFile = new File(

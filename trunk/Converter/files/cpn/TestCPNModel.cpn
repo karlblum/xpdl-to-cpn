@@ -37,10 +37,39 @@
           <layout>use "loggingFunctionsMultipleFiles.sml";</layout>
         </use>
       </block>
+      <block id="ID1264191648">
+        <id>Case</id>
+        <color id="ID1264191808">
+          <id>CASE</id>
+          <timed/>
+          <record>
+            <recordfield>
+              <id>ID</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ats</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ts</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset CASE = record ID:INT * ats:INT * ts:INT timed;</layout>
+        </color>
+        <var id="ID1264191895">
+          <type>
+            <id>CASE</id>
+          </type>
+          <id>c</id>
+          <layout>var c:CASE;</layout>
+        </var>
+      </block>
     </globbox>
     <page id="ID1264191320">
       <pageattr name="New Page"/>
-    <trans id="ID7000"/><trans id="ID7001"/><trans id="ID7002"/><trans id="ID7003"/><trans id="ID7004"/><trans id="ID7005"/><trans id="ID7006"/><trans id="ID7007"/><trans id="ID7008"/><trans id="ID7009"/><trans id="ID7010"/><trans id="ID7011"/><trans id="ID7012"/><trans id="ID7013"/><trans id="ID7014"/><trans id="ID7015"/><trans id="ID7016"/><trans id="ID7017"/><trans id="ID7018"/></page>
+    <trans id="ID7000"><posattr x="0.0" y="0.0"/><text>start</text><box h="32.0" w="97.0"/></trans><trans id="ID7001"><posattr x="0.0" y="-2688.0"/><text>end</text><box h="32.0" w="97.0"/></trans><trans id="ID7002"><posattr x="0.0" y="-448.0"/><text>a1</text><box h="32.0" w="97.0"/></trans><trans id="ID7003"><posattr x="63.5" y="-896.0"/><text>a2</text><box h="32.0" w="97.0"/></trans><trans id="ID7004"><posattr x="-63.5" y="-896.0"/><text>a3</text><box h="32.0" w="97.0"/></trans><trans id="ID7005"><posattr x="0.0" y="-1344.0"/><text>a4</text><box h="32.0" w="97.0"/></trans><trans id="ID7006"><posattr x="0.0" y="-1792.0"/><box h="32.0" w="97.0"/></trans><trans id="ID7007"><posattr x="-63.5" y="-2240.0"/><text>a6</text><box h="32.0" w="97.0"/></trans><trans id="ID7008"><posattr x="63.5" y="-2240.0"/><text>a5</text><box h="32.0" w="97.0"/></trans><trans id="ID7009"><posattr x="0.0" y="-224.0"/><box h="32.0" w="97.0"/></trans><place id="ID7010"><posattr x="0.0" y="-112.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="48.5" y="-128.0"/><text>CASE</text></type></place><arc id="ID7011" orientation="TtoP"><transend idref="ID7000"/><placeend idref="ID7010"/></arc><place id="ID7012"><posattr x="0.0" y="-336.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="48.5" y="-352.0"/><text>CASE</text></type></place><arc id="ID7013" orientation="PtoT"><transend idref="ID7002"/><placeend idref="ID7012"/></arc><arc id="ID7014" orientation="PtoT"><transend idref="ID7009"/><placeend idref="ID7010"/><annot><posattr x="10.0" y="-168.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7015" orientation="TtoP"><transend idref="ID7009"/><placeend idref="ID7012"/></arc><trans id="ID7016"><posattr x="63.5" y="-672.0"/><box h="32.0" w="97.0"/></trans><place id="ID7017"><posattr x="63.5" y="-560.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-576.0"/><text>CASE</text></type></place><arc id="ID7018" orientation="TtoP"><transend idref="ID7002"/><placeend idref="ID7017"/></arc><place id="ID7019"><posattr x="63.5" y="-784.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-800.0"/><text>CASE</text></type></place><arc id="ID7020" orientation="PtoT"><transend idref="ID7003"/><placeend idref="ID7019"/></arc><arc id="ID7021" orientation="PtoT"><transend idref="ID7016"/><placeend idref="ID7017"/><annot><posattr x="73.5" y="-616.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7022" orientation="TtoP"><transend idref="ID7016"/><placeend idref="ID7019"/></arc><trans id="ID7023"><posattr x="-63.5" y="-672.0"/><box h="32.0" w="97.0"/></trans><place id="ID7024"><posattr x="-63.5" y="-560.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-576.0"/><text>CASE</text></type></place><arc id="ID7025" orientation="TtoP"><transend idref="ID7002"/><placeend idref="ID7024"/></arc><place id="ID7026"><posattr x="-63.5" y="-784.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-800.0"/><text>CASE</text></type></place><arc id="ID7027" orientation="PtoT"><transend idref="ID7004"/><placeend idref="ID7026"/></arc><arc id="ID7028" orientation="PtoT"><transend idref="ID7023"/><placeend idref="ID7024"/><annot><posattr x="-53.5" y="-616.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7029" orientation="TtoP"><transend idref="ID7023"/><placeend idref="ID7026"/></arc><trans id="ID7030"><posattr x="63.5" y="-1120.0"/><box h="32.0" w="97.0"/></trans><place id="ID7031"><posattr x="63.5" y="-1008.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-1024.0"/><text>CASE</text></type></place><arc id="ID7032" orientation="TtoP"><transend idref="ID7003"/><placeend idref="ID7031"/></arc><place id="ID7033"><posattr x="63.5" y="-1232.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-1248.0"/><text>CASE</text></type></place><arc id="ID7034" orientation="PtoT"><transend idref="ID7005"/><placeend idref="ID7033"/></arc><arc id="ID7035" orientation="PtoT"><transend idref="ID7030"/><placeend idref="ID7031"/><annot><posattr x="73.5" y="-1064.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7036" orientation="TtoP"><transend idref="ID7030"/><placeend idref="ID7033"/></arc><trans id="ID7037"><posattr x="-63.5" y="-1120.0"/><box h="32.0" w="97.0"/></trans><place id="ID7038"><posattr x="-63.5" y="-1008.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-1024.0"/><text>CASE</text></type></place><arc id="ID7039" orientation="TtoP"><transend idref="ID7004"/><placeend idref="ID7038"/></arc><place id="ID7040"><posattr x="-63.5" y="-1232.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-1248.0"/><text>CASE</text></type></place><arc id="ID7041" orientation="PtoT"><transend idref="ID7005"/><placeend idref="ID7040"/></arc><arc id="ID7042" orientation="PtoT"><transend idref="ID7037"/><placeend idref="ID7038"/><annot><posattr x="-53.5" y="-1064.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7043" orientation="TtoP"><transend idref="ID7037"/><placeend idref="ID7040"/></arc><trans id="ID7044"><posattr x="0.0" y="-1568.0"/><box h="32.0" w="97.0"/></trans><place id="ID7045"><posattr x="0.0" y="-1456.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="48.5" y="-1472.0"/><text>CASE</text></type></place><arc id="ID7046" orientation="TtoP"><transend idref="ID7005"/><placeend idref="ID7045"/></arc><place id="ID7047"><posattr x="0.0" y="-1680.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="48.5" y="-1696.0"/><text/></type></place><arc id="ID7048" orientation="PtoT"><transend idref="ID7006"/><placeend idref="ID7047"/></arc><arc id="ID7049" orientation="PtoT"><transend idref="ID7044"/><placeend idref="ID7045"/><annot><posattr x="10.0" y="-1512.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7050" orientation="TtoP"><transend idref="ID7044"/><placeend idref="ID7047"/></arc><trans id="ID7051"><posattr x="63.5" y="-2016.0"/><box h="32.0" w="97.0"/></trans><place id="ID7052"><posattr x="63.5" y="-1904.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-1920.0"/><text/></type></place><arc id="ID7053" orientation="TtoP"><transend idref="ID7006"/><placeend idref="ID7052"/></arc><place id="ID7054"><posattr x="63.5" y="-2128.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-2144.0"/><text>CASE</text></type></place><arc id="ID7055" orientation="PtoT"><transend idref="ID7008"/><placeend idref="ID7054"/></arc><arc id="ID7056" orientation="PtoT"><transend idref="ID7051"/><placeend idref="ID7052"/><annot><posattr x="73.5" y="-1960.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7057" orientation="TtoP"><transend idref="ID7051"/><placeend idref="ID7054"/></arc><trans id="ID7058"><posattr x="-63.5" y="-2016.0"/><box h="32.0" w="97.0"/></trans><place id="ID7059"><posattr x="-63.5" y="-1904.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-1920.0"/><text/></type></place><arc id="ID7060" orientation="TtoP"><transend idref="ID7006"/><placeend idref="ID7059"/></arc><place id="ID7061"><posattr x="-63.5" y="-2128.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-2144.0"/><text>CASE</text></type></place><arc id="ID7062" orientation="PtoT"><transend idref="ID7007"/><placeend idref="ID7061"/></arc><arc id="ID7063" orientation="PtoT"><transend idref="ID7058"/><placeend idref="ID7059"/><annot><posattr x="-53.5" y="-1960.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7064" orientation="TtoP"><transend idref="ID7058"/><placeend idref="ID7061"/></arc><trans id="ID7065"><posattr x="-63.5" y="-2464.0"/><box h="32.0" w="97.0"/></trans><place id="ID7066"><posattr x="-63.5" y="-2352.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-2368.0"/><text>CASE</text></type></place><arc id="ID7067" orientation="TtoP"><transend idref="ID7007"/><placeend idref="ID7066"/></arc><place id="ID7068"><posattr x="-63.5" y="-2576.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="-15.0" y="-2592.0"/><text>CASE</text></type></place><arc id="ID7069" orientation="PtoT"><transend idref="ID7001"/><placeend idref="ID7068"/></arc><arc id="ID7070" orientation="PtoT"><transend idref="ID7065"/><placeend idref="ID7066"/><annot><posattr x="-53.5" y="-2408.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7071" orientation="TtoP"><transend idref="ID7065"/><placeend idref="ID7068"/></arc><trans id="ID7072"><posattr x="63.5" y="-2464.0"/><box h="32.0" w="97.0"/></trans><place id="ID7073"><posattr x="63.5" y="-2352.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-2368.0"/><text>CASE</text></type></place><arc id="ID7074" orientation="TtoP"><transend idref="ID7008"/><placeend idref="ID7073"/></arc><place id="ID7075"><posattr x="63.5" y="-2576.0"/><ellipse h="32.0" w="97.0"/><type><posattr x="112.0" y="-2592.0"/><text>CASE</text></type></place><arc id="ID7076" orientation="PtoT"><transend idref="ID7001"/><placeend idref="ID7075"/></arc><arc id="ID7077" orientation="PtoT"><transend idref="ID7072"/><placeend idref="ID7073"/><annot><posattr x="73.5" y="-2408.0"/><text>t</text></annot><annot><text>t</text></annot></arc><arc id="ID7078" orientation="TtoP"><transend idref="ID7072"/><placeend idref="ID7075"/></arc></page>
     <instances>
       <instance id="ID1264191322" page="ID1264191320"/>
     </instances>
@@ -303,7 +332,9 @@
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+      </IndexNode>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>
@@ -313,6 +344,10 @@
         </IndexNode>
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="true">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>

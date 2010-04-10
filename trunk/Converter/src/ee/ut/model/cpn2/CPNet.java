@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import ee.ut.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
 
 import noNamespace.Arc;
@@ -12,6 +13,7 @@ import noNamespace.Cpnet;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Trans;
+import noNamespace.Type;
 import noNamespace.WorkspaceElementsDocument;
 
 public class CPNet {
@@ -23,6 +25,9 @@ public class CPNet {
 	private HashMap<String, Arc> arcs = new HashMap<String, Arc>();
 	private HashMap<String, Trans> transitions = new HashMap<String, Trans>();
 	private int currentId = 7000;
+
+	private String flowObjectType = "CASE";
+	private String flowObjectVariable = "t";
 
 	public CPNet() {
 		File blankCPN = new File("./files/cpn/blank3.cpn");
@@ -42,6 +47,10 @@ public class CPNet {
 		Place place = page.addNewPlace();
 		place.setId(id);
 		places.put(id, place);
+
+		Type type = place.addNewType();
+		type.addNewText();
+
 		return place;
 	}
 
@@ -83,14 +92,22 @@ public class CPNet {
 
 	public void saveToFile(String file) {
 		for (Page p : cpnet.getPageArray())
-			// ExLucianoWrapper.doLayouting(p);
+			ExLucianoWrapper.doLayouting(p);
 
-			try {
-				File convertedCPNFile = new File(file);
-				cpnWorkspace.save(convertedCPNFile);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		try {
+			File convertedCPNFile = new File(file);
+			cpnWorkspace.save(convertedCPNFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
+	}
+
+	public String getFlowObjectType() {
+		return flowObjectType;
+	}
+
+	public String getFlowObjectVariable() {
+		return flowObjectVariable;
 	}
 }
