@@ -1,7 +1,15 @@
 package ee.ut.model.cpn2;
 
-public interface AbstractElementFactory {
+public abstract class AbstractElementFactory {
 
-	Object create(Object obj, CPNet cpnet);
+	protected CPNet cpnet;
+	protected Process process;
+
+	public AbstractElementFactory(CPNet cpnet, Process process) {
+		this.cpnet = cpnet;
+		this.process = process;
+	}
+
+	abstract Object create(Object obj);
 
 }
