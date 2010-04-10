@@ -2,11 +2,11 @@ package ee.ut.model.cpn2;
 
 public abstract class BPMNElement {
 
-	protected CPNet cpnet;
+	protected Process process;
 	private String elementId;
 
-	public BPMNElement(CPNet cpnet) {
-		this.cpnet = cpnet;
+	public BPMNElement(Process process) {
+		this.process = process;
 	}
 
 	public String getId() {

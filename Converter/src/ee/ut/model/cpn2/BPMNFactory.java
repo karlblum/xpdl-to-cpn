@@ -2,8 +2,8 @@ package ee.ut.model.cpn2;
 
 public final class BPMNFactory extends AbstractElementFactory {
 
-	public BPMNFactory(CPNet cpnet, Process process) {
-		super(cpnet, process);
+	public BPMNFactory(Process process) {
+		super(process);
 	}
 
 	AbstractElementFactory activityFactory = null;

@@ -5,8 +5,8 @@ import ee.ut.model.xpdl2.Route;
 
 public class BPMNActivityFactory extends AbstractElementFactory {
 
-	public BPMNActivityFactory(CPNet cpnet, Process process) {
-		super(cpnet, process);
+	public BPMNActivityFactory(Process process) {
+		super(process);
 	}
 
 	@Override
@@ -16,9 +16,9 @@ public class BPMNActivityFactory extends AbstractElementFactory {
 		// If we have routing element inside, then it is a gateway... Should
 		// this logic even be here?
 		if (xpdlActivity.getContent().get(0) instanceof Route) {
-			return new BPMNGateway(cpnet, obj);
+			return new BPMNGateway(process, obj);
 		}
-		return new BPMNActivity(cpnet, obj);
+		return new BPMNActivity(process, obj);
 	}
 
 }

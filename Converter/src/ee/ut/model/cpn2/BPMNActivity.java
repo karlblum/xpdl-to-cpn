@@ -12,15 +12,15 @@ public final class BPMNActivity extends BPMNElement {
 	private List<String> outputPlaceIds;
 	private String transitionId;
 
-	public BPMNActivity(CPNet cpnet, Object o) {
-		super(cpnet);
+	public BPMNActivity(Process process, Object o) {
+		super(process);
 
 		Activity xpdlActivity = ((Activity) o);
 		setId(xpdlActivity.getId());
 
 		// We assume that we only need a transition, because all the inputs and
 		// outputs can be generated dynamically.
-		transitionId = cpnet.addTrans().getId();
+		transitionId = process.getCpnet().addTrans().getId();
 
 	}
 
@@ -32,16 +32,16 @@ public final class BPMNActivity extends BPMNElement {
 	 * @return
 	 */
 	public String makeInput() {
-		Place p = cpnet.addPlace();
+		Place p = process.getCpnet().addPlace();
 		inputPlaceIds.add(p.getId());
-		cpnet.addArc(p.getId(), transitionId);
+		process.getCpnet().addArc(p.getId(), transitionId);
 		return p.getId();
 	}
 
 	public String makeOutput() {
-		Place p = cpnet.addPlace();
+		Place p = process.getCpnet().addPlace();
 		outputPlaceIds.add(p.getId());
-		cpnet.addArc(transitionId, p.getId());
+		process.getCpnet().addArc(transitionId, p.getId());
 		return p.getId();
 	}
 
