@@ -3,7 +3,11 @@ package ee.ut.model.cpn2;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.xmlbeans.XmlString;
+
+import ee.ut.model.cpn2.BPMNGatewayType.GWType;
 import ee.ut.model.xpdl2.Activity;
+import ee.ut.model.xpdl2.Route;
 
 import noNamespace.Place;
 import noNamespace.Trans;
@@ -16,7 +20,11 @@ public class BPMNGateway extends BPMNElement {
 
 	private ArrayList<String> inputPlaceIds = new ArrayList<String>();
 	private ArrayList<String> outputPlaceIds = new ArrayList<String>();
-	private String transitionId;
+	private String gatewayTransitionId;
+	private String gatewayPlaceId;
+	private GWType gwType;
+
+	private String xorPlaceId;
 
 	public BPMNGateway(Process process, Object obj) {
 		super(process);
@@ -24,9 +32,30 @@ public class BPMNGateway extends BPMNElement {
 		Activity xpdlActivity = ((Activity) obj);
 		setId(xpdlActivity.getId());
 
-		// We assume that we only need a transition, because all the inputs and
-		// outputs can be generated dynamically.
-		transitionId = process.getCpnet().addTrans().getId();
+		// Determine the type of the gateway
+		String type = ((Route) xpdlActivity.getContent().get(0))
+				.getGatewayType();
+
+		if (type.equals("Exclusive")) {
+			// If we have Exclusive gateway, then we need one central CPN Place
+			// only
+			gwType = GWType.EXCLUSICE;
+			Place gwPlace = process.getCpnet().addPlace();
+			gwPlace.addNewText().set(
+					XmlString.Factory.newValue(xpdlActivity.getName()));
+			gatewayPlaceId = gwPlace.getId();
+
+		} else if (type.equals("Inclusive")) {
+			// If we have Inclusive gateway, then we need one central CPN
+			// Transition only
+			gwType = GWType.INCLUSIVE;
+			Trans gwTrans = process.getCpnet().addTrans();
+			gatewayTransitionId = gwTrans.getId();
+			gwTrans.addNewText().set(
+					XmlString.Factory.newValue(xpdlActivity.getName()));
+		} else {
+			System.err.println("Gateway type: " + type + " not implemented.");
+		}
 
 	}
 
@@ -38,16 +67,25 @@ public class BPMNGateway extends BPMNElement {
 	 * @return
 	 */
 	public Place makeInputPlace() {
+		// If we have exclusive gateway, then we don't need more inputs
+		if (gwType == GWType.EXCLUSICE) {
+			return process.getCpnet().getPlace(gatewayPlaceId);
+		}
+
 		Place p = process.getCpnet().addPlace();
 		inputPlaceIds.add(p.getId());
-		process.getCpnet().addArc(p.getId(), transitionId);
+		process.getCpnet().addArc(p.getId(), gatewayTransitionId);
 		return p;
 	}
 
 	public Place makeOutputPlace() {
+		// If we have exclusive gateway, then we don't need more outputs
+		if (gwType == GWType.EXCLUSICE) {
+			return process.getCpnet().getPlace(gatewayPlaceId);
+		}
 		Place p = process.getCpnet().addPlace();
 		outputPlaceIds.add(p.getId());
-		process.getCpnet().addArc(transitionId, p.getId());
+		process.getCpnet().addArc(gatewayTransitionId, p.getId());
 		return p;
 	}
 

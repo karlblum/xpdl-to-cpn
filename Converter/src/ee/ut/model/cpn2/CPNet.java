@@ -27,7 +27,7 @@ public class CPNet {
 	private int currentId = 7000;
 
 	private String flowObjectType = "CASE";
-	private String flowObjectVariable = "t";
+	private String flowObjectVariable = "c";
 
 	public CPNet() {
 		File blankCPN = new File("./files/cpn/blank3.cpn");
@@ -109,5 +109,9 @@ public class CPNet {
 
 	public String getFlowObjectVariable() {
 		return flowObjectVariable;
+	}
+
+	public Place getPlace(String id) {
+		return places.get(id);
 	}
 }

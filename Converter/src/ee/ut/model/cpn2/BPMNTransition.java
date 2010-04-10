@@ -6,7 +6,6 @@ import noNamespace.Annot;
 import noNamespace.Arc;
 import noNamespace.Place;
 import noNamespace.Trans;
-import ee.ut.model.bpmne.BPMNeIdGen;
 import ee.ut.model.xpdl2.Transition;
 
 public class BPMNTransition extends BPMNElement {
@@ -16,6 +15,10 @@ public class BPMNTransition extends BPMNElement {
 
 		Trans trans = process.getCpnet().addTrans();
 
+		// Add a name
+		trans.addNewText().set(
+				XmlString.Factory.newValue("Transition_" + trans.getId()));
+
 		String transId = trans.getId();
 
 		Place toPlace = null;
@@ -24,14 +27,14 @@ public class BPMNTransition extends BPMNElement {
 		Object objectFrom = process.getElement(t.getFrom());
 		Object objectTo = process.getElement(t.getTo());
 
-		if (objectFrom instanceof BPMNActivity) {
-			fromPlace = ((BPMNActivity) objectFrom).makeOutputPlace();
+		if (objectFrom instanceof BPMNTask) {
+			fromPlace = ((BPMNTask) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNGateway) {
 			fromPlace = ((BPMNGateway) objectFrom).makeOutputPlace();
 		}
 
-		if (objectTo instanceof BPMNActivity) {
-			toPlace = ((BPMNActivity) objectTo).makeInputPlace();
+		if (objectTo instanceof BPMNTask) {
+			toPlace = ((BPMNTask) objectTo).makeInputPlace();
 		} else if (objectTo instanceof BPMNGateway) {
 			toPlace = ((BPMNGateway) objectTo).makeInputPlace();
 		}
@@ -44,7 +47,7 @@ public class BPMNTransition extends BPMNElement {
 						.getFlowObjectVariable()));
 
 		Arc outArc = process.getCpnet().addArc(transId, toPlace.getId());
-		annot = inArc.addNewAnnot();
+		annot = outArc.addNewAnnot();
 		annot.addNewText().set(
 				XmlString.Factory.newValue(process.getCpnet()
 						.getFlowObjectVariable()));
