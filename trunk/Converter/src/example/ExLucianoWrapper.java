@@ -102,7 +102,7 @@ public class ExLucianoWrapper {
 		CGDAlgorithm layouter = new CGDAlgorithm();
 		
 		layouter.compute(graph, new GraphUpdate() {
-		    double hSpacing = 30, vSpacing = 80;
+		    double hSpacing = 20, vSpacing = 40;
 		    double scale_ = 1.0;
 
 			public void center() {}
