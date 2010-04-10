@@ -1,6 +1,10 @@
 package ee.ut.model.cpn2;
 
-public final class BPMNFactory implements AbstractElementFactory {
+public final class BPMNFactory extends AbstractElementFactory {
+
+	public BPMNFactory(CPNet cpnet, Process process) {
+		super(cpnet, process);
+	}
 
 	AbstractElementFactory activityFactory = null;
 	AbstractElementFactory transitionFactory = null;
@@ -17,11 +21,11 @@ public final class BPMNFactory implements AbstractElementFactory {
 	// element or for every XPDL element? For example gateway in BPMN is a
 	// activity in XPDL.
 	@Override
-	public Object create(Object obj, CPNet cpnet) {
+	public Object create(Object obj) {
 		if (obj instanceof ee.ut.model.xpdl2.Activity)
-			return activityFactory.create(obj, cpnet);
+			return activityFactory.create(obj);
 		else if (obj instanceof ee.ut.model.xpdl2.Transition)
-			return transitionFactory.create(obj, cpnet);
+			return transitionFactory.create(obj);
 		else
 			return null;
 	}
