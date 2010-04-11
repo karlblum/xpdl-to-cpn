@@ -10,6 +10,7 @@ import example.ExLucianoWrapper;
 
 import noNamespace.Arc;
 import noNamespace.Cpnet;
+import noNamespace.Instance;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Trans;
@@ -30,7 +31,7 @@ public class CPNet {
 	private String flowObjectVariable = "c";
 
 	public CPNet() {
-		File blankCPN = new File("./files/cpn/blank3.cpn");
+		File blankCPN = new File("./files/cpn/blank2.cpn");
 
 		try {
 			cpnWorkspace = WorkspaceElementsDocument.Factory.parse(blankCPN);
@@ -113,5 +114,16 @@ public class CPNet {
 
 	public Place getPlace(String id) {
 		return places.get(id);
+	}
+	
+	public Page getPage(String id){
+		for(Page p: cpnet.getPageArray()){
+			if(p.getId().equals(id)) return p;
+		}
+		return null;
+	}
+
+	public Instance getRootInstance() {
+		return cpnet.getInstances().getInstanceArray(0);
 	}
 }

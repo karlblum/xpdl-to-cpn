@@ -4,9 +4,16 @@ import java.util.ArrayList;
 
 import org.apache.xmlbeans.XmlString;
 
+import ee.ut.converter.CPNConverter.ActivityType;
+import ee.ut.model.bpmne.BPMNeIdGen;
+import ee.ut.model.bpmne.BPMNeUtil;
 import ee.ut.model.xpdl2.Activity;
 
+import noNamespace.Instance;
+import noNamespace.Page;
 import noNamespace.Place;
+import noNamespace.Subpageinfo;
+import noNamespace.Subst;
 import noNamespace.Trans;
 
 public final class BPMNTask extends BPMNElement {
@@ -16,7 +23,7 @@ public final class BPMNTask extends BPMNElement {
 	private String outputPlaceId;
 	private String transitionId;
 
-	public BPMNTask(Process process, Object o) {
+	public BPMNTask(Process process, Object o,ActivityType type) {
 		super(process);
 
 		Activity xpdlActivity = ((Activity) o);
@@ -33,9 +40,31 @@ public final class BPMNTask extends BPMNElement {
 
 
 
-		if(false){
-			// TODO:If this acctivity has start event, then we have to attach a
-			// generator
+		if(type == ActivityType.START){
+			Page generatorPage = process.getCpnet().getPage("PAGE_GENERATOR");
+		
+			Subst subst = trans.addNewSubst();
+			subst.setSubpage("PAGE_GENERATOR");
+			Subpageinfo subpageinfo = subst.addNewSubpageinfo();
+			subpageinfo.setId(BPMNeIdGen.createId());
+			
+			
+			Instance rootInstance = process.getCpnet().getRootInstance();			
+			Instance i = rootInstance.addNewInstance();
+			i.setId(BPMNeIdGen.createId());
+			i.setTrans(transitionId);
+			
+			/*
+			outputPlace = BPMNeUtil.createPlace(page, "new case");
+			outputPlace.addNewPort().setType("Out");
+			outputPlace.getTypeArray()[0].getText().set(caseType.copy());
+			
+			
+			//TODO: THIS DOES NOT SEEM TO WORK!
+			transition.getSubst().setPortsock(String.format("(%s,%s)","PAGE_GENERATOR", outputPlace.getId()));
+*/
+			
+			
 		} else {
 			// This will be the mid-input place where we add input connections to
 			Place pMidIn = process.getCpnet().addPlace();
@@ -69,11 +98,12 @@ public final class BPMNTask extends BPMNElement {
 						.getFlowObjectType()));
 		inputPlaceIds.add(p.getId());
 
-		// TODO: if a token is coming from to inputs, then it generates 2x
+		// TODO: if a token is coming from two inputs, then it generates 2x
 		// output!
 		Trans trans = process.getCpnet().addTrans();
 		trans.addNewText().set(
 				XmlString.Factory.newValue("EXCLUSIVE_JOIN_" + trans.getId()));
+		
 		// Here we connect the input to the mid-input place for Exclusive join
 		process.getCpnet().addArc(p.getId(), trans.getId());
 		process.getCpnet().addArc(trans.getId(), midInputPlaceId);

@@ -21,7 +21,7 @@ ActivityType type = getActivityType(xpdlActivity);
 
 
 		if (type == ActivityType.START || type == ActivityType.END || type == ActivityType.TASK) {
-			return new BPMNTask(process, obj);
+			return new BPMNTask(process, obj,type);
 		} else {
 			return new BPMNGateway(process, obj);
 		}
