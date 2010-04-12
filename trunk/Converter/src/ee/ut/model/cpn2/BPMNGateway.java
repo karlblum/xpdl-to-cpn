@@ -9,6 +9,8 @@ import ee.ut.model.cpn2.BPMNGatewayType.GWType;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.Route;
 
+import noNamespace.Annot;
+import noNamespace.Arc;
 import noNamespace.Place;
 import noNamespace.Trans;
 
@@ -43,6 +45,9 @@ public class BPMNGateway extends BPMNElement {
 			Place gwPlace = process.getCpnet().addPlace();
 			gwPlace.addNewText().set(
 					XmlString.Factory.newValue(xpdlActivity.getName()));
+			gwPlace.getTypeArray()[0].getText().set(
+					XmlString.Factory.newValue(process.getCpnet()
+							.getFlowObjectType()));
 			gatewayPlaceId = gwPlace.getId();
 
 		} else if (type.equals("Inclusive")) {
@@ -74,7 +79,15 @@ public class BPMNGateway extends BPMNElement {
 
 		Place p = process.getCpnet().addPlace();
 		inputPlaceIds.add(p.getId());
-		process.getCpnet().addArc(p.getId(), gatewayTransitionId);
+		p.getTypeArray()[0].getText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectType()));
+		
+		Arc arc = process.getCpnet().addArc(p.getId(), gatewayTransitionId);
+		Annot annot = arc.addNewAnnot();
+		annot.addNewText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectVariable()));
 		return p;
 	}
 
@@ -84,8 +97,15 @@ public class BPMNGateway extends BPMNElement {
 			return process.getCpnet().getPlace(gatewayPlaceId);
 		}
 		Place p = process.getCpnet().addPlace();
+		p.getTypeArray()[0].getText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectType()));
 		outputPlaceIds.add(p.getId());
-		process.getCpnet().addArc(gatewayTransitionId, p.getId());
+		Arc arc = process.getCpnet().addArc(gatewayTransitionId, p.getId());
+		Annot annot = arc.addNewAnnot();
+		annot.addNewText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectVariable()));
 		return p;
 	}
 
