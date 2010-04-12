@@ -1,9 +1,5 @@
 package ee.ut.model.cpn2;
 
-import org.apache.xmlbeans.XmlString;
-
-import noNamespace.Annot;
-import noNamespace.Arc;
 import noNamespace.Place;
 import noNamespace.Trans;
 import ee.ut.model.xpdl2.Transition;
@@ -14,10 +10,6 @@ public class BPMNTransition extends BPMNElement {
 		super(process);
 
 		Trans trans = process.getCpnet().addTrans();
-
-		// Add a name
-		trans.addNewText().set(
-				XmlString.Factory.newValue("Transition_" + trans.getId()));
 
 		String transId = trans.getId();
 
@@ -39,18 +31,8 @@ public class BPMNTransition extends BPMNElement {
 			toPlace = ((BPMNGateway) objectTo).makeInputPlace();
 		}
 
-		Arc inArc = process.getCpnet().addArc(fromPlace.getId(), transId);
-
-		Annot annot = inArc.addNewAnnot();
-		annot.addNewText().set(
-				XmlString.Factory.newValue(process.getCpnet()
-						.getFlowObjectVariable()));
-
-		Arc outArc = process.getCpnet().addArc(transId, toPlace.getId());
-		annot = outArc.addNewAnnot();
-		annot.addNewText().set(
-				XmlString.Factory.newValue(process.getCpnet()
-						.getFlowObjectVariable()));
+		process.getCpnet().addArc(fromPlace.getId(), transId);
+		process.getCpnet().addArc(transId, toPlace.getId());
 	}
 
 }

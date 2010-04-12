@@ -1,18 +1,15 @@
 package ee.ut.model.cpn2;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import noNamespace.Place;
+import noNamespace.Trans;
 
 import org.apache.xmlbeans.XmlString;
 
 import ee.ut.model.cpn2.BPMNGatewayType.GWType;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.Route;
-
-import noNamespace.Annot;
-import noNamespace.Arc;
-import noNamespace.Place;
-import noNamespace.Trans;
 
 /**
  * @author karl This class has the same implementation as the activity class at
@@ -25,8 +22,6 @@ public class BPMNGateway extends BPMNElement {
 	private String gatewayTransitionId;
 	private String gatewayPlaceId;
 	private GWType gwType;
-
-	private String xorPlaceId;
 
 	public BPMNGateway(Process process, Object obj) {
 		super(process);
@@ -42,22 +37,15 @@ public class BPMNGateway extends BPMNElement {
 			// If we have Exclusive gateway, then we need one central CPN Place
 			// only
 			gwType = GWType.EXCLUSICE;
-			Place gwPlace = process.getCpnet().addPlace();
-			gwPlace.addNewText().set(
-					XmlString.Factory.newValue(xpdlActivity.getName()));
-			gwPlace.getTypeArray()[0].getText().set(
-					XmlString.Factory.newValue(process.getCpnet()
-							.getFlowObjectType()));
-			gatewayPlaceId = gwPlace.getId();
+			gatewayPlaceId = process.getCpnet()
+					.addPlace(xpdlActivity.getName()).getId();
 
 		} else if (type.equals("Inclusive")) {
 			// If we have Inclusive gateway, then we need one central CPN
 			// Transition only
 			gwType = GWType.INCLUSIVE;
-			Trans gwTrans = process.getCpnet().addTrans();
-			gatewayTransitionId = gwTrans.getId();
-			gwTrans.addNewText().set(
-					XmlString.Factory.newValue(xpdlActivity.getName()));
+			gatewayTransitionId = process.getCpnet().addTrans(
+					xpdlActivity.getName()).getId();
 		} else {
 			System.err.println("Gateway type: " + type + " not implemented.");
 		}
@@ -79,15 +67,9 @@ public class BPMNGateway extends BPMNElement {
 
 		Place p = process.getCpnet().addPlace();
 		inputPlaceIds.add(p.getId());
-		p.getTypeArray()[0].getText().set(
-				XmlString.Factory.newValue(process.getCpnet()
-						.getFlowObjectType()));
-		
-		Arc arc = process.getCpnet().addArc(p.getId(), gatewayTransitionId);
-		Annot annot = arc.addNewAnnot();
-		annot.addNewText().set(
-				XmlString.Factory.newValue(process.getCpnet()
-						.getFlowObjectVariable()));
+
+		process.getCpnet().addArc(p.getId(), gatewayTransitionId);
+
 		return p;
 	}
 
@@ -97,15 +79,8 @@ public class BPMNGateway extends BPMNElement {
 			return process.getCpnet().getPlace(gatewayPlaceId);
 		}
 		Place p = process.getCpnet().addPlace();
-		p.getTypeArray()[0].getText().set(
-				XmlString.Factory.newValue(process.getCpnet()
-						.getFlowObjectType()));
 		outputPlaceIds.add(p.getId());
-		Arc arc = process.getCpnet().addArc(gatewayTransitionId, p.getId());
-		Annot annot = arc.addNewAnnot();
-		annot.addNewText().set(
-				XmlString.Factory.newValue(process.getCpnet()
-						.getFlowObjectVariable()));
+		process.getCpnet().addArc(gatewayTransitionId, p.getId());
 		return p;
 	}
 

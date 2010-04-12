@@ -16,18 +16,17 @@ public class BPMNActivityFactory extends AbstractElementFactory {
 	public Object create(Object obj) {
 		Activity xpdlActivity = ((Activity) obj);
 
+		ActivityType type = getActivityType(xpdlActivity);
 
-ActivityType type = getActivityType(xpdlActivity);
-
-
-		if (type == ActivityType.START || type == ActivityType.END || type == ActivityType.TASK) {
-			return new BPMNTask(process, obj,type);
+		if (type == ActivityType.START || type == ActivityType.END
+				|| type == ActivityType.TASK) {
+			return new BPMNTask(process, obj, type);
 		} else {
 			return new BPMNGateway(process, obj);
 		}
-		
+
 	}
-	
+
 	public static ActivityType getActivityType(Activity activity) {
 		for (Object aContent : activity.getContent()) {
 			if (aContent instanceof Event) {
@@ -56,18 +55,18 @@ ActivityType type = getActivityType(xpdlActivity);
 		}
 		return ActivityType.TASK;
 	}
-	
+
 	/**
-	 * We assume that only split activity has transition restrictions. 
-	 * So this method determines whether the activity is split or join based 
-	 * on the existence of transistionrestriction elements 
+	 * We assume that only split activity has transition restrictions. So this
+	 * method determines whether the activity is split or join based on the
+	 * existence of transistionrestriction elements
 	 * 
 	 * @param activity
 	 * @return
 	 */
-	private static boolean isSplit(Activity activity){
-		for (Object aContent : activity.getContent()){
-			if( aContent instanceof TransitionRestrictions){
+	private static boolean isSplit(Activity activity) {
+		for (Object aContent : activity.getContent()) {
+			if (aContent instanceof TransitionRestrictions) {
 				return true;
 			}
 		}
