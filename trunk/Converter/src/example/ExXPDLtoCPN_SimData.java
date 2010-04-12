@@ -17,8 +17,6 @@ import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlException;
 
-import ee.ut.model.bpmne.BPMNeProcess;
-import ee.ut.model.sim.Tasks;
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.Event;
@@ -26,6 +24,8 @@ import ee.ut.model.xpdl2.PackageType;
 import ee.ut.model.xpdl2.ProcessType;
 import ee.ut.model.xpdl2.Transition;
 import ee.ut.model.xpdl2.Transitions;
+import ee.ut.old.model.bpmne.BPMNeProcess;
+import ee.ut.old.model.sim.Tasks;
 
 public class ExXPDLtoCPN_SimData {
 	public static void main(String[] args) throws IOException, XmlException,
