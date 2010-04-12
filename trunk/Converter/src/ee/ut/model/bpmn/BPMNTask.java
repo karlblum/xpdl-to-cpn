@@ -40,21 +40,12 @@ public final class BPMNTask extends BPMNElement {
 		outputPlaceId = pOut.getId();
 		cPNProcess.getCpnet().addArc(transitionId, pOut.getId());
 
-		// if (type == ActivityType.START) {
-		if (false) {
-			Subst subst = cPNProcess.getCpnet().addSubst(trans,
-					"PAGE_GENERATOR");
-			subst.setPortsock(String.format("(%s,%s)", "ID1264234111", pOut
-					.getId()));
+		// This will be the mid-input place where we add input connections
+		// to
+		Place pMidIn = cPNProcess.getCpnet().addPlace();
 
-		} else {
-			// This will be the mid-input place where we add input connections
-			// to
-			Place pMidIn = cPNProcess.getCpnet().addPlace();
-
-			midInputPlaceId = pMidIn.getId();
-			cPNProcess.getCpnet().addArc(pMidIn.getId(), transitionId);
-		}
+		midInputPlaceId = pMidIn.getId();
+		cPNProcess.getCpnet().addArc(pMidIn.getId(), transitionId);
 
 	}
 
