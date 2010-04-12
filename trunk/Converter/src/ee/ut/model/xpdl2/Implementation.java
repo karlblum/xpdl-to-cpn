@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -22,11 +21,13 @@ import javax.xml.namespace.QName;
 
 import ee.ut.model.xpdl1.Tool;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -47,170 +48,154 @@ import ee.ut.model.xpdl1.Tool;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "no",
-    "tool",
-    "task",
-    "subFlow",
-    "reference"
-})
+@XmlType(name = "", propOrder = { "no", "tool", "task", "subFlow", "reference" })
 @XmlRootElement(name = "Implementation")
 public class Implementation {
 
-    @XmlElement(name = "No")
-    protected No no;
-    @XmlElement(name = "Tool", namespace = "http://www.wfmc.org/2002/XPDL1.0")
-    protected List<Tool> tool;
-    @XmlElement(name = "Task")
-    protected Task task;
-    @XmlElement(name = "SubFlow")
-    protected SubFlow subFlow;
-    @XmlElement(name = "Reference")
-    protected Reference reference;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "No")
+	protected No no;
+	@XmlElement(name = "Tool", namespace = "http://www.wfmc.org/2002/XPDL1.0")
+	protected List<Tool> tool;
+	@XmlElement(name = "Task")
+	protected Task task;
+	@XmlElement(name = "SubFlow")
+	protected SubFlow subFlow;
+	@XmlElement(name = "Reference")
+	protected Reference reference;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * BPMN: corresponds to a task with unspecified TaskType
-     * 
-     * @return
-     *     possible object is
-     *     {@link No }
-     *     
-     */
-    public No getNo() {
-        return no;
-    }
+	/**
+	 * BPMN: corresponds to a task with unspecified TaskType
+	 * 
+	 * @return possible object is {@link No }
+	 * 
+	 */
+	public No getNo() {
+		return no;
+	}
 
-    /**
-     * BPMN: corresponds to a task with unspecified TaskType
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link No }
-     *     
-     */
-    public void setNo(No value) {
-        this.no = value;
-    }
+	/**
+	 * BPMN: corresponds to a task with unspecified TaskType
+	 * 
+	 * @param value
+	 *            allowed object is {@link No }
+	 * 
+	 */
+	public void setNo(No value) {
+		this.no = value;
+	}
 
-    /**
-     * Gets the value of the tool property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the tool property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTool().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Tool }
-     * 
-     * 
-     */
-    public List<Tool> getTool() {
-        if (tool == null) {
-            tool = new ArrayList<Tool>();
-        }
-        return this.tool;
-    }
+	/**
+	 * Gets the value of the tool property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the tool property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getTool().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Tool }
+	 * 
+	 * 
+	 */
+	public List<Tool> getTool() {
+		if (tool == null) {
+			tool = new ArrayList<Tool>();
+		}
+		return this.tool;
+	}
 
-    /**
-     * BPMN: corresponds to a task with specified TaskType
-     * 
-     * @return
-     *     possible object is
-     *     {@link Task }
-     *     
-     */
-    public Task getTask() {
-        return task;
-    }
+	/**
+	 * BPMN: corresponds to a task with specified TaskType
+	 * 
+	 * @return possible object is {@link Task }
+	 * 
+	 */
+	public Task getTask() {
+		return task;
+	}
 
-    /**
-     * BPMN: corresponds to a task with specified TaskType
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Task }
-     *     
-     */
-    public void setTask(Task value) {
-        this.task = value;
-    }
+	/**
+	 * BPMN: corresponds to a task with specified TaskType
+	 * 
+	 * @param value
+	 *            allowed object is {@link Task }
+	 * 
+	 */
+	public void setTask(Task value) {
+		this.task = value;
+	}
 
-    /**
-     * BPMN: corresponds to Reusable subprocess.  May run in different pool or same pool.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SubFlow }
-     *     
-     */
-    public SubFlow getSubFlow() {
-        return subFlow;
-    }
+	/**
+	 * BPMN: corresponds to Reusable subprocess. May run in different pool or
+	 * same pool.
+	 * 
+	 * @return possible object is {@link SubFlow }
+	 * 
+	 */
+	public SubFlow getSubFlow() {
+		return subFlow;
+	}
 
-    /**
-     * BPMN: corresponds to Reusable subprocess.  May run in different pool or same pool.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SubFlow }
-     *     
-     */
-    public void setSubFlow(SubFlow value) {
-        this.subFlow = value;
-    }
+	/**
+	 * BPMN: corresponds to Reusable subprocess. May run in different pool or
+	 * same pool.
+	 * 
+	 * @param value
+	 *            allowed object is {@link SubFlow }
+	 * 
+	 */
+	public void setSubFlow(SubFlow value) {
+		this.subFlow = value;
+	}
 
-    /**
-     * Gets the value of the reference property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Reference }
-     *     
-     */
-    public Reference getReference() {
-        return reference;
-    }
+	/**
+	 * Gets the value of the reference property.
+	 * 
+	 * @return possible object is {@link Reference }
+	 * 
+	 */
+	public Reference getReference() {
+		return reference;
+	}
 
-    /**
-     * Sets the value of the reference property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Reference }
-     *     
-     */
-    public void setReference(Reference value) {
-        this.reference = value;
-    }
+	/**
+	 * Sets the value of the reference property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Reference }
+	 * 
+	 */
+	public void setReference(Reference value) {
+		this.reference = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

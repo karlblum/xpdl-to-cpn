@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import java.util.ArrayList;
@@ -16,11 +15,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -37,42 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "typeDeclaration"
-})
+@XmlType(name = "", propOrder = { "typeDeclaration" })
 @XmlRootElement(name = "TypeDeclarations")
 public class TypeDeclarations {
 
-    @XmlElement(name = "TypeDeclaration")
-    protected List<TypeDeclaration> typeDeclaration;
+	@XmlElement(name = "TypeDeclaration")
+	protected List<TypeDeclaration> typeDeclaration;
 
-    /**
-     * Gets the value of the typeDeclaration property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the typeDeclaration property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTypeDeclaration().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link TypeDeclaration }
-     * 
-     * 
-     */
-    public List<TypeDeclaration> getTypeDeclaration() {
-        if (typeDeclaration == null) {
-            typeDeclaration = new ArrayList<TypeDeclaration>();
-        }
-        return this.typeDeclaration;
-    }
+	/**
+	 * Gets the value of the typeDeclaration property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the typeDeclaration property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getTypeDeclaration().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link TypeDeclaration }
+	 * 
+	 * 
+	 */
+	public List<TypeDeclaration> getTypeDeclaration() {
+		if (typeDeclaration == null) {
+			typeDeclaration = new ArrayList<TypeDeclaration>();
+		}
+		return this.typeDeclaration;
+	}
 
 }

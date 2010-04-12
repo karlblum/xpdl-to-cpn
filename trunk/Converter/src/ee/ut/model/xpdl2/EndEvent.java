@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.HashMap;
@@ -21,11 +20,13 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -69,227 +70,201 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "triggerResultMessage",
-    "resultError",
-    "triggerResultCompensation",
-    "triggerResultSignal",
-    "resultMultiple"
-})
+@XmlType(name = "", propOrder = { "triggerResultMessage", "resultError",
+		"triggerResultCompensation", "triggerResultSignal", "resultMultiple" })
 @XmlRootElement(name = "EndEvent")
 public class EndEvent {
 
-    @XmlElement(name = "TriggerResultMessage")
-    protected TriggerResultMessage triggerResultMessage;
-    @XmlElement(name = "ResultError")
-    protected ResultError resultError;
-    @XmlElement(name = "TriggerResultCompensation")
-    protected TriggerResultCompensation triggerResultCompensation;
-    @XmlElement(name = "TriggerResultSignal")
-    protected TriggerResultSignal triggerResultSignal;
-    @XmlElement(name = "ResultMultiple")
-    protected ResultMultiple resultMultiple;
-    @XmlAttribute(name = "Result")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String result;
-    @XmlAttribute(name = "Implementation")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String implementation;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "TriggerResultMessage")
+	protected TriggerResultMessage triggerResultMessage;
+	@XmlElement(name = "ResultError")
+	protected ResultError resultError;
+	@XmlElement(name = "TriggerResultCompensation")
+	protected TriggerResultCompensation triggerResultCompensation;
+	@XmlElement(name = "TriggerResultSignal")
+	protected TriggerResultSignal triggerResultSignal;
+	@XmlElement(name = "ResultMultiple")
+	protected ResultMultiple resultMultiple;
+	@XmlAttribute(name = "Result")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String result;
+	@XmlAttribute(name = "Implementation")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String implementation;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the triggerResultMessage property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TriggerResultMessage }
-     *     
-     */
-    public TriggerResultMessage getTriggerResultMessage() {
-        return triggerResultMessage;
-    }
+	/**
+	 * Gets the value of the triggerResultMessage property.
+	 * 
+	 * @return possible object is {@link TriggerResultMessage }
+	 * 
+	 */
+	public TriggerResultMessage getTriggerResultMessage() {
+		return triggerResultMessage;
+	}
 
-    /**
-     * Sets the value of the triggerResultMessage property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TriggerResultMessage }
-     *     
-     */
-    public void setTriggerResultMessage(TriggerResultMessage value) {
-        this.triggerResultMessage = value;
-    }
+	/**
+	 * Sets the value of the triggerResultMessage property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TriggerResultMessage }
+	 * 
+	 */
+	public void setTriggerResultMessage(TriggerResultMessage value) {
+		this.triggerResultMessage = value;
+	}
 
-    /**
-     * Gets the value of the resultError property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultError }
-     *     
-     */
-    public ResultError getResultError() {
-        return resultError;
-    }
+	/**
+	 * Gets the value of the resultError property.
+	 * 
+	 * @return possible object is {@link ResultError }
+	 * 
+	 */
+	public ResultError getResultError() {
+		return resultError;
+	}
 
-    /**
-     * Sets the value of the resultError property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultError }
-     *     
-     */
-    public void setResultError(ResultError value) {
-        this.resultError = value;
-    }
+	/**
+	 * Sets the value of the resultError property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ResultError }
+	 * 
+	 */
+	public void setResultError(ResultError value) {
+		this.resultError = value;
+	}
 
-    /**
-     * Gets the value of the triggerResultCompensation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TriggerResultCompensation }
-     *     
-     */
-    public TriggerResultCompensation getTriggerResultCompensation() {
-        return triggerResultCompensation;
-    }
+	/**
+	 * Gets the value of the triggerResultCompensation property.
+	 * 
+	 * @return possible object is {@link TriggerResultCompensation }
+	 * 
+	 */
+	public TriggerResultCompensation getTriggerResultCompensation() {
+		return triggerResultCompensation;
+	}
 
-    /**
-     * Sets the value of the triggerResultCompensation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TriggerResultCompensation }
-     *     
-     */
-    public void setTriggerResultCompensation(TriggerResultCompensation value) {
-        this.triggerResultCompensation = value;
-    }
+	/**
+	 * Sets the value of the triggerResultCompensation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TriggerResultCompensation }
+	 * 
+	 */
+	public void setTriggerResultCompensation(TriggerResultCompensation value) {
+		this.triggerResultCompensation = value;
+	}
 
-    /**
-     * Gets the value of the triggerResultSignal property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TriggerResultSignal }
-     *     
-     */
-    public TriggerResultSignal getTriggerResultSignal() {
-        return triggerResultSignal;
-    }
+	/**
+	 * Gets the value of the triggerResultSignal property.
+	 * 
+	 * @return possible object is {@link TriggerResultSignal }
+	 * 
+	 */
+	public TriggerResultSignal getTriggerResultSignal() {
+		return triggerResultSignal;
+	}
 
-    /**
-     * Sets the value of the triggerResultSignal property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TriggerResultSignal }
-     *     
-     */
-    public void setTriggerResultSignal(TriggerResultSignal value) {
-        this.triggerResultSignal = value;
-    }
+	/**
+	 * Sets the value of the triggerResultSignal property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TriggerResultSignal }
+	 * 
+	 */
+	public void setTriggerResultSignal(TriggerResultSignal value) {
+		this.triggerResultSignal = value;
+	}
 
-    /**
-     * Gets the value of the resultMultiple property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultMultiple }
-     *     
-     */
-    public ResultMultiple getResultMultiple() {
-        return resultMultiple;
-    }
+	/**
+	 * Gets the value of the resultMultiple property.
+	 * 
+	 * @return possible object is {@link ResultMultiple }
+	 * 
+	 */
+	public ResultMultiple getResultMultiple() {
+		return resultMultiple;
+	}
 
-    /**
-     * Sets the value of the resultMultiple property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultMultiple }
-     *     
-     */
-    public void setResultMultiple(ResultMultiple value) {
-        this.resultMultiple = value;
-    }
+	/**
+	 * Sets the value of the resultMultiple property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ResultMultiple }
+	 * 
+	 */
+	public void setResultMultiple(ResultMultiple value) {
+		this.resultMultiple = value;
+	}
 
-    /**
-     * Gets the value of the result property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getResult() {
-        if (result == null) {
-            return "None";
-        } else {
-            return result;
-        }
-    }
+	/**
+	 * Gets the value of the result property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResult() {
+		if (result == null) {
+			return "None";
+		} else {
+			return result;
+		}
+	}
 
-    /**
-     * Sets the value of the result property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setResult(String value) {
-        this.result = value;
-    }
+	/**
+	 * Sets the value of the result property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setResult(String value) {
+		this.result = value;
+	}
 
-    /**
-     * Gets the value of the implementation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getImplementation() {
-        if (implementation == null) {
-            return "WebService";
-        } else {
-            return implementation;
-        }
-    }
+	/**
+	 * Gets the value of the implementation property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getImplementation() {
+		if (implementation == null) {
+			return "WebService";
+		} else {
+			return implementation;
+		}
+	}
 
-    /**
-     * Sets the value of the implementation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setImplementation(String value) {
-        this.implementation = value;
-    }
+	/**
+	 * Sets the value of the implementation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setImplementation(String value) {
+		this.implementation = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

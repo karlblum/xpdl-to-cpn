@@ -5,7 +5,6 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-
 package ee.ut.old.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Resource complex type.
+ * <p>
+ * Java class for Resource complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Resource">
@@ -34,36 +35,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Resource", propOrder = {
-    "todo"
-})
+@XmlType(name = "Resource", propOrder = { "todo" })
 public class Resource {
 
-    @XmlElement(name = "TODO", required = true)
-    protected String todo;
+	@XmlElement(name = "TODO", required = true)
+	protected String todo;
 
-    /**
-     * Gets the value of the todo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTODO() {
-        return todo;
-    }
+	/**
+	 * Gets the value of the todo property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTODO() {
+		return todo;
+	}
 
-    /**
-     * Sets the value of the todo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTODO(String value) {
-        this.todo = value;
-    }
+	/**
+	 * Sets the value of the todo property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTODO(String value) {
+		this.todo = value;
+	}
 
 }

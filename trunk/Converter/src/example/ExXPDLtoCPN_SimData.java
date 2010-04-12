@@ -42,15 +42,16 @@ public class ExXPDLtoCPN_SimData {
 		JAXBContext jc = JAXBContext.newInstance("ee.ut.model.xpdl2");
 		Unmarshaller u = jc.createUnmarshaller();
 		JAXBElement rootElement = (JAXBElement) u.unmarshal(xpdlFileIn);
-		
-		File simFileIn = new File("C:/Karl/Thesis/Source/Converter/files/models/simulationData.xml");
+
+		File simFileIn = new File(
+				"C:/Karl/Thesis/Source/Converter/files/models/simulationData.xml");
 
 		JAXBContext jc2 = JAXBContext.newInstance("ee.ut.model.sim");
 		Unmarshaller u2 = jc2.createUnmarshaller();
 		JAXBElement rootElementSim = (JAXBElement) u2.unmarshal(simFileIn);
-		Tasks t = (Tasks)rootElementSim.getValue();
+		Tasks t = (Tasks) rootElementSim.getValue();
 		System.out.println(t.toString());
-		
+
 		PackageType root = (PackageType) rootElement.getValue();
 		ProcessType proc = root.getWorkflowProcesses().getWorkflowProcess()
 				.get(0);

@@ -5,7 +5,6 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-
 package ee.ut.old.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Resources complex type.
+ * <p>
+ * Java class for Resources complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Resources">
@@ -34,36 +35,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Resources", propOrder = {
-    "resource"
-})
+@XmlType(name = "Resources", propOrder = { "resource" })
 public class Resources {
 
-    @XmlElement(name = "Resource", required = true)
-    protected Resource resource;
+	@XmlElement(name = "Resource", required = true)
+	protected Resource resource;
 
-    /**
-     * Gets the value of the resource property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Resource }
-     *     
-     */
-    public Resource getResource() {
-        return resource;
-    }
+	/**
+	 * Gets the value of the resource property.
+	 * 
+	 * @return possible object is {@link Resource }
+	 * 
+	 */
+	public Resource getResource() {
+		return resource;
+	}
 
-    /**
-     * Sets the value of the resource property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Resource }
-     *     
-     */
-    public void setResource(Resource value) {
-        this.resource = value;
-    }
+	/**
+	 * Sets the value of the resource property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Resource }
+	 * 
+	 */
+	public void setResource(Resource value) {
+		this.resource = value;
+	}
 
 }

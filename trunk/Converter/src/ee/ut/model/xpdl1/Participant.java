@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -44,172 +45,150 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "participantType",
-    "description",
-    "externalReference",
-    "extendedAttributes"
-})
+@XmlType(name = "", propOrder = { "participantType", "description",
+		"externalReference", "extendedAttributes" })
 @XmlRootElement(name = "Participant")
 public class Participant {
 
-    @XmlElement(name = "ParticipantType", required = true)
-    protected ParticipantType participantType;
-    @XmlElement(name = "Description")
-    protected String description;
-    @XmlElement(name = "ExternalReference")
-    protected ExternalReference externalReference;
-    @XmlElement(name = "ExtendedAttributes")
-    protected ExtendedAttributes extendedAttributes;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
+	@XmlElement(name = "ParticipantType", required = true)
+	protected ParticipantType participantType;
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "ExternalReference")
+	protected ExternalReference externalReference;
+	@XmlElement(name = "ExtendedAttributes")
+	protected ExtendedAttributes extendedAttributes;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
 
-    /**
-     * Gets the value of the participantType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ParticipantType }
-     *     
-     */
-    public ParticipantType getParticipantType() {
-        return participantType;
-    }
+	/**
+	 * Gets the value of the participantType property.
+	 * 
+	 * @return possible object is {@link ParticipantType }
+	 * 
+	 */
+	public ParticipantType getParticipantType() {
+		return participantType;
+	}
 
-    /**
-     * Sets the value of the participantType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ParticipantType }
-     *     
-     */
-    public void setParticipantType(ParticipantType value) {
-        this.participantType = value;
-    }
+	/**
+	 * Sets the value of the participantType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ParticipantType }
+	 * 
+	 */
+	public void setParticipantType(ParticipantType value) {
+		this.participantType = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the externalReference property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalReference }
-     *     
-     */
-    public ExternalReference getExternalReference() {
-        return externalReference;
-    }
+	/**
+	 * Gets the value of the externalReference property.
+	 * 
+	 * @return possible object is {@link ExternalReference }
+	 * 
+	 */
+	public ExternalReference getExternalReference() {
+		return externalReference;
+	}
 
-    /**
-     * Sets the value of the externalReference property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalReference }
-     *     
-     */
-    public void setExternalReference(ExternalReference value) {
-        this.externalReference = value;
-    }
+	/**
+	 * Sets the value of the externalReference property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExternalReference }
+	 * 
+	 */
+	public void setExternalReference(ExternalReference value) {
+		this.externalReference = value;
+	}
 
-    /**
-     * Gets the value of the extendedAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public ExtendedAttributes getExtendedAttributes() {
-        return extendedAttributes;
-    }
+	/**
+	 * Gets the value of the extendedAttributes property.
+	 * 
+	 * @return possible object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public ExtendedAttributes getExtendedAttributes() {
+		return extendedAttributes;
+	}
 
-    /**
-     * Sets the value of the extendedAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public void setExtendedAttributes(ExtendedAttributes value) {
-        this.extendedAttributes = value;
-    }
+	/**
+	 * Sets the value of the extendedAttributes property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public void setExtendedAttributes(ExtendedAttributes value) {
+		this.extendedAttributes = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }

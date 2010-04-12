@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -51,361 +52,313 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "packageHeader",
-    "redefinableHeader",
-    "conformanceClass",
-    "script",
-    "externalPackages",
-    "typeDeclarations",
-    "participants",
-    "applications",
-    "dataFields",
-    "workflowProcesses",
-    "extendedAttributes"
-})
+@XmlType(name = "", propOrder = { "packageHeader", "redefinableHeader",
+		"conformanceClass", "script", "externalPackages", "typeDeclarations",
+		"participants", "applications", "dataFields", "workflowProcesses",
+		"extendedAttributes" })
 @XmlRootElement(name = "Package")
 public class Package {
 
-    @XmlElement(name = "PackageHeader", required = true)
-    protected PackageHeader packageHeader;
-    @XmlElement(name = "RedefinableHeader")
-    protected RedefinableHeader redefinableHeader;
-    @XmlElement(name = "ConformanceClass")
-    protected ConformanceClass conformanceClass;
-    @XmlElement(name = "Script")
-    protected Script script;
-    @XmlElement(name = "ExternalPackages")
-    protected ExternalPackages externalPackages;
-    @XmlElement(name = "TypeDeclarations")
-    protected TypeDeclarations typeDeclarations;
-    @XmlElement(name = "Participants")
-    protected Participants participants;
-    @XmlElement(name = "Applications")
-    protected Applications applications;
-    @XmlElement(name = "DataFields")
-    protected DataFields dataFields;
-    @XmlElement(name = "WorkflowProcesses")
-    protected WorkflowProcesses workflowProcesses;
-    @XmlElement(name = "ExtendedAttributes")
-    protected ExtendedAttributes extendedAttributes;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
+	@XmlElement(name = "PackageHeader", required = true)
+	protected PackageHeader packageHeader;
+	@XmlElement(name = "RedefinableHeader")
+	protected RedefinableHeader redefinableHeader;
+	@XmlElement(name = "ConformanceClass")
+	protected ConformanceClass conformanceClass;
+	@XmlElement(name = "Script")
+	protected Script script;
+	@XmlElement(name = "ExternalPackages")
+	protected ExternalPackages externalPackages;
+	@XmlElement(name = "TypeDeclarations")
+	protected TypeDeclarations typeDeclarations;
+	@XmlElement(name = "Participants")
+	protected Participants participants;
+	@XmlElement(name = "Applications")
+	protected Applications applications;
+	@XmlElement(name = "DataFields")
+	protected DataFields dataFields;
+	@XmlElement(name = "WorkflowProcesses")
+	protected WorkflowProcesses workflowProcesses;
+	@XmlElement(name = "ExtendedAttributes")
+	protected ExtendedAttributes extendedAttributes;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
 
-    /**
-     * Gets the value of the packageHeader property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PackageHeader }
-     *     
-     */
-    public PackageHeader getPackageHeader() {
-        return packageHeader;
-    }
+	/**
+	 * Gets the value of the packageHeader property.
+	 * 
+	 * @return possible object is {@link PackageHeader }
+	 * 
+	 */
+	public PackageHeader getPackageHeader() {
+		return packageHeader;
+	}
 
-    /**
-     * Sets the value of the packageHeader property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PackageHeader }
-     *     
-     */
-    public void setPackageHeader(PackageHeader value) {
-        this.packageHeader = value;
-    }
+	/**
+	 * Sets the value of the packageHeader property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link PackageHeader }
+	 * 
+	 */
+	public void setPackageHeader(PackageHeader value) {
+		this.packageHeader = value;
+	}
 
-    /**
-     * Gets the value of the redefinableHeader property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RedefinableHeader }
-     *     
-     */
-    public RedefinableHeader getRedefinableHeader() {
-        return redefinableHeader;
-    }
+	/**
+	 * Gets the value of the redefinableHeader property.
+	 * 
+	 * @return possible object is {@link RedefinableHeader }
+	 * 
+	 */
+	public RedefinableHeader getRedefinableHeader() {
+		return redefinableHeader;
+	}
 
-    /**
-     * Sets the value of the redefinableHeader property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RedefinableHeader }
-     *     
-     */
-    public void setRedefinableHeader(RedefinableHeader value) {
-        this.redefinableHeader = value;
-    }
+	/**
+	 * Sets the value of the redefinableHeader property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link RedefinableHeader }
+	 * 
+	 */
+	public void setRedefinableHeader(RedefinableHeader value) {
+		this.redefinableHeader = value;
+	}
 
-    /**
-     * Gets the value of the conformanceClass property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ConformanceClass }
-     *     
-     */
-    public ConformanceClass getConformanceClass() {
-        return conformanceClass;
-    }
+	/**
+	 * Gets the value of the conformanceClass property.
+	 * 
+	 * @return possible object is {@link ConformanceClass }
+	 * 
+	 */
+	public ConformanceClass getConformanceClass() {
+		return conformanceClass;
+	}
 
-    /**
-     * Sets the value of the conformanceClass property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ConformanceClass }
-     *     
-     */
-    public void setConformanceClass(ConformanceClass value) {
-        this.conformanceClass = value;
-    }
+	/**
+	 * Sets the value of the conformanceClass property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ConformanceClass }
+	 * 
+	 */
+	public void setConformanceClass(ConformanceClass value) {
+		this.conformanceClass = value;
+	}
 
-    /**
-     * Gets the value of the script property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Script }
-     *     
-     */
-    public Script getScript() {
-        return script;
-    }
+	/**
+	 * Gets the value of the script property.
+	 * 
+	 * @return possible object is {@link Script }
+	 * 
+	 */
+	public Script getScript() {
+		return script;
+	}
 
-    /**
-     * Sets the value of the script property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Script }
-     *     
-     */
-    public void setScript(Script value) {
-        this.script = value;
-    }
+	/**
+	 * Sets the value of the script property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Script }
+	 * 
+	 */
+	public void setScript(Script value) {
+		this.script = value;
+	}
 
-    /**
-     * Gets the value of the externalPackages property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalPackages }
-     *     
-     */
-    public ExternalPackages getExternalPackages() {
-        return externalPackages;
-    }
+	/**
+	 * Gets the value of the externalPackages property.
+	 * 
+	 * @return possible object is {@link ExternalPackages }
+	 * 
+	 */
+	public ExternalPackages getExternalPackages() {
+		return externalPackages;
+	}
 
-    /**
-     * Sets the value of the externalPackages property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalPackages }
-     *     
-     */
-    public void setExternalPackages(ExternalPackages value) {
-        this.externalPackages = value;
-    }
+	/**
+	 * Sets the value of the externalPackages property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExternalPackages }
+	 * 
+	 */
+	public void setExternalPackages(ExternalPackages value) {
+		this.externalPackages = value;
+	}
 
-    /**
-     * Gets the value of the typeDeclarations property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeDeclarations }
-     *     
-     */
-    public TypeDeclarations getTypeDeclarations() {
-        return typeDeclarations;
-    }
+	/**
+	 * Gets the value of the typeDeclarations property.
+	 * 
+	 * @return possible object is {@link TypeDeclarations }
+	 * 
+	 */
+	public TypeDeclarations getTypeDeclarations() {
+		return typeDeclarations;
+	}
 
-    /**
-     * Sets the value of the typeDeclarations property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeDeclarations }
-     *     
-     */
-    public void setTypeDeclarations(TypeDeclarations value) {
-        this.typeDeclarations = value;
-    }
+	/**
+	 * Sets the value of the typeDeclarations property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TypeDeclarations }
+	 * 
+	 */
+	public void setTypeDeclarations(TypeDeclarations value) {
+		this.typeDeclarations = value;
+	}
 
-    /**
-     * Gets the value of the participants property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Participants }
-     *     
-     */
-    public Participants getParticipants() {
-        return participants;
-    }
+	/**
+	 * Gets the value of the participants property.
+	 * 
+	 * @return possible object is {@link Participants }
+	 * 
+	 */
+	public Participants getParticipants() {
+		return participants;
+	}
 
-    /**
-     * Sets the value of the participants property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Participants }
-     *     
-     */
-    public void setParticipants(Participants value) {
-        this.participants = value;
-    }
+	/**
+	 * Sets the value of the participants property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Participants }
+	 * 
+	 */
+	public void setParticipants(Participants value) {
+		this.participants = value;
+	}
 
-    /**
-     * Gets the value of the applications property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Applications }
-     *     
-     */
-    public Applications getApplications() {
-        return applications;
-    }
+	/**
+	 * Gets the value of the applications property.
+	 * 
+	 * @return possible object is {@link Applications }
+	 * 
+	 */
+	public Applications getApplications() {
+		return applications;
+	}
 
-    /**
-     * Sets the value of the applications property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Applications }
-     *     
-     */
-    public void setApplications(Applications value) {
-        this.applications = value;
-    }
+	/**
+	 * Sets the value of the applications property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Applications }
+	 * 
+	 */
+	public void setApplications(Applications value) {
+		this.applications = value;
+	}
 
-    /**
-     * Gets the value of the dataFields property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataFields }
-     *     
-     */
-    public DataFields getDataFields() {
-        return dataFields;
-    }
+	/**
+	 * Gets the value of the dataFields property.
+	 * 
+	 * @return possible object is {@link DataFields }
+	 * 
+	 */
+	public DataFields getDataFields() {
+		return dataFields;
+	}
 
-    /**
-     * Sets the value of the dataFields property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataFields }
-     *     
-     */
-    public void setDataFields(DataFields value) {
-        this.dataFields = value;
-    }
+	/**
+	 * Sets the value of the dataFields property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link DataFields }
+	 * 
+	 */
+	public void setDataFields(DataFields value) {
+		this.dataFields = value;
+	}
 
-    /**
-     * Gets the value of the workflowProcesses property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link WorkflowProcesses }
-     *     
-     */
-    public WorkflowProcesses getWorkflowProcesses() {
-        return workflowProcesses;
-    }
+	/**
+	 * Gets the value of the workflowProcesses property.
+	 * 
+	 * @return possible object is {@link WorkflowProcesses }
+	 * 
+	 */
+	public WorkflowProcesses getWorkflowProcesses() {
+		return workflowProcesses;
+	}
 
-    /**
-     * Sets the value of the workflowProcesses property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link WorkflowProcesses }
-     *     
-     */
-    public void setWorkflowProcesses(WorkflowProcesses value) {
-        this.workflowProcesses = value;
-    }
+	/**
+	 * Sets the value of the workflowProcesses property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link WorkflowProcesses }
+	 * 
+	 */
+	public void setWorkflowProcesses(WorkflowProcesses value) {
+		this.workflowProcesses = value;
+	}
 
-    /**
-     * Gets the value of the extendedAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public ExtendedAttributes getExtendedAttributes() {
-        return extendedAttributes;
-    }
+	/**
+	 * Gets the value of the extendedAttributes property.
+	 * 
+	 * @return possible object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public ExtendedAttributes getExtendedAttributes() {
+		return extendedAttributes;
+	}
 
-    /**
-     * Sets the value of the extendedAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public void setExtendedAttributes(ExtendedAttributes value) {
-        this.extendedAttributes = value;
-    }
+	/**
+	 * Sets the value of the extendedAttributes property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public void setExtendedAttributes(ExtendedAttributes value) {
+		this.extendedAttributes = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }

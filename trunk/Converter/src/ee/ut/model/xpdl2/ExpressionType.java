@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -23,11 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for ExpressionType complex type.
+ * <p>
+ * Java class for ExpressionType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="ExpressionType">
@@ -47,143 +48,131 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExpressionType", propOrder = {
-    "content"
-})
+@XmlType(name = "ExpressionType", propOrder = { "content" })
 public class ExpressionType {
 
-    @XmlMixed
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> content;
-    @XmlAttribute(name = "ScriptType")
-    protected String scriptType;
-    @XmlAttribute(name = "ScriptVersion")
-    protected String scriptVersion;
-    @XmlAttribute(name = "ScriptGrammar")
-    @XmlSchemaType(name = "anyURI")
-    protected String scriptGrammar;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlMixed
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> content;
+	@XmlAttribute(name = "ScriptType")
+	protected String scriptType;
+	@XmlAttribute(name = "ScriptVersion")
+	protected String scriptVersion;
+	@XmlAttribute(name = "ScriptGrammar")
+	@XmlSchemaType(name = "anyURI")
+	protected String scriptGrammar;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * {@link String }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<java.lang.Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object } {@link String }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<java.lang.Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the scriptType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getScriptType() {
-        return scriptType;
-    }
+	/**
+	 * Gets the value of the scriptType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getScriptType() {
+		return scriptType;
+	}
 
-    /**
-     * Sets the value of the scriptType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setScriptType(String value) {
-        this.scriptType = value;
-    }
+	/**
+	 * Sets the value of the scriptType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setScriptType(String value) {
+		this.scriptType = value;
+	}
 
-    /**
-     * Gets the value of the scriptVersion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getScriptVersion() {
-        return scriptVersion;
-    }
+	/**
+	 * Gets the value of the scriptVersion property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getScriptVersion() {
+		return scriptVersion;
+	}
 
-    /**
-     * Sets the value of the scriptVersion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setScriptVersion(String value) {
-        this.scriptVersion = value;
-    }
+	/**
+	 * Sets the value of the scriptVersion property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setScriptVersion(String value) {
+		this.scriptVersion = value;
+	}
 
-    /**
-     * Gets the value of the scriptGrammar property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getScriptGrammar() {
-        return scriptGrammar;
-    }
+	/**
+	 * Gets the value of the scriptGrammar property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getScriptGrammar() {
+		return scriptGrammar;
+	}
 
-    /**
-     * Sets the value of the scriptGrammar property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setScriptGrammar(String value) {
-        this.scriptGrammar = value;
-    }
+	/**
+	 * Sets the value of the scriptGrammar property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setScriptGrammar(String value) {
+		this.scriptGrammar = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

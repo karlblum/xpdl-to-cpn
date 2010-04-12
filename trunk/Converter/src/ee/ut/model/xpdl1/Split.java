@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -46,64 +47,56 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "transitionRefs"
-})
+@XmlType(name = "", propOrder = { "transitionRefs" })
 @XmlRootElement(name = "Split")
 public class Split {
 
-    @XmlElement(name = "TransitionRefs")
-    protected TransitionRefs transitionRefs;
-    @XmlAttribute(name = "Type")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String type;
+	@XmlElement(name = "TransitionRefs")
+	protected TransitionRefs transitionRefs;
+	@XmlAttribute(name = "Type")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String type;
 
-    /**
-     * Gets the value of the transitionRefs property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TransitionRefs }
-     *     
-     */
-    public TransitionRefs getTransitionRefs() {
-        return transitionRefs;
-    }
+	/**
+	 * Gets the value of the transitionRefs property.
+	 * 
+	 * @return possible object is {@link TransitionRefs }
+	 * 
+	 */
+	public TransitionRefs getTransitionRefs() {
+		return transitionRefs;
+	}
 
-    /**
-     * Sets the value of the transitionRefs property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TransitionRefs }
-     *     
-     */
-    public void setTransitionRefs(TransitionRefs value) {
-        this.transitionRefs = value;
-    }
+	/**
+	 * Sets the value of the transitionRefs property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TransitionRefs }
+	 * 
+	 */
+	public void setTransitionRefs(TransitionRefs value) {
+		this.transitionRefs = value;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
 }

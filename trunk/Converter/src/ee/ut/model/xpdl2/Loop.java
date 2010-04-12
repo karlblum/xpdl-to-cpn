@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.HashMap;
@@ -21,11 +20,13 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -51,111 +52,99 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "loopStandard",
-    "loopMultiInstance"
-})
+@XmlType(name = "", propOrder = { "loopStandard", "loopMultiInstance" })
 @XmlRootElement(name = "Loop")
 public class Loop {
 
-    @XmlElement(name = "LoopStandard")
-    protected LoopStandard loopStandard;
-    @XmlElement(name = "LoopMultiInstance")
-    protected LoopMultiInstance loopMultiInstance;
-    @XmlAttribute(name = "LoopType", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String loopType;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "LoopStandard")
+	protected LoopStandard loopStandard;
+	@XmlElement(name = "LoopMultiInstance")
+	protected LoopMultiInstance loopMultiInstance;
+	@XmlAttribute(name = "LoopType", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String loopType;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the loopStandard property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LoopStandard }
-     *     
-     */
-    public LoopStandard getLoopStandard() {
-        return loopStandard;
-    }
+	/**
+	 * Gets the value of the loopStandard property.
+	 * 
+	 * @return possible object is {@link LoopStandard }
+	 * 
+	 */
+	public LoopStandard getLoopStandard() {
+		return loopStandard;
+	}
 
-    /**
-     * Sets the value of the loopStandard property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LoopStandard }
-     *     
-     */
-    public void setLoopStandard(LoopStandard value) {
-        this.loopStandard = value;
-    }
+	/**
+	 * Sets the value of the loopStandard property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link LoopStandard }
+	 * 
+	 */
+	public void setLoopStandard(LoopStandard value) {
+		this.loopStandard = value;
+	}
 
-    /**
-     * Gets the value of the loopMultiInstance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LoopMultiInstance }
-     *     
-     */
-    public LoopMultiInstance getLoopMultiInstance() {
-        return loopMultiInstance;
-    }
+	/**
+	 * Gets the value of the loopMultiInstance property.
+	 * 
+	 * @return possible object is {@link LoopMultiInstance }
+	 * 
+	 */
+	public LoopMultiInstance getLoopMultiInstance() {
+		return loopMultiInstance;
+	}
 
-    /**
-     * Sets the value of the loopMultiInstance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LoopMultiInstance }
-     *     
-     */
-    public void setLoopMultiInstance(LoopMultiInstance value) {
-        this.loopMultiInstance = value;
-    }
+	/**
+	 * Sets the value of the loopMultiInstance property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link LoopMultiInstance }
+	 * 
+	 */
+	public void setLoopMultiInstance(LoopMultiInstance value) {
+		this.loopMultiInstance = value;
+	}
 
-    /**
-     * Gets the value of the loopType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLoopType() {
-        return loopType;
-    }
+	/**
+	 * Gets the value of the loopType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLoopType() {
+		return loopType;
+	}
 
-    /**
-     * Sets the value of the loopType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLoopType(String value) {
-        this.loopType = value;
-    }
+	/**
+	 * Sets the value of the loopType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setLoopType(String value) {
+		this.loopType = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

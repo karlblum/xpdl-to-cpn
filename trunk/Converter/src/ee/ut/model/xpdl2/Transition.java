@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -25,11 +24,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -57,362 +58,323 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "condition",
-    "description",
-    "extendedAttributes",
-    "assignments",
-    "object",
-    "connectorGraphicsInfos",
-    "any"
-})
+@XmlType(name = "", propOrder = { "condition", "description",
+		"extendedAttributes", "assignments", "object",
+		"connectorGraphicsInfos", "any" })
 @XmlRootElement(name = "Transition")
 public class Transition {
 
-    @XmlElement(name = "Condition")
-    protected Condition condition;
-    @XmlElement(name = "Description")
-    protected Description description;
-    @XmlElement(name = "ExtendedAttributes")
-    protected ExtendedAttributes extendedAttributes;
-    @XmlElement(name = "Assignments")
-    protected Assignments assignments;
-    @XmlElement(name = "Object")
-    protected ee.ut.model.xpdl2.Object object;
-    @XmlElement(name = "ConnectorGraphicsInfos")
-    protected ConnectorGraphicsInfos connectorGraphicsInfos;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String id;
-    @XmlAttribute(name = "From", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String from;
-    @XmlAttribute(name = "To", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String to;
-    @XmlAttribute(name = "Name")
-    protected String name;
-    @XmlAttribute(name = "Quantity")
-    protected Integer quantity;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Condition")
+	protected Condition condition;
+	@XmlElement(name = "Description")
+	protected Description description;
+	@XmlElement(name = "ExtendedAttributes")
+	protected ExtendedAttributes extendedAttributes;
+	@XmlElement(name = "Assignments")
+	protected Assignments assignments;
+	@XmlElement(name = "Object")
+	protected ee.ut.model.xpdl2.Object object;
+	@XmlElement(name = "ConnectorGraphicsInfos")
+	protected ConnectorGraphicsInfos connectorGraphicsInfos;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String id;
+	@XmlAttribute(name = "From", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String from;
+	@XmlAttribute(name = "To", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String to;
+	@XmlAttribute(name = "Name")
+	protected String name;
+	@XmlAttribute(name = "Quantity")
+	protected Integer quantity;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the condition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Condition }
-     *     
-     */
-    public Condition getCondition() {
-        return condition;
-    }
+	/**
+	 * Gets the value of the condition property.
+	 * 
+	 * @return possible object is {@link Condition }
+	 * 
+	 */
+	public Condition getCondition() {
+		return condition;
+	}
 
-    /**
-     * Sets the value of the condition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Condition }
-     *     
-     */
-    public void setCondition(Condition value) {
-        this.condition = value;
-    }
+	/**
+	 * Sets the value of the condition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Condition }
+	 * 
+	 */
+	public void setCondition(Condition value) {
+		this.condition = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Description }
-     *     
-     */
-    public Description getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link Description }
+	 * 
+	 */
+	public Description getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Description }
-     *     
-     */
-    public void setDescription(Description value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Description }
+	 * 
+	 */
+	public void setDescription(Description value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the extendedAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public ExtendedAttributes getExtendedAttributes() {
-        return extendedAttributes;
-    }
+	/**
+	 * Gets the value of the extendedAttributes property.
+	 * 
+	 * @return possible object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public ExtendedAttributes getExtendedAttributes() {
+		return extendedAttributes;
+	}
 
-    /**
-     * Sets the value of the extendedAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public void setExtendedAttributes(ExtendedAttributes value) {
-        this.extendedAttributes = value;
-    }
+	/**
+	 * Sets the value of the extendedAttributes property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public void setExtendedAttributes(ExtendedAttributes value) {
+		this.extendedAttributes = value;
+	}
 
-    /**
-     * Gets the value of the assignments property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Assignments }
-     *     
-     */
-    public Assignments getAssignments() {
-        return assignments;
-    }
+	/**
+	 * Gets the value of the assignments property.
+	 * 
+	 * @return possible object is {@link Assignments }
+	 * 
+	 */
+	public Assignments getAssignments() {
+		return assignments;
+	}
 
-    /**
-     * Sets the value of the assignments property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Assignments }
-     *     
-     */
-    public void setAssignments(Assignments value) {
-        this.assignments = value;
-    }
+	/**
+	 * Sets the value of the assignments property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Assignments }
+	 * 
+	 */
+	public void setAssignments(Assignments value) {
+		this.assignments = value;
+	}
 
-    /**
-     * Gets the value of the object property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ee.ut.model.xpdl2.Object }
-     *     
-     */
-    public ee.ut.model.xpdl2.Object getObject() {
-        return object;
-    }
+	/**
+	 * Gets the value of the object property.
+	 * 
+	 * @return possible object is {@link ee.ut.model.xpdl2.Object }
+	 * 
+	 */
+	public ee.ut.model.xpdl2.Object getObject() {
+		return object;
+	}
 
-    /**
-     * Sets the value of the object property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ee.ut.model.xpdl2.Object }
-     *     
-     */
-    public void setObject(ee.ut.model.xpdl2.Object value) {
-        this.object = value;
-    }
+	/**
+	 * Sets the value of the object property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ee.ut.model.xpdl2.Object }
+	 * 
+	 */
+	public void setObject(ee.ut.model.xpdl2.Object value) {
+		this.object = value;
+	}
 
-    /**
-     * Gets the value of the connectorGraphicsInfos property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ConnectorGraphicsInfos }
-     *     
-     */
-    public ConnectorGraphicsInfos getConnectorGraphicsInfos() {
-        return connectorGraphicsInfos;
-    }
+	/**
+	 * Gets the value of the connectorGraphicsInfos property.
+	 * 
+	 * @return possible object is {@link ConnectorGraphicsInfos }
+	 * 
+	 */
+	public ConnectorGraphicsInfos getConnectorGraphicsInfos() {
+		return connectorGraphicsInfos;
+	}
 
-    /**
-     * Sets the value of the connectorGraphicsInfos property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ConnectorGraphicsInfos }
-     *     
-     */
-    public void setConnectorGraphicsInfos(ConnectorGraphicsInfos value) {
-        this.connectorGraphicsInfos = value;
-    }
+	/**
+	 * Sets the value of the connectorGraphicsInfos property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ConnectorGraphicsInfos }
+	 * 
+	 */
+	public void setConnectorGraphicsInfos(ConnectorGraphicsInfos value) {
+		this.connectorGraphicsInfos = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the from property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFrom() {
-        return from;
-    }
+	/**
+	 * Gets the value of the from property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFrom() {
+		return from;
+	}
 
-    /**
-     * Sets the value of the from property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFrom(String value) {
-        this.from = value;
-    }
+	/**
+	 * Sets the value of the from property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFrom(String value) {
+		this.from = value;
+	}
 
-    /**
-     * Gets the value of the to property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTo() {
-        return to;
-    }
+	/**
+	 * Gets the value of the to property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTo() {
+		return to;
+	}
 
-    /**
-     * Sets the value of the to property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTo(String value) {
-        this.to = value;
-    }
+	/**
+	 * Sets the value of the to property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTo(String value) {
+		this.to = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the quantity property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public int getQuantity() {
-        if (quantity == null) {
-            return  1;
-        } else {
-            return quantity;
-        }
-    }
+	/**
+	 * Gets the value of the quantity property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public int getQuantity() {
+		if (quantity == null) {
+			return 1;
+		} else {
+			return quantity;
+		}
+	}
 
-    /**
-     * Sets the value of the quantity property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setQuantity(Integer value) {
-        this.quantity = value;
-    }
+	/**
+	 * Sets the value of the quantity property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Integer }
+	 * 
+	 */
+	public void setQuantity(Integer value) {
+		this.quantity = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

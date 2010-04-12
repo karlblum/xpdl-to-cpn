@@ -5,8 +5,9 @@ import noNamespace.Page;
 import noNamespace.Place;
 
 public class BPMNeEBXORGateway extends BPMNeXORGateway implements BPMNeGateway {
-	
-	public BPMNeEBXORGateway(Page page, String name, GWType type, XmlObject color, XmlObject variable) {
+
+	public BPMNeEBXORGateway(Page page, String name, GWType type,
+			XmlObject color, XmlObject variable) {
 		super(page, name, type, color, variable);
 	}
 

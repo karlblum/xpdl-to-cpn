@@ -15,14 +15,15 @@ public class BPMNeANDGateway implements BPMNeGateway {
 	private XmlObject color;
 	private XmlObject variable;
 	private Trans transition;
-	
-	public BPMNeANDGateway(Page page, String name, GWType type, XmlObject color, XmlObject variable) {
+
+	public BPMNeANDGateway(Page page, String name, GWType type,
+			XmlObject color, XmlObject variable) {
 		this.page = page;
 		this.name = name;
 		this.type = type;
 		this.color = color;
 		this.variable = variable;
-		
+
 		transition = BPMNeUtil.createTrans(page, name);
 	}
 
@@ -32,7 +33,8 @@ public class BPMNeANDGateway implements BPMNeGateway {
 		Port inPort = place.addNewPort();
 		inPort.setType("In");
 
-		BPMNeUtil.createArc(page, place, transition, (XmlString)variable.copy());
+		BPMNeUtil.createArc(page, place, transition, (XmlString) variable
+				.copy());
 		return place;
 	}
 
@@ -41,7 +43,8 @@ public class BPMNeANDGateway implements BPMNeGateway {
 		place.getTypeArray(0).getText().set(color.copy());
 		Port inPort = place.addNewPort();
 		inPort.setType("Out");
-		BPMNeUtil.createArc(page, transition, place, (XmlString)variable.copy());
+		BPMNeUtil.createArc(page, transition, place, (XmlString) variable
+				.copy());
 
 		return place;
 	}

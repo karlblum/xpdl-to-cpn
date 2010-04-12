@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -36,64 +37,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "join",
-    "split"
-})
+@XmlType(name = "", propOrder = { "join", "split" })
 @XmlRootElement(name = "TransitionRestriction")
 public class TransitionRestriction {
 
-    @XmlElement(name = "Join")
-    protected Join join;
-    @XmlElement(name = "Split")
-    protected Split split;
+	@XmlElement(name = "Join")
+	protected Join join;
+	@XmlElement(name = "Split")
+	protected Split split;
 
-    /**
-     * Gets the value of the join property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Join }
-     *     
-     */
-    public Join getJoin() {
-        return join;
-    }
+	/**
+	 * Gets the value of the join property.
+	 * 
+	 * @return possible object is {@link Join }
+	 * 
+	 */
+	public Join getJoin() {
+		return join;
+	}
 
-    /**
-     * Sets the value of the join property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Join }
-     *     
-     */
-    public void setJoin(Join value) {
-        this.join = value;
-    }
+	/**
+	 * Sets the value of the join property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Join }
+	 * 
+	 */
+	public void setJoin(Join value) {
+		this.join = value;
+	}
 
-    /**
-     * Gets the value of the split property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Split }
-     *     
-     */
-    public Split getSplit() {
-        return split;
-    }
+	/**
+	 * Gets the value of the split property.
+	 * 
+	 * @return possible object is {@link Split }
+	 * 
+	 */
+	public Split getSplit() {
+		return split;
+	}
 
-    /**
-     * Sets the value of the split property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Split }
-     *     
-     */
-    public void setSplit(Split value) {
-        this.split = value;
-    }
+	/**
+	 * Sets the value of the split property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Split }
+	 * 
+	 */
+	public void setSplit(Split value) {
+		this.split = value;
+	}
 
 }

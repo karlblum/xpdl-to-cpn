@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
+import ee.ut.converter.parser.ParserHelper;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.Route;
 
 /**
- * @author 
+ * @author
  */
 public class BPMNGateway extends BPMNElement {
 
@@ -18,10 +19,10 @@ public class BPMNGateway extends BPMNElement {
 	private String gatewayPlaceId;
 	private GatewayType gwType;
 
-	public BPMNGateway(CPNProcess cPNProcess, Object obj) {
+	public BPMNGateway(CPNProcess cPNProcess, Object obj, ParserHelper parserHelper) {
 		super(cPNProcess);
 
-		//TODO: get rid of xpdl dependencies
+		// TODO: get rid of xpdl dependencies
 		Activity xpdlActivity = ((Activity) obj);
 		setId(xpdlActivity.getId());
 
@@ -33,8 +34,8 @@ public class BPMNGateway extends BPMNElement {
 			// If we have Exclusive gateway, then we need one central CPN Place
 			// only
 			gwType = GatewayType.EXCLUSICE;
-			gatewayPlaceId = cPNProcess.getCpnet()
-					.addPlace(xpdlActivity.getName()).getId();
+			gatewayPlaceId = cPNProcess.getCpnet().addPlace(
+					xpdlActivity.getName()).getId();
 
 		} else if (type.equals("Inclusive")) {
 			// If we have Inclusive gateway, then we need one central CPN

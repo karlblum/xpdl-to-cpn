@@ -6,11 +6,12 @@ import javax.xml.bind.JAXBElement;
 
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.CPNet;
-import ee.ut.converter.XPDL2ParserHelper;
-import ee.ut.converter.factory.BPMNActivityFactory;
+import ee.ut.converter.factory.BPMNTaskFactory;
 import ee.ut.converter.factory.BPMNFactory;
 import ee.ut.converter.factory.BPMNGatewayFactory;
 import ee.ut.converter.factory.BPMNTransitionFactory;
+import ee.ut.converter.parser.ParserHelper;
+import ee.ut.converter.parser.XPDL2ParserHelper;
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.PackageType;
@@ -23,13 +24,15 @@ public class BPMNProcess extends CPNProcess {
 	public BPMNProcess() {
 
 		this.setCpnet(new CPNet());
+		ParserHelper parserHelper = new XPDL2ParserHelper();
+		BPMNFactory elementFactory = new BPMNFactory(this, parserHelper);
+		elementFactory.registerActivityFactory(new BPMNTaskFactory(this,
+				parserHelper));
+		elementFactory.registerTransitionFactory(new BPMNTransitionFactory(
+				this, parserHelper));
 
-		BPMNFactory elementFactory = new BPMNFactory(this);
-		elementFactory.registerActivityFactory(new BPMNActivityFactory(this));
-		elementFactory
-				.registerTransitionFactory(new BPMNTransitionFactory(this));
-
-		elementFactory.registerGatewayFactory(new BPMNGatewayFactory(this));
+		elementFactory.registerGatewayFactory(new BPMNGatewayFactory(this,
+				parserHelper));
 		elementFactory.registerPraserHelper(new XPDL2ParserHelper());
 
 		// Here we read in the XPDL file

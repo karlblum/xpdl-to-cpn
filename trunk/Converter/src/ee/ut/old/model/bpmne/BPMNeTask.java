@@ -44,21 +44,18 @@ public class BPMNeTask {
 
 		// adds logging functionality to the task
 		XmlString taskAction = XmlString.Factory
-				.newValue("input (c, r);\noutput (pt);\n" +
-						"action\n" +
-						"(let\n  " +
-						"val transParams = {\n" +
-						"pt={dtype=normal, specificValue=0, mean=1800, std=300},\n    " +
-						"pCost={dtype=specific, specificValue=0, mean=0,std=0},\n    " +
-						"sCost={dtype=specific, specificValue=0, mean=0,std=0},\n    " +
-						"revenue={dtype=specific, specificValue=0, mean=0,std=0},\n    " +
-						"pWaitTimeDur=0,\n    " +
-						"pWaitTimeCost=0,\n    " +
-						"transitionName=\"Check completeness\",\n    " +
-						"NoOfResources=1}\n" +
-						"in\n  " +
-						"transitionAction(c, r, transParams)\n" +
-						"end);");
+				.newValue("input (c, r);\noutput (pt);\n"
+						+ "action\n"
+						+ "(let\n  "
+						+ "val transParams = {\n"
+						+ "pt={dtype=normal, specificValue=0, mean=1800, std=300},\n    "
+						+ "pCost={dtype=specific, specificValue=0, mean=0,std=0},\n    "
+						+ "sCost={dtype=specific, specificValue=0, mean=0,std=0},\n    "
+						+ "revenue={dtype=specific, specificValue=0, mean=0,std=0},\n    "
+						+ "pWaitTimeDur=0,\n    " + "pWaitTimeCost=0,\n    "
+						+ "transitionName=\"Check completeness\",\n    "
+						+ "NoOfResources=1}\n" + "in\n  "
+						+ "transitionAction(c, r, transParams)\n" + "end);");
 		transition.getCodeArray()[0].getText().set(taskAction);
 
 		BPMNeUtil.createArc(page, entryPlace, transition, (XmlString) variable

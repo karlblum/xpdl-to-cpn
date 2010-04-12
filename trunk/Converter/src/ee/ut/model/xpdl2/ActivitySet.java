@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -25,11 +24,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -62,311 +63,279 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "activities",
-    "transitions",
-    "object",
-    "any"
-})
+@XmlType(name = "", propOrder = { "activities", "transitions", "object", "any" })
 @XmlRootElement(name = "ActivitySet")
 public class ActivitySet {
 
-    @XmlElement(name = "Activities")
-    protected Activities activities;
-    @XmlElement(name = "Transitions")
-    protected Transitions transitions;
-    @XmlElement(name = "Object")
-    protected ee.ut.model.xpdl2.Object object;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
-    @XmlAttribute(name = "AdHoc")
-    protected Boolean adHoc;
-    @XmlAttribute(name = "AdHocOrdering")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String adHocOrdering;
-    @XmlAttribute(name = "AdHocCompletionCondition")
-    protected String adHocCompletionCondition;
-    @XmlAttribute(name = "DefaultStartActivityId")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String defaultStartActivityId;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Activities")
+	protected Activities activities;
+	@XmlElement(name = "Transitions")
+	protected Transitions transitions;
+	@XmlElement(name = "Object")
+	protected ee.ut.model.xpdl2.Object object;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
+	@XmlAttribute(name = "AdHoc")
+	protected Boolean adHoc;
+	@XmlAttribute(name = "AdHocOrdering")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String adHocOrdering;
+	@XmlAttribute(name = "AdHocCompletionCondition")
+	protected String adHocCompletionCondition;
+	@XmlAttribute(name = "DefaultStartActivityId")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String defaultStartActivityId;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the activities property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Activities }
-     *     
-     */
-    public Activities getActivities() {
-        return activities;
-    }
+	/**
+	 * Gets the value of the activities property.
+	 * 
+	 * @return possible object is {@link Activities }
+	 * 
+	 */
+	public Activities getActivities() {
+		return activities;
+	}
 
-    /**
-     * Sets the value of the activities property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Activities }
-     *     
-     */
-    public void setActivities(Activities value) {
-        this.activities = value;
-    }
+	/**
+	 * Sets the value of the activities property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Activities }
+	 * 
+	 */
+	public void setActivities(Activities value) {
+		this.activities = value;
+	}
 
-    /**
-     * Gets the value of the transitions property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Transitions }
-     *     
-     */
-    public Transitions getTransitions() {
-        return transitions;
-    }
+	/**
+	 * Gets the value of the transitions property.
+	 * 
+	 * @return possible object is {@link Transitions }
+	 * 
+	 */
+	public Transitions getTransitions() {
+		return transitions;
+	}
 
-    /**
-     * Sets the value of the transitions property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Transitions }
-     *     
-     */
-    public void setTransitions(Transitions value) {
-        this.transitions = value;
-    }
+	/**
+	 * Sets the value of the transitions property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Transitions }
+	 * 
+	 */
+	public void setTransitions(Transitions value) {
+		this.transitions = value;
+	}
 
-    /**
-     * Gets the value of the object property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ee.ut.model.xpdl2.Object }
-     *     
-     */
-    public ee.ut.model.xpdl2.Object getObject() {
-        return object;
-    }
+	/**
+	 * Gets the value of the object property.
+	 * 
+	 * @return possible object is {@link ee.ut.model.xpdl2.Object }
+	 * 
+	 */
+	public ee.ut.model.xpdl2.Object getObject() {
+		return object;
+	}
 
-    /**
-     * Sets the value of the object property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ee.ut.model.xpdl2.Object }
-     *     
-     */
-    public void setObject(ee.ut.model.xpdl2.Object value) {
-        this.object = value;
-    }
+	/**
+	 * Sets the value of the object property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ee.ut.model.xpdl2.Object }
+	 * 
+	 */
+	public void setObject(ee.ut.model.xpdl2.Object value) {
+		this.object = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the adHoc property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isAdHoc() {
-        if (adHoc == null) {
-            return false;
-        } else {
-            return adHoc;
-        }
-    }
+	/**
+	 * Gets the value of the adHoc property.
+	 * 
+	 * @return possible object is {@link Boolean }
+	 * 
+	 */
+	public boolean isAdHoc() {
+		if (adHoc == null) {
+			return false;
+		} else {
+			return adHoc;
+		}
+	}
 
-    /**
-     * Sets the value of the adHoc property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setAdHoc(Boolean value) {
-        this.adHoc = value;
-    }
+	/**
+	 * Sets the value of the adHoc property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Boolean }
+	 * 
+	 */
+	public void setAdHoc(Boolean value) {
+		this.adHoc = value;
+	}
 
-    /**
-     * Gets the value of the adHocOrdering property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAdHocOrdering() {
-        if (adHocOrdering == null) {
-            return "Parallel";
-        } else {
-            return adHocOrdering;
-        }
-    }
+	/**
+	 * Gets the value of the adHocOrdering property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAdHocOrdering() {
+		if (adHocOrdering == null) {
+			return "Parallel";
+		} else {
+			return adHocOrdering;
+		}
+	}
 
-    /**
-     * Sets the value of the adHocOrdering property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAdHocOrdering(String value) {
-        this.adHocOrdering = value;
-    }
+	/**
+	 * Sets the value of the adHocOrdering property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAdHocOrdering(String value) {
+		this.adHocOrdering = value;
+	}
 
-    /**
-     * Gets the value of the adHocCompletionCondition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAdHocCompletionCondition() {
-        return adHocCompletionCondition;
-    }
+	/**
+	 * Gets the value of the adHocCompletionCondition property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAdHocCompletionCondition() {
+		return adHocCompletionCondition;
+	}
 
-    /**
-     * Sets the value of the adHocCompletionCondition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAdHocCompletionCondition(String value) {
-        this.adHocCompletionCondition = value;
-    }
+	/**
+	 * Sets the value of the adHocCompletionCondition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAdHocCompletionCondition(String value) {
+		this.adHocCompletionCondition = value;
+	}
 
-    /**
-     * Gets the value of the defaultStartActivityId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDefaultStartActivityId() {
-        return defaultStartActivityId;
-    }
+	/**
+	 * Gets the value of the defaultStartActivityId property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDefaultStartActivityId() {
+		return defaultStartActivityId;
+	}
 
-    /**
-     * Sets the value of the defaultStartActivityId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDefaultStartActivityId(String value) {
-        this.defaultStartActivityId = value;
-    }
+	/**
+	 * Sets the value of the defaultStartActivityId property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDefaultStartActivityId(String value) {
+		this.defaultStartActivityId = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

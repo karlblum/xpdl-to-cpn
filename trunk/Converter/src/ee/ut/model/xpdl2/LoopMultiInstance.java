@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.math.BigInteger;
@@ -26,11 +25,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -70,253 +71,229 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "miCondition",
-    "complexMIFlowCondition",
-    "any"
-})
+@XmlType(name = "", propOrder = { "miCondition", "complexMIFlowCondition",
+		"any" })
 @XmlRootElement(name = "LoopMultiInstance")
 public class LoopMultiInstance {
 
-    @XmlElement(name = "MI_Condition")
-    protected ExpressionType miCondition;
-    @XmlElement(name = "ComplexMI_FlowCondition")
-    protected ExpressionType complexMIFlowCondition;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "MI_Condition")
-    protected String miConditionAttribute;
-    @XmlAttribute(name = "LoopCounter")
-    protected BigInteger loopCounter;
-    @XmlAttribute(name = "MI_Ordering", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String miOrdering;
-    @XmlAttribute(name = "MI_FlowCondition")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String miFlowCondition;
-    @XmlAttribute(name = "ComplexMI_FlowCondition")
-    protected String complexMIFlowConditionAttribute;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "MI_Condition")
+	protected ExpressionType miCondition;
+	@XmlElement(name = "ComplexMI_FlowCondition")
+	protected ExpressionType complexMIFlowCondition;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "MI_Condition")
+	protected String miConditionAttribute;
+	@XmlAttribute(name = "LoopCounter")
+	protected BigInteger loopCounter;
+	@XmlAttribute(name = "MI_Ordering", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String miOrdering;
+	@XmlAttribute(name = "MI_FlowCondition")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String miFlowCondition;
+	@XmlAttribute(name = "ComplexMI_FlowCondition")
+	protected String complexMIFlowConditionAttribute;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the miCondition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public ExpressionType getMICondition() {
-        return miCondition;
-    }
+	/**
+	 * Gets the value of the miCondition property.
+	 * 
+	 * @return possible object is {@link ExpressionType }
+	 * 
+	 */
+	public ExpressionType getMICondition() {
+		return miCondition;
+	}
 
-    /**
-     * Sets the value of the miCondition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public void setMICondition(ExpressionType value) {
-        this.miCondition = value;
-    }
+	/**
+	 * Sets the value of the miCondition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExpressionType }
+	 * 
+	 */
+	public void setMICondition(ExpressionType value) {
+		this.miCondition = value;
+	}
 
-    /**
-     * Gets the value of the complexMIFlowCondition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public ExpressionType getComplexMIFlowCondition() {
-        return complexMIFlowCondition;
-    }
+	/**
+	 * Gets the value of the complexMIFlowCondition property.
+	 * 
+	 * @return possible object is {@link ExpressionType }
+	 * 
+	 */
+	public ExpressionType getComplexMIFlowCondition() {
+		return complexMIFlowCondition;
+	}
 
-    /**
-     * Sets the value of the complexMIFlowCondition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public void setComplexMIFlowCondition(ExpressionType value) {
-        this.complexMIFlowCondition = value;
-    }
+	/**
+	 * Sets the value of the complexMIFlowCondition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExpressionType }
+	 * 
+	 */
+	public void setComplexMIFlowCondition(ExpressionType value) {
+		this.complexMIFlowCondition = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the miConditionAttribute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMIConditionAttribute() {
-        return miConditionAttribute;
-    }
+	/**
+	 * Gets the value of the miConditionAttribute property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getMIConditionAttribute() {
+		return miConditionAttribute;
+	}
 
-    /**
-     * Sets the value of the miConditionAttribute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMIConditionAttribute(String value) {
-        this.miConditionAttribute = value;
-    }
+	/**
+	 * Sets the value of the miConditionAttribute property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setMIConditionAttribute(String value) {
+		this.miConditionAttribute = value;
+	}
 
-    /**
-     * Gets the value of the loopCounter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLoopCounter() {
-        return loopCounter;
-    }
+	/**
+	 * Gets the value of the loopCounter property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getLoopCounter() {
+		return loopCounter;
+	}
 
-    /**
-     * Sets the value of the loopCounter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLoopCounter(BigInteger value) {
-        this.loopCounter = value;
-    }
+	/**
+	 * Sets the value of the loopCounter property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setLoopCounter(BigInteger value) {
+		this.loopCounter = value;
+	}
 
-    /**
-     * Gets the value of the miOrdering property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMIOrdering() {
-        return miOrdering;
-    }
+	/**
+	 * Gets the value of the miOrdering property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getMIOrdering() {
+		return miOrdering;
+	}
 
-    /**
-     * Sets the value of the miOrdering property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMIOrdering(String value) {
-        this.miOrdering = value;
-    }
+	/**
+	 * Sets the value of the miOrdering property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setMIOrdering(String value) {
+		this.miOrdering = value;
+	}
 
-    /**
-     * Gets the value of the miFlowCondition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMIFlowCondition() {
-        if (miFlowCondition == null) {
-            return "All";
-        } else {
-            return miFlowCondition;
-        }
-    }
+	/**
+	 * Gets the value of the miFlowCondition property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getMIFlowCondition() {
+		if (miFlowCondition == null) {
+			return "All";
+		} else {
+			return miFlowCondition;
+		}
+	}
 
-    /**
-     * Sets the value of the miFlowCondition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMIFlowCondition(String value) {
-        this.miFlowCondition = value;
-    }
+	/**
+	 * Sets the value of the miFlowCondition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setMIFlowCondition(String value) {
+		this.miFlowCondition = value;
+	}
 
-    /**
-     * Gets the value of the complexMIFlowConditionAttribute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getComplexMIFlowConditionAttribute() {
-        return complexMIFlowConditionAttribute;
-    }
+	/**
+	 * Gets the value of the complexMIFlowConditionAttribute property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getComplexMIFlowConditionAttribute() {
+		return complexMIFlowConditionAttribute;
+	}
 
-    /**
-     * Sets the value of the complexMIFlowConditionAttribute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setComplexMIFlowConditionAttribute(String value) {
-        this.complexMIFlowConditionAttribute = value;
-    }
+	/**
+	 * Sets the value of the complexMIFlowConditionAttribute property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setComplexMIFlowConditionAttribute(String value) {
+		this.complexMIFlowConditionAttribute = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -51,172 +52,149 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "author",
-    "version",
-    "codepage",
-    "countrykey",
-    "responsibles"
-})
+@XmlType(name = "", propOrder = { "author", "version", "codepage",
+		"countrykey", "responsibles" })
 @XmlRootElement(name = "RedefinableHeader")
 public class RedefinableHeader {
 
-    @XmlElement(name = "Author")
-    protected String author;
-    @XmlElement(name = "Version")
-    protected String version;
-    @XmlElement(name = "Codepage")
-    protected String codepage;
-    @XmlElement(name = "Countrykey")
-    protected String countrykey;
-    @XmlElement(name = "Responsibles")
-    protected Responsibles responsibles;
-    @XmlAttribute(name = "PublicationStatus")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String publicationStatus;
+	@XmlElement(name = "Author")
+	protected String author;
+	@XmlElement(name = "Version")
+	protected String version;
+	@XmlElement(name = "Codepage")
+	protected String codepage;
+	@XmlElement(name = "Countrykey")
+	protected String countrykey;
+	@XmlElement(name = "Responsibles")
+	protected Responsibles responsibles;
+	@XmlAttribute(name = "PublicationStatus")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String publicationStatus;
 
-    /**
-     * Gets the value of the author property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAuthor() {
-        return author;
-    }
+	/**
+	 * Gets the value of the author property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAuthor() {
+		return author;
+	}
 
-    /**
-     * Sets the value of the author property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAuthor(String value) {
-        this.author = value;
-    }
+	/**
+	 * Sets the value of the author property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAuthor(String value) {
+		this.author = value;
+	}
 
-    /**
-     * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersion() {
-        return version;
-    }
+	/**
+	 * Gets the value of the version property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getVersion() {
+		return version;
+	}
 
-    /**
-     * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersion(String value) {
-        this.version = value;
-    }
+	/**
+	 * Sets the value of the version property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setVersion(String value) {
+		this.version = value;
+	}
 
-    /**
-     * Gets the value of the codepage property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCodepage() {
-        return codepage;
-    }
+	/**
+	 * Gets the value of the codepage property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCodepage() {
+		return codepage;
+	}
 
-    /**
-     * Sets the value of the codepage property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCodepage(String value) {
-        this.codepage = value;
-    }
+	/**
+	 * Sets the value of the codepage property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCodepage(String value) {
+		this.codepage = value;
+	}
 
-    /**
-     * Gets the value of the countrykey property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCountrykey() {
-        return countrykey;
-    }
+	/**
+	 * Gets the value of the countrykey property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCountrykey() {
+		return countrykey;
+	}
 
-    /**
-     * Sets the value of the countrykey property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCountrykey(String value) {
-        this.countrykey = value;
-    }
+	/**
+	 * Sets the value of the countrykey property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCountrykey(String value) {
+		this.countrykey = value;
+	}
 
-    /**
-     * Gets the value of the responsibles property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Responsibles }
-     *     
-     */
-    public Responsibles getResponsibles() {
-        return responsibles;
-    }
+	/**
+	 * Gets the value of the responsibles property.
+	 * 
+	 * @return possible object is {@link Responsibles }
+	 * 
+	 */
+	public Responsibles getResponsibles() {
+		return responsibles;
+	}
 
-    /**
-     * Sets the value of the responsibles property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Responsibles }
-     *     
-     */
-    public void setResponsibles(Responsibles value) {
-        this.responsibles = value;
-    }
+	/**
+	 * Sets the value of the responsibles property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Responsibles }
+	 * 
+	 */
+	public void setResponsibles(Responsibles value) {
+		this.responsibles = value;
+	}
 
-    /**
-     * Gets the value of the publicationStatus property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPublicationStatus() {
-        return publicationStatus;
-    }
+	/**
+	 * Gets the value of the publicationStatus property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPublicationStatus() {
+		return publicationStatus;
+	}
 
-    /**
-     * Sets the value of the publicationStatus property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPublicationStatus(String value) {
-        this.publicationStatus = value;
-    }
+	/**
+	 * Sets the value of the publicationStatus property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPublicationStatus(String value) {
+		this.publicationStatus = value;
+	}
 
 }

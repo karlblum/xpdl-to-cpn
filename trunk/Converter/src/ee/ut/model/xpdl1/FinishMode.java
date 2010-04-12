@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -36,64 +37,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "automatic",
-    "manual"
-})
+@XmlType(name = "", propOrder = { "automatic", "manual" })
 @XmlRootElement(name = "FinishMode")
 public class FinishMode {
 
-    @XmlElement(name = "Automatic")
-    protected Automatic automatic;
-    @XmlElement(name = "Manual")
-    protected Manual manual;
+	@XmlElement(name = "Automatic")
+	protected Automatic automatic;
+	@XmlElement(name = "Manual")
+	protected Manual manual;
 
-    /**
-     * Gets the value of the automatic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Automatic }
-     *     
-     */
-    public Automatic getAutomatic() {
-        return automatic;
-    }
+	/**
+	 * Gets the value of the automatic property.
+	 * 
+	 * @return possible object is {@link Automatic }
+	 * 
+	 */
+	public Automatic getAutomatic() {
+		return automatic;
+	}
 
-    /**
-     * Sets the value of the automatic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Automatic }
-     *     
-     */
-    public void setAutomatic(Automatic value) {
-        this.automatic = value;
-    }
+	/**
+	 * Sets the value of the automatic property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Automatic }
+	 * 
+	 */
+	public void setAutomatic(Automatic value) {
+		this.automatic = value;
+	}
 
-    /**
-     * Gets the value of the manual property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Manual }
-     *     
-     */
-    public Manual getManual() {
-        return manual;
-    }
+	/**
+	 * Gets the value of the manual property.
+	 * 
+	 * @return possible object is {@link Manual }
+	 * 
+	 */
+	public Manual getManual() {
+		return manual;
+	}
 
-    /**
-     * Sets the value of the manual property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Manual }
-     *     
-     */
-    public void setManual(Manual value) {
-        this.manual = value;
-    }
+	/**
+	 * Sets the value of the manual property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Manual }
+	 * 
+	 */
+	public void setManual(Manual value) {
+		this.manual = value;
+	}
 
 }

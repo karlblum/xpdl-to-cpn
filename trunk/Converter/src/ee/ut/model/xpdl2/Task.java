@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.HashMap;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -46,246 +47,233 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "taskService",
-    "taskReceive",
-    "taskManual",
-    "taskReference",
-    "taskScript",
-    "taskSend",
-    "taskUser",
-    "taskApplication"
-})
+@XmlType(name = "", propOrder = { "taskService", "taskReceive", "taskManual",
+		"taskReference", "taskScript", "taskSend", "taskUser",
+		"taskApplication" })
 @XmlRootElement(name = "Task")
 public class Task {
 
-    @XmlElement(name = "TaskService")
-    protected TaskService taskService;
-    @XmlElement(name = "TaskReceive")
-    protected TaskReceive taskReceive;
-    @XmlElement(name = "TaskManual")
-    protected TaskManual taskManual;
-    @XmlElement(name = "TaskReference")
-    protected TaskReference taskReference;
-    @XmlElement(name = "TaskScript")
-    protected TaskScript taskScript;
-    @XmlElement(name = "TaskSend")
-    protected TaskSend taskSend;
-    @XmlElement(name = "TaskUser")
-    protected TaskUser taskUser;
-    @XmlElement(name = "TaskApplication")
-    protected TaskApplication taskApplication;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "TaskService")
+	protected TaskService taskService;
+	@XmlElement(name = "TaskReceive")
+	protected TaskReceive taskReceive;
+	@XmlElement(name = "TaskManual")
+	protected TaskManual taskManual;
+	@XmlElement(name = "TaskReference")
+	protected TaskReference taskReference;
+	@XmlElement(name = "TaskScript")
+	protected TaskScript taskScript;
+	@XmlElement(name = "TaskSend")
+	protected TaskSend taskSend;
+	@XmlElement(name = "TaskUser")
+	protected TaskUser taskUser;
+	@XmlElement(name = "TaskApplication")
+	protected TaskApplication taskApplication;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * BPMN: TaskType = Service.  In BPMN generally signifies any automated activity.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskService }
-     *     
-     */
-    public TaskService getTaskService() {
-        return taskService;
-    }
+	/**
+	 * BPMN: TaskType = Service. In BPMN generally signifies any automated
+	 * activity.
+	 * 
+	 * @return possible object is {@link TaskService }
+	 * 
+	 */
+	public TaskService getTaskService() {
+		return taskService;
+	}
 
-    /**
-     * BPMN: TaskType = Service.  In BPMN generally signifies any automated activity.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskService }
-     *     
-     */
-    public void setTaskService(TaskService value) {
-        this.taskService = value;
-    }
+	/**
+	 * BPMN: TaskType = Service. In BPMN generally signifies any automated
+	 * activity.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskService }
+	 * 
+	 */
+	public void setTaskService(TaskService value) {
+		this.taskService = value;
+	}
 
-    /**
-     * BPMN: TaskType = Receive.  Waits for a message, then continues. Equivalent to a "catching" message event.  In BPMN, "message" generally signifies any signal from outside the process (pool).
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskReceive }
-     *     
-     */
-    public TaskReceive getTaskReceive() {
-        return taskReceive;
-    }
+	/**
+	 * BPMN: TaskType = Receive. Waits for a message, then continues. Equivalent
+	 * to a "catching" message event. In BPMN, "message" generally signifies any
+	 * signal from outside the process (pool).
+	 * 
+	 * @return possible object is {@link TaskReceive }
+	 * 
+	 */
+	public TaskReceive getTaskReceive() {
+		return taskReceive;
+	}
 
-    /**
-     * BPMN: TaskType = Receive.  Waits for a message, then continues. Equivalent to a "catching" message event.  In BPMN, "message" generally signifies any signal from outside the process (pool).
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskReceive }
-     *     
-     */
-    public void setTaskReceive(TaskReceive value) {
-        this.taskReceive = value;
-    }
+	/**
+	 * BPMN: TaskType = Receive. Waits for a message, then continues. Equivalent
+	 * to a "catching" message event. In BPMN, "message" generally signifies any
+	 * signal from outside the process (pool).
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskReceive }
+	 * 
+	 */
+	public void setTaskReceive(TaskReceive value) {
+		this.taskReceive = value;
+	}
 
-    /**
-     * BPMN: TaskType = Manual.  Used for human tasks other than those accessed via workflow.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskManual }
-     *     
-     */
-    public TaskManual getTaskManual() {
-        return taskManual;
-    }
+	/**
+	 * BPMN: TaskType = Manual. Used for human tasks other than those accessed
+	 * via workflow.
+	 * 
+	 * @return possible object is {@link TaskManual }
+	 * 
+	 */
+	public TaskManual getTaskManual() {
+		return taskManual;
+	}
 
-    /**
-     * BPMN: TaskType = Manual.  Used for human tasks other than those accessed via workflow.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskManual }
-     *     
-     */
-    public void setTaskManual(TaskManual value) {
-        this.taskManual = value;
-    }
+	/**
+	 * BPMN: TaskType = Manual. Used for human tasks other than those accessed
+	 * via workflow.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskManual }
+	 * 
+	 */
+	public void setTaskManual(TaskManual value) {
+		this.taskManual = value;
+	}
 
-    /**
-     * BPMN: TaskType = Reference.  Task properties defined in referenced activity.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskReference }
-     *     
-     */
-    public TaskReference getTaskReference() {
-        return taskReference;
-    }
+	/**
+	 * BPMN: TaskType = Reference. Task properties defined in referenced
+	 * activity.
+	 * 
+	 * @return possible object is {@link TaskReference }
+	 * 
+	 */
+	public TaskReference getTaskReference() {
+		return taskReference;
+	}
 
-    /**
-     * BPMN: TaskType = Reference.  Task properties defined in referenced activity.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskReference }
-     *     
-     */
-    public void setTaskReference(TaskReference value) {
-        this.taskReference = value;
-    }
+	/**
+	 * BPMN: TaskType = Reference. Task properties defined in referenced
+	 * activity.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskReference }
+	 * 
+	 */
+	public void setTaskReference(TaskReference value) {
+		this.taskReference = value;
+	}
 
-    /**
-     * BPMN: TaskType = Script.  Used for automated tasks executed by scripts on process engine, to distinguish from automated tasks performed externally (Service).
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskScript }
-     *     
-     */
-    public TaskScript getTaskScript() {
-        return taskScript;
-    }
+	/**
+	 * BPMN: TaskType = Script. Used for automated tasks executed by scripts on
+	 * process engine, to distinguish from automated tasks performed externally
+	 * (Service).
+	 * 
+	 * @return possible object is {@link TaskScript }
+	 * 
+	 */
+	public TaskScript getTaskScript() {
+		return taskScript;
+	}
 
-    /**
-     * BPMN: TaskType = Script.  Used for automated tasks executed by scripts on process engine, to distinguish from automated tasks performed externally (Service).
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskScript }
-     *     
-     */
-    public void setTaskScript(TaskScript value) {
-        this.taskScript = value;
-    }
+	/**
+	 * BPMN: TaskType = Script. Used for automated tasks executed by scripts on
+	 * process engine, to distinguish from automated tasks performed externally
+	 * (Service).
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskScript }
+	 * 
+	 */
+	public void setTaskScript(TaskScript value) {
+		this.taskScript = value;
+	}
 
-    /**
-     * BPMN: Task Type = Send.  Equivalent to a "throwing" message event.  Sends a message immediately and continues.  In BPMN, "message" signifies any signal sent outside the process (pool).
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskSend }
-     *     
-     */
-    public TaskSend getTaskSend() {
-        return taskSend;
-    }
+	/**
+	 * BPMN: Task Type = Send. Equivalent to a "throwing" message event. Sends a
+	 * message immediately and continues. In BPMN, "message" signifies any
+	 * signal sent outside the process (pool).
+	 * 
+	 * @return possible object is {@link TaskSend }
+	 * 
+	 */
+	public TaskSend getTaskSend() {
+		return taskSend;
+	}
 
-    /**
-     * BPMN: Task Type = Send.  Equivalent to a "throwing" message event.  Sends a message immediately and continues.  In BPMN, "message" signifies any signal sent outside the process (pool).
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskSend }
-     *     
-     */
-    public void setTaskSend(TaskSend value) {
-        this.taskSend = value;
-    }
+	/**
+	 * BPMN: Task Type = Send. Equivalent to a "throwing" message event. Sends a
+	 * message immediately and continues. In BPMN, "message" signifies any
+	 * signal sent outside the process (pool).
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskSend }
+	 * 
+	 */
+	public void setTaskSend(TaskSend value) {
+		this.taskSend = value;
+	}
 
-    /**
-     * BPMN: Task Type = User.  Generally used for human tasks.  
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskUser }
-     *     
-     */
-    public TaskUser getTaskUser() {
-        return taskUser;
-    }
+	/**
+	 * BPMN: Task Type = User. Generally used for human tasks.
+	 * 
+	 * @return possible object is {@link TaskUser }
+	 * 
+	 */
+	public TaskUser getTaskUser() {
+		return taskUser;
+	}
 
-    /**
-     * BPMN: Task Type = User.  Generally used for human tasks.  
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskUser }
-     *     
-     */
-    public void setTaskUser(TaskUser value) {
-        this.taskUser = value;
-    }
+	/**
+	 * BPMN: Task Type = User. Generally used for human tasks.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskUser }
+	 * 
+	 */
+	public void setTaskUser(TaskUser value) {
+		this.taskUser = value;
+	}
 
-    /**
-     * Gets the value of the taskApplication property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TaskApplication }
-     *     
-     */
-    public TaskApplication getTaskApplication() {
-        return taskApplication;
-    }
+	/**
+	 * Gets the value of the taskApplication property.
+	 * 
+	 * @return possible object is {@link TaskApplication }
+	 * 
+	 */
+	public TaskApplication getTaskApplication() {
+		return taskApplication;
+	}
 
-    /**
-     * Sets the value of the taskApplication property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TaskApplication }
-     *     
-     */
-    public void setTaskApplication(TaskApplication value) {
-        this.taskApplication = value;
-    }
+	/**
+	 * Sets the value of the taskApplication property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TaskApplication }
+	 * 
+	 */
+	public void setTaskApplication(TaskApplication value) {
+		this.taskApplication = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

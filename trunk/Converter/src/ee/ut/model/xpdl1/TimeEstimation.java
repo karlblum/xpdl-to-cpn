@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -37,91 +38,78 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "waitingTime",
-    "workingTime",
-    "duration"
-})
+@XmlType(name = "", propOrder = { "waitingTime", "workingTime", "duration" })
 @XmlRootElement(name = "TimeEstimation")
 public class TimeEstimation {
 
-    @XmlElement(name = "WaitingTime")
-    protected String waitingTime;
-    @XmlElement(name = "WorkingTime")
-    protected String workingTime;
-    @XmlElement(name = "Duration")
-    protected String duration;
+	@XmlElement(name = "WaitingTime")
+	protected String waitingTime;
+	@XmlElement(name = "WorkingTime")
+	protected String workingTime;
+	@XmlElement(name = "Duration")
+	protected String duration;
 
-    /**
-     * Gets the value of the waitingTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWaitingTime() {
-        return waitingTime;
-    }
+	/**
+	 * Gets the value of the waitingTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getWaitingTime() {
+		return waitingTime;
+	}
 
-    /**
-     * Sets the value of the waitingTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWaitingTime(String value) {
-        this.waitingTime = value;
-    }
+	/**
+	 * Sets the value of the waitingTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setWaitingTime(String value) {
+		this.waitingTime = value;
+	}
 
-    /**
-     * Gets the value of the workingTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWorkingTime() {
-        return workingTime;
-    }
+	/**
+	 * Gets the value of the workingTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getWorkingTime() {
+		return workingTime;
+	}
 
-    /**
-     * Sets the value of the workingTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWorkingTime(String value) {
-        this.workingTime = value;
-    }
+	/**
+	 * Sets the value of the workingTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setWorkingTime(String value) {
+		this.workingTime = value;
+	}
 
-    /**
-     * Gets the value of the duration property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDuration() {
-        return duration;
-    }
+	/**
+	 * Gets the value of the duration property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDuration() {
+		return duration;
+	}
 
-    /**
-     * Sets the value of the duration property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDuration(String value) {
-        this.duration = value;
-    }
+	/**
+	 * Sets the value of the duration property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDuration(String value) {
+		this.duration = value;
+	}
 
 }

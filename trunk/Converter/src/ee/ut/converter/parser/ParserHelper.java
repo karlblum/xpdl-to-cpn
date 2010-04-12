@@ -1,4 +1,4 @@
-package ee.ut.converter;
+package ee.ut.converter.parser;
 
 import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
 

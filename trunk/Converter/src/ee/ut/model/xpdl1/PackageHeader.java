@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -41,199 +42,171 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "xpdlVersion",
-    "vendor",
-    "created",
-    "description",
-    "documentation",
-    "priorityUnit",
-    "costUnit"
-})
+@XmlType(name = "", propOrder = { "xpdlVersion", "vendor", "created",
+		"description", "documentation", "priorityUnit", "costUnit" })
 @XmlRootElement(name = "PackageHeader")
 public class PackageHeader {
 
-    @XmlElement(name = "XPDLVersion", required = true)
-    protected String xpdlVersion;
-    @XmlElement(name = "Vendor", required = true)
-    protected String vendor;
-    @XmlElement(name = "Created", required = true)
-    protected String created;
-    @XmlElement(name = "Description")
-    protected String description;
-    @XmlElement(name = "Documentation")
-    protected String documentation;
-    @XmlElement(name = "PriorityUnit")
-    protected String priorityUnit;
-    @XmlElement(name = "CostUnit")
-    protected String costUnit;
+	@XmlElement(name = "XPDLVersion", required = true)
+	protected String xpdlVersion;
+	@XmlElement(name = "Vendor", required = true)
+	protected String vendor;
+	@XmlElement(name = "Created", required = true)
+	protected String created;
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "Documentation")
+	protected String documentation;
+	@XmlElement(name = "PriorityUnit")
+	protected String priorityUnit;
+	@XmlElement(name = "CostUnit")
+	protected String costUnit;
 
-    /**
-     * Gets the value of the xpdlVersion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getXPDLVersion() {
-        return xpdlVersion;
-    }
+	/**
+	 * Gets the value of the xpdlVersion property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getXPDLVersion() {
+		return xpdlVersion;
+	}
 
-    /**
-     * Sets the value of the xpdlVersion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setXPDLVersion(String value) {
-        this.xpdlVersion = value;
-    }
+	/**
+	 * Sets the value of the xpdlVersion property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setXPDLVersion(String value) {
+		this.xpdlVersion = value;
+	}
 
-    /**
-     * Gets the value of the vendor property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVendor() {
-        return vendor;
-    }
+	/**
+	 * Gets the value of the vendor property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getVendor() {
+		return vendor;
+	}
 
-    /**
-     * Sets the value of the vendor property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVendor(String value) {
-        this.vendor = value;
-    }
+	/**
+	 * Sets the value of the vendor property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setVendor(String value) {
+		this.vendor = value;
+	}
 
-    /**
-     * Gets the value of the created property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCreated() {
-        return created;
-    }
+	/**
+	 * Gets the value of the created property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCreated() {
+		return created;
+	}
 
-    /**
-     * Sets the value of the created property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCreated(String value) {
-        this.created = value;
-    }
+	/**
+	 * Sets the value of the created property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCreated(String value) {
+		this.created = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the documentation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDocumentation() {
-        return documentation;
-    }
+	/**
+	 * Gets the value of the documentation property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDocumentation() {
+		return documentation;
+	}
 
-    /**
-     * Sets the value of the documentation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDocumentation(String value) {
-        this.documentation = value;
-    }
+	/**
+	 * Sets the value of the documentation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDocumentation(String value) {
+		this.documentation = value;
+	}
 
-    /**
-     * Gets the value of the priorityUnit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPriorityUnit() {
-        return priorityUnit;
-    }
+	/**
+	 * Gets the value of the priorityUnit property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPriorityUnit() {
+		return priorityUnit;
+	}
 
-    /**
-     * Sets the value of the priorityUnit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPriorityUnit(String value) {
-        this.priorityUnit = value;
-    }
+	/**
+	 * Sets the value of the priorityUnit property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPriorityUnit(String value) {
+		this.priorityUnit = value;
+	}
 
-    /**
-     * Gets the value of the costUnit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCostUnit() {
-        return costUnit;
-    }
+	/**
+	 * Gets the value of the costUnit property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCostUnit() {
+		return costUnit;
+	}
 
-    /**
-     * Sets the value of the costUnit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCostUnit(String value) {
-        this.costUnit = value;
-    }
+	/**
+	 * Sets the value of the costUnit property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCostUnit(String value) {
+		this.costUnit = value;
+	}
 
 }

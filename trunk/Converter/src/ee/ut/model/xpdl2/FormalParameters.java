@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -24,11 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -54,81 +55,78 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "content"
-})
+@XmlType(name = "", propOrder = { "content" })
 @XmlRootElement(name = "FormalParameters")
 public class FormalParameters {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "Extensions", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = JAXBElement.class),
-        @XmlElementRef(name = "FormalParameter", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.FormalParameter.class),
-        @XmlElementRef(name = "FormalParameter", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.FormalParameter.class)
-    })
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> content;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElementRefs( {
+			@XmlElementRef(name = "Extensions", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = JAXBElement.class),
+			@XmlElementRef(name = "FormalParameter", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.FormalParameter.class),
+			@XmlElementRef(name = "FormalParameter", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.FormalParameter.class) })
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> content;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "FormalParameter" is used by two different parts of a schema. See: 
-     * line 1158 of file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd
-     * line 1157 of file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link java.lang.Object }
-     * {@link ee.ut.model.xpdl2.FormalParameter }
-     * {@link ee.ut.model.xpdl1.FormalParameter }
-     * {@link Element }
-     * {@link JAXBElement }{@code <}{@link java.lang.Object }{@code >}
-     * 
-     * 
-     */
-    public List<java.lang.Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<java.lang.Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the rest of the content model.
+	 * 
+	 * <p>
+	 * You are getting this "catch-all" property because of the following
+	 * reason: The field name "FormalParameter" is used by two different parts
+	 * of a schema. See: line 1158 of
+	 * file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd line 1157
+	 * of file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd
+	 * <p>
+	 * To get rid of this property, apply a property customization to one of
+	 * both of the following declarations to change their names: Gets the value
+	 * of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link java.lang.Object } {@link ee.ut.model.xpdl2.FormalParameter }
+	 * {@link ee.ut.model.xpdl1.FormalParameter } {@link Element }
+	 * {@link JAXBElement }{@code <}{@link java.lang.Object }{@code >}
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<java.lang.Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

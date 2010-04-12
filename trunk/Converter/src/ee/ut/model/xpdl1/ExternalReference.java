@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -42,87 +43,78 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement(name = "ExternalReference")
 public class ExternalReference {
 
-    @XmlAttribute
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String xref;
-    @XmlAttribute(required = true)
-    @XmlSchemaType(name = "anyURI")
-    protected String location;
-    @XmlAttribute
-    @XmlSchemaType(name = "anyURI")
-    protected String namespace;
+	@XmlAttribute
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String xref;
+	@XmlAttribute(required = true)
+	@XmlSchemaType(name = "anyURI")
+	protected String location;
+	@XmlAttribute
+	@XmlSchemaType(name = "anyURI")
+	protected String namespace;
 
-    /**
-     * Gets the value of the xref property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getXref() {
-        return xref;
-    }
+	/**
+	 * Gets the value of the xref property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getXref() {
+		return xref;
+	}
 
-    /**
-     * Sets the value of the xref property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setXref(String value) {
-        this.xref = value;
-    }
+	/**
+	 * Sets the value of the xref property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setXref(String value) {
+		this.xref = value;
+	}
 
-    /**
-     * Gets the value of the location property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLocation() {
-        return location;
-    }
+	/**
+	 * Gets the value of the location property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLocation() {
+		return location;
+	}
 
-    /**
-     * Sets the value of the location property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLocation(String value) {
-        this.location = value;
-    }
+	/**
+	 * Sets the value of the location property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setLocation(String value) {
+		this.location = value;
+	}
 
-    /**
-     * Gets the value of the namespace property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNamespace() {
-        return namespace;
-    }
+	/**
+	 * Gets the value of the namespace property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNamespace() {
+		return namespace;
+	}
 
-    /**
-     * Sets the value of the namespace property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNamespace(String value) {
-        this.namespace = value;
-    }
+	/**
+	 * Sets the value of the namespace property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setNamespace(String value) {
+		this.namespace = value;
+	}
 
 }
