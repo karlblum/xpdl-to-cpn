@@ -22,7 +22,7 @@ import noNamespace.Place;
 import noNamespace.Posattr;
 import noNamespace.Trans;
 import noNamespace.WorkspaceElementsDocument;
-import ee.ut.model.bpmne.BPMNeProcess;
+import ee.ut.old.model.bpmne.BPMNeProcess;
 
 public class ExLucianoWrapper {
 
