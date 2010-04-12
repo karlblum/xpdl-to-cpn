@@ -3,7 +3,6 @@ package ee.ut.model.cpn2;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import ee.ut.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
@@ -13,6 +12,8 @@ import noNamespace.Cpnet;
 import noNamespace.Instance;
 import noNamespace.Page;
 import noNamespace.Place;
+import noNamespace.Subpageinfo;
+import noNamespace.Subst;
 import noNamespace.Trans;
 import noNamespace.Type;
 import noNamespace.WorkspaceElementsDocument;
@@ -25,7 +26,7 @@ public class CPNet {
 	private HashMap<String, Place> places = new HashMap<String, Place>();
 	private HashMap<String, Arc> arcs = new HashMap<String, Arc>();
 	private HashMap<String, Trans> transitions = new HashMap<String, Trans>();
-	private int currentId = 7000;
+	private int currentId = 9000;
 
 	private String flowObjectType = "CASE";
 	private String flowObjectVariable = "c";
@@ -92,8 +93,11 @@ public class CPNet {
 	};
 
 	public void saveToFile(String file) {
-		for (Page p : cpnet.getPageArray())
-			ExLucianoWrapper.doLayouting(p);
+		for (Page p : cpnet.getPageArray()) {
+			if (!p.getId().equals("PAGE_GENERATOR")) {
+				ExLucianoWrapper.doLayouting(p);
+			}
+		}
 
 		try {
 			File convertedCPNFile = new File(file);
@@ -102,6 +106,19 @@ public class CPNet {
 			e.printStackTrace();
 		}
 
+	}
+
+	public Subst addSubst(Trans trans, String pageId) {
+		Subst subst = trans.addNewSubst();
+		subst.setSubpage(pageId);
+		Subpageinfo subpageinfo = subst.addNewSubpageinfo();
+		subpageinfo.setId(createId());
+
+		Instance rootInstance = getRootInstance();
+		Instance i = rootInstance.addNewInstance();
+		i.setId(createId());
+		i.setTrans(trans.getId());
+		return subst;
 	}
 
 	public String getFlowObjectType() {
@@ -115,10 +132,11 @@ public class CPNet {
 	public Place getPlace(String id) {
 		return places.get(id);
 	}
-	
-	public Page getPage(String id){
-		for(Page p: cpnet.getPageArray()){
-			if(p.getId().equals(id)) return p;
+
+	public Page getPage(String id) {
+		for (Page p : cpnet.getPageArray()) {
+			if (p.getId().equals(id))
+				return p;
 		}
 		return null;
 	}

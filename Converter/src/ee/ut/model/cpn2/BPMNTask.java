@@ -9,6 +9,8 @@ import ee.ut.model.bpmne.BPMNeIdGen;
 import ee.ut.model.bpmne.BPMNeUtil;
 import ee.ut.model.xpdl2.Activity;
 
+import noNamespace.Annot;
+import noNamespace.Arc;
 import noNamespace.Instance;
 import noNamespace.Page;
 import noNamespace.Place;
@@ -38,42 +40,6 @@ public final class BPMNTask extends BPMNElement {
 				XmlString.Factory.newValue(xpdlActivity.getName()));
 		transitionId = trans.getId();
 
-
-
-		if(type == ActivityType.START){
-			Page generatorPage = process.getCpnet().getPage("PAGE_GENERATOR");
-		
-			Subst subst = trans.addNewSubst();
-			subst.setSubpage("PAGE_GENERATOR");
-			Subpageinfo subpageinfo = subst.addNewSubpageinfo();
-			subpageinfo.setId(BPMNeIdGen.createId());
-			
-			
-			Instance rootInstance = process.getCpnet().getRootInstance();			
-			Instance i = rootInstance.addNewInstance();
-			i.setId(BPMNeIdGen.createId());
-			i.setTrans(transitionId);
-			
-			/*
-			outputPlace = BPMNeUtil.createPlace(page, "new case");
-			outputPlace.addNewPort().setType("Out");
-			outputPlace.getTypeArray()[0].getText().set(caseType.copy());
-			
-			
-			//TODO: THIS DOES NOT SEEM TO WORK!
-			transition.getSubst().setPortsock(String.format("(%s,%s)","PAGE_GENERATOR", outputPlace.getId()));
-*/
-			
-			
-		} else {
-			// This will be the mid-input place where we add input connections to
-			Place pMidIn = process.getCpnet().addPlace();
-			pMidIn.getTypeArray()[0].getText().set(
-					XmlString.Factory.newValue(process.getCpnet()
-							.getFlowObjectType()));
-			midInputPlaceId = pMidIn.getId();
-			process.getCpnet().addArc(pMidIn.getId(), transitionId);
-		}
 		
 		// Activity can have only one output place, because it is like an
 		// inclusive gateway
@@ -82,7 +48,31 @@ public final class BPMNTask extends BPMNElement {
 				XmlString.Factory.newValue(process.getCpnet()
 						.getFlowObjectType()));
 		outputPlaceId = pOut.getId();
-		process.getCpnet().addArc(transitionId, pOut.getId());
+		Arc arc = process.getCpnet().addArc(transitionId, pOut.getId());
+		Annot annot = arc.addNewAnnot();
+		annot.addNewText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectVariable()));
+
+
+		if(type == ActivityType.START){
+			Subst subst = process.getCpnet().addSubst(trans,"PAGE_GENERATOR");
+			subst.setPortsock(String.format("(%s,%s)","ID1264234111",pOut.getId()));
+
+		} else {
+			// This will be the mid-input place where we add input connections to
+			Place pMidIn = process.getCpnet().addPlace();
+			pMidIn.getTypeArray()[0].getText().set(
+					XmlString.Factory.newValue(process.getCpnet()
+							.getFlowObjectType()));
+			midInputPlaceId = pMidIn.getId();
+			arc = process.getCpnet().addArc(pMidIn.getId(), transitionId);
+			annot = arc.addNewAnnot();
+			annot.addNewText().set(
+					XmlString.Factory.newValue(process.getCpnet()
+							.getFlowObjectVariable()));
+		}
+
 
 	}
 
@@ -105,8 +95,17 @@ public final class BPMNTask extends BPMNElement {
 				XmlString.Factory.newValue("EXCLUSIVE_JOIN_" + trans.getId()));
 		
 		// Here we connect the input to the mid-input place for Exclusive join
-		process.getCpnet().addArc(p.getId(), trans.getId());
-		process.getCpnet().addArc(trans.getId(), midInputPlaceId);
+		Arc arc = process.getCpnet().addArc(p.getId(), trans.getId());
+		Annot annot = arc.addNewAnnot();
+		annot.addNewText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectVariable()));
+		
+		arc = process.getCpnet().addArc(trans.getId(), midInputPlaceId);
+		annot = arc.addNewAnnot();
+		annot.addNewText().set(
+				XmlString.Factory.newValue(process.getCpnet()
+						.getFlowObjectVariable()));
 
 		return p;
 	}
