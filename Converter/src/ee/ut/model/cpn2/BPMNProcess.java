@@ -4,9 +4,6 @@ import java.io.File;
 
 import javax.xml.bind.JAXBElement;
 
-import ee.ut.model.cpn2.BPMNActivityFactory;
-import ee.ut.model.cpn2.BPMNFactory;
-import ee.ut.model.cpn2.BPMNTransitionFactory;
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.PackageType;

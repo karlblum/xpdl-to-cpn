@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-import ee.ut.model.bpmne.BPMNeIdGen;
-import example.ExLucianoWrapper;
-
+import noNamespace.Annot;
 import noNamespace.Arc;
 import noNamespace.Cpnet;
 import noNamespace.Instance;
@@ -18,6 +16,10 @@ import noNamespace.Trans;
 import noNamespace.Type;
 import noNamespace.WorkspaceElementsDocument;
 
+import org.apache.xmlbeans.XmlString;
+
+import example.ExLucianoWrapper;
+
 public class CPNet {
 
 	private WorkspaceElementsDocument cpnWorkspace;
@@ -26,7 +28,7 @@ public class CPNet {
 	private HashMap<String, Place> places = new HashMap<String, Place>();
 	private HashMap<String, Arc> arcs = new HashMap<String, Arc>();
 	private HashMap<String, Trans> transitions = new HashMap<String, Trans>();
-	private int currentId = 9000;
+	private int currentId = 1;
 
 	private String flowObjectType = "CASE";
 	private String flowObjectVariable = "c";
@@ -45,26 +47,47 @@ public class CPNet {
 	}
 
 	public Place addPlace() {
+		return addPlace(flowObjectType, "");
+	}
+
+	public Place addPlace(String name) {
+		return addPlace(flowObjectType, name);
+	}
+
+	public Place addPlace(String placeType, String name) {
 		String id = createId();
 		Place place = page.addNewPlace();
 		place.setId(id);
 		places.put(id, place);
 
 		Type type = place.addNewType();
-		type.addNewText();
+		type.addNewText().set(XmlString.Factory.newValue(placeType));
+
+		name = name != null && name != "" ? name + "_" + id : id;
+		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		return place;
 	}
 
 	public Trans addTrans() {
+		return addTrans("");
+	}
+
+	public Trans addTrans(String name) {
 		String id = createId();
 		Trans trans = page.addNewTrans();
 		trans.setId(id);
+		name = name != null && name != "" ? name + "_" + id : id;
+		trans.addNewText().set(XmlString.Factory.newValue(name));
 		transitions.put(id, trans);
 		return trans;
 	}
 
 	public Arc addArc(String sourceId, String targetId) {
+		return addArc(sourceId, targetId, flowObjectVariable);
+	}
+
+	public Arc addArc(String sourceId, String targetId, String variable) {
 		String id = createId();
 		Arc arc = page.addNewArc();
 		arc.setId(id);
@@ -82,6 +105,9 @@ public class CPNet {
 			System.out.println("ERROR in CPNet.addArc  source: " + sourceId
 					+ " target: " + targetId);
 		}
+
+		Annot annot = arc.addNewAnnot();
+		annot.addNewText().set(XmlString.Factory.newValue(variable));
 
 		arcs.put(id, arc);
 		return arc;
