@@ -21,6 +21,8 @@ public class BPMNTransition extends BPMNElement {
 		Object objectFrom = cPNProcess.getElement(((Transition)object).getFrom());
 		Object objectTo = cPNProcess.getElement(((Transition)object).getTo());
 
+		
+		//TODO: FIXIT
 		if (objectFrom instanceof BPMNTask) {
 			fromPlace = ((BPMNTask) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNGateway) {

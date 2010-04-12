@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBElement;
 
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.CPNet;
+import ee.ut.converter.factory.BPMNStartEventFactory;
 import ee.ut.converter.factory.BPMNTaskFactory;
 import ee.ut.converter.factory.BPMNFactory;
 import ee.ut.converter.factory.BPMNGatewayFactory;
@@ -34,6 +35,8 @@ public class BPMNProcess extends CPNProcess {
 		elementFactory.registerGatewayFactory(new BPMNGatewayFactory(this,
 				parserHelper));
 		elementFactory.registerPraserHelper(new XPDL2ParserHelper());
+		
+		elementFactory.registerStartEventFactory(new BPMNStartEventFactory(this, parserHelper));
 
 		// Here we read in the XPDL file
 		File xpdlFile = new File(

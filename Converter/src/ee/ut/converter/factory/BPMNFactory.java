@@ -13,6 +13,7 @@ public final class BPMNFactory extends AbstractElementFactory {
 	AbstractElementFactory activityFactory = null;
 	AbstractElementFactory transitionFactory = null;
 	AbstractElementFactory gatewayFactory = null;
+	AbstractElementFactory startEventFactory = null;
 
 	public void registerActivityFactory(AbstractElementFactory f) {
 		this.activityFactory = f;
@@ -24,6 +25,10 @@ public final class BPMNFactory extends AbstractElementFactory {
 
 	public void registerGatewayFactory(AbstractElementFactory f) {
 		this.gatewayFactory = f;
+	}
+	
+	public void registerStartEventFactory(AbstractElementFactory f){
+		this.startEventFactory = f;
 	}
 
 	public void registerPraserHelper(ParserHelper h) {
@@ -38,7 +43,7 @@ public final class BPMNFactory extends AbstractElementFactory {
 		} else if (elementType == BPMNElementType.GATEWAY) {
 			return gatewayFactory.create(obj);
 		} else if (elementType == BPMNElementType.START) {
-			return activityFactory.create(obj);
+			return startEventFactory.create(obj);
 		} else if (elementType == BPMNElementType.END) {
 			return activityFactory.create(obj);
 		} else if (elementType == BPMNElementType.TRANSITION) {
