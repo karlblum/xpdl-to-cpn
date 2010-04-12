@@ -1,32 +1,32 @@
 package ee.ut.model.bpmn;
 
 import noNamespace.Place;
-import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ParserHelper;
-import ee.ut.model.xpdl2.Transition;
 
 public class BPMNTransition extends BPMNElement {
 
-	public BPMNTransition(CPNProcess cPNProcess, Object object, ParserHelper parserHelper) {
+	public BPMNTransition(CPNProcess cPNProcess, Object object,
+			ParserHelper parserHelper) {
 		super(cPNProcess);
 
-		Trans trans = cPNProcess.getCpnet().addTrans();
-
-		String transId = trans.getId();
+		String transId = cPNProcess.getCpnet().addTrans().getId();
 
 		Place toPlace = null;
 		Place fromPlace = null;
 
-		Object objectFrom = cPNProcess.getElement(((Transition)object).getFrom());
-		Object objectTo = cPNProcess.getElement(((Transition)object).getTo());
+		Object objectFrom = cPNProcess.getElement(parserHelper
+				.getTransitionFrom(object));
+		Object objectTo = cPNProcess.getElement(parserHelper
+				.getTransitionTo(object));
 
-		
-		//TODO: FIXIT
+		// TODO: We should extract some parent class from all of these objects
 		if (objectFrom instanceof BPMNTask) {
 			fromPlace = ((BPMNTask) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNGateway) {
 			fromPlace = ((BPMNGateway) objectFrom).makeOutputPlace();
+		} else if (objectFrom instanceof BPMNStartEvent) {
+			fromPlace = ((BPMNStartEvent) objectFrom).getOutputPlace();
 		}
 
 		if (objectTo instanceof BPMNTask) {

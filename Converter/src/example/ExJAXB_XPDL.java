@@ -9,9 +9,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import noNamespace.Cpnet;
-import noNamespace.WorkspaceElementsDocument;
-
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
 import ee.ut.model.xpdl2.PackageType;
@@ -25,32 +22,32 @@ public class ExJAXB_XPDL {
 
 		File fIn = new File(
 				"C:/Karl/Thesis/Source/Converter/models/simplest_xpdl.xpdl"); // specify
-																				// the
-																				// path
-																				// of
-																				// your
-																				// input
-																				// XML
-																				// file
+		// the
+		// path
+		// of
+		// your
+		// input
+		// XML
+		// file
 		try {
 			JAXBContext jc = JAXBContext.newInstance("org.wfmc._2008.xpdl2"); // this
-																				// is
-																				// the
-																				// package
-																				// name
-																				// of
-																				// your
-																				// facade
-																				// classes
+			// is
+			// the
+			// package
+			// name
+			// of
+			// your
+			// facade
+			// classes
 			// e.g. for EPML is "de.epml.www"
 			Unmarshaller u = jc.createUnmarshaller();
 			JAXBElement rootElement = (JAXBElement) u.unmarshal(fIn); // creates
-																		// the
-																		// root
-																		// element
-																		// from
-																		// XML
-																		// file
+			// the
+			// root
+			// element
+			// from
+			// XML
+			// file
 			// note: many input types can be used instead of File, e.g. if your
 			// XML is contained in a String,
 			// you can use

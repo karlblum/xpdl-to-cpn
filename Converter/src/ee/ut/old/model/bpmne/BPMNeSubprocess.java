@@ -1,7 +1,5 @@
 package ee.ut.old.model.bpmne;
 
-import org.apache.xmlbeans.XmlString;
-
 import noNamespace.Arc;
 import noNamespace.Cpnet;
 import noNamespace.Instance;

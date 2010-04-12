@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ParserHelper;
-import ee.ut.model.xpdl2.Activity;
-import ee.ut.model.xpdl2.Route;
 
 /**
  * @author
@@ -19,32 +17,27 @@ public class BPMNGateway extends BPMNElement {
 	private String gatewayPlaceId;
 	private GatewayType gwType;
 
-	public BPMNGateway(CPNProcess cPNProcess, Object obj, ParserHelper parserHelper) {
+	public BPMNGateway(CPNProcess cPNProcess, Object obj,
+			ParserHelper parserHelper) {
 		super(cPNProcess);
 
-		// TODO: get rid of xpdl dependencies
-		Activity xpdlActivity = ((Activity) obj);
-		setId(xpdlActivity.getId());
+		elementId = parserHelper.getId(obj);
+		elementName = parserHelper.getName(obj);
+		gwType = parserHelper.getGatewayType(obj);
 
-		// Determine the type of the gateway
-		String type = ((Route) xpdlActivity.getContent().get(0))
-				.getGatewayType();
-
-		if (type.equals("Exclusive")) {
+		if (gwType == GatewayType.EXCLUSICE) {
 			// If we have Exclusive gateway, then we need one central CPN Place
 			// only
-			gwType = GatewayType.EXCLUSICE;
-			gatewayPlaceId = cPNProcess.getCpnet().addPlace(
-					xpdlActivity.getName()).getId();
+			gatewayPlaceId = cPNProcess.getCpnet().addPlace(elementName)
+					.getId();
 
-		} else if (type.equals("Inclusive")) {
+		} else if (gwType == GatewayType.INCLUSIVE) {
 			// If we have Inclusive gateway, then we need one central CPN
 			// Transition only
-			gwType = GatewayType.INCLUSIVE;
-			gatewayTransitionId = cPNProcess.getCpnet().addTrans(
-					xpdlActivity.getName()).getId();
+			gatewayTransitionId = cPNProcess.getCpnet().addTrans(elementName)
+					.getId();
 		} else {
-			System.err.println("Gateway type: " + type + " not implemented.");
+			System.err.println("Gateway type: " + gwType + " not implemented.");
 		}
 
 	}

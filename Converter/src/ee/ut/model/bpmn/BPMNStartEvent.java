@@ -1,51 +1,38 @@
 package ee.ut.model.bpmn;
 
-import java.util.ArrayList;
-
 import noNamespace.Place;
 import noNamespace.Subst;
 import noNamespace.Trans;
-
-import org.apache.xmlbeans.XmlString;
-
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ParserHelper;
-import ee.ut.model.xpdl2.Activity;
 
-public class BPMNStartEvent extends BPMNElement  {
+public class BPMNStartEvent extends BPMNElement {
 
 	private String outputPlaceId;
 	private String transitionId;
 
-	public BPMNStartEvent(CPNProcess cPNProcess, Object o, ParserHelper parserHelper) {
+	public BPMNStartEvent(CPNProcess cPNProcess, Object o,
+			ParserHelper parserHelper) {
 		super(cPNProcess);
 
-		Activity xpdlActivity = ((Activity) o);
-		this.setId(xpdlActivity.getId());
+		elementId = parserHelper.getId(o);
+		elementName = parserHelper.getName(o);
 
-
-		Trans trans = cPNProcess.getCpnet().addTrans(xpdlActivity.getName());
+		Trans trans = cPNProcess.getCpnet().addTrans(elementName);
 		transitionId = trans.getId();
 
 		// Activity can have only one output place, because it is like an
 		// inclusive gateway
-		Place pOut = cPNProcess.getCpnet().addPlace();
-		pOut.getTypeArray()[0].getText().set(
-				XmlString.Factory.newValue(cPNProcess.getCpnet()
-						.getFlowObjectType()));
-		outputPlaceId = pOut.getId();
-		cPNProcess.getCpnet().addArc(transitionId, pOut.getId());
+		outputPlaceId = cPNProcess.getCpnet().addPlace().getId();
+		cPNProcess.getCpnet().addArc(transitionId, outputPlaceId);
 
-		
-		Subst subst = cPNProcess.getCpnet().addSubst(trans,
-				"PAGE_GENERATOR");
-		subst.setPortsock(String.format("(%s,%s)", "ID1264234111", pOut
-				.getId()));
+		Subst subst = cPNProcess.getCpnet().addSubst(trans, "PAGE_GENERATOR");
+		subst.setPortsock(String.format("(%s,%s)", "ID1264234111",
+				outputPlaceId)); // TODO: modify the place id in cpnet template
 	}
 
 	public Place getOutputPlace() {
 		return cPNProcess.getCpnet().getPlace(outputPlaceId);
 	}
-
 
 }

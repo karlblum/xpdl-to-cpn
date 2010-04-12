@@ -1,7 +1,5 @@
 package ee.ut.old.model.bpmne;
 
-import org.apache.xmlbeans.XmlString;
-
 import noNamespace.Annot;
 import noNamespace.Arc;
 import noNamespace.Code;
@@ -13,6 +11,8 @@ import noNamespace.Place;
 import noNamespace.Time;
 import noNamespace.Trans;
 import noNamespace.Type;
+
+import org.apache.xmlbeans.XmlString;
 
 public class BPMNeUtil {
 

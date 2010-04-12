@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import org.apache.xmlbeans.XmlException;
 
-import noNamespace.Cpnet;
-
 public class TestCPNConverter {
 
 	/**

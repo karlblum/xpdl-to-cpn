@@ -26,8 +26,8 @@ public final class BPMNFactory extends AbstractElementFactory {
 	public void registerGatewayFactory(AbstractElementFactory f) {
 		this.gatewayFactory = f;
 	}
-	
-	public void registerStartEventFactory(AbstractElementFactory f){
+
+	public void registerStartEventFactory(AbstractElementFactory f) {
 		this.startEventFactory = f;
 	}
 
