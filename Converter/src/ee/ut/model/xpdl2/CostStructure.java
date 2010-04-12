@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.math.BigInteger;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -39,69 +40,64 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "resourceCosts",
-    "fixedCost"
-})
+@XmlType(name = "", propOrder = { "resourceCosts", "fixedCost" })
 @XmlRootElement(name = "CostStructure")
 public class CostStructure {
 
-    @XmlElement(name = "ResourceCosts")
-    protected List<ResourceCosts> resourceCosts;
-    @XmlElement(name = "FixedCost")
-    protected BigInteger fixedCost;
+	@XmlElement(name = "ResourceCosts")
+	protected List<ResourceCosts> resourceCosts;
+	@XmlElement(name = "FixedCost")
+	protected BigInteger fixedCost;
 
-    /**
-     * Gets the value of the resourceCosts property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the resourceCosts property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getResourceCosts().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ResourceCosts }
-     * 
-     * 
-     */
-    public List<ResourceCosts> getResourceCosts() {
-        if (resourceCosts == null) {
-            resourceCosts = new ArrayList<ResourceCosts>();
-        }
-        return this.resourceCosts;
-    }
+	/**
+	 * Gets the value of the resourceCosts property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the resourceCosts property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getResourceCosts().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link ResourceCosts }
+	 * 
+	 * 
+	 */
+	public List<ResourceCosts> getResourceCosts() {
+		if (resourceCosts == null) {
+			resourceCosts = new ArrayList<ResourceCosts>();
+		}
+		return this.resourceCosts;
+	}
 
-    /**
-     * Gets the value of the fixedCost property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getFixedCost() {
-        return fixedCost;
-    }
+	/**
+	 * Gets the value of the fixedCost property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getFixedCost() {
+		return fixedCost;
+	}
 
-    /**
-     * Sets the value of the fixedCost property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setFixedCost(BigInteger value) {
-        this.fixedCost = value;
-    }
+	/**
+	 * Sets the value of the fixedCost property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setFixedCost(BigInteger value) {
+		this.fixedCost = value;
+	}
 
 }

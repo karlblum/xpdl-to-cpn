@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,11 +14,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -40,84 +41,75 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Script")
 public class Script {
 
-    @XmlAttribute(name = "Type", required = true)
-    protected String type;
-    @XmlAttribute(name = "Version")
-    protected String version;
-    @XmlAttribute(name = "Grammar")
-    @XmlSchemaType(name = "anyURI")
-    protected String grammar;
+	@XmlAttribute(name = "Type", required = true)
+	protected String type;
+	@XmlAttribute(name = "Version")
+	protected String version;
+	@XmlAttribute(name = "Grammar")
+	@XmlSchemaType(name = "anyURI")
+	protected String grammar;
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersion() {
-        return version;
-    }
+	/**
+	 * Gets the value of the version property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getVersion() {
+		return version;
+	}
 
-    /**
-     * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersion(String value) {
-        this.version = value;
-    }
+	/**
+	 * Sets the value of the version property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setVersion(String value) {
+		this.version = value;
+	}
 
-    /**
-     * Gets the value of the grammar property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getGrammar() {
-        return grammar;
-    }
+	/**
+	 * Gets the value of the grammar property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getGrammar() {
+		return grammar;
+	}
 
-    /**
-     * Sets the value of the grammar property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setGrammar(String value) {
-        this.grammar = value;
-    }
+	/**
+	 * Sets the value of the grammar property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setGrammar(String value) {
+		this.grammar = value;
+	}
 
 }

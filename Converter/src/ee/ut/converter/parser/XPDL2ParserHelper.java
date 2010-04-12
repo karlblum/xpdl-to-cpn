@@ -1,4 +1,4 @@
-package ee.ut.converter;
+package ee.ut.converter.parser;
 
 import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
 import ee.ut.model.xpdl2.Activity;
@@ -11,7 +11,7 @@ public class XPDL2ParserHelper implements ParserHelper {
 	@Override
 	public BPMNElementType getElementType(Object obj) {
 		if (obj instanceof ee.ut.model.xpdl2.Activity)
-			return getActivityType((Activity)obj);
+			return getActivityType((Activity) obj);
 		else if (obj instanceof ee.ut.model.xpdl2.Transition)
 			return BPMNElementType.TRANSITION;
 		else

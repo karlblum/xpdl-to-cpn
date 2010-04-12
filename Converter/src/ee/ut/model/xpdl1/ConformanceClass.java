@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -16,11 +15,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -47,32 +48,29 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement(name = "ConformanceClass")
 public class ConformanceClass {
 
-    @XmlAttribute(name = "GraphConformance")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String graphConformance;
+	@XmlAttribute(name = "GraphConformance")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String graphConformance;
 
-    /**
-     * Gets the value of the graphConformance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getGraphConformance() {
-        return graphConformance;
-    }
+	/**
+	 * Gets the value of the graphConformance property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getGraphConformance() {
+		return graphConformance;
+	}
 
-    /**
-     * Sets the value of the graphConformance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setGraphConformance(String value) {
-        this.graphConformance = value;
-    }
+	/**
+	 * Sets the value of the graphConformance property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setGraphConformance(String value) {
+		this.graphConformance = value;
+	}
 
 }

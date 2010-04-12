@@ -1,4 +1,4 @@
-package ee.ut.converter;
+package ee.ut.old;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,31 +39,32 @@ import example.ExLucianoWrapper;
  */
 /**
  * @author karl
- *
+ * 
  */
 public class CPNConverter {
 
 	// Input XPDL file with process data
 	File xpdlFile;
-	
+
 	// Input simulation data file
 	File simDataFile;
-	
+
 	// Generate blank CPN workspace
 	WorkspaceElementsDocument cpnWorkspace;
-	
+
 	// Generate blank CPN
 	Cpnet cpnet;
-	
+
 	// New wrapped BPMN process
 	BPMNeProcess process;
-	
-	
+
 	/**
 	 * Converter initializer
 	 * 
-	 * @param xpdlFile Input XPDL file
-	 * @param simDataFile Input simulation data XML file
+	 * @param xpdlFile
+	 *            Input XPDL file
+	 * @param simDataFile
+	 *            Input simulation data XML file
 	 */
 	public CPNConverter(File xpdlFile, File simDataFile) {
 		this.xpdlFile = xpdlFile;
@@ -80,9 +81,9 @@ public class CPNConverter {
 		cpnet = cpnWorkspace.getWorkspaceElements().getCpnet();
 	}
 
-	
 	/**
-	 * Runs the conversion process. Modifies the CPN workspace as the end result.
+	 * Runs the conversion process. Modifies the CPN workspace as the end
+	 * result.
 	 * 
 	 * @return
 	 */
@@ -94,52 +95,56 @@ public class CPNConverter {
 		JAXBElement<SimulationData> simDataRoot = unMasrhall(simDataFile,
 				"ee.ut.model.sim");
 		createBPMNeModel(xpdlRoot.getValue());
-		//addSimulationData(simDataRoot.getValue());
+		// addSimulationData(simDataRoot.getValue());
 	}
-	
-	
+
 	/**
 	 * Adds simulation data to the in-memory process model
-	 *  
-	 * @param simulationData Simulation data model root element
+	 * 
+	 * @param simulationData
+	 *            Simulation data model root element
 	 */
 	private void addSimulationData(SimulationData simulationData) {
-		
+
 		// add simulation profile data
 
-		
 		// if gateway data is available
-		if(simulationData.getGateways() != null){
-			for(Gateway gateway : simulationData.getGateways().getGateway()){
-				
-				List<GateRef> gatewayReferences = gateway.getGateRefs().getGateRef();
-				
-				Object[] transitionProbabilities = new Object[gatewayReferences.size()*2];
-				
+		if (simulationData.getGateways() != null) {
+			for (Gateway gateway : simulationData.getGateways().getGateway()) {
+
+				List<GateRef> gatewayReferences = gateway.getGateRefs()
+						.getGateRef();
+
+				Object[] transitionProbabilities = new Object[gatewayReferences
+						.size() * 2];
+
 				int i = 0;
-				for(GateRef gatewayReference : gatewayReferences){
+				for (GateRef gatewayReference : gatewayReferences) {
 					transitionProbabilities[i++] = gatewayReference.getIdRef();
-					transitionProbabilities[i++] = gatewayReference.getProbability();
+					transitionProbabilities[i++] = gatewayReference
+							.getProbability();
 				}
-				
-				process.setTransitionProbabilities(gateway.getId(),transitionProbabilities );
+
+				process.setTransitionProbabilities(gateway.getId(),
+						transitionProbabilities);
 			}
 		}
-		
+
 		// if task data is available
-		if(simulationData.getTasks() != null){
-			for(Task task : simulationData.getTasks().getTask()){
-				
-				process.setTaskDDistribution(task.getId(), task.getProcessingTime());
+		if (simulationData.getTasks() != null) {
+			for (Task task : simulationData.getTasks().getTask()) {
+
+				process.setTaskDDistribution(task.getId(), task
+						.getProcessingTime());
 			}
 		}
 	}
-	
 
 	/**
 	 * Creates a new BPMN process model from the XPDL data
 	 * 
-	 * @param packageType XPDL model root element
+	 * @param packageType
+	 *            XPDL model root element
 	 * @return
 	 */
 	private void createBPMNeModel(PackageType packageType) {
@@ -147,9 +152,9 @@ public class CPNConverter {
 		ProcessType xpdlProcess = packageType.getWorkflowProcesses()
 				.getWorkflowProcess().get(0);
 
-		process = new BPMNeProcess(cpnet, xpdlProcess.getName(),
-				xpdlProcess.getName());
-		process.setNumberOfCases("start", "5"); //TODO: MANUAL
+		process = new BPMNeProcess(cpnet, xpdlProcess.getName(), xpdlProcess
+				.getName());
+		process.setNumberOfCases("start", "5"); // TODO: MANUAL
 
 		for (Object co : xpdlProcess.getContent()) {
 			if (co instanceof Activities) {
@@ -164,14 +169,15 @@ public class CPNConverter {
 		}
 
 	}
-	
 
 	/**
 	 * Method adds an activity to a process. Activities can be in various types.
 	 * Gatways are also types here.
 	 * 
-	 * @param activity Activity to add to the BPMN process
-	 * @param process BPMN process
+	 * @param activity
+	 *            Activity to add to the BPMN process
+	 * @param process
+	 *            BPMN process
 	 */
 	private void addActivity(Activity activity, BPMNeProcess process) {
 
@@ -198,20 +204,20 @@ public class CPNConverter {
 
 	}
 
-	
 	/**
 	 * Adds a transition between two elements
 	 * 
-	 * @param transition Transition to be added
-	 * @param process Process where to add transition
+	 * @param transition
+	 *            Transition to be added
+	 * @param process
+	 *            Process where to add transition
 	 */
 	private void addTransition(Transition transition, BPMNeProcess process) {
 		process.addEdge(transition.getFrom(), transition.getTo());
 	}
 
-	
 	/**
-	 * Determines the type of an activity. Activity can be start, end, 
+	 * Determines the type of an activity. Activity can be start, end,
 	 * intermediate task and join or split gateway
 	 * 
 	 * @param activity
@@ -246,39 +252,30 @@ public class CPNConverter {
 		return ActivityType.TASK;
 	}
 
-	
 	/**
-	 * We assume that only split activity has transition restrictions. 
-	 * So this method determines whether the activity is split or join based 
-	 * on the existence of transistionrestriction elements 
+	 * We assume that only split activity has transition restrictions. So this
+	 * method determines whether the activity is split or join based on the
+	 * existence of transistionrestriction elements
 	 * 
 	 * @param activity
 	 * @return
 	 */
-	private static boolean isSplit(Activity activity){
-		for (Object aContent : activity.getContent()){
-			if( aContent instanceof TransitionRestrictions){
+	private static boolean isSplit(Activity activity) {
+		for (Object aContent : activity.getContent()) {
+			if (aContent instanceof TransitionRestrictions) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
+
 	/**
 	 * @author karl
 	 * 
 	 */
 	public enum ActivityType {
-		START, 
-		END, 
-		TASK, 
-		SPLIT_XOR, 
-		SPLIT_INC, 
-		JOIN_XOR, 
-		JOIN_INC
+		START, END, TASK, SPLIT_XOR, SPLIT_INC, JOIN_XOR, JOIN_INC
 	}
-	
 
 	/**
 	 * Method makes an in-memory representation of an input xml file
@@ -302,7 +299,6 @@ public class CPNConverter {
 		return null;
 	}
 
-	
 	/**
 	 * Saves current CPN workspace to the defined file.
 	 * 
@@ -311,14 +307,14 @@ public class CPNConverter {
 	public void saveToFile(File convertedCPNFile) {
 		for (Page p : cpnet.getPageArray())
 
-			if(!p.getId().equals("PAGE_GENERATOR"))
-			ExLucianoWrapper.doLayouting(p);
-		
+			if (!p.getId().equals("PAGE_GENERATOR"))
+				ExLucianoWrapper.doLayouting(p);
+
 		try {
 			cpnWorkspace.save(convertedCPNFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }

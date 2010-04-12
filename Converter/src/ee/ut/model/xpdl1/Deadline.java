@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -47,91 +48,79 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "deadlineCondition",
-    "exceptionName"
-})
+@XmlType(name = "", propOrder = { "deadlineCondition", "exceptionName" })
 @XmlRootElement(name = "Deadline")
 public class Deadline {
 
-    @XmlElement(name = "DeadlineCondition", required = true)
-    protected Object deadlineCondition;
-    @XmlElement(name = "ExceptionName", required = true)
-    protected Object exceptionName;
-    @XmlAttribute(name = "Execution")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String execution;
+	@XmlElement(name = "DeadlineCondition", required = true)
+	protected Object deadlineCondition;
+	@XmlElement(name = "ExceptionName", required = true)
+	protected Object exceptionName;
+	@XmlAttribute(name = "Execution")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String execution;
 
-    /**
-     * Gets the value of the deadlineCondition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getDeadlineCondition() {
-        return deadlineCondition;
-    }
+	/**
+	 * Gets the value of the deadlineCondition property.
+	 * 
+	 * @return possible object is {@link Object }
+	 * 
+	 */
+	public Object getDeadlineCondition() {
+		return deadlineCondition;
+	}
 
-    /**
-     * Sets the value of the deadlineCondition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setDeadlineCondition(Object value) {
-        this.deadlineCondition = value;
-    }
+	/**
+	 * Sets the value of the deadlineCondition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Object }
+	 * 
+	 */
+	public void setDeadlineCondition(Object value) {
+		this.deadlineCondition = value;
+	}
 
-    /**
-     * Gets the value of the exceptionName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getExceptionName() {
-        return exceptionName;
-    }
+	/**
+	 * Gets the value of the exceptionName property.
+	 * 
+	 * @return possible object is {@link Object }
+	 * 
+	 */
+	public Object getExceptionName() {
+		return exceptionName;
+	}
 
-    /**
-     * Sets the value of the exceptionName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setExceptionName(Object value) {
-        this.exceptionName = value;
-    }
+	/**
+	 * Sets the value of the exceptionName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Object }
+	 * 
+	 */
+	public void setExceptionName(Object value) {
+		this.exceptionName = value;
+	}
 
-    /**
-     * Gets the value of the execution property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExecution() {
-        return execution;
-    }
+	/**
+	 * Gets the value of the execution property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getExecution() {
+		return execution;
+	}
 
-    /**
-     * Sets the value of the execution property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExecution(String value) {
-        this.execution = value;
-    }
+	/**
+	 * Sets the value of the execution property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setExecution(String value) {
+		this.execution = value;
+	}
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -25,11 +24,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -58,174 +59,158 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "actual",
-    "testValue",
-    "any"
-})
+@XmlType(name = "", propOrder = { "actual", "testValue", "any" })
 @XmlRootElement(name = "DataMapping")
 public class DataMapping {
 
-    @XmlElement(name = "Actual", required = true)
-    protected ExpressionType actual;
-    @XmlElement(name = "TestValue")
-    protected ExpressionType testValue;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Formal", required = true)
-    protected String formal;
-    @XmlAttribute(name = "Direction")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String direction;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Actual", required = true)
+	protected ExpressionType actual;
+	@XmlElement(name = "TestValue")
+	protected ExpressionType testValue;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Formal", required = true)
+	protected String formal;
+	@XmlAttribute(name = "Direction")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String direction;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the actual property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public ExpressionType getActual() {
-        return actual;
-    }
+	/**
+	 * Gets the value of the actual property.
+	 * 
+	 * @return possible object is {@link ExpressionType }
+	 * 
+	 */
+	public ExpressionType getActual() {
+		return actual;
+	}
 
-    /**
-     * Sets the value of the actual property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public void setActual(ExpressionType value) {
-        this.actual = value;
-    }
+	/**
+	 * Sets the value of the actual property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExpressionType }
+	 * 
+	 */
+	public void setActual(ExpressionType value) {
+		this.actual = value;
+	}
 
-    /**
-     * Gets the value of the testValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public ExpressionType getTestValue() {
-        return testValue;
-    }
+	/**
+	 * Gets the value of the testValue property.
+	 * 
+	 * @return possible object is {@link ExpressionType }
+	 * 
+	 */
+	public ExpressionType getTestValue() {
+		return testValue;
+	}
 
-    /**
-     * Sets the value of the testValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public void setTestValue(ExpressionType value) {
-        this.testValue = value;
-    }
+	/**
+	 * Sets the value of the testValue property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExpressionType }
+	 * 
+	 */
+	public void setTestValue(ExpressionType value) {
+		this.testValue = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the formal property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFormal() {
-        return formal;
-    }
+	/**
+	 * Gets the value of the formal property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFormal() {
+		return formal;
+	}
 
-    /**
-     * Sets the value of the formal property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFormal(String value) {
-        this.formal = value;
-    }
+	/**
+	 * Sets the value of the formal property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFormal(String value) {
+		this.formal = value;
+	}
 
-    /**
-     * Gets the value of the direction property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDirection() {
-        if (direction == null) {
-            return "IN";
-        } else {
-            return direction;
-        }
-    }
+	/**
+	 * Gets the value of the direction property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDirection() {
+		if (direction == null) {
+			return "IN";
+		} else {
+			return direction;
+		}
+	}
 
-    /**
-     * Sets the value of the direction property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDirection(String value) {
-        this.direction = value;
-    }
+	/**
+	 * Sets the value of the direction property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDirection(String value) {
+		this.direction = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

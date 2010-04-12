@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -25,11 +24,13 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -58,227 +59,215 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "category",
-    "object",
-    "any"
-})
+@XmlType(name = "", propOrder = { "category", "object", "any" })
 @XmlRootElement(name = "Group")
 public class Group {
 
-    @XmlElement(name = "Category")
-    protected Category category;
-    @XmlElement(name = "Object")
-    protected List<Group.Object> object;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Category")
+	protected Category category;
+	@XmlElement(name = "Object")
+	protected List<Group.Object> object;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the category property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
-     */
-    public Category getCategory() {
-        return category;
-    }
+	/**
+	 * Gets the value of the category property.
+	 * 
+	 * @return possible object is {@link Category }
+	 * 
+	 */
+	public Category getCategory() {
+		return category;
+	}
 
-    /**
-     * Sets the value of the category property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
-     */
-    public void setCategory(Category value) {
-        this.category = value;
-    }
+	/**
+	 * Sets the value of the category property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Category }
+	 * 
+	 */
+	public void setCategory(Category value) {
+		this.category = value;
+	}
 
-    /**
-     * Gets the value of the object property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the object property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getObject().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Group.Object }
-     * 
-     * 
-     */
-    public List<Group.Object> getObject() {
-        if (object == null) {
-            object = new ArrayList<Group.Object>();
-        }
-        return this.object;
-    }
+	/**
+	 * Gets the value of the object property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the object property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getObject().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Group.Object }
+	 * 
+	 * 
+	 */
+	public List<Group.Object> getObject() {
+		if (object == null) {
+			object = new ArrayList<Group.Object>();
+		}
+		return this.object;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
+	/**
+	 * <p>
+	 * Java class for anonymous complex type.
+	 * 
+	 * <p>
+	 * The following schema fragment specifies the expected content contained
+	 * within this class.
+	 * 
+	 * <pre>
+	 * &lt;complexType>
+	 *   &lt;complexContent>
+	 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+	 *       &lt;attribute name="Id" use="required" type="{http://www.wfmc.org/2008/XPDL2.1}Id" />
+	 *     &lt;/restriction>
+	 *   &lt;/complexContent>
+	 * &lt;/complexType>
+	 * </pre>
+	 * 
+	 * 
+	 */
+	@XmlAccessorType(XmlAccessType.FIELD)
+	@XmlType(name = "")
+	public static class Object {
 
-    /**
-     * <p>Java class for anonymous complex type.
-     * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
-     * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attribute name="Id" use="required" type="{http://www.wfmc.org/2008/XPDL2.1}Id" />
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
-     * </pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "")
-    public static class Object {
+		@XmlAttribute(name = "Id", required = true)
+		@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+		protected String id;
 
-        @XmlAttribute(name = "Id", required = true)
-        @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-        protected String id;
+		/**
+		 * Gets the value of the id property.
+		 * 
+		 * @return possible object is {@link String }
+		 * 
+		 */
+		public String getId() {
+			return id;
+		}
 
-        /**
-         * Gets the value of the id property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getId() {
-            return id;
-        }
+		/**
+		 * Sets the value of the id property.
+		 * 
+		 * @param value
+		 *            allowed object is {@link String }
+		 * 
+		 */
+		public void setId(String value) {
+			this.id = value;
+		}
 
-        /**
-         * Sets the value of the id property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setId(String value) {
-            this.id = value;
-        }
-
-    }
+	}
 
 }

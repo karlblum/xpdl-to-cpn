@@ -5,7 +5,6 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-
 package ee.ut.old.model.sim;
 
 import java.util.ArrayList;
@@ -15,11 +14,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Tasks complex type.
+ * <p>
+ * Java class for Tasks complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Tasks">
@@ -36,41 +37,39 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Tasks", propOrder = {
-    "task"
-})
+@XmlType(name = "Tasks", propOrder = { "task" })
 public class Tasks {
 
-    @XmlElement(name = "Task", required = true)
-    protected List<Task> task;
+	@XmlElement(name = "Task", required = true)
+	protected List<Task> task;
 
-    /**
-     * Gets the value of the task property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the task property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTask().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Task }
-     * 
-     * 
-     */
-    public List<Task> getTask() {
-        if (task == null) {
-            task = new ArrayList<Task>();
-        }
-        return this.task;
-    }
+	/**
+	 * Gets the value of the task property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the task property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getTask().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Task }
+	 * 
+	 * 
+	 */
+	public List<Task> getTask() {
+		if (task == null) {
+			task = new ArrayList<Task>();
+		}
+		return this.task;
+	}
 
 }

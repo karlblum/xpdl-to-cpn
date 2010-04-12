@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.math.BigInteger;
@@ -22,11 +21,13 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -57,192 +58,172 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "value"
-})
+@XmlType(name = "", propOrder = { "value" })
 @XmlRootElement(name = "Icon")
 public class Icon {
 
-    @XmlValue
-    protected String value;
-    @XmlAttribute(name = "XCOORD")
-    protected BigInteger xcoord;
-    @XmlAttribute(name = "YCOORD")
-    protected BigInteger ycoord;
-    @XmlAttribute(name = "WIDTH")
-    protected BigInteger width;
-    @XmlAttribute(name = "HEIGHT")
-    protected BigInteger height;
-    @XmlAttribute(name = "SHAPE")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String shape;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlValue
+	protected String value;
+	@XmlAttribute(name = "XCOORD")
+	protected BigInteger xcoord;
+	@XmlAttribute(name = "YCOORD")
+	protected BigInteger ycoord;
+	@XmlAttribute(name = "WIDTH")
+	protected BigInteger width;
+	@XmlAttribute(name = "HEIGHT")
+	protected BigInteger height;
+	@XmlAttribute(name = "SHAPE")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String shape;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the value property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValue() {
-        return value;
-    }
+	/**
+	 * Gets the value of the value property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the value property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValue(String value) {
-        this.value = value;
-    }
+	/**
+	 * Sets the value of the value property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    /**
-     * Gets the value of the xcoord property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getXCOORD() {
-        return xcoord;
-    }
+	/**
+	 * Gets the value of the xcoord property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getXCOORD() {
+		return xcoord;
+	}
 
-    /**
-     * Sets the value of the xcoord property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setXCOORD(BigInteger value) {
-        this.xcoord = value;
-    }
+	/**
+	 * Sets the value of the xcoord property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setXCOORD(BigInteger value) {
+		this.xcoord = value;
+	}
 
-    /**
-     * Gets the value of the ycoord property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getYCOORD() {
-        return ycoord;
-    }
+	/**
+	 * Gets the value of the ycoord property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getYCOORD() {
+		return ycoord;
+	}
 
-    /**
-     * Sets the value of the ycoord property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setYCOORD(BigInteger value) {
-        this.ycoord = value;
-    }
+	/**
+	 * Sets the value of the ycoord property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setYCOORD(BigInteger value) {
+		this.ycoord = value;
+	}
 
-    /**
-     * Gets the value of the width property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getWIDTH() {
-        return width;
-    }
+	/**
+	 * Gets the value of the width property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getWIDTH() {
+		return width;
+	}
 
-    /**
-     * Sets the value of the width property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setWIDTH(BigInteger value) {
-        this.width = value;
-    }
+	/**
+	 * Sets the value of the width property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setWIDTH(BigInteger value) {
+		this.width = value;
+	}
 
-    /**
-     * Gets the value of the height property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getHEIGHT() {
-        return height;
-    }
+	/**
+	 * Gets the value of the height property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getHEIGHT() {
+		return height;
+	}
 
-    /**
-     * Sets the value of the height property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setHEIGHT(BigInteger value) {
-        this.height = value;
-    }
+	/**
+	 * Sets the value of the height property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setHEIGHT(BigInteger value) {
+		this.height = value;
+	}
 
-    /**
-     * Gets the value of the shape property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSHAPE() {
-        if (shape == null) {
-            return "RoundRectangle";
-        } else {
-            return shape;
-        }
-    }
+	/**
+	 * Gets the value of the shape property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getSHAPE() {
+		if (shape == null) {
+			return "RoundRectangle";
+		} else {
+			return shape;
+		}
+	}
 
-    /**
-     * Sets the value of the shape property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSHAPE(String value) {
-        this.shape = value;
-    }
+	/**
+	 * Sets the value of the shape property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setSHAPE(String value) {
+		this.shape = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

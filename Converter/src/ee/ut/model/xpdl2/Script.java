@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -23,11 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -47,142 +48,131 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "any"
-})
+@XmlType(name = "", propOrder = { "any" })
 @XmlRootElement(name = "Script")
 public class Script {
 
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Type", required = true)
-    protected String type;
-    @XmlAttribute(name = "Version")
-    protected String version;
-    @XmlAttribute(name = "Grammar")
-    @XmlSchemaType(name = "anyURI")
-    protected String grammar;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Type", required = true)
+	protected String type;
+	@XmlAttribute(name = "Version")
+	protected String version;
+	@XmlAttribute(name = "Grammar")
+	@XmlSchemaType(name = "anyURI")
+	protected String grammar;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersion() {
-        return version;
-    }
+	/**
+	 * Gets the value of the version property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getVersion() {
+		return version;
+	}
 
-    /**
-     * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersion(String value) {
-        this.version = value;
-    }
+	/**
+	 * Sets the value of the version property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setVersion(String value) {
+		this.version = value;
+	}
 
-    /**
-     * Gets the value of the grammar property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getGrammar() {
-        return grammar;
-    }
+	/**
+	 * Gets the value of the grammar property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getGrammar() {
+		return grammar;
+	}
 
-    /**
-     * Sets the value of the grammar property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setGrammar(String value) {
-        this.grammar = value;
-    }
+	/**
+	 * Sets the value of the grammar property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setGrammar(String value) {
+		this.grammar = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

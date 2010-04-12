@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.HashMap;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -41,51 +42,48 @@ import javax.xml.namespace.QName;
 @XmlRootElement(name = "LayoutInfo")
 public class LayoutInfo {
 
-    @XmlAttribute(name = "PixelsPerMillimeter")
-    protected Float pixelsPerMillimeter;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlAttribute(name = "PixelsPerMillimeter")
+	protected Float pixelsPerMillimeter;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the pixelsPerMillimeter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Float }
-     *     
-     */
-    public Float getPixelsPerMillimeter() {
-        return pixelsPerMillimeter;
-    }
+	/**
+	 * Gets the value of the pixelsPerMillimeter property.
+	 * 
+	 * @return possible object is {@link Float }
+	 * 
+	 */
+	public Float getPixelsPerMillimeter() {
+		return pixelsPerMillimeter;
+	}
 
-    /**
-     * Sets the value of the pixelsPerMillimeter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Float }
-     *     
-     */
-    public void setPixelsPerMillimeter(Float value) {
-        this.pixelsPerMillimeter = value;
-    }
+	/**
+	 * Sets the value of the pixelsPerMillimeter property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Float }
+	 * 
+	 */
+	public void setPixelsPerMillimeter(Float value) {
+		this.pixelsPerMillimeter = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -56,226 +57,195 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "created",
-    "description",
-    "priority",
-    "limit",
-    "validFrom",
-    "validTo",
-    "timeEstimation"
-})
+@XmlType(name = "", propOrder = { "created", "description", "priority",
+		"limit", "validFrom", "validTo", "timeEstimation" })
 @XmlRootElement(name = "ProcessHeader")
 public class ProcessHeader {
 
-    @XmlElement(name = "Created")
-    protected String created;
-    @XmlElement(name = "Description")
-    protected String description;
-    @XmlElement(name = "Priority")
-    protected String priority;
-    @XmlElement(name = "Limit")
-    protected String limit;
-    @XmlElement(name = "ValidFrom")
-    protected String validFrom;
-    @XmlElement(name = "ValidTo")
-    protected String validTo;
-    @XmlElement(name = "TimeEstimation")
-    protected TimeEstimation timeEstimation;
-    @XmlAttribute(name = "DurationUnit")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String durationUnit;
+	@XmlElement(name = "Created")
+	protected String created;
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "Priority")
+	protected String priority;
+	@XmlElement(name = "Limit")
+	protected String limit;
+	@XmlElement(name = "ValidFrom")
+	protected String validFrom;
+	@XmlElement(name = "ValidTo")
+	protected String validTo;
+	@XmlElement(name = "TimeEstimation")
+	protected TimeEstimation timeEstimation;
+	@XmlAttribute(name = "DurationUnit")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String durationUnit;
 
-    /**
-     * Gets the value of the created property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCreated() {
-        return created;
-    }
+	/**
+	 * Gets the value of the created property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCreated() {
+		return created;
+	}
 
-    /**
-     * Sets the value of the created property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCreated(String value) {
-        this.created = value;
-    }
+	/**
+	 * Sets the value of the created property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCreated(String value) {
+		this.created = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the priority property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPriority() {
-        return priority;
-    }
+	/**
+	 * Gets the value of the priority property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPriority() {
+		return priority;
+	}
 
-    /**
-     * Sets the value of the priority property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPriority(String value) {
-        this.priority = value;
-    }
+	/**
+	 * Sets the value of the priority property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPriority(String value) {
+		this.priority = value;
+	}
 
-    /**
-     * Gets the value of the limit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLimit() {
-        return limit;
-    }
+	/**
+	 * Gets the value of the limit property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLimit() {
+		return limit;
+	}
 
-    /**
-     * Sets the value of the limit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLimit(String value) {
-        this.limit = value;
-    }
+	/**
+	 * Sets the value of the limit property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setLimit(String value) {
+		this.limit = value;
+	}
 
-    /**
-     * Gets the value of the validFrom property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValidFrom() {
-        return validFrom;
-    }
+	/**
+	 * Gets the value of the validFrom property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getValidFrom() {
+		return validFrom;
+	}
 
-    /**
-     * Sets the value of the validFrom property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValidFrom(String value) {
-        this.validFrom = value;
-    }
+	/**
+	 * Sets the value of the validFrom property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setValidFrom(String value) {
+		this.validFrom = value;
+	}
 
-    /**
-     * Gets the value of the validTo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValidTo() {
-        return validTo;
-    }
+	/**
+	 * Gets the value of the validTo property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getValidTo() {
+		return validTo;
+	}
 
-    /**
-     * Sets the value of the validTo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValidTo(String value) {
-        this.validTo = value;
-    }
+	/**
+	 * Sets the value of the validTo property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setValidTo(String value) {
+		this.validTo = value;
+	}
 
-    /**
-     * Gets the value of the timeEstimation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TimeEstimation }
-     *     
-     */
-    public TimeEstimation getTimeEstimation() {
-        return timeEstimation;
-    }
+	/**
+	 * Gets the value of the timeEstimation property.
+	 * 
+	 * @return possible object is {@link TimeEstimation }
+	 * 
+	 */
+	public TimeEstimation getTimeEstimation() {
+		return timeEstimation;
+	}
 
-    /**
-     * Sets the value of the timeEstimation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TimeEstimation }
-     *     
-     */
-    public void setTimeEstimation(TimeEstimation value) {
-        this.timeEstimation = value;
-    }
+	/**
+	 * Sets the value of the timeEstimation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TimeEstimation }
+	 * 
+	 */
+	public void setTimeEstimation(TimeEstimation value) {
+		this.timeEstimation = value;
+	}
 
-    /**
-     * Gets the value of the durationUnit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDurationUnit() {
-        return durationUnit;
-    }
+	/**
+	 * Gets the value of the durationUnit property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDurationUnit() {
+		return durationUnit;
+	}
 
-    /**
-     * Sets the value of the durationUnit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDurationUnit(String value) {
-        this.durationUnit = value;
-    }
+	/**
+	 * Sets the value of the durationUnit property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDurationUnit(String value) {
+		this.durationUnit = value;
+	}
 
 }

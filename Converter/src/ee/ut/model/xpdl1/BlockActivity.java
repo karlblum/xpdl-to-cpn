@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -40,33 +41,30 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement(name = "BlockActivity")
 public class BlockActivity {
 
-    @XmlAttribute(name = "BlockId", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String blockId;
+	@XmlAttribute(name = "BlockId", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String blockId;
 
-    /**
-     * Gets the value of the blockId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBlockId() {
-        return blockId;
-    }
+	/**
+	 * Gets the value of the blockId property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getBlockId() {
+		return blockId;
+	}
 
-    /**
-     * Sets the value of the blockId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBlockId(String value) {
-        this.blockId = value;
-    }
+	/**
+	 * Sets the value of the blockId property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setBlockId(String value) {
+		this.blockId = value;
+	}
 
 }

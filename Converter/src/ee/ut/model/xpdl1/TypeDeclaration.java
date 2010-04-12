@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -19,11 +18,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -44,362 +45,313 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "basicType",
-    "declaredType",
-    "schemaType",
-    "externalReference",
-    "recordType",
-    "unionType",
-    "enumerationType",
-    "arrayType",
-    "listType",
-    "description",
-    "extendedAttributes"
-})
+@XmlType(name = "", propOrder = { "basicType", "declaredType", "schemaType",
+		"externalReference", "recordType", "unionType", "enumerationType",
+		"arrayType", "listType", "description", "extendedAttributes" })
 @XmlRootElement(name = "TypeDeclaration")
 public class TypeDeclaration {
 
-    @XmlElement(name = "BasicType")
-    protected BasicType basicType;
-    @XmlElement(name = "DeclaredType")
-    protected DeclaredType declaredType;
-    @XmlElement(name = "SchemaType")
-    protected SchemaType schemaType;
-    @XmlElement(name = "ExternalReference")
-    protected ExternalReference externalReference;
-    @XmlElement(name = "RecordType")
-    protected RecordType recordType;
-    @XmlElement(name = "UnionType")
-    protected UnionType unionType;
-    @XmlElement(name = "EnumerationType")
-    protected EnumerationType enumerationType;
-    @XmlElement(name = "ArrayType")
-    protected ArrayType arrayType;
-    @XmlElement(name = "ListType")
-    protected ListType listType;
-    @XmlElement(name = "Description")
-    protected String description;
-    @XmlElement(name = "ExtendedAttributes")
-    protected ExtendedAttributes extendedAttributes;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
+	@XmlElement(name = "BasicType")
+	protected BasicType basicType;
+	@XmlElement(name = "DeclaredType")
+	protected DeclaredType declaredType;
+	@XmlElement(name = "SchemaType")
+	protected SchemaType schemaType;
+	@XmlElement(name = "ExternalReference")
+	protected ExternalReference externalReference;
+	@XmlElement(name = "RecordType")
+	protected RecordType recordType;
+	@XmlElement(name = "UnionType")
+	protected UnionType unionType;
+	@XmlElement(name = "EnumerationType")
+	protected EnumerationType enumerationType;
+	@XmlElement(name = "ArrayType")
+	protected ArrayType arrayType;
+	@XmlElement(name = "ListType")
+	protected ListType listType;
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "ExtendedAttributes")
+	protected ExtendedAttributes extendedAttributes;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlID
+	@XmlSchemaType(name = "ID")
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
 
-    /**
-     * Gets the value of the basicType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BasicType }
-     *     
-     */
-    public BasicType getBasicType() {
-        return basicType;
-    }
+	/**
+	 * Gets the value of the basicType property.
+	 * 
+	 * @return possible object is {@link BasicType }
+	 * 
+	 */
+	public BasicType getBasicType() {
+		return basicType;
+	}
 
-    /**
-     * Sets the value of the basicType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BasicType }
-     *     
-     */
-    public void setBasicType(BasicType value) {
-        this.basicType = value;
-    }
+	/**
+	 * Sets the value of the basicType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BasicType }
+	 * 
+	 */
+	public void setBasicType(BasicType value) {
+		this.basicType = value;
+	}
 
-    /**
-     * Gets the value of the declaredType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DeclaredType }
-     *     
-     */
-    public DeclaredType getDeclaredType() {
-        return declaredType;
-    }
+	/**
+	 * Gets the value of the declaredType property.
+	 * 
+	 * @return possible object is {@link DeclaredType }
+	 * 
+	 */
+	public DeclaredType getDeclaredType() {
+		return declaredType;
+	}
 
-    /**
-     * Sets the value of the declaredType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DeclaredType }
-     *     
-     */
-    public void setDeclaredType(DeclaredType value) {
-        this.declaredType = value;
-    }
+	/**
+	 * Sets the value of the declaredType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link DeclaredType }
+	 * 
+	 */
+	public void setDeclaredType(DeclaredType value) {
+		this.declaredType = value;
+	}
 
-    /**
-     * Gets the value of the schemaType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SchemaType }
-     *     
-     */
-    public SchemaType getSchemaType() {
-        return schemaType;
-    }
+	/**
+	 * Gets the value of the schemaType property.
+	 * 
+	 * @return possible object is {@link SchemaType }
+	 * 
+	 */
+	public SchemaType getSchemaType() {
+		return schemaType;
+	}
 
-    /**
-     * Sets the value of the schemaType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SchemaType }
-     *     
-     */
-    public void setSchemaType(SchemaType value) {
-        this.schemaType = value;
-    }
+	/**
+	 * Sets the value of the schemaType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link SchemaType }
+	 * 
+	 */
+	public void setSchemaType(SchemaType value) {
+		this.schemaType = value;
+	}
 
-    /**
-     * Gets the value of the externalReference property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalReference }
-     *     
-     */
-    public ExternalReference getExternalReference() {
-        return externalReference;
-    }
+	/**
+	 * Gets the value of the externalReference property.
+	 * 
+	 * @return possible object is {@link ExternalReference }
+	 * 
+	 */
+	public ExternalReference getExternalReference() {
+		return externalReference;
+	}
 
-    /**
-     * Sets the value of the externalReference property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalReference }
-     *     
-     */
-    public void setExternalReference(ExternalReference value) {
-        this.externalReference = value;
-    }
+	/**
+	 * Sets the value of the externalReference property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExternalReference }
+	 * 
+	 */
+	public void setExternalReference(ExternalReference value) {
+		this.externalReference = value;
+	}
 
-    /**
-     * Gets the value of the recordType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RecordType }
-     *     
-     */
-    public RecordType getRecordType() {
-        return recordType;
-    }
+	/**
+	 * Gets the value of the recordType property.
+	 * 
+	 * @return possible object is {@link RecordType }
+	 * 
+	 */
+	public RecordType getRecordType() {
+		return recordType;
+	}
 
-    /**
-     * Sets the value of the recordType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RecordType }
-     *     
-     */
-    public void setRecordType(RecordType value) {
-        this.recordType = value;
-    }
+	/**
+	 * Sets the value of the recordType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link RecordType }
+	 * 
+	 */
+	public void setRecordType(RecordType value) {
+		this.recordType = value;
+	}
 
-    /**
-     * Gets the value of the unionType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UnionType }
-     *     
-     */
-    public UnionType getUnionType() {
-        return unionType;
-    }
+	/**
+	 * Gets the value of the unionType property.
+	 * 
+	 * @return possible object is {@link UnionType }
+	 * 
+	 */
+	public UnionType getUnionType() {
+		return unionType;
+	}
 
-    /**
-     * Sets the value of the unionType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UnionType }
-     *     
-     */
-    public void setUnionType(UnionType value) {
-        this.unionType = value;
-    }
+	/**
+	 * Sets the value of the unionType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link UnionType }
+	 * 
+	 */
+	public void setUnionType(UnionType value) {
+		this.unionType = value;
+	}
 
-    /**
-     * Gets the value of the enumerationType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EnumerationType }
-     *     
-     */
-    public EnumerationType getEnumerationType() {
-        return enumerationType;
-    }
+	/**
+	 * Gets the value of the enumerationType property.
+	 * 
+	 * @return possible object is {@link EnumerationType }
+	 * 
+	 */
+	public EnumerationType getEnumerationType() {
+		return enumerationType;
+	}
 
-    /**
-     * Sets the value of the enumerationType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EnumerationType }
-     *     
-     */
-    public void setEnumerationType(EnumerationType value) {
-        this.enumerationType = value;
-    }
+	/**
+	 * Sets the value of the enumerationType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link EnumerationType }
+	 * 
+	 */
+	public void setEnumerationType(EnumerationType value) {
+		this.enumerationType = value;
+	}
 
-    /**
-     * Gets the value of the arrayType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayType }
-     *     
-     */
-    public ArrayType getArrayType() {
-        return arrayType;
-    }
+	/**
+	 * Gets the value of the arrayType property.
+	 * 
+	 * @return possible object is {@link ArrayType }
+	 * 
+	 */
+	public ArrayType getArrayType() {
+		return arrayType;
+	}
 
-    /**
-     * Sets the value of the arrayType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayType }
-     *     
-     */
-    public void setArrayType(ArrayType value) {
-        this.arrayType = value;
-    }
+	/**
+	 * Sets the value of the arrayType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ArrayType }
+	 * 
+	 */
+	public void setArrayType(ArrayType value) {
+		this.arrayType = value;
+	}
 
-    /**
-     * Gets the value of the listType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ListType }
-     *     
-     */
-    public ListType getListType() {
-        return listType;
-    }
+	/**
+	 * Gets the value of the listType property.
+	 * 
+	 * @return possible object is {@link ListType }
+	 * 
+	 */
+	public ListType getListType() {
+		return listType;
+	}
 
-    /**
-     * Sets the value of the listType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ListType }
-     *     
-     */
-    public void setListType(ListType value) {
-        this.listType = value;
-    }
+	/**
+	 * Sets the value of the listType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ListType }
+	 * 
+	 */
+	public void setListType(ListType value) {
+		this.listType = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the extendedAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public ExtendedAttributes getExtendedAttributes() {
-        return extendedAttributes;
-    }
+	/**
+	 * Gets the value of the extendedAttributes property.
+	 * 
+	 * @return possible object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public ExtendedAttributes getExtendedAttributes() {
+		return extendedAttributes;
+	}
 
-    /**
-     * Sets the value of the extendedAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public void setExtendedAttributes(ExtendedAttributes value) {
-        this.extendedAttributes = value;
-    }
+	/**
+	 * Sets the value of the extendedAttributes property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public void setExtendedAttributes(ExtendedAttributes value) {
+		this.extendedAttributes = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }

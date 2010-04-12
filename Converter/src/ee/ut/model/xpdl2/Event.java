@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.HashMap;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -41,111 +42,98 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "startEvent",
-    "intermediateEvent",
-    "endEvent"
-})
+@XmlType(name = "", propOrder = { "startEvent", "intermediateEvent", "endEvent" })
 @XmlRootElement(name = "Event")
 public class Event {
 
-    @XmlElement(name = "StartEvent")
-    protected StartEvent startEvent;
-    @XmlElement(name = "IntermediateEvent")
-    protected IntermediateEvent intermediateEvent;
-    @XmlElement(name = "EndEvent")
-    protected EndEvent endEvent;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "StartEvent")
+	protected StartEvent startEvent;
+	@XmlElement(name = "IntermediateEvent")
+	protected IntermediateEvent intermediateEvent;
+	@XmlElement(name = "EndEvent")
+	protected EndEvent endEvent;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the startEvent property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link StartEvent }
-     *     
-     */
-    public StartEvent getStartEvent() {
-        return startEvent;
-    }
+	/**
+	 * Gets the value of the startEvent property.
+	 * 
+	 * @return possible object is {@link StartEvent }
+	 * 
+	 */
+	public StartEvent getStartEvent() {
+		return startEvent;
+	}
 
-    /**
-     * Sets the value of the startEvent property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link StartEvent }
-     *     
-     */
-    public void setStartEvent(StartEvent value) {
-        this.startEvent = value;
-    }
+	/**
+	 * Sets the value of the startEvent property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link StartEvent }
+	 * 
+	 */
+	public void setStartEvent(StartEvent value) {
+		this.startEvent = value;
+	}
 
-    /**
-     * Gets the value of the intermediateEvent property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link IntermediateEvent }
-     *     
-     */
-    public IntermediateEvent getIntermediateEvent() {
-        return intermediateEvent;
-    }
+	/**
+	 * Gets the value of the intermediateEvent property.
+	 * 
+	 * @return possible object is {@link IntermediateEvent }
+	 * 
+	 */
+	public IntermediateEvent getIntermediateEvent() {
+		return intermediateEvent;
+	}
 
-    /**
-     * Sets the value of the intermediateEvent property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link IntermediateEvent }
-     *     
-     */
-    public void setIntermediateEvent(IntermediateEvent value) {
-        this.intermediateEvent = value;
-    }
+	/**
+	 * Sets the value of the intermediateEvent property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link IntermediateEvent }
+	 * 
+	 */
+	public void setIntermediateEvent(IntermediateEvent value) {
+		this.intermediateEvent = value;
+	}
 
-    /**
-     * Gets the value of the endEvent property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EndEvent }
-     *     
-     */
-    public EndEvent getEndEvent() {
-        return endEvent;
-    }
+	/**
+	 * Gets the value of the endEvent property.
+	 * 
+	 * @return possible object is {@link EndEvent }
+	 * 
+	 */
+	public EndEvent getEndEvent() {
+		return endEvent;
+	}
 
-    /**
-     * Sets the value of the endEvent property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EndEvent }
-     *     
-     */
-    public void setEndEvent(EndEvent value) {
-        this.endEvent = value;
-    }
+	/**
+	 * Sets the value of the endEvent property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link EndEvent }
+	 * 
+	 */
+	public void setEndEvent(EndEvent value) {
+		this.endEvent = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

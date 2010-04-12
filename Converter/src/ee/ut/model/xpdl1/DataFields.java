@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import java.util.ArrayList;
@@ -16,11 +15,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -37,42 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "dataField"
-})
+@XmlType(name = "", propOrder = { "dataField" })
 @XmlRootElement(name = "DataFields")
 public class DataFields {
 
-    @XmlElement(name = "DataField")
-    protected List<DataField> dataField;
+	@XmlElement(name = "DataField")
+	protected List<DataField> dataField;
 
-    /**
-     * Gets the value of the dataField property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataField property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDataField().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DataField }
-     * 
-     * 
-     */
-    public List<DataField> getDataField() {
-        if (dataField == null) {
-            dataField = new ArrayList<DataField>();
-        }
-        return this.dataField;
-    }
+	/**
+	 * Gets the value of the dataField property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the dataField property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getDataField().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link DataField }
+	 * 
+	 * 
+	 */
+	public List<DataField> getDataField() {
+		if (dataField == null) {
+			dataField = new ArrayList<DataField>();
+		}
+		return this.dataField;
+	}
 
 }

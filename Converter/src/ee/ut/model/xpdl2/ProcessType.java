@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -26,11 +25,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for ProcessType complex type.
+ * <p>
+ * Java class for ProcessType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="ProcessType">
@@ -124,459 +125,412 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ProcessType", propOrder = {
-    "content"
-})
+@XmlType(name = "ProcessType", propOrder = { "content" })
 public class ProcessType {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "DataFields", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.DataFields.class),
-        @XmlElementRef(name = "Extensions", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = JAXBElement.class),
-        @XmlElementRef(name = "ProcessHeader", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ProcessHeader.class),
-        @XmlElementRef(name = "Transitions", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = Transitions.class),
-        @XmlElementRef(name = "RedefinableHeader", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = RedefinableHeader.class),
-        @XmlElementRef(name = "Applications", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.Applications.class),
-        @XmlElementRef(name = "Participants", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.Participants.class),
-        @XmlElementRef(name = "InputSets", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = InputSets.class),
-        @XmlElementRef(name = "OutputSets", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = OutputSets.class),
-        @XmlElementRef(name = "PartnerLinks", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = PartnerLinks.class),
-        @XmlElementRef(name = "FormalParameters", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = FormalParameters.class),
-        @XmlElementRef(name = "ExtendedAttributes", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ExtendedAttributes.class),
-        @XmlElementRef(name = "Assignments", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = Assignments.class),
-        @XmlElementRef(name = "ActivitySets", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ActivitySets.class),
-        @XmlElementRef(name = "Applications", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.Applications.class),
-        @XmlElementRef(name = "DataFields", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.DataFields.class),
-        @XmlElementRef(name = "Object", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.Object.class),
-        @XmlElementRef(name = "Activities", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = Activities.class),
-        @XmlElementRef(name = "Participants", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.Participants.class)
-    })
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> content;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
-    @XmlAttribute(name = "AccessLevel")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String accessLevel;
-    @XmlAttribute(name = "ProcessType")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String processType;
-    @XmlAttribute(name = "Status")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String status;
-    @XmlAttribute(name = "SuppressJoinFailure")
-    protected Boolean suppressJoinFailure;
-    @XmlAttribute(name = "EnableInstanceCompensation")
-    protected Boolean enableInstanceCompensation;
-    @XmlAttribute(name = "AdHoc")
-    protected Boolean adHoc;
-    @XmlAttribute(name = "AdHocOrdering")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String adHocOrdering;
-    @XmlAttribute(name = "AdHocCompletionCondition")
-    protected String adHocCompletionCondition;
-    @XmlAttribute(name = "DefaultStartActivitySetId")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String defaultStartActivitySetId;
-    @XmlAttribute(name = "DefaultStartActivityId")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String defaultStartActivityId;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElementRefs( {
+			@XmlElementRef(name = "DataFields", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.DataFields.class),
+			@XmlElementRef(name = "Extensions", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = JAXBElement.class),
+			@XmlElementRef(name = "ProcessHeader", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ProcessHeader.class),
+			@XmlElementRef(name = "Transitions", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = Transitions.class),
+			@XmlElementRef(name = "RedefinableHeader", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = RedefinableHeader.class),
+			@XmlElementRef(name = "Applications", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.Applications.class),
+			@XmlElementRef(name = "Participants", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.Participants.class),
+			@XmlElementRef(name = "InputSets", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = InputSets.class),
+			@XmlElementRef(name = "OutputSets", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = OutputSets.class),
+			@XmlElementRef(name = "PartnerLinks", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = PartnerLinks.class),
+			@XmlElementRef(name = "FormalParameters", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = FormalParameters.class),
+			@XmlElementRef(name = "ExtendedAttributes", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ExtendedAttributes.class),
+			@XmlElementRef(name = "Assignments", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = Assignments.class),
+			@XmlElementRef(name = "ActivitySets", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ActivitySets.class),
+			@XmlElementRef(name = "Applications", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.Applications.class),
+			@XmlElementRef(name = "DataFields", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.DataFields.class),
+			@XmlElementRef(name = "Object", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = ee.ut.model.xpdl2.Object.class),
+			@XmlElementRef(name = "Activities", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = Activities.class),
+			@XmlElementRef(name = "Participants", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = ee.ut.model.xpdl1.Participants.class) })
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> content;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
+	@XmlAttribute(name = "AccessLevel")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String accessLevel;
+	@XmlAttribute(name = "ProcessType")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String processType;
+	@XmlAttribute(name = "Status")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String status;
+	@XmlAttribute(name = "SuppressJoinFailure")
+	protected Boolean suppressJoinFailure;
+	@XmlAttribute(name = "EnableInstanceCompensation")
+	protected Boolean enableInstanceCompensation;
+	@XmlAttribute(name = "AdHoc")
+	protected Boolean adHoc;
+	@XmlAttribute(name = "AdHocOrdering")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String adHocOrdering;
+	@XmlAttribute(name = "AdHocCompletionCondition")
+	protected String adHocCompletionCondition;
+	@XmlAttribute(name = "DefaultStartActivitySetId")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String defaultStartActivitySetId;
+	@XmlAttribute(name = "DefaultStartActivityId")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String defaultStartActivityId;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "DataFields" is used by two different parts of a schema. See: 
-     * line 2142 of file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd
-     * line 2139 of file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link java.lang.Object }{@code >}
-     * {@link ee.ut.model.xpdl1.DataFields }
-     * {@link ProcessHeader }
-     * {@link Transitions }
-     * {@link RedefinableHeader }
-     * {@link ee.ut.model.xpdl2.Participants }
-     * {@link ee.ut.model.xpdl1.Applications }
-     * {@link OutputSets }
-     * {@link InputSets }
-     * {@link PartnerLinks }
-     * {@link FormalParameters }
-     * {@link Assignments }
-     * {@link ExtendedAttributes }
-     * {@link ee.ut.model.xpdl2.Applications }
-     * {@link ActivitySets }
-     * {@link java.lang.Object }
-     * {@link ee.ut.model.xpdl2.DataFields }
-     * {@link Element }
-     * {@link Activities }
-     * {@link ee.ut.model.xpdl2.Object }
-     * {@link ee.ut.model.xpdl1.Participants }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<java.lang.Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the rest of the content model.
+	 * 
+	 * <p>
+	 * You are getting this "catch-all" property because of the following
+	 * reason: The field name "DataFields" is used by two different parts of a
+	 * schema. See: line 2142 of
+	 * file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd line 2139
+	 * of file:/C:/Program%20Files/Java/jdk1.6.0_13/bin/bpmnxpdl_31.xsd
+	 * <p>
+	 * To get rid of this property, apply a property customization to one of
+	 * both of the following declarations to change their names: Gets the value
+	 * of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link java.lang.Object }{@code >}
+	 * {@link ee.ut.model.xpdl1.DataFields } {@link ProcessHeader }
+	 * {@link Transitions } {@link RedefinableHeader }
+	 * {@link ee.ut.model.xpdl2.Participants }
+	 * {@link ee.ut.model.xpdl1.Applications } {@link OutputSets }
+	 * {@link InputSets } {@link PartnerLinks } {@link FormalParameters }
+	 * {@link Assignments } {@link ExtendedAttributes }
+	 * {@link ee.ut.model.xpdl2.Applications } {@link ActivitySets }
+	 * {@link java.lang.Object } {@link ee.ut.model.xpdl2.DataFields }
+	 * {@link Element } {@link Activities } {@link ee.ut.model.xpdl2.Object }
+	 * {@link ee.ut.model.xpdl1.Participants }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<java.lang.Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the accessLevel property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAccessLevel() {
-        if (accessLevel == null) {
-            return "PUBLIC";
-        } else {
-            return accessLevel;
-        }
-    }
+	/**
+	 * Gets the value of the accessLevel property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAccessLevel() {
+		if (accessLevel == null) {
+			return "PUBLIC";
+		} else {
+			return accessLevel;
+		}
+	}
 
-    /**
-     * Sets the value of the accessLevel property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAccessLevel(String value) {
-        this.accessLevel = value;
-    }
+	/**
+	 * Sets the value of the accessLevel property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAccessLevel(String value) {
+		this.accessLevel = value;
+	}
 
-    /**
-     * Gets the value of the processType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getProcessType() {
-        if (processType == null) {
-            return "None";
-        } else {
-            return processType;
-        }
-    }
+	/**
+	 * Gets the value of the processType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getProcessType() {
+		if (processType == null) {
+			return "None";
+		} else {
+			return processType;
+		}
+	}
 
-    /**
-     * Sets the value of the processType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setProcessType(String value) {
-        this.processType = value;
-    }
+	/**
+	 * Sets the value of the processType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setProcessType(String value) {
+		this.processType = value;
+	}
 
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        if (status == null) {
-            return "None";
-        } else {
-            return status;
-        }
-    }
+	/**
+	 * Gets the value of the status property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getStatus() {
+		if (status == null) {
+			return "None";
+		} else {
+			return status;
+		}
+	}
 
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
+	/**
+	 * Sets the value of the status property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setStatus(String value) {
+		this.status = value;
+	}
 
-    /**
-     * Gets the value of the suppressJoinFailure property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isSuppressJoinFailure() {
-        if (suppressJoinFailure == null) {
-            return false;
-        } else {
-            return suppressJoinFailure;
-        }
-    }
+	/**
+	 * Gets the value of the suppressJoinFailure property.
+	 * 
+	 * @return possible object is {@link Boolean }
+	 * 
+	 */
+	public boolean isSuppressJoinFailure() {
+		if (suppressJoinFailure == null) {
+			return false;
+		} else {
+			return suppressJoinFailure;
+		}
+	}
 
-    /**
-     * Sets the value of the suppressJoinFailure property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setSuppressJoinFailure(Boolean value) {
-        this.suppressJoinFailure = value;
-    }
+	/**
+	 * Sets the value of the suppressJoinFailure property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Boolean }
+	 * 
+	 */
+	public void setSuppressJoinFailure(Boolean value) {
+		this.suppressJoinFailure = value;
+	}
 
-    /**
-     * Gets the value of the enableInstanceCompensation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isEnableInstanceCompensation() {
-        if (enableInstanceCompensation == null) {
-            return false;
-        } else {
-            return enableInstanceCompensation;
-        }
-    }
+	/**
+	 * Gets the value of the enableInstanceCompensation property.
+	 * 
+	 * @return possible object is {@link Boolean }
+	 * 
+	 */
+	public boolean isEnableInstanceCompensation() {
+		if (enableInstanceCompensation == null) {
+			return false;
+		} else {
+			return enableInstanceCompensation;
+		}
+	}
 
-    /**
-     * Sets the value of the enableInstanceCompensation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setEnableInstanceCompensation(Boolean value) {
-        this.enableInstanceCompensation = value;
-    }
+	/**
+	 * Sets the value of the enableInstanceCompensation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Boolean }
+	 * 
+	 */
+	public void setEnableInstanceCompensation(Boolean value) {
+		this.enableInstanceCompensation = value;
+	}
 
-    /**
-     * Gets the value of the adHoc property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isAdHoc() {
-        if (adHoc == null) {
-            return false;
-        } else {
-            return adHoc;
-        }
-    }
+	/**
+	 * Gets the value of the adHoc property.
+	 * 
+	 * @return possible object is {@link Boolean }
+	 * 
+	 */
+	public boolean isAdHoc() {
+		if (adHoc == null) {
+			return false;
+		} else {
+			return adHoc;
+		}
+	}
 
-    /**
-     * Sets the value of the adHoc property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setAdHoc(Boolean value) {
-        this.adHoc = value;
-    }
+	/**
+	 * Sets the value of the adHoc property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Boolean }
+	 * 
+	 */
+	public void setAdHoc(Boolean value) {
+		this.adHoc = value;
+	}
 
-    /**
-     * Gets the value of the adHocOrdering property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAdHocOrdering() {
-        if (adHocOrdering == null) {
-            return "Parallel";
-        } else {
-            return adHocOrdering;
-        }
-    }
+	/**
+	 * Gets the value of the adHocOrdering property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAdHocOrdering() {
+		if (adHocOrdering == null) {
+			return "Parallel";
+		} else {
+			return adHocOrdering;
+		}
+	}
 
-    /**
-     * Sets the value of the adHocOrdering property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAdHocOrdering(String value) {
-        this.adHocOrdering = value;
-    }
+	/**
+	 * Sets the value of the adHocOrdering property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAdHocOrdering(String value) {
+		this.adHocOrdering = value;
+	}
 
-    /**
-     * Gets the value of the adHocCompletionCondition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAdHocCompletionCondition() {
-        return adHocCompletionCondition;
-    }
+	/**
+	 * Gets the value of the adHocCompletionCondition property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAdHocCompletionCondition() {
+		return adHocCompletionCondition;
+	}
 
-    /**
-     * Sets the value of the adHocCompletionCondition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAdHocCompletionCondition(String value) {
-        this.adHocCompletionCondition = value;
-    }
+	/**
+	 * Sets the value of the adHocCompletionCondition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAdHocCompletionCondition(String value) {
+		this.adHocCompletionCondition = value;
+	}
 
-    /**
-     * Gets the value of the defaultStartActivitySetId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDefaultStartActivitySetId() {
-        return defaultStartActivitySetId;
-    }
+	/**
+	 * Gets the value of the defaultStartActivitySetId property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDefaultStartActivitySetId() {
+		return defaultStartActivitySetId;
+	}
 
-    /**
-     * Sets the value of the defaultStartActivitySetId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDefaultStartActivitySetId(String value) {
-        this.defaultStartActivitySetId = value;
-    }
+	/**
+	 * Sets the value of the defaultStartActivitySetId property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDefaultStartActivitySetId(String value) {
+		this.defaultStartActivitySetId = value;
+	}
 
-    /**
-     * Gets the value of the defaultStartActivityId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDefaultStartActivityId() {
-        return defaultStartActivityId;
-    }
+	/**
+	 * Gets the value of the defaultStartActivityId property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDefaultStartActivityId() {
+		return defaultStartActivityId;
+	}
 
-    /**
-     * Sets the value of the defaultStartActivityId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDefaultStartActivityId(String value) {
-        this.defaultStartActivityId = value;
-    }
+	/**
+	 * Sets the value of the defaultStartActivityId property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDefaultStartActivityId(String value) {
+		this.defaultStartActivityId = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

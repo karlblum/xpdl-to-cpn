@@ -7,3 +7,4 @@
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://www.wfmc.org/2002/XPDL1.0", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package ee.ut.model.xpdl1;
+

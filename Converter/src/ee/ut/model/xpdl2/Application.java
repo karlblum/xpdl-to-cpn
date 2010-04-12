@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -26,11 +25,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -56,252 +57,225 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "description",
-    "type",
-    "formalParameters",
-    "externalReference",
-    "extendedAttributes",
-    "any"
-})
+@XmlType(name = "", propOrder = { "description", "type", "formalParameters",
+		"externalReference", "extendedAttributes", "any" })
 @XmlRootElement(name = "Application")
 public class Application {
 
-    @XmlElement(name = "Description")
-    protected Description description;
-    @XmlElement(name = "Type")
-    protected ApplicationType type;
-    @XmlElement(name = "FormalParameters")
-    protected FormalParameters formalParameters;
-    @XmlElement(name = "ExternalReference")
-    protected ExternalReference externalReference;
-    @XmlElement(name = "ExtendedAttributes")
-    protected ExtendedAttributes extendedAttributes;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String id;
-    @XmlAttribute(name = "Name")
-    protected String name;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Description")
+	protected Description description;
+	@XmlElement(name = "Type")
+	protected ApplicationType type;
+	@XmlElement(name = "FormalParameters")
+	protected FormalParameters formalParameters;
+	@XmlElement(name = "ExternalReference")
+	protected ExternalReference externalReference;
+	@XmlElement(name = "ExtendedAttributes")
+	protected ExtendedAttributes extendedAttributes;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String id;
+	@XmlAttribute(name = "Name")
+	protected String name;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Description }
-     *     
-     */
-    public Description getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link Description }
+	 * 
+	 */
+	public Description getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Description }
-     *     
-     */
-    public void setDescription(Description value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Description }
+	 * 
+	 */
+	public void setDescription(Description value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ApplicationType }
-     *     
-     */
-    public ApplicationType getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link ApplicationType }
+	 * 
+	 */
+	public ApplicationType getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ApplicationType }
-     *     
-     */
-    public void setType(ApplicationType value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ApplicationType }
+	 * 
+	 */
+	public void setType(ApplicationType value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets the value of the formalParameters property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FormalParameters }
-     *     
-     */
-    public FormalParameters getFormalParameters() {
-        return formalParameters;
-    }
+	/**
+	 * Gets the value of the formalParameters property.
+	 * 
+	 * @return possible object is {@link FormalParameters }
+	 * 
+	 */
+	public FormalParameters getFormalParameters() {
+		return formalParameters;
+	}
 
-    /**
-     * Sets the value of the formalParameters property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FormalParameters }
-     *     
-     */
-    public void setFormalParameters(FormalParameters value) {
-        this.formalParameters = value;
-    }
+	/**
+	 * Sets the value of the formalParameters property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link FormalParameters }
+	 * 
+	 */
+	public void setFormalParameters(FormalParameters value) {
+		this.formalParameters = value;
+	}
 
-    /**
-     * Gets the value of the externalReference property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalReference }
-     *     
-     */
-    public ExternalReference getExternalReference() {
-        return externalReference;
-    }
+	/**
+	 * Gets the value of the externalReference property.
+	 * 
+	 * @return possible object is {@link ExternalReference }
+	 * 
+	 */
+	public ExternalReference getExternalReference() {
+		return externalReference;
+	}
 
-    /**
-     * Sets the value of the externalReference property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalReference }
-     *     
-     */
-    public void setExternalReference(ExternalReference value) {
-        this.externalReference = value;
-    }
+	/**
+	 * Sets the value of the externalReference property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExternalReference }
+	 * 
+	 */
+	public void setExternalReference(ExternalReference value) {
+		this.externalReference = value;
+	}
 
-    /**
-     * Gets the value of the extendedAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public ExtendedAttributes getExtendedAttributes() {
-        return extendedAttributes;
-    }
+	/**
+	 * Gets the value of the extendedAttributes property.
+	 * 
+	 * @return possible object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public ExtendedAttributes getExtendedAttributes() {
+		return extendedAttributes;
+	}
 
-    /**
-     * Sets the value of the extendedAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public void setExtendedAttributes(ExtendedAttributes value) {
-        this.extendedAttributes = value;
-    }
+	/**
+	 * Sets the value of the extendedAttributes property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public void setExtendedAttributes(ExtendedAttributes value) {
+		this.extendedAttributes = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

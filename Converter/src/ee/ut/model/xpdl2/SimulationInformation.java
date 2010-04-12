@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -25,11 +24,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -56,144 +57,131 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "cost",
-    "timeEstimation",
-    "any"
-})
+@XmlType(name = "", propOrder = { "cost", "timeEstimation", "any" })
 @XmlRootElement(name = "SimulationInformation")
 public class SimulationInformation {
 
-    @XmlElement(name = "Cost", required = true)
-    protected Cost cost;
-    @XmlElement(name = "TimeEstimation", required = true)
-    protected TimeEstimation timeEstimation;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "Instantiation")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String instantiation;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Cost", required = true)
+	protected Cost cost;
+	@XmlElement(name = "TimeEstimation", required = true)
+	protected TimeEstimation timeEstimation;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "Instantiation")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String instantiation;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the cost property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Cost }
-     *     
-     */
-    public Cost getCost() {
-        return cost;
-    }
+	/**
+	 * Gets the value of the cost property.
+	 * 
+	 * @return possible object is {@link Cost }
+	 * 
+	 */
+	public Cost getCost() {
+		return cost;
+	}
 
-    /**
-     * Sets the value of the cost property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Cost }
-     *     
-     */
-    public void setCost(Cost value) {
-        this.cost = value;
-    }
+	/**
+	 * Sets the value of the cost property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Cost }
+	 * 
+	 */
+	public void setCost(Cost value) {
+		this.cost = value;
+	}
 
-    /**
-     * Gets the value of the timeEstimation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TimeEstimation }
-     *     
-     */
-    public TimeEstimation getTimeEstimation() {
-        return timeEstimation;
-    }
+	/**
+	 * Gets the value of the timeEstimation property.
+	 * 
+	 * @return possible object is {@link TimeEstimation }
+	 * 
+	 */
+	public TimeEstimation getTimeEstimation() {
+		return timeEstimation;
+	}
 
-    /**
-     * Sets the value of the timeEstimation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TimeEstimation }
-     *     
-     */
-    public void setTimeEstimation(TimeEstimation value) {
-        this.timeEstimation = value;
-    }
+	/**
+	 * Sets the value of the timeEstimation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link TimeEstimation }
+	 * 
+	 */
+	public void setTimeEstimation(TimeEstimation value) {
+		this.timeEstimation = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the instantiation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getInstantiation() {
-        return instantiation;
-    }
+	/**
+	 * Gets the value of the instantiation property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getInstantiation() {
+		return instantiation;
+	}
 
-    /**
-     * Sets the value of the instantiation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setInstantiation(String value) {
-        this.instantiation = value;
-    }
+	/**
+	 * Sets the value of the instantiation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setInstantiation(String value) {
+		this.instantiation = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

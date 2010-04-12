@@ -5,7 +5,6 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-
 package ee.ut.old.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Task complex type.
+ * <p>
+ * Java class for Task complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Task">
@@ -36,90 +37,78 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Task", propOrder = {
-    "id",
-    "resourceWaitTime",
-    "processingTime"
-})
+@XmlType(name = "Task", propOrder = { "id", "resourceWaitTime",
+		"processingTime" })
 public class Task {
 
-    @XmlElement(name = "Id", required = true)
-    protected String id;
-    @XmlElement(name = "ResourceWaitTime", required = true)
-    protected String resourceWaitTime;
-    @XmlElement(name = "ProcessingTime", required = true)
-    protected String processingTime;
+	@XmlElement(name = "Id", required = true)
+	protected String id;
+	@XmlElement(name = "ResourceWaitTime", required = true)
+	protected String resourceWaitTime;
+	@XmlElement(name = "ProcessingTime", required = true)
+	protected String processingTime;
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the resourceWaitTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getResourceWaitTime() {
-        return resourceWaitTime;
-    }
+	/**
+	 * Gets the value of the resourceWaitTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResourceWaitTime() {
+		return resourceWaitTime;
+	}
 
-    /**
-     * Sets the value of the resourceWaitTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setResourceWaitTime(String value) {
-        this.resourceWaitTime = value;
-    }
+	/**
+	 * Sets the value of the resourceWaitTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setResourceWaitTime(String value) {
+		this.resourceWaitTime = value;
+	}
 
-    /**
-     * Gets the value of the processingTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getProcessingTime() {
-        return processingTime;
-    }
+	/**
+	 * Gets the value of the processingTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getProcessingTime() {
+		return processingTime;
+	}
 
-    /**
-     * Sets the value of the processingTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setProcessingTime(String value) {
-        this.processingTime = value;
-    }
+	/**
+	 * Sets the value of the processingTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setProcessingTime(String value) {
+		this.processingTime = value;
+	}
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -23,11 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -50,169 +51,153 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "timeDate",
-    "timeCycle",
-    "any"
-})
+@XmlType(name = "", propOrder = { "timeDate", "timeCycle", "any" })
 @XmlRootElement(name = "TriggerTimer")
 public class TriggerTimer {
 
-    @XmlElement(name = "TimeDate")
-    protected ExpressionType timeDate;
-    @XmlElement(name = "TimeCycle")
-    protected ExpressionType timeCycle;
-    @XmlAnyElement(lax = true)
-    protected List<java.lang.Object> any;
-    @XmlAttribute(name = "TimeDate")
-    protected String timeDataAttribute;
-    @XmlAttribute(name = "TimeCycle")
-    protected String timeCycleAttribute;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "TimeDate")
+	protected ExpressionType timeDate;
+	@XmlElement(name = "TimeCycle")
+	protected ExpressionType timeCycle;
+	@XmlAnyElement(lax = true)
+	protected List<java.lang.Object> any;
+	@XmlAttribute(name = "TimeDate")
+	protected String timeDataAttribute;
+	@XmlAttribute(name = "TimeCycle")
+	protected String timeCycleAttribute;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the timeDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public ExpressionType getTimeDate() {
-        return timeDate;
-    }
+	/**
+	 * Gets the value of the timeDate property.
+	 * 
+	 * @return possible object is {@link ExpressionType }
+	 * 
+	 */
+	public ExpressionType getTimeDate() {
+		return timeDate;
+	}
 
-    /**
-     * Sets the value of the timeDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public void setTimeDate(ExpressionType value) {
-        this.timeDate = value;
-    }
+	/**
+	 * Sets the value of the timeDate property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExpressionType }
+	 * 
+	 */
+	public void setTimeDate(ExpressionType value) {
+		this.timeDate = value;
+	}
 
-    /**
-     * Gets the value of the timeCycle property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public ExpressionType getTimeCycle() {
-        return timeCycle;
-    }
+	/**
+	 * Gets the value of the timeCycle property.
+	 * 
+	 * @return possible object is {@link ExpressionType }
+	 * 
+	 */
+	public ExpressionType getTimeCycle() {
+		return timeCycle;
+	}
 
-    /**
-     * Sets the value of the timeCycle property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExpressionType }
-     *     
-     */
-    public void setTimeCycle(ExpressionType value) {
-        this.timeCycle = value;
-    }
+	/**
+	 * Sets the value of the timeCycle property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExpressionType }
+	 * 
+	 */
+	public void setTimeCycle(ExpressionType value) {
+		this.timeCycle = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link java.lang.Object }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<java.lang.Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link java.lang.Object }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<java.lang.Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the timeDataAttribute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTimeDataAttribute() {
-        return timeDataAttribute;
-    }
+	/**
+	 * Gets the value of the timeDataAttribute property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTimeDataAttribute() {
+		return timeDataAttribute;
+	}
 
-    /**
-     * Sets the value of the timeDataAttribute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTimeDataAttribute(String value) {
-        this.timeDataAttribute = value;
-    }
+	/**
+	 * Sets the value of the timeDataAttribute property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTimeDataAttribute(String value) {
+		this.timeDataAttribute = value;
+	}
 
-    /**
-     * Gets the value of the timeCycleAttribute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTimeCycleAttribute() {
-        return timeCycleAttribute;
-    }
+	/**
+	 * Gets the value of the timeCycleAttribute property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTimeCycleAttribute() {
+		return timeCycleAttribute;
+	}
 
-    /**
-     * Sets the value of the timeCycleAttribute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTimeCycleAttribute(String value) {
-        this.timeCycleAttribute = value;
-    }
+	/**
+	 * Sets the value of the timeCycleAttribute property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTimeCycleAttribute(String value) {
+		this.timeCycleAttribute = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

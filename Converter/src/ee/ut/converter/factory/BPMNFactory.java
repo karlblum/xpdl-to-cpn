@@ -1,19 +1,18 @@
 package ee.ut.converter.factory;
 
 import ee.ut.converter.CPNProcess;
-import ee.ut.converter.ParserHelper;
+import ee.ut.converter.parser.ParserHelper;
 import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
 
 public final class BPMNFactory extends AbstractElementFactory {
 
-	public BPMNFactory(CPNProcess cPNProcess) {
-		super(cPNProcess);
+	public BPMNFactory(CPNProcess cPNProcess, ParserHelper parserHelper) {
+		super(cPNProcess, parserHelper);
 	}
 
 	AbstractElementFactory activityFactory = null;
 	AbstractElementFactory transitionFactory = null;
 	AbstractElementFactory gatewayFactory = null;
-	ParserHelper parserHelper = null;
 
 	public void registerActivityFactory(AbstractElementFactory f) {
 		this.activityFactory = f;
@@ -38,9 +37,9 @@ public final class BPMNFactory extends AbstractElementFactory {
 			return activityFactory.create(obj);
 		} else if (elementType == BPMNElementType.GATEWAY) {
 			return gatewayFactory.create(obj);
-		} else if(elementType == BPMNElementType.START){
+		} else if (elementType == BPMNElementType.START) {
 			return activityFactory.create(obj);
-		} else if(elementType == BPMNElementType.END){
+		} else if (elementType == BPMNElementType.END) {
 			return activityFactory.create(obj);
 		} else if (elementType == BPMNElementType.TRANSITION) {
 			return transitionFactory.create(obj);

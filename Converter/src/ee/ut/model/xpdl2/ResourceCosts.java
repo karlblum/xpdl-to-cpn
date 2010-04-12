@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.math.BigDecimal;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -62,92 +63,80 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "resourceCostName",
-    "resourceCost",
-    "costUnitOfTime"
-})
+@XmlType(name = "", propOrder = { "resourceCostName", "resourceCost",
+		"costUnitOfTime" })
 @XmlRootElement(name = "ResourceCosts")
 public class ResourceCosts {
 
-    @XmlElement(name = "ResourceCostName", required = true)
-    protected String resourceCostName;
-    @XmlElement(name = "ResourceCost", required = true)
-    protected BigDecimal resourceCost;
-    @XmlElement(name = "CostUnitOfTime", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String costUnitOfTime;
+	@XmlElement(name = "ResourceCostName", required = true)
+	protected String resourceCostName;
+	@XmlElement(name = "ResourceCost", required = true)
+	protected BigDecimal resourceCost;
+	@XmlElement(name = "CostUnitOfTime", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String costUnitOfTime;
 
-    /**
-     * Gets the value of the resourceCostName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getResourceCostName() {
-        return resourceCostName;
-    }
+	/**
+	 * Gets the value of the resourceCostName property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResourceCostName() {
+		return resourceCostName;
+	}
 
-    /**
-     * Sets the value of the resourceCostName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setResourceCostName(String value) {
-        this.resourceCostName = value;
-    }
+	/**
+	 * Sets the value of the resourceCostName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setResourceCostName(String value) {
+		this.resourceCostName = value;
+	}
 
-    /**
-     * Gets the value of the resourceCost property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getResourceCost() {
-        return resourceCost;
-    }
+	/**
+	 * Gets the value of the resourceCost property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getResourceCost() {
+		return resourceCost;
+	}
 
-    /**
-     * Sets the value of the resourceCost property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setResourceCost(BigDecimal value) {
-        this.resourceCost = value;
-    }
+	/**
+	 * Sets the value of the resourceCost property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setResourceCost(BigDecimal value) {
+		this.resourceCost = value;
+	}
 
-    /**
-     * Gets the value of the costUnitOfTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCostUnitOfTime() {
-        return costUnitOfTime;
-    }
+	/**
+	 * Gets the value of the costUnitOfTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCostUnitOfTime() {
+		return costUnitOfTime;
+	}
 
-    /**
-     * Sets the value of the costUnitOfTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCostUnitOfTime(String value) {
-        this.costUnitOfTime = value;
-    }
+	/**
+	 * Sets the value of the costUnitOfTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCostUnitOfTime(String value) {
+		this.costUnitOfTime = value;
+	}
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -51,151 +52,133 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "dataType",
-    "description"
-})
+@XmlType(name = "", propOrder = { "dataType", "description" })
 @XmlRootElement(name = "FormalParameter")
 public class FormalParameter {
 
-    @XmlElement(name = "DataType", required = true)
-    protected DataType dataType;
-    @XmlElement(name = "Description")
-    protected String description;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String id;
-    @XmlAttribute(name = "Index")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String index;
-    @XmlAttribute(name = "Mode")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String mode;
+	@XmlElement(name = "DataType", required = true)
+	protected DataType dataType;
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String id;
+	@XmlAttribute(name = "Index")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String index;
+	@XmlAttribute(name = "Mode")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String mode;
 
-    /**
-     * Gets the value of the dataType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataType }
-     *     
-     */
-    public DataType getDataType() {
-        return dataType;
-    }
+	/**
+	 * Gets the value of the dataType property.
+	 * 
+	 * @return possible object is {@link DataType }
+	 * 
+	 */
+	public DataType getDataType() {
+		return dataType;
+	}
 
-    /**
-     * Sets the value of the dataType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataType }
-     *     
-     */
-    public void setDataType(DataType value) {
-        this.dataType = value;
-    }
+	/**
+	 * Sets the value of the dataType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link DataType }
+	 * 
+	 */
+	public void setDataType(DataType value) {
+		this.dataType = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the index property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIndex() {
-        return index;
-    }
+	/**
+	 * Gets the value of the index property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIndex() {
+		return index;
+	}
 
-    /**
-     * Sets the value of the index property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIndex(String value) {
-        this.index = value;
-    }
+	/**
+	 * Sets the value of the index property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIndex(String value) {
+		this.index = value;
+	}
 
-    /**
-     * Gets the value of the mode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMode() {
-        if (mode == null) {
-            return "IN";
-        } else {
-            return mode;
-        }
-    }
+	/**
+	 * Gets the value of the mode property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getMode() {
+		if (mode == null) {
+			return "IN";
+		} else {
+			return mode;
+		}
+	}
 
-    /**
-     * Sets the value of the mode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMode(String value) {
-        this.mode = value;
-    }
+	/**
+	 * Sets the value of the mode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setMode(String value) {
+		this.mode = value;
+	}
 
 }

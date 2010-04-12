@@ -9,6 +9,7 @@ import noNamespace.Trans;
 import org.apache.xmlbeans.XmlString;
 
 import ee.ut.converter.CPNProcess;
+import ee.ut.converter.parser.ParserHelper;
 import ee.ut.model.xpdl2.Activity;
 
 public final class BPMNTask extends BPMNElement {
@@ -18,7 +19,7 @@ public final class BPMNTask extends BPMNElement {
 	private String outputPlaceId;
 	private String transitionId;
 
-	public BPMNTask(CPNProcess cPNProcess, Object o) {
+	public BPMNTask(CPNProcess cPNProcess, Object o, ParserHelper parserHelper) {
 		super(cPNProcess);
 
 		Activity xpdlActivity = ((Activity) o);
@@ -41,7 +42,8 @@ public final class BPMNTask extends BPMNElement {
 
 		// if (type == ActivityType.START) {
 		if (false) {
-			Subst subst = cPNProcess.getCpnet().addSubst(trans, "PAGE_GENERATOR");
+			Subst subst = cPNProcess.getCpnet().addSubst(trans,
+					"PAGE_GENERATOR");
 			subst.setPortsock(String.format("(%s,%s)", "ID1264234111", pOut
 					.getId()));
 

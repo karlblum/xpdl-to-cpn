@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl2;
 
 import java.util.ArrayList;
@@ -28,11 +27,13 @@ import javax.xml.namespace.QName;
 
 import ee.ut.model.xpdl1.Xpression;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -60,95 +61,89 @@ import ee.ut.model.xpdl1.Xpression;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "content"
-})
+@XmlType(name = "", propOrder = { "content" })
 @XmlRootElement(name = "Condition")
 public class Condition {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "Xpression", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = Xpression.class),
-        @XmlElementRef(name = "Expression", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = JAXBElement.class)
-    })
-    @XmlMixed
-    protected List<java.lang.Object> content;
-    @XmlAttribute(name = "Type")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String type;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElementRefs( {
+			@XmlElementRef(name = "Xpression", namespace = "http://www.wfmc.org/2002/XPDL1.0", type = Xpression.class),
+			@XmlElementRef(name = "Expression", namespace = "http://www.wfmc.org/2008/XPDL2.1", type = JAXBElement.class) })
+	@XmlMixed
+	protected List<java.lang.Object> content;
+	@XmlAttribute(name = "Type")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String type;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Xpression }
-     * {@link JAXBElement }{@code <}{@link ExpressionType }{@code >}
-     * {@link String }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<java.lang.Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Xpression } {@link JAXBElement }{@code <}{@link ExpressionType }
+	 * {@code >} {@link String }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<java.lang.Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2009.09.15 at 06:18:08 PM EST 
 //
 
-
 package ee.ut.model.xpdl1;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -45,201 +46,177 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "condition",
-    "description",
-    "extendedAttributes"
-})
+@XmlType(name = "", propOrder = { "condition", "description",
+		"extendedAttributes" })
 @XmlRootElement(name = "Transition")
 public class Transition {
 
-    @XmlElement(name = "Condition")
-    protected Condition condition;
-    @XmlElement(name = "Description")
-    protected String description;
-    @XmlElement(name = "ExtendedAttributes")
-    protected ExtendedAttributes extendedAttributes;
-    @XmlAttribute(name = "Id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String id;
-    @XmlAttribute(name = "From", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String from;
-    @XmlAttribute(name = "To", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String to;
-    @XmlAttribute(name = "Name")
-    protected String name;
+	@XmlElement(name = "Condition")
+	protected Condition condition;
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "ExtendedAttributes")
+	protected ExtendedAttributes extendedAttributes;
+	@XmlAttribute(name = "Id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String id;
+	@XmlAttribute(name = "From", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String from;
+	@XmlAttribute(name = "To", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String to;
+	@XmlAttribute(name = "Name")
+	protected String name;
 
-    /**
-     * Gets the value of the condition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Condition }
-     *     
-     */
-    public Condition getCondition() {
-        return condition;
-    }
+	/**
+	 * Gets the value of the condition property.
+	 * 
+	 * @return possible object is {@link Condition }
+	 * 
+	 */
+	public Condition getCondition() {
+		return condition;
+	}
 
-    /**
-     * Sets the value of the condition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Condition }
-     *     
-     */
-    public void setCondition(Condition value) {
-        this.condition = value;
-    }
+	/**
+	 * Sets the value of the condition property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Condition }
+	 * 
+	 */
+	public void setCondition(Condition value) {
+		this.condition = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the extendedAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public ExtendedAttributes getExtendedAttributes() {
-        return extendedAttributes;
-    }
+	/**
+	 * Gets the value of the extendedAttributes property.
+	 * 
+	 * @return possible object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public ExtendedAttributes getExtendedAttributes() {
+		return extendedAttributes;
+	}
 
-    /**
-     * Sets the value of the extendedAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExtendedAttributes }
-     *     
-     */
-    public void setExtendedAttributes(ExtendedAttributes value) {
-        this.extendedAttributes = value;
-    }
+	/**
+	 * Sets the value of the extendedAttributes property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExtendedAttributes }
+	 * 
+	 */
+	public void setExtendedAttributes(ExtendedAttributes value) {
+		this.extendedAttributes = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the from property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFrom() {
-        return from;
-    }
+	/**
+	 * Gets the value of the from property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFrom() {
+		return from;
+	}
 
-    /**
-     * Sets the value of the from property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFrom(String value) {
-        this.from = value;
-    }
+	/**
+	 * Sets the value of the from property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFrom(String value) {
+		this.from = value;
+	}
 
-    /**
-     * Gets the value of the to property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTo() {
-        return to;
-    }
+	/**
+	 * Gets the value of the to property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTo() {
+		return to;
+	}
 
-    /**
-     * Sets the value of the to property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTo(String value) {
-        this.to = value;
-    }
+	/**
+	 * Sets the value of the to property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTo(String value) {
+		this.to = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }

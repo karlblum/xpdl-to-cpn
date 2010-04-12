@@ -38,7 +38,6 @@ public class ExXPDLtoCPN {
 		File fIn = new File(
 				"C:/Karl/Thesis/Source/Converter/files/models/simplest_xpdl.xpdl");
 
-		
 		JAXBContext jc = JAXBContext.newInstance("ee.ut.model.xpdl2");
 		Unmarshaller u = jc.createUnmarshaller();
 		JAXBElement rootElement = (JAXBElement) u.unmarshal(fIn);
