@@ -1,12 +1,6 @@
 package ee.ut.converter;
 
-import java.io.File;
 import java.util.HashMap;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 
 import ee.ut.converter.factory.AbstractElementFactory;
 
@@ -20,24 +14,9 @@ public class CPNProcess {
 		super();
 	}
 
-	public void saveToCPN() {
+	public void saveToCPN(String location) {
 		cpnet
-				.saveToFile("C:/Karl/Thesis/Source/Converter/files/cpn/TestCPNModel.cpn");
-	}
-
-	@SuppressWarnings("unchecked")
-	protected JAXBElement unMasrhall(File file, String model) {
-		JAXBContext jc;
-		try {
-			jc = JAXBContext.newInstance(model);
-
-			Unmarshaller u = jc.createUnmarshaller();
-			JAXBElement rootElement = (JAXBElement) u.unmarshal(file);
-			return rootElement;
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
-		return null;
+				.saveToFile(location);
 	}
 
 	public CPNet getCpnet() {

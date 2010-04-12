@@ -3,29 +3,21 @@ package ee.ut.old.model.bpmne;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.xmlbeans.XmlObject;
-import org.apache.xmlbeans.XmlString;
-
-import ee.ut.old.model.bpmne.BPMNeGateway.GWType;
-
-import noNamespace.Annot;
-import noNamespace.Arc;
-import noNamespace.Color;
 import noNamespace.Cpnet;
 import noNamespace.Globbox;
-import noNamespace.Id;
 import noNamespace.Instance;
 import noNamespace.Ml;
 import noNamespace.Page;
 import noNamespace.Pageattr;
 import noNamespace.Place;
-import noNamespace.Product;
-import noNamespace.Record;
-import noNamespace.Recordfield;
 import noNamespace.Subpageinfo;
 import noNamespace.Subst;
 import noNamespace.Trans;
 import noNamespace.Var;
+
+import org.apache.xmlbeans.XmlString;
+
+import ee.ut.old.model.bpmne.BPMNeGateway.GWType;
 
 public class BPMNeProcess {
 	protected Cpnet cpnet;

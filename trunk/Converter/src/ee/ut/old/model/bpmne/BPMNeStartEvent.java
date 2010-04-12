@@ -1,19 +1,13 @@
 package ee.ut.old.model.bpmne;
 
-import noNamespace.Annot;
-import noNamespace.Arc;
-import noNamespace.Code;
 import noNamespace.Cpnet;
 import noNamespace.Instance;
 import noNamespace.Page;
-import noNamespace.Pageattr;
 import noNamespace.Place;
-import noNamespace.Port;
 import noNamespace.Subpageinfo;
 import noNamespace.Subst;
 import noNamespace.Trans;
 
-import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
 
 public class BPMNeStartEvent {

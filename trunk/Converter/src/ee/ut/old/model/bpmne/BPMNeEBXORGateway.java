@@ -1,8 +1,9 @@
 package ee.ut.old.model.bpmne;
 
-import org.apache.xmlbeans.XmlObject;
 import noNamespace.Page;
 import noNamespace.Place;
+
+import org.apache.xmlbeans.XmlObject;
 
 public class BPMNeEBXORGateway extends BPMNeXORGateway implements BPMNeGateway {
 

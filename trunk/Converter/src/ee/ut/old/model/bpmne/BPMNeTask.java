@@ -1,15 +1,12 @@
 package ee.ut.old.model.bpmne;
 
-import org.apache.xmlbeans.XmlObject;
-import org.apache.xmlbeans.XmlString;
-
-import noNamespace.Annot;
-import noNamespace.Arc;
-import noNamespace.Id;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Port;
 import noNamespace.Trans;
+
+import org.apache.xmlbeans.XmlObject;
+import org.apache.xmlbeans.XmlString;
 
 public class BPMNeTask {
 	private Page page;

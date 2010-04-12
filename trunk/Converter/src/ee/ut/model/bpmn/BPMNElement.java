@@ -5,7 +5,8 @@ import ee.ut.converter.CPNProcess;
 public abstract class BPMNElement {
 
 	protected CPNProcess cPNProcess;
-	private String elementId;
+	protected String elementId;
+	protected String elementName;
 
 	public BPMNElement(CPNProcess cPNProcess) {
 		this.cPNProcess = cPNProcess;
@@ -17,6 +18,10 @@ public abstract class BPMNElement {
 
 	public void setId(String id) {
 		elementId = id;
+	}
+
+	public void setName(String name) {
+		this.elementName = name;
 	}
 
 	public enum BPMNElementType {

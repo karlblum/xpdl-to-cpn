@@ -8,13 +8,6 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-import EDU.auburn.VGJ.algorithm.GraphUpdate;
-import EDU.auburn.VGJ.algorithm.cgd.CGDAlgorithm;
-import EDU.auburn.VGJ.graph.Graph;
-import EDU.auburn.VGJ.graph.Node;
-import EDU.auburn.VGJ.util.DDimension;
-import EDU.auburn.VGJ.util.DRect;
-
 import noNamespace.Arc;
 import noNamespace.Cpnet;
 import noNamespace.Page;
@@ -22,6 +15,12 @@ import noNamespace.Place;
 import noNamespace.Posattr;
 import noNamespace.Trans;
 import noNamespace.WorkspaceElementsDocument;
+import EDU.auburn.VGJ.algorithm.GraphUpdate;
+import EDU.auburn.VGJ.algorithm.cgd.CGDAlgorithm;
+import EDU.auburn.VGJ.graph.Graph;
+import EDU.auburn.VGJ.graph.Node;
+import EDU.auburn.VGJ.util.DDimension;
+import EDU.auburn.VGJ.util.DRect;
 import ee.ut.old.model.bpmne.BPMNeProcess;
 
 public class ExLucianoWrapper {
