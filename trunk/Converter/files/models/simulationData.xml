@@ -24,12 +24,16 @@
 			<Id>9</Id>
 			<GateRefs>
 				<GateRef>
-					<IdRef>6</IdRef>
-					<Probability>90</Probability>
+					<IdRef>73</IdRef>
+					<Probability>63</Probability>
 				</GateRef>
 				<GateRef>
-					<IdRef>8</IdRef>
-					<Probability>10</Probability>
+					<IdRef>76</IdRef>
+					<Probability>23</Probability>
+				</GateRef>
+				<GateRef>
+					<IdRef>91</IdRef>
+					<Probability>14</Probability>
 				</GateRef>
 			</GateRefs>
 		</Gateway>

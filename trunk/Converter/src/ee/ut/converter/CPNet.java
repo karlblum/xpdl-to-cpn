@@ -21,6 +21,8 @@ import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
 
+import com.sun.org.apache.xerces.internal.xni.XMLString;
+
 import ee.ut.old.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
 
@@ -246,5 +248,11 @@ public class CPNet {
 	public void setTransitionTime(String id, String value) {
 		Trans trans = transitions.get(id);
 		trans.getTimeArray()[0].getText().set(XmlString.Factory.newValue(value));
+	}
+
+	public void setTransitionAction(String id, String value) {
+		Trans trans = transitions.get(id);
+		trans.getCodeArray()[0].getText().set(XmlString.Factory.newValue(value));
+		
 	}
 }

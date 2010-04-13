@@ -48,7 +48,8 @@ public class BPMNGateway extends BPMNElement {
 		if (gwType == GatewayType.EXCLUSICE) {
 			if (gatewayPlaceId == null) {
 				gatewayPlaceId = cPNProcess.getCpnet().addPlace().getId();
-				cPNProcess.getCpnet().addArc(gatewayPlaceId, gatewayTransitionId);
+				cPNProcess.getCpnet().addArc(gatewayPlaceId,
+						gatewayTransitionId);
 			}
 			p = cPNProcess.getCpnet().getPlace(gatewayPlaceId);
 		} else {
@@ -64,11 +65,18 @@ public class BPMNGateway extends BPMNElement {
 		Place p = cPNProcess.getCpnet().addPlace();
 		Arc arc = cPNProcess.getCpnet().addArc(gatewayTransitionId, p.getId());
 		if (gwType == GatewayType.EXCLUSICE) {
+			// TODO: move this to the CPN objects
 			arc.getAnnot().getText().set(
 					XmlString.Factory.newValue("(if path=" + id + " then 1`"
 							+ cPNProcess.getCpnet().getFlowObjectVariable()
 							+ " else empty)"));
+			// We set the default route for the gateway to the latest output created
+			// This is needed if we have only one output
+			String function = "input ();\noutput (path);\naction\n(\n" + id +"\n);";
+			cPNProcess.getCpnet()
+			.setTransitionAction(gatewayTransitionId, function);
 		}
+		
 		return p;
 	}
 
@@ -78,20 +86,39 @@ public class BPMNGateway extends BPMNElement {
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		System.out.println("Adding gateway simulation data");
 		HashMap<String, String> distribution = simDataParser
 				.getDistribution(elementId);
-		
-		String func = "";
-		int lowerLimit = 0; 
-		for(String ref :distribution.keySet()){
-			int percentage = Integer.parseInt(distribution.get(ref));
-			int upperLimit = percentage+lowerLimit;
-			func += "\n if p>" + lowerLimit + " and p<" + upperLimit;
-			lowerLimit = upperLimit;
+
+
+		if (distribution.size() > 1) {
+			String function = "input ();\noutput (path);\naction\n(\n  let\n    val p = discrete(0, 99);\n  in";
+
+			int lowerLimit = 0;
+			boolean first = true;
+			
+			for (String ref : distribution.keySet()) {
+				int percentage = Integer.parseInt(distribution.get(ref));
+				int upperLimit = percentage + lowerLimit;
+				if (first) {
+					function += "\n if p>" + lowerLimit + " andalso p<"
+							+ upperLimit + " then " + ref;
+				} else  {
+					function += "\n else if p>" + lowerLimit + " andalso p<"
+							+ upperLimit + " then " + ref;
+				}
+				first = false;
+				lowerLimit = upperLimit;
+			}
+			function += "\nend\n);";
+			
+			int idxLastIf = function.lastIndexOf(" if ");
+			int idxLastThen = function.lastIndexOf(" then ");
+			function = function.subSequence(0, idxLastIf) + "" +  function.subSequence(idxLastThen+5, function.length());
+			
+			cPNProcess.getCpnet()
+			.setTransitionAction(gatewayTransitionId, function);
 		}
-		System.out.println(func);
-		//cPNProcess.getCpnet().setTransitionTime(transitionId,"@+" + duration);
+
 
 	};
 
