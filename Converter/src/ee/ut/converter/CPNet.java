@@ -6,18 +6,22 @@ import java.util.HashMap;
 
 import noNamespace.Annot;
 import noNamespace.Arc;
+import noNamespace.Code;
+import noNamespace.Cond;
 import noNamespace.Cpnet;
 import noNamespace.Instance;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Subpageinfo;
 import noNamespace.Subst;
+import noNamespace.Time;
 import noNamespace.Trans;
 import noNamespace.Type;
 import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
 
+import ee.ut.old.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
 
 /**
@@ -105,6 +109,19 @@ public class CPNet {
 		trans.setId(id);
 		name = name != null && name != "" ? name + "_" + id : id;
 		trans.addNewText().set(XmlString.Factory.newValue(name));
+		
+		Cond cond = trans.addNewCond();
+		cond.setId(createId());
+		cond.addNewText();
+
+		Time time = trans.addNewTime();
+		time.setId(createId());
+		time.addNewText();
+
+		Code code = trans.addNewCode();
+		code.setId(createId());
+		code.addNewText();
+		
 		transitions.put(id, trans);
 		return trans;
 	}
@@ -216,8 +233,18 @@ public class CPNet {
 		}
 		return null;
 	}
+	
+
+	public Trans getTransition(String id){
+		return transitions.get(id);
+	}
 
 	public Instance getRootInstance() {
 		return cpnet.getInstances().getInstanceArray(0);
+	}
+
+	public void setTransitionTime(String id, String value) {
+		Trans trans = transitions.get(id);
+		trans.getTimeArray()[0].getText().set(XmlString.Factory.newValue(value));
 	}
 }

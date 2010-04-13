@@ -20,7 +20,7 @@ import ee.ut.model.xpdl2.Transition;
 import ee.ut.model.xpdl2.TransitionRestrictions;
 import ee.ut.model.xpdl2.Transitions;
 
-public class XPDL2ParserHelper implements ParserHelper {
+public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public BPMNElementType getElementType(Object obj) {
@@ -36,6 +36,8 @@ public class XPDL2ParserHelper implements ParserHelper {
 	public String getId(Object o) {
 		if (o instanceof Activity) {
 			return ((Activity) o).getId();
+		} else if (o instanceof Transition){
+			return ((Transition)o).getId();
 		}
 		return null;
 	}

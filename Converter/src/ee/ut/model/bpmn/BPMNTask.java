@@ -1,9 +1,12 @@
 package ee.ut.model.bpmn;
 
+import org.apache.xmlbeans.XmlString;
+
 import noNamespace.Place;
 import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ParserHelper;
+import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.parser.SimDataParser;
 
 public final class BPMNTask extends BPMNElement {
 
@@ -11,11 +14,11 @@ public final class BPMNTask extends BPMNElement {
 	private String outputPlaceId;
 	private String transitionId;
 
-	public BPMNTask(CPNProcess cPNProcess, Object o, ParserHelper parserHelper) {
+	public BPMNTask(CPNProcess cPNProcess, Object o, ElementParser elementParser) {
 		super(cPNProcess);
 
-		elementId = parserHelper.getId(o);
-		elementName = parserHelper.getName(o);
+		elementId = elementParser.getId(o);
+		elementName = elementParser.getName(o);
 
 		// We assume that we only need a transition, because all the inputs and
 		// outputs can be generated dynamically.
@@ -56,6 +59,13 @@ public final class BPMNTask extends BPMNElement {
 
 	public Place getOutputPlace() {
 		return cPNProcess.getCpnet().getPlace(outputPlaceId);
+	}
+
+	@Override
+	public void addSimulationData(SimDataParser simDataParser) {
+		String duration = simDataParser.getTaskDuration(elementId);
+		cPNProcess.getCpnet().setTransitionTime(transitionId,"@+" + duration);
+		
 	}
 
 }

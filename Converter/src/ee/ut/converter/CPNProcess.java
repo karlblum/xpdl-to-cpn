@@ -8,7 +8,7 @@ public class CPNProcess {
 
 	private CPNet cpnet;
 	private AbstractElementFactory elementFactory;
-	private HashMap<String, Object> elements = new HashMap<String, Object>();
+	protected HashMap<String, Element> elements = new HashMap<String, Element>();
 
 	public CPNProcess() {
 		super();
@@ -39,7 +39,8 @@ public class CPNProcess {
 		return elements.get(key);
 	}
 
-	public void addElement(String key, Object value) {
+	public void addElement(String key, Element value) {
 		this.elements.put(key, value);
 	}
+	
 }

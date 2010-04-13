@@ -5,7 +5,7 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-package ee.ut.old.model.sim;
+package ee.ut.model.sim;
 
 import java.util.ArrayList;
 import java.util.List;

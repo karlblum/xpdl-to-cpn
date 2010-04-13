@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
 import ee.ut.model.bpmn.BPMNGateway.GatewayType;
 
-public interface ParserHelper {
+public interface ElementParser {
 
-	public BPMNElementType getElementType(Object o);
+	public Object getElementType(Object o);
 
 	public String getId(Object o);
 
@@ -16,7 +16,7 @@ public interface ParserHelper {
 
 	public String getTransitionTo(Object object);
 
-	public GatewayType getGatewayType(Object obj);
+	public Object getGatewayType(Object obj);
 
 	public String getName(Object obj);
 

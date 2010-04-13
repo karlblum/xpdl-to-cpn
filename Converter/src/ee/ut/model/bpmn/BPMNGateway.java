@@ -1,44 +1,37 @@
 package ee.ut.model.bpmn;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import org.apache.xmlbeans.XmlString;
+
+import noNamespace.Arc;
 import noNamespace.Place;
+import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ParserHelper;
+import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.parser.SimDataParser;
 
 /**
  * @author
  */
 public class BPMNGateway extends BPMNElement {
 
-	private ArrayList<String> inputPlaceIds = new ArrayList<String>();
-	private ArrayList<String> outputPlaceIds = new ArrayList<String>();
 	private String gatewayTransitionId;
 	private String gatewayPlaceId;
 	private GatewayType gwType;
 
 	public BPMNGateway(CPNProcess cPNProcess, Object obj,
-			ParserHelper parserHelper) {
+			ElementParser elementParser) {
 		super(cPNProcess);
 
-		elementId = parserHelper.getId(obj);
-		elementName = parserHelper.getName(obj);
-		gwType = parserHelper.getGatewayType(obj);
+		elementId = elementParser.getId(obj);
+		elementName = elementParser.getName(obj);
 
-		if (gwType == GatewayType.EXCLUSICE) {
-			// If we have Exclusive gateway, then we need one central CPN Place
-			// only
-			gatewayPlaceId = cPNProcess.getCpnet().addPlace(elementName)
-					.getId();
+		gwType = (GatewayType) elementParser.getGatewayType(obj);
 
-		} else if (gwType == GatewayType.INCLUSIVE) {
-			// If we have Inclusive gateway, then we need one central CPN
-			// Transition only
-			gatewayTransitionId = cPNProcess.getCpnet().addTrans(elementName)
-					.getId();
-		} else {
-			System.err.println("Gateway type: " + gwType + " not implemented.");
-		}
+		gatewayTransitionId = cPNProcess.getCpnet().addTrans(elementName)
+				.getId();
 
 	}
 
@@ -50,32 +43,56 @@ public class BPMNGateway extends BPMNElement {
 	 * @return
 	 */
 	public Place makeInputPlace() {
-		// If we have exclusive gateway, then we don't need more inputs
+		Place p = null;
+
 		if (gwType == GatewayType.EXCLUSICE) {
-			return cPNProcess.getCpnet().getPlace(gatewayPlaceId);
+			if (gatewayPlaceId == null) {
+				gatewayPlaceId = cPNProcess.getCpnet().addPlace().getId();
+				cPNProcess.getCpnet().addArc(gatewayPlaceId, gatewayTransitionId);
+			}
+			p = cPNProcess.getCpnet().getPlace(gatewayPlaceId);
+		} else {
+
+			p = cPNProcess.getCpnet().addPlace();
+			cPNProcess.getCpnet().addArc(p.getId(), gatewayTransitionId);
 		}
-
-		Place p = cPNProcess.getCpnet().addPlace();
-		inputPlaceIds.add(p.getId());
-
-		cPNProcess.getCpnet().addArc(p.getId(), gatewayTransitionId);
-
 		return p;
 	}
 
-	public Place makeOutputPlace() {
-		// If we have exclusive gateway, then we don't need more outputs
-		if (gwType == GatewayType.EXCLUSICE) {
-			return cPNProcess.getCpnet().getPlace(gatewayPlaceId);
-		}
+	public Place makeOutputPlace(String id) {
+
 		Place p = cPNProcess.getCpnet().addPlace();
-		outputPlaceIds.add(p.getId());
-		cPNProcess.getCpnet().addArc(gatewayTransitionId, p.getId());
+		Arc arc = cPNProcess.getCpnet().addArc(gatewayTransitionId, p.getId());
+		if (gwType == GatewayType.EXCLUSICE) {
+			arc.getAnnot().getText().set(
+					XmlString.Factory.newValue("(if path=" + id + " then 1`"
+							+ cPNProcess.getCpnet().getFlowObjectVariable()
+							+ " else empty)"));
+		}
 		return p;
 	}
 
 	public enum GatewayType {
 		EXCLUSICE, INCLUSIVE, COMPLEX, PARALLEL
+	}
+
+	@Override
+	public void addSimulationData(SimDataParser simDataParser) {
+		System.out.println("Adding gateway simulation data");
+		HashMap<String, String> distribution = simDataParser
+				.getDistribution(elementId);
+		
+		String func = "";
+		int lowerLimit = 0; 
+		for(String ref :distribution.keySet()){
+			int percentage = Integer.parseInt(distribution.get(ref));
+			int upperLimit = percentage+lowerLimit;
+			func += "\n if p>" + lowerLimit + " and p<" + upperLimit;
+			lowerLimit = upperLimit;
+		}
+		System.out.println(func);
+		//cPNProcess.getCpnet().setTransitionTime(transitionId,"@+" + duration);
+
 	};
 
 }
