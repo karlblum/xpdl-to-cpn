@@ -1,18 +1,19 @@
 package ee.ut.converter.factory;
 
 import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ParserHelper;
+import ee.ut.converter.Element;
+import ee.ut.converter.parser.ElementParser;
 import ee.ut.model.bpmn.BPMNGateway;
 
 public class BPMNGatewayFactory extends AbstractElementFactory {
 
-	public BPMNGatewayFactory(CPNProcess cPNProcess, ParserHelper parserHelper) {
-		super(cPNProcess, parserHelper);
+	public BPMNGatewayFactory(CPNProcess cPNProcess, ElementParser elementParser) {
+		super(cPNProcess, elementParser);
 	}
 
 	@Override
-	Object create(Object obj) {
-		return new BPMNGateway(cPNProcess, obj, parserHelper);
+	Element create(Object obj) {
+		return new BPMNGateway(cPNProcess, obj, elementParser);
 	}
 
 }

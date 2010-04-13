@@ -1,8 +1,9 @@
 package ee.ut.model.bpmn;
 
 import ee.ut.converter.CPNProcess;
+import ee.ut.converter.Element;
 
-public abstract class BPMNElement {
+public abstract class BPMNElement implements Element{
 
 	protected CPNProcess cPNProcess;
 	protected String elementId;

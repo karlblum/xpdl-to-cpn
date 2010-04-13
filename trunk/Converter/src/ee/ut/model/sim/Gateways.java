@@ -5,7 +5,7 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-package ee.ut.old.model.sim;
+package ee.ut.model.sim;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,18 +17,18 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>
- * Java class for Tasks complex type.
+ * Java class for Gateways complex type.
  * 
  * <p>
  * The following schema fragment specifies the expected content contained within
  * this class.
  * 
  * <pre>
- * &lt;complexType name="Tasks">
+ * &lt;complexType name="Gateways">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Task" type="{}Task" maxOccurs="unbounded"/>
+ *         &lt;element name="Gateway" type="{}Gateway" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,39 +38,39 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Tasks", propOrder = { "task" })
-public class Tasks {
+@XmlType(name = "Gateways", propOrder = { "gateway" })
+public class Gateways {
 
-	@XmlElement(name = "Task", required = true)
-	protected List<Task> task;
+	@XmlElement(name = "Gateway", required = true)
+	protected List<Gateway> gateway;
 
 	/**
-	 * Gets the value of the task property.
+	 * Gets the value of the gateway property.
 	 * 
 	 * <p>
 	 * This accessor method returns a reference to the live list, not a
 	 * snapshot. Therefore any modification you make to the returned list will
 	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the task property.
+	 * <CODE>set</CODE> method for the gateway property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
 	 * 
 	 * <pre>
-	 * getTask().add(newItem);
+	 * getGateway().add(newItem);
 	 * </pre>
 	 * 
 	 * 
 	 * <p>
-	 * Objects of the following type(s) are allowed in the list {@link Task }
+	 * Objects of the following type(s) are allowed in the list {@link Gateway }
 	 * 
 	 * 
 	 */
-	public List<Task> getTask() {
-		if (task == null) {
-			task = new ArrayList<Task>();
+	public List<Gateway> getGateway() {
+		if (gateway == null) {
+			gateway = new ArrayList<Gateway>();
 		}
-		return this.task;
+		return this.gateway;
 	}
 
 }

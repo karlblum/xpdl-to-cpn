@@ -1,19 +1,20 @@
 package ee.ut.converter.factory;
 
 import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ParserHelper;
+import ee.ut.converter.Element;
+import ee.ut.converter.parser.ElementParser;
 
 public abstract class AbstractElementFactory {
 
 	protected CPNProcess cPNProcess;
-	protected ParserHelper parserHelper;
+	protected ElementParser elementParser;
 
 	public AbstractElementFactory(CPNProcess cPNProcess,
-			ParserHelper parserHelper) {
+			ElementParser elementParser) {
 		this.cPNProcess = cPNProcess;
-		this.parserHelper = parserHelper;
+		this.elementParser = elementParser;
 	}
 
-	abstract Object create(Object obj);
+	abstract Element create(Object obj);
 
 }

@@ -5,7 +5,7 @@
 // Generated on: 2010.03.25 at 07:25:36 PM EET 
 //
 
-package ee.ut.old.model.sim;
+package ee.ut.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,20 +14,19 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>
- * Java class for Task complex type.
+ * Java class for Gateway complex type.
  * 
  * <p>
  * The following schema fragment specifies the expected content contained within
  * this class.
  * 
  * <pre>
- * &lt;complexType name="Task">
+ * &lt;complexType name="Gateway">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ResourceWaitTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ProcessingTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="GateRefs" type="{}GateRefs"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,16 +36,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Task", propOrder = { "id", "resourceWaitTime",
-		"processingTime" })
-public class Task {
+@XmlType(name = "Gateway", propOrder = { "id", "gateRefs" })
+public class Gateway {
 
 	@XmlElement(name = "Id", required = true)
 	protected String id;
-	@XmlElement(name = "ResourceWaitTime", required = true)
-	protected String resourceWaitTime;
-	@XmlElement(name = "ProcessingTime", required = true)
-	protected String processingTime;
+	@XmlElement(name = "GateRefs", required = true)
+	protected GateRefs gateRefs;
 
 	/**
 	 * Gets the value of the id property.
@@ -70,45 +66,24 @@ public class Task {
 	}
 
 	/**
-	 * Gets the value of the resourceWaitTime property.
+	 * Gets the value of the gateRefs property.
 	 * 
-	 * @return possible object is {@link String }
+	 * @return possible object is {@link GateRefs }
 	 * 
 	 */
-	public String getResourceWaitTime() {
-		return resourceWaitTime;
+	public GateRefs getGateRefs() {
+		return gateRefs;
 	}
 
 	/**
-	 * Sets the value of the resourceWaitTime property.
+	 * Sets the value of the gateRefs property.
 	 * 
 	 * @param value
-	 *            allowed object is {@link String }
+	 *            allowed object is {@link GateRefs }
 	 * 
 	 */
-	public void setResourceWaitTime(String value) {
-		this.resourceWaitTime = value;
-	}
-
-	/**
-	 * Gets the value of the processingTime property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getProcessingTime() {
-		return processingTime;
-	}
-
-	/**
-	 * Sets the value of the processingTime property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setProcessingTime(String value) {
-		this.processingTime = value;
+	public void setGateRefs(GateRefs value) {
+		this.gateRefs = value;
 	}
 
 }

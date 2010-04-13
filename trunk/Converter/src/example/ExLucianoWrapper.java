@@ -102,7 +102,7 @@ public class ExLucianoWrapper {
 				source = arc.getTransend().getIdref();
 				target = arc.getPlaceend().getIdref();
 			}
-			System.out.printf("%s -> %s\n", source, target);
+			//System.out.printf("%s -> %s\n", source, target);
 
 			graph.insertEdge(map.get(source), map.get(target));
 		}
