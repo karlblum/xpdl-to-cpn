@@ -10,6 +10,7 @@ import noNamespace.Code;
 import noNamespace.Cond;
 import noNamespace.Cpnet;
 import noNamespace.Instance;
+import noNamespace.Ml;
 import noNamespace.Page;
 import noNamespace.Place;
 import noNamespace.Subpageinfo;
@@ -250,6 +251,23 @@ public class CPNet {
 	public void setTransitionAction(String id, String value) {
 		Trans trans = transitions.get(id);
 		trans.getCodeArray()[0].getText().set(XmlString.Factory.newValue(value));
+		
+	}
+
+	public void setTotalTokens(int startTokens) {
+		createOrUpdateDef("val totalNoOfToken = ",startTokens);
+	}
+	
+	public void setTokensPerBundle(int bundleTokens) {
+		createOrUpdateDef("val noOfTokensPerBundle = ",bundleTokens);
+	}
+
+	private void createOrUpdateDef(String def, int value) {
+		//TODO: no update yet
+		Ml ml = cpnet.getGlobbox().addNewMl();
+		ml.setId(createId());
+		ml.set(XmlString.Factory.newValue(def + value+ ";"));
+		
 		
 	}
 }

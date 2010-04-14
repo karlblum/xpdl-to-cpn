@@ -204,12 +204,6 @@ end;</layout>
           <id>i</id>
           <layout>var i:ID;</layout>
         </var>
-        <ml id="ID1264191349">val totalNoOfToken = 0;
-          <layout>val totalNoOfToken = 0;</layout>
-        </ml>
-        <ml id="ID1264191492">val noOfTokensPerBundle = 0;
-          <layout>val noOfTokensPerBundle = 0;</layout>
-        </ml>
         <ml id="ID1264252608">val OneTimeCostPerToken = 0;
           <layout>val OneTimeCostPerToken = 0;</layout>
         </ml>
@@ -562,7 +556,7 @@ end;</layout>
                 version="2.2.0">ID</text>
         </type>
         <initmark id="ID1264233945">
-          <posattr x="-480.000000"
+          <posattr x="-500.000000"
                    y="37.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -573,7 +567,7 @@ end;</layout>
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="2.2.0"/>
+                version="2.2.0">1`1</text>
         </initmark>
       </place>
       <place id="ID1264234111">
@@ -654,8 +648,8 @@ end;</layout>
              h="36.000000"/>
         <binding x="7.200000"
                  y="-3.000000"/>
-        <cond id="ID1264233939">
-          <posattr x="-263.000000"
+        <cond id="ID1264301103">
+          <posattr x="-341.500000"
                    y="128.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -666,7 +660,7 @@ end;</layout>
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="2.2.0"/>
+                version="2.2.0">[generatorGuard(i) = true]</text>
         </cond>
         <time id="ID1264233940">
           <posattr x="-149.500000"
@@ -1067,8 +1061,8 @@ action
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="274"
-                 y="28"
+                 x="507"
+                 y="95"
                  width="755"
                  height="668">
         <sheets>
@@ -1081,9 +1075,19 @@ action
               <position value="0"/>
             </zorder>
           </cpnsheet>
+          <cpnsheet id="ID1264301057"
+                    panx="198.000000"
+                    pany="25.000000"
+                    zoom="1.000000"
+                    instance="ID1264233961">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
         </sheets>
         <zorder>
           <position value="0"/>
+          <position value="1"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -1157,7 +1161,7 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -1166,8 +1170,6 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -1191,17 +1193,17 @@ action
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="true">
-          <IndexNode expanded="false">
+          <IndexNode expanded="true">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
           </IndexNode>
-          <IndexNode expanded="false">
+          <IndexNode expanded="true">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
           </IndexNode>
-          <IndexNode expanded="false">
+          <IndexNode expanded="true">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
