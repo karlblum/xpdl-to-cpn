@@ -21,9 +21,6 @@ import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
 
-import com.sun.org.apache.xerces.internal.xni.XMLString;
-
-import ee.ut.old.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
 
 /**

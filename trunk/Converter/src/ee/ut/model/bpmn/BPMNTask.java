@@ -1,7 +1,5 @@
 package ee.ut.model.bpmn;
 
-import org.apache.xmlbeans.XmlString;
-
 import noNamespace.Place;
 import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
