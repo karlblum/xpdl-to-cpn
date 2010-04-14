@@ -58,4 +58,14 @@ public class KBSimDataParser implements SimDataParser {
 		}
 		return distributions;
 	}
+
+	@Override
+	public int getTotalTokens() {
+		return simDataRoot.getValue().getSimulationProfile().getTotalTokens();
+	}
+
+	@Override
+	public int getTokensPerBundle() {
+		return simDataRoot.getValue().getSimulationProfile().getTokensInBundle();
+	}
 }

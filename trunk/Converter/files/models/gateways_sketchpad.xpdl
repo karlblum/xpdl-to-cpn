@@ -4,7 +4,7 @@
     <XPDLVersion>2.1</XPDLVersion>
     <Vendor>Global 360</Vendor>
     <Created>2010-03-23T23:22:51+02:00</Created>
-    <ModificationDate>2010-04-13T23:17:19+03:00</ModificationDate>
+    <ModificationDate>2010-04-14T10:41:17+03:00</ModificationDate>
     <LayoutInfo PixelsPerMillimeter="18.2" />
   </PackageHeader>
   <ConformanceClass BPMNModelPortabilityConformance="STANDARD" />
@@ -48,7 +48,7 @@
         <Activity Id="6" Name="a1">
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="80.0" LaneId="3">
-              <Coordinates XCoordinate="350.0" YCoordinate="130.0" />
+              <Coordinates XCoordinate="400.0" YCoordinate="140.0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
@@ -74,7 +74,7 @@
           </TransitionRestrictions>
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="190.0" YCoordinate="220.0" />
+              <Coordinates XCoordinate="220.0" YCoordinate="220.0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
@@ -82,7 +82,7 @@
           <Route GatewayType="Exclusive" MarkerVisible="false" />
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="530.0" YCoordinate="220.0" />
+              <Coordinates XCoordinate="530.0" YCoordinate="230.0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
@@ -147,62 +147,6 @@
         </Activity>
       </Activities>
       <Transitions>
-        <Transition Id="72" Name="f1" From="4" To="9">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="109.99964904785156" YCoordinate="250.14578247070312" />
-              <Coordinates XCoordinate="190.5371551513672" YCoordinate="250.5371551513672" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
-        <Transition Id="73" Name="f2" From="9" To="6">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="240.23040771484375" YCoordinate="240.23040771484375" />
-              <Coordinates XCoordinate="350.5" YCoordinate="182.07534790039062" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
-        <Transition Id="74" Name="f4" From="6" To="10">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="430.5" YCoordinate="181.432373046875" />
-              <Coordinates XCoordinate="540.885498046875" YCoordinate="240.11451721191406" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
-        <Transition Id="75" Name="f6" From="10" To="11">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="590.3084716796875" YCoordinate="250.30848693847656" />
-              <Coordinates XCoordinate="660.0068969726562" YCoordinate="249.3574981689453" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
-        <Transition Id="76" Name="f3" From="9" To="8">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="241.09329223632812" YCoordinate="259.9067077636719" />
-              <Coordinates XCoordinate="400.5" YCoordinate="332.4497375488281" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
-        <Transition Id="77" Name="f5" From="8" To="10">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="473.9764709472656" YCoordinate="320.5" />
-              <Coordinates XCoordinate="544.0123291015625" YCoordinate="264.0123596191406" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
-        <Transition Id="91" From="9" To="80">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="223.89236450195312" YCoordinate="277.1076354980469" />
-              <Coordinates XCoordinate="246.83795166015625" YCoordinate="460.5" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
         <Transition Id="92" From="80" To="8">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
@@ -235,11 +179,59 @@
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>
-        <Transition Id="124" From="97" To="9">
+        <Transition Id="72" Name="f1" From="4" To="9">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="91.91497039794922" YCoordinate="590.5" />
-              <Coordinates XCoordinate="212.29966735839844" YCoordinate="272.2996826171875" />
+              <Coordinates XCoordinate="109.99978637695312" YCoordinate="250.11343383789062" />
+              <Coordinates XCoordinate="220.53135681152344" YCoordinate="250.53135681152344" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="76" Name="f3" From="9" To="8">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="269.8818664550781" YCoordinate="261.1181335449219" />
+              <Coordinates XCoordinate="400.5" YCoordinate="329.60113525390625" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="91" From="9" To="80">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="250.05601501464844" YCoordinate="280.0560302734375" />
+              <Coordinates XCoordinate="250.5080108642578" YCoordinate="460.5" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="73" Name="f2" From="9" To="6">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="271.5921325683594" YCoordinate="241.59213256835938" />
+              <Coordinates XCoordinate="400.5" YCoordinate="186.43911743164062" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="74" Name="f4" From="6" To="10">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="480.5" YCoordinate="200.37966918945312" />
+              <Coordinates XCoordinate="543.606689453125" YCoordinate="247.39334106445312" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="77" Name="f5" From="8" To="10">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="480.5" YCoordinate="320.5203857421875" />
+              <Coordinates XCoordinate="542.8870849609375" YCoordinate="272.8870849609375" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="75" Name="f6" From="10" To="11">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="587.812255859375" YCoordinate="257.812255859375" />
+              <Coordinates XCoordinate="660.0872802734375" YCoordinate="252.28683471679688" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>
