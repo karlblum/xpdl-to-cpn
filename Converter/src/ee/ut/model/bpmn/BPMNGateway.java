@@ -1,13 +1,12 @@
 package ee.ut.model.bpmn;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 import org.apache.xmlbeans.XmlString;
 
 import noNamespace.Arc;
 import noNamespace.Place;
-import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
