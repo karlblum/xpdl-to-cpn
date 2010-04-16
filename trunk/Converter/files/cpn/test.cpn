@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://www.daimi.au.dk/~cpntools/bin/DTD/6/cpn.dtd">
+<workspaceElements>
+  <generator tool="CPN Tools" version="2.2.0" format="6"/>
+  <cpnet>
+    <globbox>
+      <block id="ID1">
+        <id>Standard declarations</id>
+        <color id="ID85042">
+          <id>UNIT</id>
+          <unit/>
+          <layout>colset UNIT = unit;</layout>
+        </color>
+        <color id="ID3">
+          <id>INT</id>
+          <int/>
+        </color>
+        <color id="ID4">
+          <id>BOOL</id>
+          <bool/>
+        </color>
+        <color id="ID5">
+          <id>STRING</id>
+          <string/>
+        </color>
+        <color id="ID1264288320">
+          <id>SLIST</id>
+          <list>
+            <id>STRING</id>
+          </list>
+          <layout>colset SLIST = list STRING;</layout>
+        </color>
+      </block>
+      <block id="ID1264190765">
+        <id>Simulation Logging</id>
+        <ml id="ID1264190746">val FILE = "logs/logsCPN"
+          <layout>val FILE = "logs/logsCPN"</layout>
+        </ml>
+        <ml id="ID1264190907">val FILE_EXTENSION = ".cpnxml"
+          <layout>val FILE_EXTENSION = ".cpnxml"</layout>
+        </ml>
+        <use id="ID1264191062">
+          <ml>"loggingFunctionsMultipleFiles.sml"</ml>
+          <layout>use "loggingFunctionsMultipleFiles.sml";</layout>
+        </use>
+      </block>
+      <block id="ID1264191371">
+        <id>Generator</id>
+        <ml id="ID1264250093">fun et(mean:INT,stdD:INT)=
+let
+val realMean = Real.fromInt mean
+val realStdD = Real.fromInt stdD
+in
+round(uniform(realMean-realStdD, realMean+realStdD))
+end;
+          <layout>fun et(mean:INT,stdD:INT)=
+let
+val realMean = Real.fromInt mean
+val realStdD = Real.fromInt stdD
+in
+round(uniform(realMean-realStdD, realMean+realStdD))
+end;</layout>
+        </ml>
+        <color id="ID1264248604">
+          <id>DTYPE</id>
+          <enum>
+            <id>specific</id>
+            <id>normal</id>
+          </enum>
+          <layout>colset DTYPE = with specific | normal;</layout>
+        </color>
+        <color id="ID1264249193">
+          <id>DISTRIBUTION</id>
+          <record>
+            <recordfield>
+              <id>dtype</id>
+              <id>DTYPE</id>
+            </recordfield>
+            <recordfield>
+              <id>specificValue</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>mean</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>std</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset DISTRIBUTION = record dtype:DTYPE * specificValue:INT * mean:INT * std:INT;</layout>
+        </color>
+        <ml id="ID1264248029">fun intTime() = IntInf.toInt (time());
+          <layout>fun intTime() = IntInf.toInt (time());</layout>
+        </ml>
+        <ml id="ID1264246128">fun dateFromString(s:STRING) =
+let
+  val s1 = "Sat Jan 01 10:51:07 2000"
+  val dateSplit = String.tokens(fn(c) => c = #" ") s
+  val timeStr = List.nth(dateSplit, 3)
+  val time = String.tokens(fn(c) => c = #":") timeStr
+  val day = Option.getOpt(Int.fromString(List.nth(dateSplit, 2)), 0)
+
+  val hour = Option.getOpt(Int.fromString(List.nth(time, 0)), 0)
+  val minute = Option.getOpt(Int.fromString(List.nth(time, 1)), 0)
+  val second = Option.getOpt(Int.fromString(List.nth(time, 2)), 0)
+  val year = Option.getOpt(Int.fromString(List.nth(dateSplit, 4)), 0)
+  val monthStr = List.nth(dateSplit, 1)
+  val month = case monthStr of
+      "Jan" => Date.Jan
+    | "Feb" => Date.Feb
+    | "Mar" => Date.Mar
+    | "Apr" => Date.Apr
+    | "May" => Date.May
+    | "Jun" => Date.Jun
+    | "Jul" => Date.Jul
+    | "Aug" => Date.Aug
+    | "Sep" => Date.Sep
+    | "Oct" => Date.Oct
+    | "Nov" => Date.Nov
+    | "Dec" => Date.Dec
+    | _     => Date.Jan;
+in
+  Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
+end
+          <layout>fun dateFromString(s:STRING) =
+let
+  val s1 = "Sat Jan 01 10:51:07 2000"
+  val dateSplit = String.tokens(fn(c) => c = #" ") s
+  val timeStr = List.nth(dateSplit, 3)
+  val time = String.tokens(fn(c) => c = #":") timeStr
+  val day = Option.getOpt(Int.fromString(List.nth(dateSplit, 2)), 0)
+
+  val hour = Option.getOpt(Int.fromString(List.nth(time, 0)), 0)
+  val minute = Option.getOpt(Int.fromString(List.nth(time, 1)), 0)
+  val second = Option.getOpt(Int.fromString(List.nth(time, 2)), 0)
+  val year = Option.getOpt(Int.fromString(List.nth(dateSplit, 4)), 0)
+  val monthStr = List.nth(dateSplit, 1)
+  val month = case monthStr of
+      "Jan" => Date.Jan
+    | "Feb" => Date.Feb
+    | "Mar" => Date.Mar
+    | "Apr" => Date.Apr
+    | "May" => Date.May
+    | "Jun" => Date.Jun
+    | "Jul" => Date.Jul
+    | "Aug" => Date.Aug
+    | "Sep" => Date.Sep
+    | "Oct" => Date.Oct
+    | "Nov" => Date.Nov
+    | "Dec" => Date.Dec
+    | _     => Date.Jan;
+in
+  Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
+end</layout>
+        </ml>
+        <ml id="ID1264244852">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}
+          <layout>val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}</layout>
+        </ml>
+        <ml id="ID1264245607">val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2001}
+          <layout>val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2001}</layout>
+        </ml>
+        <ml id="ID1264247194">fun add2StartDate(ts:INT) =
+let
+val day = Date.day(startDate)
+val second = Date.second(startDate)
+val hour = Date.hour (startDate)
+val minute = Date.minute(startDate)
+val month = Date.month (startDate)
+val offset = Date.offset (startDate)
+val second = Date.second(startDate)+ ts
+val year = Date.year (startDate)
+in
+Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
+end;
+          <layout>fun add2StartDate(ts:INT) =
+let
+val day = Date.day(startDate)
+val second = Date.second(startDate)
+val hour = Date.hour (startDate)
+val minute = Date.minute(startDate)
+val month = Date.month (startDate)
+val offset = Date.offset (startDate)
+val second = Date.second(startDate)+ ts
+val year = Date.year (startDate)
+in
+Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
+end;</layout>
+        </ml>
+        <color id="ID1264240937">
+          <id>ID</id>
+          <timed/>
+          <int/>
+          <layout>colset ID = int timed;</layout>
+        </color>
+        <var id="ID1264192808">
+          <type>
+            <id>ID</id>
+          </type>
+          <id>i</id>
+          <layout>var i:ID;</layout>
+        </var>
+        <ml id="ID1264252608">val OneTimeCostPerToken = 0;
+          <layout>val OneTimeCostPerToken = 0;</layout>
+        </ml>
+        <ml id="ID1264268322">val timeBetweenBundles = {dtype=specific, specificValue=3600, mean=0, std=0};
+          <layout>val timeBetweenBundles = {dtype=specific, specificValue=3600, mean=0, std=0};</layout>
+        </ml>
+        <color id="ID1264235176">
+          <id>CASE</id>
+          <timed/>
+          <record>
+            <recordfield>
+              <id>ID</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ats</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ts</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset CASE = record ID:INT * ats:INT * ts:INT timed;</layout>
+        </color>
+        <var id="ID1264269685">
+          <type>
+            <id>CASE</id>
+          </type>
+          <id>c</id>
+          <layout>var c:CASE;</layout>
+        </var>
+        <ml id="ID1264250709">fun calcDisValue(value:DISTRIBUTION) =
+let
+  val dtype = #dtype(value)
+  val specificValue = #specificValue(value)
+  val mean = #mean(value)
+  val std = #std(value)
+in
+  case dtype of normal => et(mean, std) | specific => specificValue
+end;
+          <layout>fun calcDisValue(value:DISTRIBUTION) =
+let
+  val dtype = #dtype(value)
+  val specificValue = #specificValue(value)
+  val mean = #mean(value)
+  val std = #std(value)
+in
+  case dtype of normal => et(mean, std) | specific => specificValue
+end;</layout>
+        </ml>
+        <ml id="ID1264242992">fun generateCase(id:ID)=
+let
+
+val _ = createCaseFile(id);
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["Cost", Int.toString(OneTimeCostPerToken), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, "Generated input", ["complete"], timestamp, "generator", data);
+in
+  {ID=id, ts=intTime(), ats=intTime()}
+end;
+          <layout>fun generateCase(id:ID)=
+let
+
+val _ = createCaseFile(id);
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["Cost", Int.toString(OneTimeCostPerToken), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, "Generated input", ["complete"], timestamp, "generator", data);
+in
+  {ID=id, ts=intTime(), ats=intTime()}
+end;</layout>
+        </ml>
+        <ml id="ID1264253932">fun generatorGuard(i:ID) =
+let
+val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;> GREATER;
+val tokenCheck = i + noOfTokensPerBundle &lt;= totalNoOfToken; 
+in
+if i &lt; totalNoOfToken andalso tokenCheck=true andalso dateCompare=true then true else false
+end;
+          <layout>fun generatorGuard(i:ID) =
+let
+val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;> GREATER;
+val tokenCheck = i + noOfTokensPerBundle &lt;= totalNoOfToken; 
+in
+if i &lt; totalNoOfToken andalso tokenCheck=true andalso dateCompare=true then true else false
+end;</layout>
+        </ml>
+      </block>
+      <block id="ID1264235128">
+        <id>New Block</id>
+      </block>
+      <var id="ID7000">
+        <type>
+          <id>CASE</id>
+        </type>
+        <id>caseInfop</id>
+      </var>
+      <var id="ID7001">
+        <type>
+          <id>INT</id>
+        </type>
+        <id>path</id>
+      </var>
+      <ml id="ID7002">fun initCaseInfo(id) = {Id=id,CaseStartTime=IntInf.toInt(time()),CaseEndTime=0};</ml>
+      <block id="ID1264285623">
+        <id>TIMETABLE</id>
+        <color id="ID1264285915">
+          <id>RECINT</id>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>StartTime</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>Duration</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset RECINT = record Name:STRING * StartTime:INT * Duration:INT;
+(*All durations are in seconds*)</layout>
+        </color>
+        <color id="ID1264286135">
+          <id>RECURRINGINTERVALS</id>
+          <list>
+            <id>RECINT</id>
+          </list>
+          <layout>colset RECURRINGINTERVALS = list RECINT;</layout>
+        </color>
+        <color id="ID1264286368">
+          <id>TTEXCEPTION</id>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RepeatCount</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>RepetitionDuration</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>BeginDate</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RecurringIntervals</id>
+              <id>RECURRINGINTERVALS</id>
+            </recordfield>
+          </record>
+          <layout>colset TTEXCEPTION = record Name:STRING * RepeatCount:INT * RepetitionDuration:INT * BeginDate:STRING * RecurringIntervals:RECURRINGINTERVALS;</layout>
+        </color>
+        <color id="ID1264286614">
+          <id>TTEXCEPTIONS</id>
+          <list>
+            <id>TTEXCEPTION</id>
+          </list>
+          <layout>colset TTEXCEPTIONS = list TTEXCEPTION;</layout>
+        </color>
+        <color id="ID1264286873">
+          <id>TIMETABLE</id>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RepeatCount</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>RepetitionDuration</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>BeginDate</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RecurringIntervals</id>
+              <id>RECURRINGINTERVALS</id>
+            </recordfield>
+            <recordfield>
+              <id>TTExceptions</id>
+              <id>TTEXCEPTIONS</id>
+            </recordfield>
+          </record>
+          <layout>colset TIMETABLE = record Name:STRING * RepeatCount:INT * RepetitionDuration:INT * BeginDate:STRING * RecurringIntervals:RECURRINGINTERVALS * TTExceptions:TTEXCEPTIONS;</layout>
+        </color>
+        <color id="ID1264287714">
+          <id>TIMETABLES</id>
+          <list>
+            <id>TIMETABLE</id>
+          </list>
+          <layout>colset TIMETABLES = list TIMETABLE;</layout>
+        </color>
+      </block>
+      <block id="ID1264284564">
+        <id>RESOURCES</id>
+        <block id="ID1264294385">
+          <id>FUN</id>
+          <ml id="ID1264295136">fun isRole(roles:SLIST, required:STRING) = List.exists (fn x => x = required) roles;
+            <layout>fun isRole(roles:SLIST, required:STRING) = List.exists (fn x => x = required) roles;</layout>
+          </ml>
+          <ml id="ID1264295657">fun checkRoles [] [] = true
+| checkRoles _ [] = true
+| checkRoles roles (role::reqRoles) = List.exists (fn x => x = role) roles andalso checkRoles roles reqRoles ;
+            <layout>fun checkRoles [] [] = true
+| checkRoles _ [] = true
+| checkRoles roles (role::reqRoles) = List.exists (fn x => x = role) roles andalso checkRoles roles reqRoles ;</layout>
+          </ml>
+          <ml id="ID1264296453">fun check_roles(roles:SLIST, required:SLIST) = checkRoles roles required;
+            <layout>fun check_roles(roles:SLIST, required:SLIST) = checkRoles roles required;</layout>
+          </ml>
+        </block>
+        <block id="ID1264284709">
+          <id>COLSET</id>
+          <color id="ID1264284893">
+            <id>RCOST</id>
+            <record>
+              <recordfield>
+                <id>Value</id>
+                <id>INT</id>
+              </recordfield>
+              <recordfield>
+                <id>CostPerDuration</id>
+                <id>INT</id>
+              </recordfield>
+              <recordfield>
+                <id>CostPerQuantity</id>
+                <id>INT</id>
+              </recordfield>
+              <recordfield>
+                <id>CostApplicableTT</id>
+                <id>TIMETABLES</id>
+              </recordfield>
+            </record>
+            <layout>colset RCOST = record Value:INT * CostPerDuration:INT * CostPerQuantity:INT * CostApplicableTT:TIMETABLES;</layout>
+          </color>
+          <color id="ID1264285038">
+            <id>RCOSTS</id>
+            <list>
+              <id>RCOST</id>
+            </list>
+            <layout>colset RCOSTS = list RCOST;</layout>
+          </color>
+          <color id="ID1264285196">
+            <id>RES</id>
+            <record>
+              <recordfield>
+                <id>Name</id>
+                <id>STRING</id>
+              </recordfield>
+              <recordfield>
+                <id>Costs</id>
+                <id>RCOSTS</id>
+              </recordfield>
+              <recordfield>
+                <id>Roles</id>
+                <id>SLIST</id>
+              </recordfield>
+              <recordfield>
+                <id>Availability</id>
+                <id>TIMETABLES</id>
+              </recordfield>
+            </record>
+            <layout>colset RES = record Name:STRING * Costs:RCOSTS * Roles:SLIST * Availability:TIMETABLES;</layout>
+          </color>
+        </block>
+        <block id="ID1264288637">
+          <id>VAL</id>
+          <ml id="ID1264289303">val recint_weekend = {Name="weekend", StartTime=0, Duration=((60*60)*24*2)};
+            <layout>val recint_weekend = {Name="weekend", StartTime=0, Duration=((60*60)*24*2)};</layout>
+          </ml>
+          <ml id="ID1264289662">val recint_dayShift = {Name="Day shift", StartTime=((60*60)*9), Duration=((60*60)*9)};
+            <layout>val recint_dayShift = {Name="Day shift", StartTime=((60*60)*9), Duration=((60*60)*9)};</layout>
+          </ml>
+          <ml id="ID1264290033">val recint_bulk = {Name="bulk", StartDate=0, Duration=((60*60)*24)};
+            <layout>val recint_bulk = {Name="bulk", StartDate=0, Duration=((60*60)*24)};</layout>
+          </ml>
+          <ml id="ID1264290416">val tte_weekend = {Name="weekend", RepeatCount=0, RepetitionDuration=((60*60)*24*7), BeginDate="", RecurringIntervals=[recint_weekend]};
+            <layout>val tte_weekend = {Name="weekend", RepeatCount=0, RepetitionDuration=((60*60)*24*7), BeginDate="", RecurringIntervals=[recint_weekend]};</layout>
+          </ml>
+          <ml id="ID1264290812">val tt_bulkweek = {Name="week", RepeatCount=0, RepetitionDuration=((60*60)*24), BeginDate="", RecurringIntervals=[recint_bulk], Exceptions=[tte_weekend]};
+            <layout>val tt_bulkweek = {Name="week", RepeatCount=0, RepetitionDuration=((60*60)*24), BeginDate="", RecurringIntervals=[recint_bulk], Exceptions=[tte_weekend]};</layout>
+          </ml>
+          <ml id="ID1264291221">val tt_week = {Name="week", RepeatCount=0, RepetitionDuration=604800, BeginDate="dasdas", RecurringIntervals=[recint_dayShift], TTExceptions=[tte_weekend]};
+            <layout>val tt_week = {Name="week", RepeatCount=0, RepetitionDuration=604800, BeginDate="dasdas", RecurringIntervals=[recint_dayShift], TTExceptions=[tte_weekend]};</layout>
+          </ml>
+          <ml id="ID1264292078">val manager = {Name="Manager", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=["manager"], Availability=[tt_week]};
+            <layout>val manager = {Name="Manager", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=["manager"], Availability=[tt_week]};</layout>
+          </ml>
+          <ml id="ID1264291643">val clerk = {Name="clerk", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=["clerk"], Availability=[tt_week]};
+            <layout>val clerk = {Name="clerk", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=["clerk"], Availability=[tt_week]};</layout>
+          </ml>
+        </block>
+        <var id="ID1264297280">
+          <type>
+            <id>RES</id>
+          </type>
+          <id>r</id>
+          <layout>var r:RES;</layout>
+        </var>
+      </block>
+      <color id="ID1264301925">
+        <id>TRANSPARAMS</id>
+        <record>
+          <recordfield>
+            <id>transitionName</id>
+            <id>STRING</id>
+          </recordfield>
+          <recordfield>
+            <id>pt</id>
+            <id>DISTRIBUTION</id>
+          </recordfield>
+          <recordfield>
+            <id>pCost</id>
+            <id>DISTRIBUTION</id>
+          </recordfield>
+          <recordfield>
+            <id>sCost</id>
+            <id>DISTRIBUTION</id>
+          </recordfield>
+          <recordfield>
+            <id>revenue</id>
+            <id>DISTRIBUTION</id>
+          </recordfield>
+          <recordfield>
+            <id>pWaitTimeDur</id>
+            <id>INT</id>
+          </recordfield>
+          <recordfield>
+            <id>pWaitTimeCost</id>
+            <id>INT</id>
+          </recordfield>
+          <recordfield>
+            <id>NoOfResources</id>
+            <id>INT</id>
+          </recordfield>
+        </record>
+        <layout>colset TRANSPARAMS  = record 
+transitionName:STRING * pt: DISTRIBUTION * pCost:DISTRIBUTION * sCost:DISTRIBUTION * revenue:DISTRIBUTION * pWaitTimeDur:INT * pWaitTimeCost:INT * NoOfResources:INT;</layout>
+      </color>
+      <ml id="ID1264301874">fun transitionAction (a:CASE, r:RES, params:TRANSPARAMS) = 
+let
+  val id = #ID(a)
+  val ts = #ts(a)
+  val ats = #ats(a)
+  val transitionName = #transitionName(params)
+  val resourceName = #Name(r)
+  val noOr = #NoOfResources(params)
+  val waitTime = intTime() - ts
+  val waitTimeDur = #pWaitTimeDur(params)
+  val waitTimeDur = Real.fromInt waitTimeDur
+  val waitTimeCost = #pWaitTimeCost(params)
+  val waitTimeCost = Real.fromInt waitTimeCost
+  val waitTime_real = Real.fromInt waitTime
+  val waitTimeCost = if waitTimeDur > 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;
+
+  val procTime = calcDisValue(#pt(params))
+  val procTime_real = Real.fromInt procTime
+
+(*Sum up the costs of resources*)
+val rcosts = #Costs(r)
+(*TODO: to check the timetable*)
+fun calcResourceCost(n:RCOST) = 
+let
+  val costDur = #CostPerDuration(n)
+  val costDur = Real.fromInt costDur 
+  val value = #Value(n)
+  val value = Real.fromInt value
+in
+  if costDur > 0.0 then round((procTime_real/costDur)*value) else round(value)
+end;
+val rec rCost = fn ([]) => 0 | n::s => calcResourceCost(n) + rCost  s
+val resCost = rCost(rcosts)*noOr;
+(*end sum up*)
+
+  val processcost = calcDisValue(#pCost(params))
+  val scost = calcDisValue(#sCost(params))
+  val revenue = calcDisValue(#revenue(params))
+  val allcost = processcost + resCost + scost
+
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["WaitingTime", Int.toString(waitTime), "WaitTimeCost", Int.toString(waitTimeCost), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, transitionName, ["start"], timestamp, resourceName, data);
+
+val curDate = add2StartDate(intTime() +procTime) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["ProcessingTime", Int.toString(procTime), "Cost", Int.toString(allcost), "StartupCost", Int.toString(scost)]
+val data = data ++ ["ResourceCost", Int.toString(resCost), "Revenue", Int.toString(revenue), "NoOfResources", Int.toString(#NoOfResources(params)), "ModelTimeStamp", Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, ["complete"], timestamp, resourceName, data);
+in
+  (procTime)
+end
+        <layout>fun transitionAction (a:CASE, r:RES, params:TRANSPARAMS) = 
+let
+  val id = #ID(a)
+  val ts = #ts(a)
+  val ats = #ats(a)
+  val transitionName = #transitionName(params)
+  val resourceName = #Name(r)
+  val noOr = #NoOfResources(params)
+  val waitTime = intTime() - ts
+  val waitTimeDur = #pWaitTimeDur(params)
+  val waitTimeDur = Real.fromInt waitTimeDur
+  val waitTimeCost = #pWaitTimeCost(params)
+  val waitTimeCost = Real.fromInt waitTimeCost
+  val waitTime_real = Real.fromInt waitTime
+  val waitTimeCost = if waitTimeDur > 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;
+
+  val procTime = calcDisValue(#pt(params))
+  val procTime_real = Real.fromInt procTime
+
+(*Sum up the costs of resources*)
+val rcosts = #Costs(r)
+(*TODO: to check the timetable*)
+fun calcResourceCost(n:RCOST) = 
+let
+  val costDur = #CostPerDuration(n)
+  val costDur = Real.fromInt costDur 
+  val value = #Value(n)
+  val value = Real.fromInt value
+in
+  if costDur > 0.0 then round((procTime_real/costDur)*value) else round(value)
+end;
+val rec rCost = fn ([]) => 0 | n::s => calcResourceCost(n) + rCost  s
+val resCost = rCost(rcosts)*noOr;
+(*end sum up*)
+
+  val processcost = calcDisValue(#pCost(params))
+  val scost = calcDisValue(#sCost(params))
+  val revenue = calcDisValue(#revenue(params))
+  val allcost = processcost + resCost + scost
+
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["WaitingTime", Int.toString(waitTime), "WaitTimeCost", Int.toString(waitTimeCost), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, transitionName, ["start"], timestamp, resourceName, data);
+
+val curDate = add2StartDate(intTime() +procTime) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["ProcessingTime", Int.toString(procTime), "Cost", Int.toString(allcost), "StartupCost", Int.toString(scost)]
+val data = data ++ ["ResourceCost", Int.toString(resCost), "Revenue", Int.toString(revenue), "NoOfResources", Int.toString(#NoOfResources(params)), "ModelTimeStamp", Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, ["complete"], timestamp, resourceName, data);
+in
+  (procTime)
+end</layout>
+      </ml>
+    <ml id="ID202">val totalNoOfToken = 1000;</ml><ml id="ID203">val noOfTokensPerBundle = 100;</ml></globbox>
+    <page id="PAGE_PROCESS">
+      <pageattr name="Process"/>
+    <trans id="ID1"><posattr x="0.0" y="0.0"/><text>start_ID1</text><box h="32.0" w="79.0"/><subst subpage="PAGE_GENERATOR" portsock="(ID1264234111,ID5)"><subpageinfo id="ID7"/></subst><cond id="ID2"><text/></cond><time id="ID3"><text/></time><code id="ID4"><text/></code></trans><place id="ID5"><posattr x="0.0" y="-72.0"/><text>ID5</text><ellipse h="32.0" w="79.0"/><type><posattr x="39.5" y="-88.0"/><text>CASE</text></type></place><arc id="ID6" orientation="TtoP"><transend idref="ID1"/><placeend idref="ID5"/><annot><posattr x="10.0" y="-36.0"/><text>c</text></annot></arc><trans id="ID9"><posattr x="-111.0" y="-720.0"/><text>a1_ID9</text><box h="32.0" w="79.0"/><cond id="ID10"><text/></cond><time id="ID11"><text>@+0</text></time><code id="ID12"><text>input (c);
+output ();
+action
+(addATE(#ID(c), "a1", ["complete"], calculateTimeStamp(), "", []));</text></code></trans><place id="ID13"><posattr x="-111.0" y="-792.0"/><text>ID13</text><ellipse h="32.0" w="85.0"/><type><posattr x="-68.5" y="-808.0"/><text>CASE</text></type></place><arc id="ID14" orientation="TtoP"><transend idref="ID9"/><placeend idref="ID13"/><annot><posattr x="-101.0" y="-756.0"/><text>c</text></annot></arc><place id="ID15"><posattr x="-111.0" y="-648.0"/><text>ID15</text><ellipse h="32.0" w="85.0"/><type><posattr x="-68.5" y="-664.0"/><text>CASE</text></type></place><arc id="ID16" orientation="PtoT"><transend idref="ID9"/><placeend idref="ID15"/><annot><posattr x="-101.0" y="-684.0"/><text>c</text></annot></arc><trans id="ID17"><posattr x="118.0" y="-1224.0"/><text>a2_ID17</text><box h="32.0" w="85.0"/><cond id="ID18"><text/></cond><time id="ID19"><text>@+200</text></time><code id="ID20"><text>input (c);
+output ();
+action
+(addATE(#ID(c), "a2", ["complete"], calculateTimeStamp(), "", []));</text></code></trans><place id="ID21"><posattr x="118.0" y="-1296.0"/><text>ID21</text><ellipse h="32.0" w="85.0"/><type><posattr x="160.5" y="-1312.0"/><text>CASE</text></type></place><arc id="ID22" orientation="TtoP"><transend idref="ID17"/><placeend idref="ID21"/><annot><posattr x="128.0" y="-1260.0"/><text>c</text></annot></arc><place id="ID23"><posattr x="118.0" y="-1152.0"/><text>ID23</text><ellipse h="32.0" w="85.0"/><type><posattr x="160.5" y="-1168.0"/><text>CASE</text></type></place><arc id="ID24" orientation="PtoT"><transend idref="ID17"/><placeend idref="ID23"/><annot><posattr x="128.0" y="-1188.0"/><text>c</text></annot></arc><trans id="ID25"><posattr x="0.0" y="-288.0"/><text>g1_ID25</text><box h="32.0" w="85.0"/><cond id="ID26"><text/></cond><time id="ID27"><text/></time><code id="ID28"><text>input ();
+output (path);
+action
+(
+  let
+    val p = discrete(0, 99);
+  in
+ if p>0 andalso p&lt;14 then 91
+ else if p>14 andalso p&lt;77 then 73
+ else 76
+end
+);</text></code></trans><trans id="ID29"><posattr x="108.0" y="-1512.0"/><text>g2_ID29</text><box h="32.0" w="85.0"/><cond id="ID30"><text/></cond><time id="ID31"><text/></time><code id="ID32"><text>input ();
+output (path);
+action
+(
+75
+);</text></code></trans><trans id="ID33"><posattr x="108.0" y="-1944.0"/><text>end_ID33</text><box h="32.0" w="85.0"/><cond id="ID34"><text/></cond><time id="ID35"><text>@+0</text></time><code id="ID36"><text>input (c);
+output ();
+action
+(addATE(#ID(c), "end", ["complete"], calculateTimeStamp(), "", []));</text></code></trans><place id="ID37"><posattr x="108.0" y="-2016.0"/><text>ID37</text><ellipse h="32.0" w="85.0"/><type><posattr x="150.5" y="-2032.0"/><text>CASE</text></type></place><arc id="ID38" orientation="TtoP"><transend idref="ID33"/><placeend idref="ID37"/><annot><posattr x="118.0" y="-1980.0"/><text>c</text></annot></arc><place id="ID39"><posattr x="108.0" y="-1872.0"/><text>ID39</text><ellipse h="32.0" w="85.0"/><type><posattr x="150.5" y="-1888.0"/><text>CASE</text></type></place><arc id="ID40" orientation="PtoT"><transend idref="ID33"/><placeend idref="ID39"/><annot><posattr x="118.0" y="-1908.0"/><text>c</text></annot></arc><trans id="ID41"><posattr x="0.0" y="-780.0"/><text>a3_ID41</text><box h="32.0" w="85.0"/><cond id="ID42"><text/></cond><time id="ID43"><text>@+0</text></time><code id="ID44"><text>input (c);
+output ();
+action
+(addATE(#ID(c), "a3", ["complete"], calculateTimeStamp(), "", []));</text></code></trans><place id="ID45"><posattr x="0.0" y="-864.0"/><text>ID45</text><ellipse h="32.0" w="85.0"/><type><posattr x="42.5" y="-880.0"/><text>CASE</text></type></place><arc id="ID46" orientation="TtoP"><transend idref="ID41"/><placeend idref="ID45"/><annot><posattr x="10.0" y="-822.0"/><text>c</text></annot></arc><place id="ID47"><posattr x="0.0" y="-696.0"/><text>ID47</text><ellipse h="32.0" w="85.0"/><type><posattr x="42.5" y="-712.0"/><text>CASE</text></type></place><arc id="ID48" orientation="PtoT"><transend idref="ID41"/><placeend idref="ID47"/><annot><posattr x="10.0" y="-738.0"/><text>c</text></annot></arc><trans id="ID49"><posattr x="-72.5" y="-1368.0"/><text>g3_ID49</text><box h="32.0" w="85.0"/><cond id="ID50"><text/></cond><time id="ID51"><text/></time><code id="ID52"><text>input ();
+output (path);
+action
+(
+105
+);</text></code></trans><trans id="ID53"><posattr x="-17.0" y="-1944.0"/><text>a4_ID53</text><box h="32.0" w="85.0"/><cond id="ID54"><text/></cond><time id="ID55"><text>@+0</text></time><code id="ID56"><text>input (c);
+output ();
+action
+(addATE(#ID(c), "a4", ["complete"], calculateTimeStamp(), "", []));</text></code></trans><place id="ID57"><posattr x="-17.0" y="-2016.0"/><text>ID57</text><ellipse h="32.0" w="85.0"/><type><posattr x="25.5" y="-2032.0"/><text>CASE</text></type></place><arc id="ID58" orientation="TtoP"><transend idref="ID53"/><placeend idref="ID57"/><annot><posattr x="-7.0" y="-1980.0"/><text>c</text></annot></arc><place id="ID59"><posattr x="-17.0" y="-1872.0"/><text>ID59</text><ellipse h="32.0" w="85.0"/><type><posattr x="25.5" y="-1888.0"/><text>CASE</text></type></place><arc id="ID60" orientation="PtoT"><transend idref="ID53"/><placeend idref="ID59"/><annot><posattr x="-7.0" y="-1908.0"/><text>c</text></annot></arc><trans id="ID61"><posattr x="-125.0" y="-1944.0"/><text>a5_ID61</text><box h="32.0" w="85.0"/><cond id="ID62"><text/></cond><time id="ID63"><text>@+0</text></time><code id="ID64"><text>input (c);
+output ();
+action
+(addATE(#ID(c), "a5", ["complete"], calculateTimeStamp(), "", []));</text></code></trans><place id="ID65"><posattr x="-125.0" y="-2016.0"/><text>ID65</text><ellipse h="32.0" w="85.0"/><type><posattr x="-82.5" y="-2032.0"/><text>CASE</text></type></place><arc id="ID66" orientation="TtoP"><transend idref="ID61"/><placeend idref="ID65"/><annot><posattr x="-115.0" y="-1980.0"/><text>c</text></annot></arc><place id="ID67"><posattr x="-125.0" y="-1872.0"/><text>ID67</text><ellipse h="32.0" w="85.0"/><type><posattr x="-82.5" y="-1888.0"/><text>CASE</text></type></place><arc id="ID68" orientation="PtoT"><transend idref="ID61"/><placeend idref="ID67"/><annot><posattr x="-115.0" y="-1908.0"/><text>c</text></annot></arc><trans id="ID69"><posattr x="88.0" y="-936.0"/><text>ID69</text><box h="32.0" w="85.0"/><cond id="ID70"><text/></cond><time id="ID71"><text/></time><code id="ID72"><text/></code></trans><place id="ID73"><posattr x="88.0" y="-1008.0"/><text>ID73</text><ellipse h="32.0" w="85.0"/><type><posattr x="130.5" y="-1024.0"/><text>CASE</text></type></place><trans id="ID74"><posattr x="108.0" y="-1080.0"/><text>XOR_JOIN_ID74</text><box h="32.0" w="85.0"/><cond id="ID75"><text/></cond><time id="ID76"><text/></time><code id="ID77"><text/></code></trans><arc id="ID78" orientation="PtoT"><transend idref="ID74"/><placeend idref="ID73"/><annot><posattr x="108.0" y="-1044.0"/><text>c</text></annot></arc><arc id="ID79" orientation="TtoP"><transend idref="ID74"/><placeend idref="ID23"/><annot><posattr x="123.0" y="-1116.0"/><text>c</text></annot></arc><arc id="ID80" orientation="PtoT"><transend idref="ID69"/><placeend idref="ID45"/><annot><posattr x="54.0" y="-900.0"/><text>c</text></annot></arc><arc id="ID81" orientation="TtoP"><transend idref="ID69"/><placeend idref="ID73"/><annot><posattr x="98.0" y="-972.0"/><text>c</text></annot></arc><trans id="ID82"><posattr x="-72.5" y="-936.0"/><text>ID82</text><box h="32.0" w="85.0"/><cond id="ID83"><text/></cond><time id="ID84"><text/></time><code id="ID85"><text/></code></trans><place id="ID86"><posattr x="-72.5" y="-1152.0"/><text>ID86</text><ellipse h="32.0" w="85.0"/><type><posattr x="-30.0" y="-1168.0"/><text>CASE</text></type></place><arc id="ID87" orientation="PtoT"><transend idref="ID49"/><placeend idref="ID86"/><annot><posattr x="-62.5" y="-1260.0"/><text>c</text></annot></arc><arc id="ID88" orientation="PtoT"><transend idref="ID82"/><placeend idref="ID45"/><annot><posattr x="46.25" y="-900.0"/><text>c</text></annot></arc><arc id="ID89" orientation="TtoP"><transend idref="ID82"/><placeend idref="ID86"/><annot><posattr x="-62.5" y="-1044.0"/><text>c</text></annot></arc><trans id="ID90"><posattr x="-17.0" y="-1656.0"/><text>ID90</text><box h="32.0" w="85.0"/><cond id="ID91"><text/></cond><time id="ID92"><text/></time><code id="ID93"><text/></code></trans><place id="ID94"><posattr x="-17.0" y="-1584.0"/><text>ID94</text><ellipse h="32.0" w="85.0"/><type><posattr x="25.5" y="-1600.0"/><text>CASE</text></type></place><arc id="ID95" orientation="TtoP"><transend idref="ID49"/><placeend idref="ID94"/><annot><posattr x="-34.75" y="-1476.0"/><text>(if path=104 then 1`c else empty)</text></annot></arc><place id="ID96"><posattr x="-17.0" y="-1728.0"/><text>ID96</text><ellipse h="32.0" w="85.0"/><type><posattr x="25.5" y="-1744.0"/><text>CASE</text></type></place><trans id="ID97"><posattr x="-17.0" y="-1800.0"/><text>XOR_JOIN_ID97</text><box h="32.0" w="85.0"/><cond id="ID98"><text/></cond><time id="ID99"><text/></time><code id="ID100"><text/></code></trans><arc id="ID101" orientation="PtoT"><transend idref="ID97"/><placeend idref="ID96"/><annot><posattr x="-7.0" y="-1764.0"/><text>c</text></annot></arc><arc id="ID102" orientation="TtoP"><transend idref="ID97"/><placeend idref="ID59"/><annot><posattr x="-7.0" y="-1836.0"/><text>c</text></annot></arc><arc id="ID103" orientation="PtoT"><transend idref="ID90"/><placeend idref="ID94"/><annot><posattr x="-7.0" y="-1620.0"/><text>c</text></annot></arc><arc id="ID104" orientation="TtoP"><transend idref="ID90"/><placeend idref="ID96"/><annot><posattr x="-7.0" y="-1692.0"/><text>c</text></annot></arc><trans id="ID105"><posattr x="-125.0" y="-1656.0"/><text>ID105</text><box h="32.0" w="91.0"/><cond id="ID106"><text/></cond><time id="ID107"><text/></time><code id="ID108"><text/></code></trans><place id="ID109"><posattr x="-125.0" y="-1584.0"/><text>ID109</text><ellipse h="32.0" w="91.0"/><type><posattr x="-79.5" y="-1600.0"/><text>CASE</text></type></place><arc id="ID110" orientation="TtoP"><transend idref="ID49"/><placeend idref="ID109"/><annot><posattr x="-36.25" y="-1476.0"/><text>(if path=105 then 1`c else empty)</text></annot></arc><place id="ID111"><posattr x="-125.0" y="-1728.0"/><text>ID111</text><ellipse h="32.0" w="91.0"/><type><posattr x="-79.5" y="-1744.0"/><text>CASE</text></type></place><trans id="ID112"><posattr x="-125.0" y="-1800.0"/><text>XOR_JOIN_ID112</text><box h="32.0" w="91.0"/><cond id="ID113"><text/></cond><time id="ID114"><text/></time><code id="ID115"><text/></code></trans><arc id="ID116" orientation="PtoT"><transend idref="ID112"/><placeend idref="ID111"/><annot><posattr x="-115.0" y="-1764.0"/><text>c</text></annot></arc><arc id="ID117" orientation="TtoP"><transend idref="ID112"/><placeend idref="ID67"/><annot><posattr x="-115.0" y="-1836.0"/><text>c</text></annot></arc><arc id="ID118" orientation="PtoT"><transend idref="ID105"/><placeend idref="ID109"/><annot><posattr x="-115.0" y="-1620.0"/><text>c</text></annot></arc><arc id="ID119" orientation="TtoP"><transend idref="ID105"/><placeend idref="ID111"/><annot><posattr x="-115.0" y="-1692.0"/><text>c</text></annot></arc><trans id="ID120"><posattr x="0.0" y="-144.0"/><text>ID120</text><box h="32.0" w="91.0"/><cond id="ID121"><text/></cond><time id="ID122"><text/></time><code id="ID123"><text/></code></trans><place id="ID124"><posattr x="0.0" y="-216.0"/><text>ID124</text><ellipse h="32.0" w="91.0"/><type><posattr x="45.5" y="-232.0"/><text>CASE</text></type></place><arc id="ID125" orientation="PtoT"><transend idref="ID25"/><placeend idref="ID124"/><annot><posattr x="10.0" y="-252.0"/><text>c</text></annot></arc><arc id="ID126" orientation="PtoT"><transend idref="ID120"/><placeend idref="ID5"/><annot><posattr x="10.0" y="-108.0"/><text>c</text></annot></arc><arc id="ID127" orientation="TtoP"><transend idref="ID120"/><placeend idref="ID124"/><annot><posattr x="10.0" y="-180.0"/><text>c</text></annot></arc><trans id="ID128"><posattr x="111.0" y="-528.0"/><text>ID128</text><box h="32.0" w="91.0"/><cond id="ID129"><text/></cond><time id="ID130"><text/></time><code id="ID131"><text/></code></trans><place id="ID132"><posattr x="111.0" y="-360.0"/><text>ID132</text><ellipse h="32.0" w="91.0"/><type><posattr x="156.5" y="-376.0"/><text>CASE</text></type></place><arc id="ID133" orientation="TtoP"><transend idref="ID25"/><placeend idref="ID132"/><annot><posattr x="65.5" y="-324.0"/><text>(if path=76 then 1`c else empty)</text></annot></arc><place id="ID134"><posattr x="111.0" y="-696.0"/><text>ID134</text><ellipse h="32.0" w="91.0"/><type><posattr x="156.5" y="-712.0"/><text>CASE</text></type></place><trans id="ID135"><posattr x="111.0" y="-864.0"/><text>XOR_JOIN_ID135</text><box h="32.0" w="91.0"/><cond id="ID136"><text/></cond><time id="ID137"><text/></time><code id="ID138"><text/></code></trans><arc id="ID139" orientation="PtoT"><transend idref="ID135"/><placeend idref="ID134"/><annot><posattr x="121.0" y="-780.0"/><text>c</text></annot></arc><arc id="ID140" orientation="TtoP"><transend idref="ID135"/><placeend idref="ID23"/><annot><posattr x="124.5" y="-1008.0"/><text>c</text></annot></arc><arc id="ID141" orientation="PtoT"><transend idref="ID128"/><placeend idref="ID132"/><annot><posattr x="121.0" y="-444.0"/><text>c</text></annot></arc><arc id="ID142" orientation="TtoP"><transend idref="ID128"/><placeend idref="ID134"/><annot><posattr x="121.0" y="-612.0"/><text>c</text></annot></arc><trans id="ID143"><posattr x="0.0" y="-444.0"/><text>ID143</text><box h="32.0" w="91.0"/><cond id="ID144"><text/></cond><time id="ID145"><text/></time><code id="ID146"><text/></code></trans><place id="ID147"><posattr x="0.0" y="-360.0"/><text>ID147</text><ellipse h="32.0" w="91.0"/><type><posattr x="45.5" y="-376.0"/><text>CASE</text></type></place><arc id="ID148" orientation="TtoP"><transend idref="ID25"/><placeend idref="ID147"/><annot><posattr x="10.0" y="-324.0"/><text>(if path=91 then 1`c else empty)</text></annot></arc><place id="ID149"><posattr x="0.0" y="-528.0"/><text>ID149</text><ellipse h="32.0" w="91.0"/><type><posattr x="45.5" y="-544.0"/><text>CASE</text></type></place><trans id="ID150"><posattr x="0.0" y="-612.0"/><text>XOR_JOIN_ID150</text><box h="32.0" w="91.0"/><cond id="ID151"><text/></cond><time id="ID152"><text/></time><code id="ID153"><text/></code></trans><arc id="ID154" orientation="PtoT"><transend idref="ID150"/><placeend idref="ID149"/><annot><posattr x="10.0" y="-570.0"/><text>c</text></annot></arc><arc id="ID155" orientation="TtoP"><transend idref="ID150"/><placeend idref="ID47"/><annot><posattr x="10.0" y="-654.0"/><text>c</text></annot></arc><arc id="ID156" orientation="PtoT"><transend idref="ID143"/><placeend idref="ID147"/><annot><posattr x="10.0" y="-402.0"/><text>c</text></annot></arc><arc id="ID157" orientation="TtoP"><transend idref="ID143"/><placeend idref="ID149"/><annot><posattr x="10.0" y="-486.0"/><text>c</text></annot></arc><trans id="ID158"><posattr x="-111.0" y="-432.0"/><text>ID158</text><box h="32.0" w="91.0"/><cond id="ID159"><text/></cond><time id="ID160"><text/></time><code id="ID161"><text/></code></trans><place id="ID162"><posattr x="-111.0" y="-360.0"/><text>ID162</text><ellipse h="32.0" w="91.0"/><type><posattr x="-65.5" y="-376.0"/><text>CASE</text></type></place><arc id="ID163" orientation="TtoP"><transend idref="ID25"/><placeend idref="ID162"/><annot><posattr x="65.5" y="-324.0"/><text>(if path=73 then 1`c else empty)</text></annot></arc><place id="ID164"><posattr x="-111.0" y="-504.0"/><text>ID164</text><ellipse h="32.0" w="91.0"/><type><posattr x="-65.5" y="-520.0"/><text>CASE</text></type></place><trans id="ID165"><posattr x="-111.0" y="-576.0"/><text>XOR_JOIN_ID165</text><box h="32.0" w="91.0"/><cond id="ID166"><text/></cond><time id="ID167"><text/></time><code id="ID168"><text/></code></trans><arc id="ID169" orientation="PtoT"><transend idref="ID165"/><placeend idref="ID164"/><annot><posattr x="-101.0" y="-540.0"/><text>c</text></annot></arc><arc id="ID170" orientation="TtoP"><transend idref="ID165"/><placeend idref="ID15"/><annot><posattr x="-101.0" y="-612.0"/><text>c</text></annot></arc><arc id="ID171" orientation="PtoT"><transend idref="ID158"/><placeend idref="ID162"/><annot><posattr x="-101.0" y="-396.0"/><text>c</text></annot></arc><arc id="ID172" orientation="TtoP"><transend idref="ID158"/><placeend idref="ID164"/><annot><posattr x="-101.0" y="-468.0"/><text>c</text></annot></arc><trans id="ID173"><posattr x="-111.0" y="-864.0"/><text>ID173</text><box h="32.0" w="91.0"/><cond id="ID174"><text/></cond><time id="ID175"><text/></time><code id="ID176"><text/></code></trans><place id="ID177"><posattr x="108.0" y="-1440.0"/><text>ID177</text><ellipse h="32.0" w="91.0"/><type><posattr x="153.5" y="-1456.0"/><text>CASE</text></type></place><arc id="ID178" orientation="PtoT"><transend idref="ID29"/><placeend idref="ID177"/><annot><posattr x="118.0" y="-1476.0"/><text>c</text></annot></arc><arc id="ID179" orientation="PtoT"><transend idref="ID173"/><placeend idref="ID13"/><annot><posattr x="-101.0" y="-828.0"/><text>c</text></annot></arc><arc id="ID180" orientation="TtoP"><transend idref="ID173"/><placeend idref="ID177"/><annot><posattr x="8.5" y="-1152.0"/><text>c</text></annot></arc><trans id="ID181"><posattr x="118.0" y="-1368.0"/><text>ID181</text><box h="32.0" w="91.0"/><cond id="ID182"><text/></cond><time id="ID183"><text/></time><code id="ID184"><text/></code></trans><arc id="ID185" orientation="PtoT"><transend idref="ID181"/><placeend idref="ID21"/><annot><posattr x="128.0" y="-1332.0"/><text>c</text></annot></arc><arc id="ID186" orientation="TtoP"><transend idref="ID181"/><placeend idref="ID177"/><annot><posattr x="133.0" y="-1404.0"/><text>c</text></annot></arc><trans id="ID187"><posattr x="108.0" y="-1656.0"/><text>ID187</text><box h="32.0" w="91.0"/><cond id="ID188"><text/></cond><time id="ID189"><text/></time><code id="ID190"><text/></code></trans><place id="ID191"><posattr x="108.0" y="-1584.0"/><text>ID191</text><ellipse h="32.0" w="91.0"/><type><posattr x="153.5" y="-1600.0"/><text>CASE</text></type></place><arc id="ID192" orientation="TtoP"><transend idref="ID29"/><placeend idref="ID191"/><annot><posattr x="118.0" y="-1548.0"/><text>(if path=75 then 1`c else empty)</text></annot></arc><place id="ID193"><posattr x="108.0" y="-1728.0"/><text>ID193</text><ellipse h="32.0" w="91.0"/><type><posattr x="153.5" y="-1744.0"/><text>CASE</text></type></place><trans id="ID194"><posattr x="108.0" y="-1800.0"/><text>XOR_JOIN_ID194</text><box h="32.0" w="91.0"/><cond id="ID195"><text/></cond><time id="ID196"><text/></time><code id="ID197"><text/></code></trans><arc id="ID198" orientation="PtoT"><transend idref="ID194"/><placeend idref="ID193"/><annot><posattr x="118.0" y="-1764.0"/><text>c</text></annot></arc><arc id="ID199" orientation="TtoP"><transend idref="ID194"/><placeend idref="ID39"/><annot><posattr x="118.0" y="-1836.0"/><text>c</text></annot></arc><arc id="ID200" orientation="PtoT"><transend idref="ID187"/><placeend idref="ID191"/><annot><posattr x="118.0" y="-1620.0"/><text>c</text></annot></arc><arc id="ID201" orientation="TtoP"><transend idref="ID187"/><placeend idref="ID193"/><annot><posattr x="118.0" y="-1692.0"/><text>c</text></annot></arc></page>
+    <page id="PAGE_GENERATOR">
+      <pageattr name="Generator"/>
+      <place id="ID1264233943">
+        <posattr x="-544.000000" y="9.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <text>Counter</text>
+        <ellipse w="82.000000" h="54.000000"/>
+        <token x="-10.000000" y="0.000000"/>
+        <marking x="0.000000" y="0.000000" hidden="false"/>
+        <type id="ID1264233944">
+          <posattr x="-515.000000" y="-19.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">ID</text>
+        </type>
+        <initmark id="ID1264233945">
+          <posattr x="-500.000000" y="37.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">1`1</text>
+        </initmark>
+      </place>
+      <place id="ID1264234111">
+        <posattr x="22.000000" y="99.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <text>gen_start</text>
+        <ellipse w="46.000000" h="40.000000"/>
+        <token x="-10.000000" y="0.000000"/>
+        <marking x="0.000000" y="0.000000" hidden="false"/>
+        <type id="ID1264234112">
+          <posattr x="57.500000" y="75.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">CASE</text>
+        </type>
+        <initmark id="PORT_GENERATOR">
+          <posattr x="73.000000" y="122.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0"/>
+        </initmark>
+        <port id="PORT_GENERATOR" type="Out">
+          <posattr x="2.000000" y="82.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </port>
+      </place>
+      <trans id="ID1264233938" explicit="false">
+        <posattr x="-209.000000" y="99.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="solid"/>
+        <textattr colour="Black" bold="false"/>
+        <text>Generator</text>
+        <box w="90.000000" h="36.000000"/>
+        <binding x="7.200000" y="-3.000000"/>
+        <cond id="ID1264301103">
+          <posattr x="-341.500000" y="128.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">[generatorGuard(i) = true]</text>
+        </cond>
+        <time id="ID1264233940">
+          <posattr x="-149.500000" y="128.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0"/>
+        </time>
+        <code id="ID1264233941">
+          <posattr x="-104.500000" y="35.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">input (i);
+output (c);
+action
+(
+  generateCase(i)
+);</text>
+        </code>
+        <channel id="ID1264233942">
+          <posattr x="-287.500000" y="99.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0"/>
+        </channel>
+      </trans>
+      <arc id="ID1264233946" orientation="TtoP" order="1">
+        <posattr x="0.000000" y="0.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <arrowattr headsize="1.200000" currentcyckle="2"/>
+        <transend idref="ID1264233938"/>
+        <placeend idref="ID1264233943"/>
+        <bendpoint id="ID1264283551" serial="1">
+          <posattr x="-224.000000" y="9.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </bendpoint>
+        <annot id="ID1264233947">
+          <posattr x="-311.000000" y="-37.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">i+1@+
+(
+  if i mod  noOfTokensPerBundle = 0
+    then 0
+  else calcDisValue(timeBetweenBundles)
+)</text>
+        </annot>
+      </arc>
+      <arc id="ID1264233948" orientation="PtoT" order="1">
+        <posattr x="0.000000" y="0.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <arrowattr headsize="1.200000" currentcyckle="2"/>
+        <transend idref="ID1264233938"/>
+        <placeend idref="ID1264233943"/>
+        <bendpoint id="ID1264276323" serial="1">
+          <posattr x="-544.000000" y="99.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </bendpoint>
+        <annot id="ID1264233949">
+          <posattr x="-549.500000" y="67.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">i</text>
+        </annot>
+      </arc>
+      <arc id="ID1264234259" orientation="TtoP" order="1">
+        <posattr x="0.000000" y="0.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <arrowattr headsize="1.200000" currentcyckle="2"/>
+        <transend idref="ID1264233938"/>
+        <placeend idref="ID1264234111"/>
+        <bendpoint id="ID1264279865" serial="1">
+          <posattr x="-46.000000" y="99.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </bendpoint>
+        <annot id="ID1264234260">
+          <posattr x="-105.000000" y="110.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">c</text>
+        </annot>
+      </arc>
+    </page>
+    <instances>
+      <instance id="ID1264218879" page="PAGE_PROCESS"><instance id="ID8" trans="ID1"/></instance>
+      <instance id="ID1264233961" page="PAGE_GENERATOR"/>
+    </instances>
+    <options>
+      <option name="outputdirectory">
+        <value>
+          <text>&lt;same as model></text>
+        </value>
+      </option>
+      <option name="repavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repciavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repcount">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repfirstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="replastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repmax">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repmin">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repstddev">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repsum">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repvariance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="avg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="ciavg">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="count">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="firstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="lastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="max">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="min">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="ssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="ssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="stddev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="sum">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="variance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="firstupdate">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="interval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="lastupdate">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedciavg">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedcount">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedfirstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedlastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedmax">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedmin">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedstddev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedsum">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedvariance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+    </options>
+    <binders>
+      <cpnbinder id="ID1264219689" x="507" y="95" width="755" height="668">
+        <sheets>
+          <cpnsheet id="ID1264219682" panx="-44.000000" pany="-128.000000" zoom="1.000000" instance="ID1264218879">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+          <cpnsheet id="ID1264301057" panx="198.000000" pany="25.000000" zoom="1.000000" instance="ID1264233961">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+        </sheets>
+        <zorder>
+          <position value="0"/>
+          <position value="1"/>
+        </zorder>
+      </cpnbinder>
+    </binders>
+    <monitorblock name="Monitors"/>
+    <IndexNode expanded="true">
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false">
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+            <IndexNode expanded="false">
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+          </IndexNode>
+        </IndexNode>
+      </IndexNode>
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="true">
+        <IndexNode expanded="false">
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="true">
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+        </IndexNode>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="false">
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false"/>
+      </IndexNode>
+      <IndexNode expanded="true"/>
+      <IndexNode expanded="true"/>
+      <IndexNode expanded="true"/>
+    </IndexNode>
+  </cpnet>
+</workspaceElements>

@@ -62,8 +62,13 @@ public final class BPMNTask extends BPMNElement {
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 		String duration = simDataParser.getTaskDuration(elementId);
-		cPNProcess.getCpnet().setTransitionTime(transitionId,"@+" + duration);
-		
+		cPNProcess.getCpnet().setTransitionTime(transitionId, "@+" + duration);
+
+		String logAction = "input (c);\noutput ();\naction\n(addATE(#ID(c), \""
+				+ elementName
+				+ "\", [\"complete\"], calculateTimeStamp(), \"\", []));";
+		cPNProcess.getCpnet().setTransitionAction(transitionId, logAction);
+
 	}
 
 }
