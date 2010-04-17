@@ -42,7 +42,7 @@ public class CPNet {
 	private String flowObjectVariable = "c";
 
 	public CPNet() {
-		File blankCPN = new File("./files/cpn/blank2.cpn");
+		File blankCPN = new File("./files/cpn/template.cpn");
 
 		try {
 			cpnWorkspace = WorkspaceElementsDocument.Factory.parse(blankCPN);

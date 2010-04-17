@@ -11,15 +11,15 @@ public class TestCPNModel {
 
 		// XPDL process model file
 		File xpdlFile = new File(
-				"C:/Karl/Thesis/Source/Converter/files/models/Three tasks and a gateway.xpdl");
+				"./files/models/Three tasks and a gateway.xpdl");
 
 		// Simulation data to the corresponding XPDL simulation model
 		File simDataFile = new File(
-				"C:/Karl/Thesis/Source/Converter/files/models/Three tasks and a gateway (Simulation data).xml");
+				"./files/models/Three tasks and a gateway (Simulation data).xml");
 		
 		CPNProcess p = new BPMNProcess(xpdlFile,simDataFile);
 
 		//OUTPUT FILE
-		p.saveToCPN("C:/Karl/Thesis/Source/Converter/files/cpn/test.cpn");
+		p.saveToCPN("./files/cpn/test.cpn");
 	}
 }
