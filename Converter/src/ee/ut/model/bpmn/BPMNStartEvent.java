@@ -38,11 +38,17 @@ public class BPMNStartEvent extends BPMNElement {
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		int startTokens = simDataParser.getTotalTokens();
+		String startTokens = simDataParser.getTotalTokens();
 		cPNProcess.getCpnet().setTotalTokens(startTokens);
 		
-		int tokensPerBundle = simDataParser.getTokensPerBundle();
+		String tokensPerBundle = simDataParser.getTokensPerBundle();
 		cPNProcess.getCpnet().setTokensPerBundle(tokensPerBundle);
+		
+		String startTime = simDataParser.getStartTime();
+		cPNProcess.getCpnet().setStartTime(startTime);
+		
+		String endTime = simDataParser.getEndTime();
+		cPNProcess.getCpnet().setEndTime(endTime);
 	}
 
 }

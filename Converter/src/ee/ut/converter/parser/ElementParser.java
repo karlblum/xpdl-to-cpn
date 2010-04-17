@@ -3,9 +3,6 @@ package ee.ut.converter.parser;
 import java.io.File;
 import java.util.ArrayList;
 
-import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
-import ee.ut.model.bpmn.BPMNGateway.GatewayType;
-
 public interface ElementParser {
 
 	public Object getElementType(Object o);

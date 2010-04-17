@@ -35,7 +35,9 @@ public class BPMNTransition extends BPMNElement {
 			toPlace = ((BPMNTask) objectTo).makeInputPlace();
 		} else if (objectTo instanceof BPMNGateway) {
 			toPlace = ((BPMNGateway) objectTo).makeInputPlace();
-		}
+		} else if (objectTo instanceof BPMNEndEvent) {
+			toPlace = ((BPMNEndEvent) objectTo).getInputPlace();
+		} 
 
 		cPNProcess.getCpnet().addArc(fromPlace.getId(), transId);
 		cPNProcess.getCpnet().addArc(transId, toPlace.getId());

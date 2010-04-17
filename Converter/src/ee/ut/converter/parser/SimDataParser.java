@@ -8,7 +8,11 @@ public interface SimDataParser {
 
 	public HashMap<String,String> getDistribution(String id);
 
-	public int getTotalTokens();
+	public String getTotalTokens();
 
-	public int getTokensPerBundle();
+	public String getTokensPerBundle();
+
+	public String getStartTime();
+
+	public String getEndTime();
 }

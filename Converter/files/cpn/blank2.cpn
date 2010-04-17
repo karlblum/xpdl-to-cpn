@@ -47,6 +47,13 @@
           <layout>use &quot;loggingFunctionsMultipleFiles.sml&quot;;</layout>
         </use>
       </block>
+      <var id="ID1264302717">
+        <type>
+          <id>INT</id>
+        </type>
+        <id>pt</id>
+        <layout>var pt:INT;</layout>
+      </var>
       <block id="ID1264191371">
         <id>Generator</id>
         <ml id="ID1264250093">fun et(mean:INT,stdD:INT)=
@@ -157,12 +164,6 @@ let
 in
   Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
 end</layout>
-        </ml>
-        <ml id="ID1264244852">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}
-          <layout>val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}</layout>
-        </ml>
-        <ml id="ID1264245607">val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2001}
-          <layout>val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2001}</layout>
         </ml>
         <ml id="ID1264247194">fun add2StartDate(ts:INT) =
 let
@@ -281,16 +282,14 @@ end;</layout>
         <ml id="ID1264253932">fun generatorGuard(i:ID) =
 let
 val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;&gt; GREATER;
-val tokenCheck = i + noOfTokensPerBundle &lt;= totalNoOfToken; 
 in
-if i &lt; totalNoOfToken andalso tokenCheck=true andalso dateCompare=true then true else false
+if i &lt;= totalNoOfToken andalso dateCompare=true then true else false
 end;
           <layout>fun generatorGuard(i:ID) =
 let
 val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;&gt; GREATER;
-val tokenCheck = i + noOfTokensPerBundle &lt;= totalNoOfToken; 
 in
-if i &lt; totalNoOfToken andalso tokenCheck=true andalso dateCompare=true then true else false
+if i &lt;= totalNoOfToken andalso dateCompare=true then true else false
 end;</layout>
         </ml>
       </block>
@@ -555,13 +554,12 @@ end;</layout>
         <layout>colset TRANSPARAMS  = record 
 transitionName:STRING * pt: DISTRIBUTION * pCost:DISTRIBUTION * sCost:DISTRIBUTION * revenue:DISTRIBUTION * pWaitTimeDur:INT * pWaitTimeCost:INT * NoOfResources:INT;</layout>
       </color>
-      <ml id="ID1264301874">fun transitionAction (a:CASE, r:RES, params:TRANSPARAMS) = 
+      <ml id="ID1264301874">fun transitionAction (a:CASE, params:TRANSPARAMS) = 
 let
   val id = #ID(a)
   val ts = #ts(a)
   val ats = #ats(a)
   val transitionName = #transitionName(params)
-  val resourceName = #Name(r)
   val noOr = #NoOfResources(params)
   val waitTime = intTime() - ts
   val waitTimeDur = #pWaitTimeDur(params)
@@ -574,47 +572,30 @@ let
   val procTime = calcDisValue(#pt(params))
   val procTime_real = Real.fromInt procTime
 
-(*Sum up the costs of resources*)
-val rcosts = #Costs(r)
-(*TODO: to check the timetable*)
-fun calcResourceCost(n:RCOST) = 
-let
-  val costDur = #CostPerDuration(n)
-  val costDur = Real.fromInt costDur 
-  val value = #Value(n)
-  val value = Real.fromInt value
-in
-  if costDur &gt; 0.0 then round((procTime_real/costDur)*value) else round(value)
-end;
-val rec rCost = fn ([]) =&gt; 0 | n::s =&gt; calcResourceCost(n) + rCost  s
-val resCost = rCost(rcosts)*noOr;
-(*end sum up*)
-
   val processcost = calcDisValue(#pCost(params))
   val scost = calcDisValue(#sCost(params))
   val revenue = calcDisValue(#revenue(params))
-  val allcost = processcost + resCost + scost
+  val allcost = processcost + scost
 
 val curDate = add2StartDate(intTime()) ;
 val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
 val data = [&quot;WaitingTime&quot;, Int.toString(waitTime), &quot;WaitTimeCost&quot;, Int.toString(waitTimeCost), &quot;ModelTimeStamp&quot;, Int.toString(intTime())];
-val _ = addATE(id, transitionName, [&quot;start&quot;], timestamp, resourceName, data);
+val _ = addATE(id, transitionName, [&quot;start&quot;], timestamp, &quot;&quot;, data);
 
 val curDate = add2StartDate(intTime() +procTime) ;
 val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
 val data = [&quot;ProcessingTime&quot;, Int.toString(procTime), &quot;Cost&quot;, Int.toString(allcost), &quot;StartupCost&quot;, Int.toString(scost)]
-val data = data ++ [&quot;ResourceCost&quot;, Int.toString(resCost), &quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
-val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, resourceName, data);
+val data = data ++ [&quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, &quot;&quot;, data);
 in
   (procTime)
 end
-        <layout>fun transitionAction (a:CASE, r:RES, params:TRANSPARAMS) = 
+        <layout>fun transitionAction (a:CASE, params:TRANSPARAMS) = 
 let
   val id = #ID(a)
   val ts = #ts(a)
   val ats = #ats(a)
   val transitionName = #transitionName(params)
-  val resourceName = #Name(r)
   val noOr = #NoOfResources(params)
   val waitTime = intTime() - ts
   val waitTimeDur = #pWaitTimeDur(params)
@@ -627,37 +608,21 @@ let
   val procTime = calcDisValue(#pt(params))
   val procTime_real = Real.fromInt procTime
 
-(*Sum up the costs of resources*)
-val rcosts = #Costs(r)
-(*TODO: to check the timetable*)
-fun calcResourceCost(n:RCOST) = 
-let
-  val costDur = #CostPerDuration(n)
-  val costDur = Real.fromInt costDur 
-  val value = #Value(n)
-  val value = Real.fromInt value
-in
-  if costDur &gt; 0.0 then round((procTime_real/costDur)*value) else round(value)
-end;
-val rec rCost = fn ([]) =&gt; 0 | n::s =&gt; calcResourceCost(n) + rCost  s
-val resCost = rCost(rcosts)*noOr;
-(*end sum up*)
-
   val processcost = calcDisValue(#pCost(params))
   val scost = calcDisValue(#sCost(params))
   val revenue = calcDisValue(#revenue(params))
-  val allcost = processcost + resCost + scost
+  val allcost = processcost + scost
 
 val curDate = add2StartDate(intTime()) ;
 val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
 val data = [&quot;WaitingTime&quot;, Int.toString(waitTime), &quot;WaitTimeCost&quot;, Int.toString(waitTimeCost), &quot;ModelTimeStamp&quot;, Int.toString(intTime())];
-val _ = addATE(id, transitionName, [&quot;start&quot;], timestamp, resourceName, data);
+val _ = addATE(id, transitionName, [&quot;start&quot;], timestamp, &quot;&quot;, data);
 
 val curDate = add2StartDate(intTime() +procTime) ;
 val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
 val data = [&quot;ProcessingTime&quot;, Int.toString(procTime), &quot;Cost&quot;, Int.toString(allcost), &quot;StartupCost&quot;, Int.toString(scost)]
-val data = data ++ [&quot;ResourceCost&quot;, Int.toString(resCost), &quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
-val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, resourceName, data);
+val data = data ++ [&quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, &quot;&quot;, data);
 in
   (procTime)
 end</layout>
@@ -1207,8 +1172,8 @@ action
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="507"
-                 y="95"
+                 x="669"
+                 y="92"
                  width="755"
                  height="668">
         <sheets>
@@ -1230,10 +1195,18 @@ action
               <position value="0"/>
             </zorder>
           </cpnsheet>
+          <textsheet id="ID1264303501"
+                     panx="7.000000"
+                     pany="20.000000"
+                     zoom="1.000000"
+                     decl="ID1264301874">
+            <zorder/>
+          </textsheet>
         </sheets>
         <zorder>
           <position value="0"/>
           <position value="1"/>
+          <position value="2"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -1307,14 +1280,13 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
+        <IndexNode expanded="true"/>
         <IndexNode expanded="true">
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -1322,9 +1294,9 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="true"/>
         <IndexNode expanded="false"/>
@@ -1339,12 +1311,12 @@ action
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="false">
-          <IndexNode expanded="true">
+          <IndexNode expanded="false">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
           </IndexNode>
-          <IndexNode expanded="true">
+          <IndexNode expanded="false">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>

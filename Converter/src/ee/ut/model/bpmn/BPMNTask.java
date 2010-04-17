@@ -10,6 +10,7 @@ public final class BPMNTask extends BPMNElement {
 
 	private String midInputPlaceId;
 	private String outputPlaceId;
+	private String outputArcId;
 	private String transitionId;
 
 	public BPMNTask(CPNProcess cPNProcess, Object o, ElementParser elementParser) {
@@ -27,7 +28,8 @@ public final class BPMNTask extends BPMNElement {
 		// Activity can have only one output place, because it is like an
 		// inclusive gateway
 		outputPlaceId = cPNProcess.getCpnet().addPlace().getId();
-		cPNProcess.getCpnet().addArc(transitionId, outputPlaceId);
+		outputArcId = cPNProcess.getCpnet().addArc(transitionId, outputPlaceId)
+				.getId();
 
 		// This will be the mid-input place where we add input connections
 		// to
@@ -61,13 +63,31 @@ public final class BPMNTask extends BPMNElement {
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		String duration = simDataParser.getTaskDuration(elementId);
-		cPNProcess.getCpnet().setTransitionTime(transitionId, "@+" + duration);
 
-		String logAction = "input (c);\noutput ();\naction\n(addATE(#ID(c), \""
-				+ elementName
-				+ "\", [\"complete\"], calculateTimeStamp(), \"\", []));";
-		cPNProcess.getCpnet().setTransitionAction(transitionId, logAction);
+		String taskAction = "input (c);\n"+
+		"output (pt);\n"+
+		"action\n"+
+		"(let\n  "+
+		"val transParams = {\n"+
+		"    pt={dtype=specific, specificValue="+ simDataParser.getTaskDuration(elementId) +", mean=0, std=0},\n"+
+		"    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"+
+		"    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"+
+		"    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"+
+		"    pWaitTimeDur=0,\n"+
+		"    pWaitTimeCost=0,\n"+
+		"    transitionName=\"" + elementName + "\",\n"+
+		"    NoOfResources=1}\n"+
+		"in\n"+
+		"  transitionAction(c, transParams)\n"+
+		"end);";
+		
+		cPNProcess.getCpnet().setTransitionAction(transitionId, taskAction);
+		
+		// The simulation data has to be added to the output arc. The CPN
+		// transition outputs the total time consumed and the arc uses it to
+		// generate the proper delay.
+		String arcAnnot = "CASE.set_ts c (pt+intTime()) @+pt";
+		cPNProcess.getCpnet().setArcAnnot(outputArcId, arcAnnot);
 
 	}
 
