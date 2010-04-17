@@ -11,11 +11,11 @@ public class TestCPNModel {
 
 		// XPDL process model file
 		File xpdlFile = new File(
-				"C:/Karl/Thesis/Source/Converter/files/models/gateways_sketchpad.xpdl");
+				"C:/Karl/Thesis/Source/Converter/files/models/Three tasks and a gateway.xpdl");
 
 		// Simulation data to the corresponding XPDL simulation model
 		File simDataFile = new File(
-				"C:/Karl/Thesis/Source/Converter/files/models/simulationData.xml");
+				"C:/Karl/Thesis/Source/Converter/files/models/Three tasks and a gateway (Simulation data).xml");
 		
 		CPNProcess p = new BPMNProcess(xpdlFile,simDataFile);
 

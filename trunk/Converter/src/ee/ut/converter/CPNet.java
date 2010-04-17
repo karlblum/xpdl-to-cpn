@@ -173,6 +173,11 @@ public class CPNet {
 		return arc;
 
 	}
+	
+	public void setArcAnnot(String arcId, String annotation){
+		Arc arc = arcs.get(arcId);
+		arc.getAnnot().getText().set(XmlString.Factory.newValue(annotation));
+	}
 
 	/**
 	 * Converts the transition to the sub-page connector.
@@ -254,20 +259,32 @@ public class CPNet {
 		
 	}
 
-	public void setTotalTokens(int startTokens) {
+	public void setTotalTokens(String startTokens) {
 		createOrUpdateDef("val totalNoOfToken = ",startTokens);
 	}
 	
-	public void setTokensPerBundle(int bundleTokens) {
+	public void setTokensPerBundle(String bundleTokens) {
 		createOrUpdateDef("val noOfTokensPerBundle = ",bundleTokens);
 	}
 
-	private void createOrUpdateDef(String def, int value) {
-		//TODO: no update yet
+	private void createOrUpdateDef(String def, String value) {
+		//TODO: no update functionality yet
 		Ml ml = cpnet.getGlobbox().addNewMl();
 		ml.setId(createId());
 		ml.set(XmlString.Factory.newValue(def + value+ ";"));
 		
 		
+	}
+
+	public void setStartTime(String startTime) {
+		String arg[] = startTime.split(",");
+		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3] + ", minute = " + arg[4] + ", month = Date.Jan, offset = NONE, second = " + arg[5] + ", year = " + arg[0] + "}";
+		createOrUpdateDef("val startDate = ",value);
+	}
+
+	public void setEndTime(String endTime) {
+		String arg[] = endTime.split(",");
+		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3] + ", minute = " + arg[4] + ", month = Date.Jan, offset = NONE, second = " + arg[5] + ", year = " + arg[0] + "}";
+		createOrUpdateDef("val endDate = ",value);
 	}
 }

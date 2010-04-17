@@ -60,12 +60,22 @@ public class KBSimDataParser implements SimDataParser {
 	}
 
 	@Override
-	public int getTotalTokens() {
-		return simDataRoot.getValue().getSimulationProfile().getTotalTokens();
+	public String getTotalTokens() {
+		return String.valueOf(simDataRoot.getValue().getSimulationProfile().getTotalTokens());
 	}
 
 	@Override
-	public int getTokensPerBundle() {
-		return simDataRoot.getValue().getSimulationProfile().getTokensInBundle();
+	public String getTokensPerBundle() {
+		return String.valueOf(simDataRoot.getValue().getSimulationProfile().getTokensInBundle());
+	}
+
+	@Override
+	public String getStartTime() {
+		return simDataRoot.getValue().getSimulationProfile().getStartTime();
+	}
+
+	@Override
+	public String getEndTime() {
+		return simDataRoot.getValue().getSimulationProfile().getEndTime();
 	}
 }
