@@ -1,5 +1,7 @@
 package ee.ut.model.bpmn;
 
+import java.util.HashMap;
+
 import noNamespace.Place;
 import noNamespace.Subst;
 import noNamespace.Trans;
@@ -49,6 +51,18 @@ public class BPMNStartEvent extends BPMNElement {
 		
 		String endTime = simDataParser.getEndTime();
 		cPNProcess.getCpnet().setEndTime(endTime);
+		
+		String resourceString = "";
+		HashMap<String, Integer> resources = simDataParser.getResourceData();
+		for(String key : resources.keySet()){
+			cPNProcess.getCpnet().createOrUpdateDef("val " + key + " = ","{Name=\"" + key + "\", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=[\"" + key + "\"], Availability=[tt_week]};");
+			resourceString += "++" + resources.get(key) + "`" + key;
+		}
+		if(resourceString.length()>3) resourceString = resourceString.substring(2);
+		
+		cPNProcess.getCpnet().setResourcePlaceValue(resourceString);
+		
+		
 	}
 
 }

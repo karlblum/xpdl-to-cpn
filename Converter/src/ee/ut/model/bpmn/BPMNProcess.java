@@ -10,7 +10,9 @@ import ee.ut.converter.factory.BPMNEndEventFactory;
 import ee.ut.converter.factory.BPMNFactory;
 import ee.ut.converter.factory.BPMNGatewayFactory;
 import ee.ut.converter.factory.BPMNStartEventFactory;
+import ee.ut.converter.factory.BPMNTask2Factory;
 import ee.ut.converter.factory.BPMNTaskFactory;
+import ee.ut.converter.factory.BPMNTransition2Factory;
 import ee.ut.converter.factory.BPMNTransitionFactory;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.KBSimDataParser;
@@ -25,19 +27,22 @@ public class BPMNProcess extends CPNProcess {
 		
 		ElementParser elementParser = new XPDL2ElementParser();
 		SimDataParser simDataParser = new KBSimDataParser(simulationDataFile);
-		
 		BPMNFactory elementFactory = new BPMNFactory(this, elementParser);
-		elementFactory.registerActivityFactory(new BPMNTaskFactory(this,
+		
+		elementFactory.registerActivityFactory(new BPMNTask2Factory(this,
 				elementParser));
-		elementFactory.registerTransitionFactory(new BPMNTransitionFactory(
+		
+		elementFactory.registerTransitionFactory(new BPMNTransition2Factory(
 				this, elementParser));
 
 		elementFactory.registerGatewayFactory(new BPMNGatewayFactory(this,
 				elementParser));
+		
 		elementFactory.registerPraserHelper(new XPDL2ElementParser());
 
 		elementFactory.registerStartEventFactory(new BPMNStartEventFactory(
-				this, elementParser));	
+				this, elementParser));
+		
 		elementFactory.registerEndEventFactory(new BPMNEndEventFactory(this, elementParser));
 		
 		
