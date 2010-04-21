@@ -293,9 +293,6 @@ if i &lt;= totalNoOfToken andalso dateCompare=true then true else false
 end;</layout>
         </ml>
       </block>
-      <block id="ID1264235128">
-        <id>New Block</id>
-      </block>
       <var id="ID7000">
         <type>
           <id>CASE</id>
@@ -623,6 +620,113 @@ val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
 val data = [&quot;ProcessingTime&quot;, Int.toString(procTime), &quot;Cost&quot;, Int.toString(allcost), &quot;StartupCost&quot;, Int.toString(scost)]
 val data = data ++ [&quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
 val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, &quot;&quot;, data);
+in
+  (procTime)
+end</layout>
+      </ml>
+      <ml id="ID1264304297">fun transitionActionR (a:CASE, r:RES, params:TRANSPARAMS) = 
+let
+  val id = #ID(a)
+  val ts = #ts(a)
+  val ats = #ats(a)
+  val transitionName = #transitionName(params)
+  val resourceName = #Name(r)
+  val noOr = #NoOfResources(params)
+  val waitTime = intTime() - ts
+  val waitTimeDur = #pWaitTimeDur(params)
+  val waitTimeDur = Real.fromInt waitTimeDur
+  val waitTimeCost = #pWaitTimeCost(params)
+  val waitTimeCost = Real.fromInt waitTimeCost
+  val waitTime_real = Real.fromInt waitTime
+  val waitTimeCost = if waitTimeDur &gt; 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;
+
+  val procTime = calcDisValue(#pt(params))
+  val procTime_real = Real.fromInt procTime
+
+(*Sum up the costs of resources*)
+val rcosts = #Costs(r)
+(*TODO: to check the timetable*)
+fun calcResourceCost(n:RCOST) = 
+let
+  val costDur = #CostPerDuration(n)
+  val costDur = Real.fromInt costDur 
+  val value = #Value(n)
+  val value = Real.fromInt value
+in
+  if costDur &gt; 0.0 then round((procTime_real/costDur)*value) else round(value)
+end;
+val rec rCost = fn ([]) =&gt; 0 | n::s =&gt; calcResourceCost(n) + rCost  s
+val resCost = rCost(rcosts)*noOr;
+(*end sum up*)
+
+  val processcost = calcDisValue(#pCost(params))
+  val scost = calcDisValue(#sCost(params))
+  val revenue = calcDisValue(#revenue(params))
+  val allcost = processcost + resCost + scost
+
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
+val data = [&quot;WaitingTime&quot;, Int.toString(waitTime), &quot;WaitTimeCost&quot;, Int.toString(waitTimeCost), &quot;ModelTimeStamp&quot;, Int.toString(intTime())];
+val _ = addATE(id, transitionName, [&quot;start&quot;], timestamp, resourceName, data);
+
+val curDate = add2StartDate(intTime() +procTime) ;
+val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
+val data = [&quot;ProcessingTime&quot;, Int.toString(procTime), &quot;Cost&quot;, Int.toString(allcost), &quot;StartupCost&quot;, Int.toString(scost)]
+val data = data ++ [&quot;ResourceCost&quot;, Int.toString(resCost), &quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, resourceName, data);
+in
+  (procTime)
+end
+        <layout>fun transitionActionR (a:CASE, r:RES, params:TRANSPARAMS) = 
+let
+  val id = #ID(a)
+  val ts = #ts(a)
+  val ats = #ats(a)
+  val transitionName = #transitionName(params)
+  val resourceName = #Name(r)
+  val noOr = #NoOfResources(params)
+  val waitTime = intTime() - ts
+  val waitTimeDur = #pWaitTimeDur(params)
+  val waitTimeDur = Real.fromInt waitTimeDur
+  val waitTimeCost = #pWaitTimeCost(params)
+  val waitTimeCost = Real.fromInt waitTimeCost
+  val waitTime_real = Real.fromInt waitTime
+  val waitTimeCost = if waitTimeDur &gt; 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;
+
+  val procTime = calcDisValue(#pt(params))
+  val procTime_real = Real.fromInt procTime
+
+(*Sum up the costs of resources*)
+val rcosts = #Costs(r)
+(*TODO: to check the timetable*)
+fun calcResourceCost(n:RCOST) = 
+let
+  val costDur = #CostPerDuration(n)
+  val costDur = Real.fromInt costDur 
+  val value = #Value(n)
+  val value = Real.fromInt value
+in
+  if costDur &gt; 0.0 then round((procTime_real/costDur)*value) else round(value)
+end;
+val rec rCost = fn ([]) =&gt; 0 | n::s =&gt; calcResourceCost(n) + rCost  s
+val resCost = rCost(rcosts)*noOr;
+(*end sum up*)
+
+  val processcost = calcDisValue(#pCost(params))
+  val scost = calcDisValue(#sCost(params))
+  val revenue = calcDisValue(#revenue(params))
+  val allcost = processcost + resCost + scost
+
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
+val data = [&quot;WaitingTime&quot;, Int.toString(waitTime), &quot;WaitTimeCost&quot;, Int.toString(waitTimeCost), &quot;ModelTimeStamp&quot;, Int.toString(intTime())];
+val _ = addATE(id, transitionName, [&quot;start&quot;], timestamp, resourceName, data);
+
+val curDate = add2StartDate(intTime() +procTime) ;
+val timestamp = (Date.fmt &quot;%Y-%m-%dT%H:%M:%S.000+01:00&quot; curDate);
+val data = [&quot;ProcessingTime&quot;, Int.toString(procTime), &quot;Cost&quot;, Int.toString(allcost), &quot;StartupCost&quot;, Int.toString(scost)]
+val data = data ++ [&quot;ResourceCost&quot;, Int.toString(resCost), &quot;Revenue&quot;, Int.toString(revenue), &quot;NoOfResources&quot;, Int.toString(#NoOfResources(params)), &quot;ModelTimeStamp&quot;, Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, [&quot;complete&quot;], timestamp, resourceName, data);
 in
   (procTime)
 end</layout>
@@ -1172,10 +1276,10 @@ action
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="669"
-                 y="92"
-                 width="755"
-                 height="668">
+                 x="216"
+                 y="52"
+                 width="1204"
+                 height="733">
         <sheets>
           <cpnsheet id="ID1264219682"
                     panx="-44.000000"
@@ -1186,27 +1290,9 @@ action
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1264301057"
-                    panx="198.000000"
-                    pany="25.000000"
-                    zoom="1.000000"
-                    instance="ID1264233961">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <textsheet id="ID1264303501"
-                     panx="7.000000"
-                     pany="20.000000"
-                     zoom="1.000000"
-                     decl="ID1264301874">
-            <zorder/>
-          </textsheet>
         </sheets>
         <zorder>
           <position value="0"/>
-          <position value="1"/>
-          <position value="2"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -1281,7 +1367,7 @@ action
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="true"/>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -1294,14 +1380,13 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
         </IndexNode>
-        <IndexNode expanded="true"/>
         <IndexNode expanded="false"/>
         <IndexNode expanded="false"/>
-        <IndexNode expanded="true"/>
+        <IndexNode expanded="false"/>
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -1333,6 +1418,7 @@ action
           </IndexNode>
           <IndexNode expanded="true"/>
         </IndexNode>
+        <IndexNode expanded="false"/>
         <IndexNode expanded="false"/>
         <IndexNode expanded="false"/>
       </IndexNode>

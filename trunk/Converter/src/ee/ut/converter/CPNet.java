@@ -9,6 +9,7 @@ import noNamespace.Arc;
 import noNamespace.Code;
 import noNamespace.Cond;
 import noNamespace.Cpnet;
+import noNamespace.Initmark;
 import noNamespace.Instance;
 import noNamespace.Ml;
 import noNamespace.Page;
@@ -22,6 +23,9 @@ import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
 
+import com.sun.corba.se.spi.ior.MakeImmutable;
+
+import ee.ut.old.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
 
 /**
@@ -36,6 +40,7 @@ public class CPNet {
 	private HashMap<String, Place> places = new HashMap<String, Place>();
 	private HashMap<String, Arc> arcs = new HashMap<String, Arc>();
 	private HashMap<String, Trans> transitions = new HashMap<String, Trans>();
+	private String resourcePlaceId;
 	private int currentId = 1;
 
 	private String flowObjectType = "CASE";
@@ -83,6 +88,11 @@ public class CPNet {
 		name = name != null && name != "" ? name + "_" + id : id;
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
+		Initmark im = place.addNewInitmark();
+		im.setId(createId());
+		im.addNewText();
+
+		
 		return place;
 	}
 
@@ -267,7 +277,7 @@ public class CPNet {
 		createOrUpdateDef("val noOfTokensPerBundle = ",bundleTokens);
 	}
 
-	private void createOrUpdateDef(String def, String value) {
+	public void createOrUpdateDef(String def, String value) {
 		//TODO: no update functionality yet
 		Ml ml = cpnet.getGlobbox().addNewMl();
 		ml.setId(createId());
@@ -287,4 +297,31 @@ public class CPNet {
 		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3] + ", minute = " + arg[4] + ", month = Date.Jan, offset = NONE, second = " + arg[5] + ", year = " + arg[0] + "}";
 		createOrUpdateDef("val endDate = ",value);
 	}
+
+	public String getResourcePlace() {
+		if (resourcePlaceId == null){
+			resourcePlaceId = addPlace("RES","RESOURCES").getId();
+		}
+		return resourcePlaceId;
+	}
+
+	public void setTransitionGuard(String id,String value) {
+		Trans trans = transitions.get(id);
+		trans.getCondArray()[0].getText().set(XmlString.Factory.newValue(value));
+		
+	}
+
+	public void setResourcePlaceValue(String resourceString) {
+		String resourcePlaceId = getResourcePlace();
+		Place p = getPlace(resourcePlaceId);
+		setPlaceValue(p.getId(),resourceString);
+		
+	}
+
+	private void setPlaceValue(String place, String value) {
+		Place p = getPlace(place);
+		p.getInitmarkArray()[0].getText().set(XmlString.Factory.newValue(value));
+		
+	}
+	
 }

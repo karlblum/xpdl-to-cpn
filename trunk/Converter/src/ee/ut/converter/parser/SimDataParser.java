@@ -15,4 +15,10 @@ public interface SimDataParser {
 	public String getStartTime();
 
 	public String getEndTime();
+
+	public String getWaitTimeDuration(String elementId);
+
+	public String getResources(String elementId);
+
+	public HashMap<String, Integer> getResourceData();
 }

@@ -15,7 +15,7 @@ public class TestCPNModel {
 
 		// Simulation data to the corresponding XPDL simulation model
 		File simDataFile = new File(
-				"./files/models/Three tasks and a gateway (Simulation data).xml");
+				"./files/models/Three tasks and a gateway (Simulation data with resources).xml");
 		
 		CPNProcess p = new BPMNProcess(xpdlFile,simDataFile);
 
