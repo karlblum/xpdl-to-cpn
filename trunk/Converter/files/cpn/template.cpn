@@ -967,9 +967,9 @@ action
           <text tool="CPN Tools"
                 version="2.2.0">i+1@+
 (
-  if i mod  noOfTokensPerBundle = 0
-    then 0
-  else calcDisValue(timeBetweenBundles)
+  if i mod noOfTokensPerBundle = 0
+    then calcDisValue(timeBetweenBundles)
+  else 0
 )</text>
         </annot>
       </arc>
@@ -1365,7 +1365,7 @@ action
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="false"/>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
@@ -1392,7 +1392,7 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="false">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
