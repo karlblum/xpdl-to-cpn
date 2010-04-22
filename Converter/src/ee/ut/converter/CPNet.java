@@ -323,5 +323,11 @@ public class CPNet {
 		p.getInitmarkArray()[0].getText().set(XmlString.Factory.newValue(value));
 		
 	}
+
+	public void setTimeBetweenBundles(String timeBetweenBundles) {
+		String value = "{dtype=specific, specificValue=" + timeBetweenBundles + ", mean=0, std=0};";
+		createOrUpdateDef("val timeBetweenBundles = ",value);
+		
+	}
 	
 }

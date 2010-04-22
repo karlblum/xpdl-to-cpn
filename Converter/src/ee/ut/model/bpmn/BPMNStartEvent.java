@@ -52,6 +52,9 @@ public class BPMNStartEvent extends BPMNElement {
 		String endTime = simDataParser.getEndTime();
 		cPNProcess.getCpnet().setEndTime(endTime);
 		
+		String timeBetweenBundles = simDataParser.getTimeBetweenBundles();
+		cPNProcess.getCpnet().setTimeBetweenBundles(timeBetweenBundles);
+		
 		String resourceString = "";
 		HashMap<String, Integer> resources = simDataParser.getResourceData();
 		for(String key : resources.keySet()){

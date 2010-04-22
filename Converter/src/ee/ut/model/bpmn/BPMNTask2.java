@@ -72,8 +72,8 @@ public final class BPMNTask2 extends BPMNElement {
 			
 			String resourcePlaceId = cPNProcess.getCpnet().getResourcePlace();
 			
-			cPNProcess.getCpnet().addArc(transitionId, resourcePlaceId,"r");
-			cPNProcess.getCpnet().addArc(resourcePlaceId, transitionId,"r");
+			cPNProcess.getCpnet().addArc(transitionId, resourcePlaceId,"r @+pt");
+			cPNProcess.getCpnet().addArc(resourcePlaceId, transitionId,"r"); 
 			usesResources = true;
 		}
 		

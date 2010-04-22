@@ -60,6 +60,7 @@
 			<xs:element name="TokensInBundle" type="xs:int"/>
 			<xs:element name="TotalTokens" type="xs:int"/>
 			<xs:element name="CostPerToken" type="xs:int"/>
+			<xs:element name="TimeBetweenBundles" type="xs:int"/>
 			<xs:element name="Resources" type="Resources"/>
 		</xs:sequence>
 	</xs:complexType>
