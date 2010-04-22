@@ -110,4 +110,10 @@ public class KBSimDataParser implements SimDataParser {
 		}
 		return resources;
 	}
+
+	@Override
+	public String getTimeBetweenBundles() {
+		int tbb = simDataRoot.getValue().getSimulationProfile().getTimeBetweenBundles();
+		return String.valueOf(tbb);
+	}
 }

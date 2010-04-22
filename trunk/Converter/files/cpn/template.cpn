@@ -165,33 +165,6 @@ in
   Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
 end</layout>
         </ml>
-        <ml id="ID1264247194">fun add2StartDate(ts:INT) =
-let
-val day = Date.day(startDate)
-val second = Date.second(startDate)
-val hour = Date.hour (startDate)
-val minute = Date.minute(startDate)
-val month = Date.month (startDate)
-val offset = Date.offset (startDate)
-val second = Date.second(startDate)+ ts
-val year = Date.year (startDate)
-in
-Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
-end;
-          <layout>fun add2StartDate(ts:INT) =
-let
-val day = Date.day(startDate)
-val second = Date.second(startDate)
-val hour = Date.hour (startDate)
-val minute = Date.minute(startDate)
-val month = Date.month (startDate)
-val offset = Date.offset (startDate)
-val second = Date.second(startDate)+ ts
-val year = Date.year (startDate)
-in
-Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
-end;</layout>
-        </ml>
         <color id="ID1264240937">
           <id>ID</id>
           <timed/>
@@ -207,9 +180,6 @@ end;</layout>
         </var>
         <ml id="ID1264252608">val OneTimeCostPerToken = 0;
           <layout>val OneTimeCostPerToken = 0;</layout>
-        </ml>
-        <ml id="ID1264268322">val timeBetweenBundles = {dtype=specific, specificValue=3600, mean=0, std=0};
-          <layout>val timeBetweenBundles = {dtype=specific, specificValue=3600, mean=0, std=0};</layout>
         </ml>
         <color id="ID1264235176">
           <id>CASE</id>
@@ -254,6 +224,33 @@ let
   val std = #std(value)
 in
   case dtype of normal =&gt; et(mean, std) | specific =&gt; specificValue
+end;</layout>
+        </ml>
+        <ml id="ID1264247194">fun add2StartDate(ts:INT) =
+let
+val day = Date.day(startDate)
+val second = Date.second(startDate)
+val hour = Date.hour (startDate)
+val minute = Date.minute(startDate)
+val month = Date.month (startDate)
+val offset = Date.offset (startDate)
+val second = Date.second(startDate)+ ts
+val year = Date.year (startDate)
+in
+Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
+end;
+          <layout>fun add2StartDate(ts:INT) =
+let
+val day = Date.day(startDate)
+val second = Date.second(startDate)
+val hour = Date.hour (startDate)
+val minute = Date.minute(startDate)
+val month = Date.month (startDate)
+val offset = Date.offset (startDate)
+val second = Date.second(startDate)+ ts
+val year = Date.year (startDate)
+in
+Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
 end;</layout>
         </ml>
         <ml id="ID1264242992">fun generateCase(id:ID)=
@@ -456,6 +453,7 @@ end;</layout>
           </color>
           <color id="ID1264285196">
             <id>RES</id>
+            <timed/>
             <record>
               <recordfield>
                 <id>Name</id>
@@ -474,7 +472,7 @@ end;</layout>
                 <id>TIMETABLES</id>
               </recordfield>
             </record>
-            <layout>colset RES = record Name:STRING * Costs:RCOSTS * Roles:SLIST * Availability:TIMETABLES;</layout>
+            <layout>colset RES = record Name:STRING * Costs:RCOSTS * Roles:SLIST * Availability:TIMETABLES timed;</layout>
           </color>
         </block>
         <block id="ID1264288637">
@@ -1276,9 +1274,9 @@ action
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="216"
-                 y="52"
-                 width="1204"
+                 x="866"
+                 y="25"
+                 width="1024"
                  height="733">
         <sheets>
           <cpnsheet id="ID1264219682"
@@ -1366,20 +1364,19 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="true"/>
-        <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="true">
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
@@ -1395,12 +1392,7 @@ action
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="false">
-          <IndexNode expanded="false">
-            <IndexNode expanded="true"/>
-            <IndexNode expanded="true"/>
-            <IndexNode expanded="true"/>
-          </IndexNode>
+        <IndexNode expanded="true">
           <IndexNode expanded="false">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
@@ -1410,13 +1402,18 @@ action
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
           </IndexNode>
-          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
         </IndexNode>
         <IndexNode expanded="false"/>
         <IndexNode expanded="false"/>

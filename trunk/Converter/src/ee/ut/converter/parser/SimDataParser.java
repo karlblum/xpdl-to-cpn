@@ -21,4 +21,6 @@ public interface SimDataParser {
 	public String getResources(String elementId);
 
 	public HashMap<String, Integer> getResourceData();
+
+	public String getTimeBetweenBundles();
 }
