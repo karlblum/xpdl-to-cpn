@@ -3,7 +3,7 @@ package ee.ut.converter.factory;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.parser.ElementParser;
-import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
+import ee.ut.model.bpmn.BPMNElement;
 
 public final class BPMNFactory extends AbstractElementFactory {
 
@@ -16,6 +16,7 @@ public final class BPMNFactory extends AbstractElementFactory {
 	AbstractElementFactory gatewayFactory = null;
 	AbstractElementFactory startEventFactory = null;
 	AbstractElementFactory endEventFactory = null;
+	AbstractElementFactory eventFactory = null;
 
 	public void registerActivityFactory(AbstractElementFactory f) {
 		this.activityFactory = f;
@@ -32,9 +33,13 @@ public final class BPMNFactory extends AbstractElementFactory {
 	public void registerStartEventFactory(AbstractElementFactory f) {
 		this.startEventFactory = f;
 	}
-	
+
 	public void registerEndEventFactory(AbstractElementFactory f) {
 		this.endEventFactory = f;
+	}
+	
+	public void registerEventFactory(AbstractElementFactory f) {
+		this.eventFactory = f;
 	}
 
 	public void registerPraserHelper(ElementParser h) {
@@ -42,20 +47,23 @@ public final class BPMNFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(Object obj) {
-		BPMNElementType elementType = (BPMNElementType) elementParser.getElementType(obj);
-		if (elementType == BPMNElementType.TASK) {
+	public Element create(Object obj) throws Exception {
+		switch (elementParser.getElementType(obj)) {
+		case BPMNElement.TASK:
 			return activityFactory.create(obj);
-		} else if (elementType == BPMNElementType.GATEWAY) {
+		case BPMNElement.GATEWAY:
 			return gatewayFactory.create(obj);
-		} else if (elementType == BPMNElementType.START) {
+		case BPMNElement.START:
 			return startEventFactory.create(obj);
-		} else if (elementType == BPMNElementType.END) {
+		case BPMNElement.END:
 			return endEventFactory.create(obj);
-		} else if (elementType == BPMNElementType.TRANSITION) {
+		case BPMNElement.TRANSITION:
 			return transitionFactory.create(obj);
+		case BPMNElement.EVENT:
+			return eventFactory.create(obj);
+		default:
+			throw new Exception("Unknown BPMNElement type");
 		}
-		return null;
 	}
 
 }

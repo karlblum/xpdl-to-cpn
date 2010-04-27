@@ -15,6 +15,8 @@ public class BPMNGateway extends BPMNElement {
 	private String gatewayTransitionId;
 	private String gatewayPlaceId;
 	private GatewayType gwType;
+	
+	private String eventXOROutputPlacecId;
 
 	public BPMNGateway(CPNProcess cPNProcess, Object obj,
 			ElementParser elementParser) {
@@ -23,10 +25,15 @@ public class BPMNGateway extends BPMNElement {
 		elementId = elementParser.getId(obj);
 		elementName = elementParser.getName(obj);
 
-		gwType = (GatewayType) elementParser.getGatewayType(obj);
-
+		setGwType((GatewayType) elementParser.getGatewayType(obj));
+		
 		gatewayTransitionId = cPNProcess.getCpnet().addTrans(elementName)
 				.getId();
+		
+		if(getGwType() == GatewayType.EXCLUSIVE_EVENT){
+			eventXOROutputPlacecId = cPNProcess.getCpnet().addPlace().getId();
+			cPNProcess.getCpnet().addArc(gatewayTransitionId, eventXOROutputPlacecId);
+		}
 
 	}
 
@@ -40,7 +47,7 @@ public class BPMNGateway extends BPMNElement {
 	public Place makeInputPlace() {
 		Place p = null;
 
-		if (gwType == GatewayType.EXCLUSICE) {
+		if (getGwType() == GatewayType.EXCLUSIVE_DATA) {
 			if (gatewayPlaceId == null) {
 				gatewayPlaceId = cPNProcess.getCpnet().addPlace().getId();
 				cPNProcess.getCpnet().addArc(gatewayPlaceId,
@@ -48,7 +55,6 @@ public class BPMNGateway extends BPMNElement {
 			}
 			p = cPNProcess.getCpnet().getPlace(gatewayPlaceId);
 		} else {
-
 			p = cPNProcess.getCpnet().addPlace();
 			cPNProcess.getCpnet().addArc(p.getId(), gatewayTransitionId);
 		}
@@ -56,11 +62,16 @@ public class BPMNGateway extends BPMNElement {
 	}
 
 	public Place makeOutputPlace(String id) {
-
+		
+		if(getGwType() == GatewayType.EXCLUSIVE_EVENT) {
+			return cPNProcess.getCpnet().getPlace(eventXOROutputPlacecId);
+		}
+		
 		Place p = cPNProcess.getCpnet().addPlace();
 		String arcId = cPNProcess.getCpnet().addArc(gatewayTransitionId,
 				p.getId()).getId();
-		if (gwType == GatewayType.EXCLUSICE) {
+		
+		if (getGwType() == GatewayType.EXCLUSIVE_DATA) {
 			String arcAnnotation = "(if path=" + id + " then 1`"
 					+ cPNProcess.getCpnet().getFlowObjectVariable()
 					+ " else empty)";
@@ -72,17 +83,19 @@ public class BPMNGateway extends BPMNElement {
 					+ "\n);";
 			cPNProcess.getCpnet().setTransitionAction(gatewayTransitionId,
 					function);
-		}
+		} 
 
 		return p;
 	}
 
 	public enum GatewayType {
-		EXCLUSICE, INCLUSIVE, COMPLEX, PARALLEL
+		EXCLUSIVE_DATA, EXCLUSIVE_EVENT, INCLUSIVE, COMPLEX, PARALLEL
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
+		if(getGwType() != GatewayType.EXCLUSIVE_DATA) return;
+		
 		HashMap<String, String> distribution = simDataParser
 				.getDistribution(elementId);
 
@@ -116,6 +129,14 @@ public class BPMNGateway extends BPMNElement {
 					function);
 		}
 
+	}
+
+	private void setGwType(GatewayType gwType) {
+		this.gwType = gwType;
+	}
+
+	public GatewayType getGwType() {
+		return gwType;
 	};
 
 }

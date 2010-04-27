@@ -42,30 +42,37 @@ public class BPMNStartEvent extends BPMNElement {
 	public void addSimulationData(SimDataParser simDataParser) {
 		String startTokens = simDataParser.getTotalTokens();
 		cPNProcess.getCpnet().setTotalTokens(startTokens);
-		
+
 		String tokensPerBundle = simDataParser.getTokensPerBundle();
 		cPNProcess.getCpnet().setTokensPerBundle(tokensPerBundle);
-		
+
 		String startTime = simDataParser.getStartTime();
 		cPNProcess.getCpnet().setStartTime(startTime);
-		
+
 		String endTime = simDataParser.getEndTime();
 		cPNProcess.getCpnet().setEndTime(endTime);
-		
+
 		String timeBetweenBundles = simDataParser.getTimeBetweenBundles();
 		cPNProcess.getCpnet().setTimeBetweenBundles(timeBetweenBundles);
-		
+
 		String resourceString = "";
 		HashMap<String, Integer> resources = simDataParser.getResourceData();
-		for(String key : resources.keySet()){
-			cPNProcess.getCpnet().createOrUpdateDef("val " + key + " = ","{Name=\"" + key + "\", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=[\"" + key + "\"], Availability=[tt_week]};");
+		for (String key : resources.keySet()) {
+			cPNProcess
+					.getCpnet()
+					.createOrUpdateDef(
+							"val " + key + " = ",
+							"{Name=\""
+									+ key
+									+ "\", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=[\""
+									+ key + "\"], Availability=[tt_week]};");
 			resourceString += "++" + resources.get(key) + "`" + key;
 		}
-		if(resourceString.length()>3) resourceString = resourceString.substring(2);
-		
+		if (resourceString.length() > 3)
+			resourceString = resourceString.substring(2);
+
 		cPNProcess.getCpnet().setResourcePlaceValue(resourceString);
-		
-		
+
 	}
 
 }

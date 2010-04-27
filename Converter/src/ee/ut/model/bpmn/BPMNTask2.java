@@ -9,12 +9,13 @@ import ee.ut.converter.parser.SimDataParser;
 public final class BPMNTask2 extends BPMNElement {
 
 	private String midInputPlaceId;
-	private String outputPlaceId;
-	private String outputArcId;
+	private String midOutputTransitionId;
+	private String midOutputArcId;
 	private String transitionId;
 	private boolean usesResources = false;
 
-	public BPMNTask2(CPNProcess cPNProcess, Object o, ElementParser elementParser) {
+	public BPMNTask2(CPNProcess cPNProcess, Object o,
+			ElementParser elementParser) {
 		super(cPNProcess);
 
 		elementId = elementParser.getId(o);
@@ -26,15 +27,16 @@ public final class BPMNTask2 extends BPMNElement {
 
 		transitionId = trans.getId();
 
-		// Activity can have only one output place, because it is like an
-		// inclusive gateway
-		outputPlaceId = cPNProcess.getCpnet().addPlace().getId();
-		outputArcId = cPNProcess.getCpnet().addArc(transitionId, outputPlaceId)
+		// This will be our central output where we can set the timing for simulation for example
+		String midOutPlaceId = cPNProcess.getCpnet().addPlace(elementName+"_MID_OUT").getId();
+		midOutputArcId = cPNProcess.getCpnet().addArc(transitionId, midOutPlaceId)
 				.getId();
+		midOutputTransitionId = cPNProcess.getCpnet().addTrans().getId();
+		cPNProcess.getCpnet().addArc(midOutPlaceId, midOutputTransitionId);
 
 		// This will be the mid-input place where we add input connections
 		// to
-		midInputPlaceId = cPNProcess.getCpnet().addPlace().getId();
+		midInputPlaceId = cPNProcess.getCpnet().addPlace(elementName+"_MID_IN").getId();
 		cPNProcess.getCpnet().addArc(midInputPlaceId, transitionId);
 
 	}
@@ -47,9 +49,7 @@ public final class BPMNTask2 extends BPMNElement {
 	public Place makeInputPlace() {
 		Place inputPlace = cPNProcess.getCpnet().addPlace();
 
-		// TODO: if a token is coming from two inputs, then it generates 2x
-		// output!
-		Trans trans = cPNProcess.getCpnet().addTrans("XOR_JOIN");
+		Trans trans = cPNProcess.getCpnet().addTrans(elementName+"_IN");
 
 		// Here we connect the input to the mid-input place for Exclusive join
 		cPNProcess.getCpnet().addArc(inputPlace.getId(), trans.getId());
@@ -58,8 +58,10 @@ public final class BPMNTask2 extends BPMNElement {
 		return inputPlace;
 	}
 
-	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
+	public Place makeOutputPlace() {
+		Place out = cPNProcess.getCpnet().addPlace(elementName+"_OUT");
+		cPNProcess.getCpnet().addArc(midOutputTransitionId, out.getId());
+		return out;
 	}
 
 	@Override
@@ -67,50 +69,51 @@ public final class BPMNTask2 extends BPMNElement {
 
 		// Add resource consumption data from here
 		String resourceUsed = simDataParser.getResources(elementId);
-		if(resourceUsed != null){
-			cPNProcess.getCpnet().setTransitionGuard(transitionId,"[check_roles(#Roles(r),[\""+ resourceUsed +"\"])]");
-			
+		if (resourceUsed != null && resourceUsed.length()>0) {
+			cPNProcess.getCpnet().setTransitionGuard(transitionId,
+					"[check_roles(#Roles(r),[\"" + resourceUsed + "\"])]");
+
 			String resourcePlaceId = cPNProcess.getCpnet().getResourcePlace();
-			
-			cPNProcess.getCpnet().addArc(transitionId, resourcePlaceId,"r @+pt");
-			cPNProcess.getCpnet().addArc(resourcePlaceId, transitionId,"r"); 
+
+			cPNProcess.getCpnet().addArc(transitionId, resourcePlaceId,
+					"r @+pt");
+			cPNProcess.getCpnet().addArc(resourcePlaceId, transitionId, "r");
 			usesResources = true;
 		}
-		
-		
+
 		String taskActionInput = "(c)";
 		String taskActionf = "transitionAction(c, transParams)";
-		if(usesResources) {
+		if (usesResources) {
 			taskActionInput = "(c,r)";
 			taskActionf = "transitionActionR(c,r, transParams)";
 		}
-		
-		String taskAction = "input " + taskActionInput + ";\n"+
-		"output (pt);\n"+
-		"action\n"+
-		"(let\n  "+
-		"val transParams = {\n"+
-		"    pt={dtype=specific, specificValue="+ simDataParser.getTaskDuration(elementId) +", mean=0, std=0},\n"+
-		"    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"+
-		"    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"+
-		"    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"+
-		"    pWaitTimeDur="+ simDataParser.getWaitTimeDuration(elementId) +",\n"+
-		"    pWaitTimeCost=0,\n"+
-		"    transitionName=\"" + elementName + "\",\n"+
-		"    NoOfResources=1}\n"+
-		"in\n"+
-		taskActionf + "\n"+
-		"end);";
-		
+
+		String taskAction = "input "
+				+ taskActionInput
+				+ ";\n"
+				+ "output (pt);\n"
+				+ "action\n"
+				+ "(let\n  "
+				+ "val transParams = {\n"
+				+ "    pt={dtype=specific, specificValue="
+				+ simDataParser.getTaskDuration(elementId)
+				+ ", mean=0, std=0},\n"
+				+ "    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
+				+ "    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
+				+ "    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"
+				+ "    pWaitTimeDur="
+				+ simDataParser.getWaitTimeDuration(elementId) + ",\n"
+				+ "    pWaitTimeCost=0,\n" + "    transitionName=\""
+				+ elementName + "\",\n" + "    NoOfResources=1}\n" + "in\n"
+				+ taskActionf + "\n" + "end);";
+
 		cPNProcess.getCpnet().setTransitionAction(transitionId, taskAction);
-		
+
 		// The simulation data has to be added to the output arc. The CPN
 		// transition outputs the total time consumed and the arc uses it to
 		// generate the proper delay.
 		String arcAnnot = "CASE.set_ts c (pt+intTime()) @+pt";
-		cPNProcess.getCpnet().setArcAnnot(outputArcId, arcAnnot);
-		
-		
+		cPNProcess.getCpnet().setArcAnnot(midOutputArcId, arcAnnot);
 
 	}
 

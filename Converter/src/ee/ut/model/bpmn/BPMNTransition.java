@@ -13,7 +13,7 @@ public class BPMNTransition extends BPMNElement {
 
 		String transId = cPNProcess.getCpnet().addTrans().getId();
 		elementId = elementParser.getId(object);
-		
+
 		Place toPlace = null;
 		Place fromPlace = null;
 
@@ -37,7 +37,7 @@ public class BPMNTransition extends BPMNElement {
 			toPlace = ((BPMNGateway) objectTo).makeInputPlace();
 		} else if (objectTo instanceof BPMNEndEvent) {
 			toPlace = ((BPMNEndEvent) objectTo).getInputPlace();
-		} 
+		}
 
 		cPNProcess.getCpnet().addArc(fromPlace.getId(), transId);
 		cPNProcess.getCpnet().addArc(transId, toPlace.getId());
@@ -46,7 +46,7 @@ public class BPMNTransition extends BPMNElement {
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -23,9 +23,6 @@ import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
 
-import com.sun.corba.se.spi.ior.MakeImmutable;
-
-import ee.ut.old.model.bpmne.BPMNeIdGen;
 import example.ExLucianoWrapper;
 
 /**
@@ -85,14 +82,13 @@ public class CPNet {
 		Type type = place.addNewType();
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
-		name = name != null && name != "" ? name + "_" + id : id;
+		name = name != null && name != "" ? name + " _" + id: "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		Initmark im = place.addNewInitmark();
 		im.setId(createId());
 		im.addNewText();
 
-		
 		return place;
 	}
 
@@ -117,9 +113,9 @@ public class CPNet {
 		String id = createId();
 		Trans trans = page.addNewTrans();
 		trans.setId(id);
-		name = name != null && name != "" ? name + "_" + id : id;
+		name = name != null && name != "" ? name + " (" + id + ")": "";
 		trans.addNewText().set(XmlString.Factory.newValue(name));
-		
+
 		Cond cond = trans.addNewCond();
 		cond.setId(createId());
 		cond.addNewText();
@@ -131,7 +127,7 @@ public class CPNet {
 		Code code = trans.addNewCode();
 		code.setId(createId());
 		code.addNewText();
-		
+
 		transitions.put(id, trans);
 		return trans;
 	}
@@ -183,8 +179,8 @@ public class CPNet {
 		return arc;
 
 	}
-	
-	public void setArcAnnot(String arcId, String annotation){
+
+	public void setArcAnnot(String arcId, String annotation) {
 		Arc arc = arcs.get(arcId);
 		arc.getAnnot().getText().set(XmlString.Factory.newValue(annotation));
 	}
@@ -248,9 +244,8 @@ public class CPNet {
 		}
 		return null;
 	}
-	
 
-	public Trans getTransition(String id){
+	public Trans getTransition(String id) {
 		return transitions.get(id);
 	}
 
@@ -260,74 +255,84 @@ public class CPNet {
 
 	public void setTransitionTime(String id, String value) {
 		Trans trans = transitions.get(id);
-		trans.getTimeArray()[0].getText().set(XmlString.Factory.newValue(value));
+		trans.getTimeArray()[0].getText()
+				.set(XmlString.Factory.newValue(value));
 	}
 
 	public void setTransitionAction(String id, String value) {
 		Trans trans = transitions.get(id);
-		trans.getCodeArray()[0].getText().set(XmlString.Factory.newValue(value));
-		
+		trans.getCodeArray()[0].getText()
+				.set(XmlString.Factory.newValue(value));
+
 	}
 
 	public void setTotalTokens(String startTokens) {
-		createOrUpdateDef("val totalNoOfToken = ",startTokens);
+		createOrUpdateDef("val totalNoOfToken = ", startTokens);
 	}
-	
+
 	public void setTokensPerBundle(String bundleTokens) {
-		createOrUpdateDef("val noOfTokensPerBundle = ",bundleTokens);
+		createOrUpdateDef("val noOfTokensPerBundle = ", bundleTokens);
 	}
 
 	public void createOrUpdateDef(String def, String value) {
-		//TODO: no update functionality yet
+		// TODO: no update functionality yet
 		Ml ml = cpnet.getGlobbox().addNewMl();
 		ml.setId(createId());
-		ml.set(XmlString.Factory.newValue(def + value+ ";"));
-		
-		
+		ml.set(XmlString.Factory.newValue(def + value + ";"));
+
 	}
 
 	public void setStartTime(String startTime) {
 		String arg[] = startTime.split(",");
-		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3] + ", minute = " + arg[4] + ", month = Date.Jan, offset = NONE, second = " + arg[5] + ", year = " + arg[0] + "}";
-		createOrUpdateDef("val startDate = ",value);
+		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3]
+				+ ", minute = " + arg[4]
+				+ ", month = Date.Jan, offset = NONE, second = " + arg[5]
+				+ ", year = " + arg[0] + "}";
+		createOrUpdateDef("val startDate = ", value);
 	}
 
 	public void setEndTime(String endTime) {
 		String arg[] = endTime.split(",");
-		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3] + ", minute = " + arg[4] + ", month = Date.Jan, offset = NONE, second = " + arg[5] + ", year = " + arg[0] + "}";
-		createOrUpdateDef("val endDate = ",value);
+		String value = "Date.date{day = " + arg[2] + ", hour = " + arg[3]
+				+ ", minute = " + arg[4]
+				+ ", month = Date.Jan, offset = NONE, second = " + arg[5]
+				+ ", year = " + arg[0] + "}";
+		createOrUpdateDef("val endDate = ", value);
 	}
 
 	public String getResourcePlace() {
-		if (resourcePlaceId == null){
-			resourcePlaceId = addPlace("RES","RESOURCES").getId();
+		if (resourcePlaceId == null) {
+			resourcePlaceId = addPlace("RES", "RESOURCES").getId();
 		}
 		return resourcePlaceId;
 	}
 
-	public void setTransitionGuard(String id,String value) {
+	public void setTransitionGuard(String id, String value) {
 		Trans trans = transitions.get(id);
-		trans.getCondArray()[0].getText().set(XmlString.Factory.newValue(value));
-		
+		trans.getCondArray()[0].getText()
+				.set(XmlString.Factory.newValue(value));
+
 	}
 
 	public void setResourcePlaceValue(String resourceString) {
 		String resourcePlaceId = getResourcePlace();
 		Place p = getPlace(resourcePlaceId);
-		setPlaceValue(p.getId(),resourceString);
-		
+		setPlaceValue(p.getId(), resourceString);
+
 	}
 
-	private void setPlaceValue(String place, String value) {
+	public void setPlaceValue(String place, String value) {
 		Place p = getPlace(place);
-		p.getInitmarkArray()[0].getText().set(XmlString.Factory.newValue(value));
-		
+		p.getInitmarkArray()[0].getText()
+				.set(XmlString.Factory.newValue(value));
+
 	}
 
 	public void setTimeBetweenBundles(String timeBetweenBundles) {
-		String value = "{dtype=specific, specificValue=" + timeBetweenBundles + ", mean=0, std=0};";
-		createOrUpdateDef("val timeBetweenBundles = ",value);
-		
+		String value = "{dtype=specific, specificValue=" + timeBetweenBundles
+				+ ", mean=0, std=0};";
+		createOrUpdateDef("val timeBetweenBundles = ", value);
+
 	}
-	
+
 }

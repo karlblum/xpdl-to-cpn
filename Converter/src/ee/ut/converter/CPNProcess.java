@@ -15,8 +15,7 @@ public class CPNProcess {
 	}
 
 	public void saveToCPN(String location) {
-		cpnet
-				.saveToFile(location);
+		cpnet.saveToFile(location);
 	}
 
 	public CPNet getCpnet() {
@@ -42,5 +41,5 @@ public class CPNProcess {
 	public void addElement(String key, Element value) {
 		this.elements.put(key, value);
 	}
-	
+
 }
