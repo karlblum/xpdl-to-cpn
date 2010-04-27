@@ -46,8 +46,6 @@ public final class BPMNTask extends BPMNElement {
 	public Place makeInputPlace() {
 		Place inputPlace = cPNProcess.getCpnet().addPlace();
 
-		// TODO: if a token is coming from two inputs, then it generates 2x
-		// output!
 		Trans trans = cPNProcess.getCpnet().addTrans("XOR_JOIN");
 
 		// Here we connect the input to the mid-input place for Exclusive join
@@ -64,25 +62,24 @@ public final class BPMNTask extends BPMNElement {
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 
-		String taskAction = "input (c);\n"+
-		"output (pt);\n"+
-		"action\n"+
-		"(let\n  "+
-		"val transParams = {\n"+
-		"    pt={dtype=specific, specificValue="+ simDataParser.getTaskDuration(elementId) +", mean=0, std=0},\n"+
-		"    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"+
-		"    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"+
-		"    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"+
-		"    pWaitTimeDur=0,\n"+
-		"    pWaitTimeCost=0,\n"+
-		"    transitionName=\"" + elementName + "\",\n"+
-		"    NoOfResources=1}\n"+
-		"in\n"+
-		"  transitionAction(c, transParams)\n"+
-		"end);";
-		
+		String taskAction = "input (c);\n"
+				+ "output (pt);\n"
+				+ "action\n"
+				+ "(let\n  "
+				+ "val transParams = {\n"
+				+ "    pt={dtype=specific, specificValue="
+				+ simDataParser.getTaskDuration(elementId)
+				+ ", mean=0, std=0},\n"
+				+ "    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
+				+ "    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
+				+ "    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"
+				+ "    pWaitTimeDur=0,\n" + "    pWaitTimeCost=0,\n"
+				+ "    transitionName=\"" + elementName + "\",\n"
+				+ "    NoOfResources=1}\n" + "in\n"
+				+ "  transitionAction(c, transParams)\n" + "end);";
+
 		cPNProcess.getCpnet().setTransitionAction(transitionId, taskAction);
-		
+
 		// The simulation data has to be added to the output arc. The CPN
 		// transition outputs the total time consumed and the arc uses it to
 		// generate the proper delay.

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public interface ElementParser {
 
-	public Object getElementType(Object o);
+	public int getElementType(Object o);
 
 	public String getId(Object o);
 
@@ -18,4 +18,8 @@ public interface ElementParser {
 	public String getName(Object obj);
 
 	public ArrayList<Object> getAllElements(File file);
+
+	public boolean isEventRecurring(Object obj);
+
+	public String getEventTime(Object obj);
 }

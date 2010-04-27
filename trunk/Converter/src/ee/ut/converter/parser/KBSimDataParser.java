@@ -1,7 +1,6 @@
 package ee.ut.converter.parser;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.xml.bind.JAXBContext;
@@ -41,20 +40,21 @@ public class KBSimDataParser implements SimDataParser {
 
 	@Override
 	public String getTaskDuration(String id) {
-		for (Task t : simDataRoot.getValue().getTasks().getTask()){
-			if(t.getId().equals(id))
-			return t.getProcessingTime();
+		for (Task t : simDataRoot.getValue().getTasks().getTask()) {
+			if (t.getId().equals(id))
+				return t.getProcessingTime();
 		}
 		return "0";
 	}
 
 	@Override
-	public HashMap<String,String> getDistribution(String id) {
+	public HashMap<String, String> getDistribution(String id) {
 		HashMap<String, String> distributions = new HashMap<String, String>();
-		for(Gateway gw :simDataRoot.getValue().getGateways().getGateway()){
-			if(gw.getId().equals(id)){
-				for(GateRef gwRef : gw.getGateRefs().getGateRef()){
-					distributions.put(gwRef.getIdRef(), String.valueOf(gwRef.getProbability())); 
+		for (Gateway gw : simDataRoot.getValue().getGateways().getGateway()) {
+			if (gw.getId().equals(id)) {
+				for (GateRef gwRef : gw.getGateRefs().getGateRef()) {
+					distributions.put(gwRef.getIdRef(), String.valueOf(gwRef
+							.getProbability()));
 				}
 			}
 		}
@@ -63,12 +63,14 @@ public class KBSimDataParser implements SimDataParser {
 
 	@Override
 	public String getTotalTokens() {
-		return String.valueOf(simDataRoot.getValue().getSimulationProfile().getTotalTokens());
+		return String.valueOf(simDataRoot.getValue().getSimulationProfile()
+				.getTotalTokens());
 	}
 
 	@Override
 	public String getTokensPerBundle() {
-		return String.valueOf(simDataRoot.getValue().getSimulationProfile().getTokensInBundle());
+		return String.valueOf(simDataRoot.getValue().getSimulationProfile()
+				.getTokensInBundle());
 	}
 
 	@Override
@@ -83,37 +85,38 @@ public class KBSimDataParser implements SimDataParser {
 
 	@Override
 	public String getWaitTimeDuration(String elementId) {
-		for (Task t : simDataRoot.getValue().getTasks().getTask()){
-			if(t.getId().equals(elementId))
-				
-			return t.getResourceWaitTime();
+		for (Task t : simDataRoot.getValue().getTasks().getTask()) {
+			if (t.getId().equals(elementId))
+
+				return t.getResourceWaitTime();
 		}
 		return "0";
 	}
 
 	@Override
 	public String getResources(String elementId) {
-		for (Task t : simDataRoot.getValue().getTasks().getTask()){
-			if(t.getId().equals(elementId))
-				
-			return t.getResourceType();
+		for (Task t : simDataRoot.getValue().getTasks().getTask()) {
+			if (t.getId().equals(elementId))
+
+				return t.getResourceType();
 		}
 		return "";
 	}
 
 	@Override
 	public HashMap<String, Integer> getResourceData() {
-		HashMap<String,Integer> resources = new HashMap<String, Integer>(); 
-		
-		for (Resource r : simDataRoot.getValue().getResources().getResource()){
-			resources.put(r.getResourceType(), r.getResourceAmount()); 
+		HashMap<String, Integer> resources = new HashMap<String, Integer>();
+
+		for (Resource r : simDataRoot.getValue().getResources().getResource()) {
+			resources.put(r.getResourceType(), r.getResourceAmount());
 		}
 		return resources;
 	}
 
 	@Override
 	public String getTimeBetweenBundles() {
-		int tbb = simDataRoot.getValue().getSimulationProfile().getTimeBetweenBundles();
+		int tbb = simDataRoot.getValue().getSimulationProfile()
+				.getTimeBetweenBundles();
 		return String.valueOf(tbb);
 	}
 }

@@ -7,13 +7,12 @@ import ee.ut.converter.CPNProcess;
 import ee.ut.converter.CPNet;
 import ee.ut.converter.Element;
 import ee.ut.converter.factory.BPMNEndEventFactory;
+import ee.ut.converter.factory.BPMNEventFactory;
 import ee.ut.converter.factory.BPMNFactory;
 import ee.ut.converter.factory.BPMNGatewayFactory;
 import ee.ut.converter.factory.BPMNStartEventFactory;
 import ee.ut.converter.factory.BPMNTask2Factory;
-import ee.ut.converter.factory.BPMNTaskFactory;
 import ee.ut.converter.factory.BPMNTransition2Factory;
-import ee.ut.converter.factory.BPMNTransitionFactory;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.KBSimDataParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -24,38 +23,47 @@ public class BPMNProcess extends CPNProcess {
 	public BPMNProcess(File processFile, File simulationDataFile) {
 
 		this.setCpnet(new CPNet());
-		
+
 		ElementParser elementParser = new XPDL2ElementParser();
 		SimDataParser simDataParser = new KBSimDataParser(simulationDataFile);
 		BPMNFactory elementFactory = new BPMNFactory(this, elementParser);
-		
+
 		elementFactory.registerActivityFactory(new BPMNTask2Factory(this,
 				elementParser));
-		
+
 		elementFactory.registerTransitionFactory(new BPMNTransition2Factory(
 				this, elementParser));
 
 		elementFactory.registerGatewayFactory(new BPMNGatewayFactory(this,
 				elementParser));
-		
+
 		elementFactory.registerPraserHelper(new XPDL2ElementParser());
 
 		elementFactory.registerStartEventFactory(new BPMNStartEventFactory(
 				this, elementParser));
 		
-		elementFactory.registerEndEventFactory(new BPMNEndEventFactory(this, elementParser));
-		
-		
+		elementFactory.registerEventFactory(new BPMNEventFactory(
+				this, elementParser));
+
+		elementFactory.registerEndEventFactory(new BPMNEndEventFactory(this,
+				elementParser));
+
 		// Generate process model
-		ArrayList<Object> allElements = elementParser.getAllElements(processFile);
+		ArrayList<Object> allElements = elementParser
+				.getAllElements(processFile);
 
 		for (Object o : allElements) {
-			Element element = elementFactory.create(o);
-			if (element != null)
-				addElement(element.getId(), element);
+			try {
+				Element element = elementFactory.create(o);
+				if (element != null)
+					addElement(element.getId(), element);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
-		
-		for(Element element: elements.values()){
+
+		for (Element element : elements.values()) {
 			element.addSimulationData(simDataParser);
 		}
 	}

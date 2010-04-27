@@ -8,7 +8,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import ee.ut.model.bpmn.BPMNElement.BPMNElementType;
+import ee.ut.model.bpmn.BPMNElement;
 import ee.ut.model.bpmn.BPMNGateway.GatewayType;
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
@@ -23,52 +23,54 @@ import ee.ut.model.xpdl2.Transitions;
 public class XPDL2ElementParser implements ElementParser {
 
 	@Override
-	public BPMNElementType getElementType(Object obj) {
+	public int getElementType(Object obj) {
 		if (obj instanceof ee.ut.model.xpdl2.Activity)
 			return getActivityType((Activity) obj);
 		else if (obj instanceof ee.ut.model.xpdl2.Transition)
-			return BPMNElementType.TRANSITION;
+			return BPMNElement.TRANSITION;
 		else
-			return null;
+			return -1;
 	}
 
 	@Override
 	public String getId(Object o) {
 		if (o instanceof Activity) {
 			return ((Activity) o).getId();
-		} else if (o instanceof Transition){
-			return ((Transition)o).getId();
+		} else if (o instanceof Transition) {
+			return ((Transition) o).getId();
 		}
 		return null;
 	}
 
-	public static BPMNElementType getActivityType(Activity activity) {
+	public static int getActivityType(Activity activity) {
 		for (Object aContent : activity.getContent()) {
 			if (aContent instanceof Event) {
 				if (((Event) aContent).getStartEvent() != null) {
-					return BPMNElementType.START;
+					return BPMNElement.START;
 				} else if (((Event) aContent).getEndEvent() != null) {
-					return BPMNElementType.END;
+					return BPMNElement.END;
+				} else if (((Event) aContent).getIntermediateEvent() != null) {
+					return BPMNElement.EVENT;
 				}
 			} else if (aContent instanceof Route) {
 				if (((Route) aContent).getGatewayType().equals("Exclusive")) {
 					if (isSplit(activity)) {
-						return BPMNElementType.GATEWAY;
+						return BPMNElement.GATEWAY;
 					} else {
-						return BPMNElementType.GATEWAY;
+						return BPMNElement.GATEWAY;
 					}
 				} else if (((Route) aContent).getGatewayType().equals(
 						"Inclusive")) {
 					if (isSplit(activity)) {
-						return BPMNElementType.GATEWAY;
+						return BPMNElement.GATEWAY;
 					} else {
-						return BPMNElementType.GATEWAY;
+						return BPMNElement.GATEWAY;
 					}
 				}
 
 			}
 		}
-		return BPMNElementType.TASK;
+		return BPMNElement.TASK;
 	}
 
 	/**
@@ -103,8 +105,15 @@ public class XPDL2ElementParser implements ElementParser {
 		String type = ((Route) ((Activity) obj).getContent().get(0))
 				.getGatewayType();
 
+		String xORType = ((Route) ((Activity) obj).getContent().get(0))
+				.getXORType();
+
 		if (type.equals("Exclusive")) {
-			return GatewayType.EXCLUSICE;
+			if (xORType.isEmpty() && xORType.equals("Event")) {
+				return GatewayType.EXCLUSIVE_DATA;
+			} else {
+				return GatewayType.EXCLUSIVE_EVENT;
+			}
 		} else if (type.equals("Inclusive")) {
 			return GatewayType.INCLUSIVE;
 		} else {
@@ -157,5 +166,29 @@ public class XPDL2ElementParser implements ElementParser {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	//TODO: this is just sooo ugly
+	public String getEventTime(Object obj) {
+		if (isEventRecurring(obj)) {
+			return ((Event) ((Activity) obj).getContent().get(0))
+					.getIntermediateEvent().getTriggerTimer().getTimeCycle()
+					.getContent().get(0).toString();
+		} else {
+			return ((Event) ((Activity) obj).getContent().get(0))
+					.getIntermediateEvent().getTriggerTimer().getTimeDate()
+					.getContent().get(0).toString();
+		}
+	}
+
+	@Override
+	public boolean isEventRecurring(Object obj) {
+		Object o = ((Event) ((Activity) obj).getContent().get(0))
+				.getIntermediateEvent().getTriggerTimer().getTimeCycle();
+		if (o != null) {
+			return true;
+		}
+		return false;
 	}
 }
