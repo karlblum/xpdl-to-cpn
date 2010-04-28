@@ -22,4 +22,6 @@ public interface ElementParser {
 	public boolean isEventRecurring(Object obj);
 
 	public String getEventTime(Object obj);
+
+	public String getBoundaryEventTaskId(Object obj);
 }

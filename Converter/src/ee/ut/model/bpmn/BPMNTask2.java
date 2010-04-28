@@ -36,8 +36,8 @@ public final class BPMNTask2 extends BPMNElement {
 
 		// This will be the mid-input place where we add input connections
 		// to
-		midInputPlaceId = cPNProcess.getCpnet().addPlace(elementName+"_MID_IN").getId();
-		cPNProcess.getCpnet().addArc(midInputPlaceId, transitionId);
+		setMidInputPlaceId(cPNProcess.getCpnet().addPlace(elementName+"_MID_IN").getId());
+		cPNProcess.getCpnet().addArc(getMidInputPlaceId(), transitionId);
 
 	}
 
@@ -53,7 +53,7 @@ public final class BPMNTask2 extends BPMNElement {
 
 		// Here we connect the input to the mid-input place for Exclusive join
 		cPNProcess.getCpnet().addArc(inputPlace.getId(), trans.getId());
-		cPNProcess.getCpnet().addArc(trans.getId(), midInputPlaceId);
+		cPNProcess.getCpnet().addArc(trans.getId(), getMidInputPlaceId());
 
 		return inputPlace;
 	}
@@ -115,6 +115,19 @@ public final class BPMNTask2 extends BPMNElement {
 		String arcAnnot = "CASE.set_ts c (pt+intTime()) @+pt";
 		cPNProcess.getCpnet().setArcAnnot(midOutputArcId, arcAnnot);
 
+	}
+
+	private void setMidInputPlaceId(String midInputPlaceId) {
+		this.midInputPlaceId = midInputPlaceId;
+	}
+
+	public String getMidInputPlaceId() {
+		return midInputPlaceId;
+	}
+
+	public void addBoundaryEvent(BPMNBoundEvent bpmnBoundEvent) {
+		String t = bpmnBoundEvent.getTransitionId();
+		cPNProcess.getCpnet().addArc(midInputPlaceId, t);
 	}
 
 }

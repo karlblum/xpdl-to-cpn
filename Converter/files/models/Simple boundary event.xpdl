@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:g360="http://www.global360.com/XPDL2.0alpha" Id="Simple-boundary-event.xpdl" Name="Simple boundary event.xpdl">
+  <PackageHeader>
+    <XPDLVersion>2.1</XPDLVersion>
+    <Vendor>Global 360</Vendor>
+    <Created>2010-04-27T14:37:40+03:00</Created>
+    <ModificationDate>2010-04-27T14:41:46+03:00</ModificationDate>
+    <LayoutInfo PixelsPerMillimeter="18.2" />
+  </PackageHeader>
+  <ConformanceClass BPMNModelPortabilityConformance="STANDARD" />
+  <Pools>
+    <Pool Id="2" Orientation="HORIZONTAL" BoundaryVisible="false" Process="1">
+      <Lanes>
+        <Lane Id="3" Name="Lane-1" ParentLane="2">
+        </Lane>
+      </Lanes>
+    </Pool>
+  </Pools>
+  <WorkflowProcesses>
+    <WorkflowProcess Id="1" Name="p1">
+      <ProcessHeader />
+      <Activities>
+        <Activity Id="4" Name="EventStart">
+          <Event>
+            <StartEvent Trigger="None" />
+          </Event>
+        </Activity>
+        <Activity Id="5" Name="EventEnd">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+        </Activity>
+        <Activity Id="8" Name="Task A">
+        </Activity>
+        <Activity Id="47" Name="Task B">
+          <Description />
+        </Activity>
+        <Activity Id="48" Name="EventTimer">
+          <Event>
+            <IntermediateEvent Trigger="Timer" Target="8">
+              <TriggerTimer>
+                <TimeDate>100</TimeDate>
+              </TriggerTimer>
+            </IntermediateEvent>
+          </Event>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition Id="44" From="4" To="8">
+        </Transition>
+        <Transition Id="45" From="8" To="5">
+        </Transition>
+        <Transition Id="53" From="47" To="5">
+        </Transition>
+        <Transition Id="50" From="48" To="47">
+        </Transition>
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes>
+    <ExtendedAttribute Name="Creator" Value="SketchpadBPMN v1.4 A1" />
+    <ExtendedAttribute Name="System" Value="Global 360" />
+  </ExtendedAttributes>
+</Package>
+
