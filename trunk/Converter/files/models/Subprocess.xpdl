@@ -1,161 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:g360="http://www.global360.com/XPDL2.0alpha" Id="Three-tasks-and-event-gateway.xpdl" Name="Three tasks and event gateway.xpdl">
-  <PackageHeader>
-    <XPDLVersion>2.1</XPDLVersion>
-    <Vendor>Global 360</Vendor>
-    <Created>2010-04-26T15:12:15+03:00</Created>
-    <ModificationDate>2010-04-27T11:33:22+03:00</ModificationDate>
-    <LayoutInfo PixelsPerMillimeter="18.2" />
-  </PackageHeader>
-  <ConformanceClass BPMNModelPortabilityConformance="STANDARD" />
-  <Pages>
-    <Page Id="1" Name="Page 1" Width="2400" Height="2400">
-      <g360:PageInfo g360:PaperWidth="792.0" g360:PaperHeight="612.0" g360:PaperOrientation="0" g360:MarginBottom="36.0" g360:MarginLeft="36.0" g360:MarginRight="36.0" g360:MarginTop="36.0" />
-    </Page>
-  </Pages>
-  <Pools>
-    <Pool Id="2" Orientation="HORIZONTAL" BoundaryVisible="false" Process="1">
-      <Lanes>
-        <Lane Id="3" Name="Lane-3" ParentLane="2">
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="2400.0" Width="2400.0" LaneId="3">
-              <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
-        </Lane>
-      </Lanes>
-      <NodeGraphicsInfos>
-        <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="2400.0" Width="2400.0">
-          <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
-        </NodeGraphicsInfo>
-      </NodeGraphicsInfos>
-    </Pool>
-  </Pools>
+  <ConformanceClass GraphConformance="NON-BLOCKED" BPMNModelPortabilityConformance="STANDARD" />
   <WorkflowProcesses>
-    <WorkflowProcess Id="1" Name="p1">
-      <ProcessHeader />
+    <WorkflowProcess AdhocOrdering="Sequential" ProcessType="None" Status="None" SuppressJoinFailure="true" Id="MainPool-process" Name="MainProcess">
+      <ActivitySets>                                                 
+        <ActivitySet AdHocOrdering="Sequential" Id="activitySet1">
+          <Activities>
+            <Activity Id="end2">
+              <Event>
+                <EndEvent Result="None" />
+              </Event>
+              </Activity>
+            <Activity Id="start2">
+              <Event>
+                <StartEvent Trigger="None" />
+              </Event>
+              </Activity>
+            <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskC">
+              <Implementation>
+                <No />
+              </Implementation>
+            </Activity>
+          </Activities>
+        </ActivitySet>
+      </ActivitySets>
       <Activities>
-        <Activity Id="4" Name="START">
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskA" Name="Task A">
+          <Implementation>
+            <No />
+          </Implementation>
+        </Activity>
+        <Activity Id="start1">
           <Event>
             <StartEvent Trigger="None" />
           </Event>
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="20.0" YCoordinate="310.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="5" Name="END">
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="subProcess1">
+          <BlockActivity ActivitySetId="activitySet1" View="EXTENDED" />
+        </Activity>
+        <Activity Id="end2">
           <Event>
             <EndEvent Result="None" />
           </Event>
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="680.0" YCoordinate="340.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="7" Name="Task A">
-          <TransitionRestrictions>
-            <TransitionRestriction>
-              <Split Type="Parallel">
-                <TransitionRefs>
-                  <TransitionRef Id="185" />
-                  <TransitionRef Id="186" />
-                </TransitionRefs>
-              </Split>
-            </TransitionRestriction>
-          </TransitionRestrictions>
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="80.0" LaneId="3">
-              <Coordinates XCoordinate="120.0" YCoordinate="310.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
-        </Activity>
-        <Activity Id="141" Name="Timer 1">
+        <Activity Id="start2">
           <Event>
-            <IntermediateEvent Trigger="Timer">
-              <TriggerTimer>
-                <TimeCycle>100</TimeCycle>
-              </TriggerTimer>
-            </IntermediateEvent>
+            <StartEvent Trigger="None" />
           </Event>
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="380.0" YCoordinate="170.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="144" Name="Task B">
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="80.0" LaneId="3">
-              <Coordinates XCoordinate="540.0" YCoordinate="170.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskC">
+          <Implementation>
+            <No />
+          </Implementation>
         </Activity>
-        <Activity Id="146" Name="Task C">
-          <NodeGraphicsInfos>
-            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="80.0" LaneId="3">
-              <Coordinates XCoordinate="420.0" YCoordinate="370.0" />
-            </NodeGraphicsInfo>
-          </NodeGraphicsInfos>
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskB" Name="Task B">
+          <Implementation>
+            <No />
+          </Implementation>
+        </Activity>
+        <Activity Id="end1">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
         </Activity>
       </Activities>
       <Transitions>
-        <Transition Id="139" From="4" To="7">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="79.99884033203125" YCoordinate="340.2633972167969" />
-              <Coordinates XCoordinate="120.5" YCoordinate="340.6316833496094" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
+        <Transition From="start1" Quantity="1" To="taskA" Id="start1_taskA">
         </Transition>
-        <Transition Id="186" From="7" To="146">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="200.5" YCoordinate="348.6907043457031" />
-              <Coordinates XCoordinate="420.5" YCoordinate="393.3418884277344" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
+        <Transition From="taskB" Quantity="1" To="end1" Id="taskB_end1">
         </Transition>
-        <Transition Id="154" From="146" To="5">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="500.5" YCoordinate="395.6310119628906" />
-              <Coordinates XCoordinate="680.171142578125" YCoordinate="373.1997375488281" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
+        <Transition From="subProcess1" Quantity="1" To="end1" Id="subProcess1_end1">
         </Transition>
-        <Transition Id="155" From="144" To="5">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="603.7007446289062" YCoordinate="230.5" />
-              <Coordinates XCoordinate="692.5813598632812" YCoordinate="345.5747985839844" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
+        <Transition From="taskA" Quantity="1" To="taskB" Id="taskA_taskB">
         </Transition>
-        <Transition Id="185" From="7" To="141">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="200.5" YCoordinate="318.1177673339844" />
-              <Coordinates XCoordinate="383.8673400878906" YCoordinate="214.73379516601562" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
+        <Transition From="taskA" Quantity="1" To="subProcess1" Id="taskA_subProcess1">
         </Transition>
-        <Transition Id="152" From="141" To="144">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="439.999755859375" YCoordinate="200.12301635742188" />
-              <Coordinates XCoordinate="540.5" YCoordinate="200.53514099121094" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
+        <Transition From="start2" Quantity="1" To="taskC" Id="start2_taskC">        
+        </Transition>
+        <Transition From="taskC" Quantity="1" To="end2" Id="taskC_end2">
         </Transition>
       </Transitions>
     </WorkflowProcess>
   </WorkflowProcesses>
-  <ExtendedAttributes>
-    <ExtendedAttribute Name="Creator" Value="SketchpadBPMN v1.4 A1" />
-    <ExtendedAttribute Name="System" Value="Global 360" />
-  </ExtendedAttributes>
 </Package>
-

@@ -50,7 +50,13 @@ public class XPDL2ElementParser implements ElementParser {
 				} else if (((Event) aContent).getEndEvent() != null) {
 					return BPMNElement.END;
 				} else if (((Event) aContent).getIntermediateEvent() != null) {
-					return BPMNElement.EVENT;
+					String target = ((Event) aContent).getIntermediateEvent().getTarget();
+					if(target != null && target.length() > 0){
+						return BPMNElement.BOUND_EVENT;
+					} else {
+						return BPMNElement.EVENT;	
+					}
+					
 				}
 			} else if (aContent instanceof Route) {
 				if (((Route) aContent).getGatewayType().equals("Exclusive")) {
@@ -190,5 +196,11 @@ public class XPDL2ElementParser implements ElementParser {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public String getBoundaryEventTaskId(Object obj) {
+		return ((Event) ((Activity) obj).getContent().get(0))
+		.getIntermediateEvent().getTarget();
 	}
 }
