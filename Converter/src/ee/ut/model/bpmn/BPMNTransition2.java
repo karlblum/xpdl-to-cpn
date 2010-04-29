@@ -5,8 +5,6 @@ import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
-import ee.ut.model.bpmn.BPMNGateway.GatewayType;
-import ee.ut.old.model.bpmne.BPMNeGateway.GWType;
 
 public class BPMNTransition2 extends BPMNElement {
 
@@ -30,13 +28,14 @@ public class BPMNTransition2 extends BPMNElement {
 					+ " " + objectTo);
 		}
 
+		
 		// TODO: We should extract some parent class from all of these objects
-
+		
 		// FROM object
 		if (objectFrom instanceof BPMNTask2) {
-			fromPlace = ((BPMNTask2) objectFrom).makeOutputPlace();
+			fromPlace = ((BPMNTask2) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNGateway) {
-			fromPlace = ((BPMNGateway) objectFrom).makeOutputPlace(elementId);
+			fromPlace = ((BPMNGateway) objectFrom).getOutputPlace(elementId);
 		} else if (objectFrom instanceof BPMNStartEvent) {
 			fromPlace = ((BPMNStartEvent) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNEvent) {
@@ -49,9 +48,9 @@ public class BPMNTransition2 extends BPMNElement {
 
 		// TO object
 		if (objectTo instanceof BPMNTask2) {
-			toPlace = ((BPMNTask2) objectTo).makeInputPlace();
+			toPlace = ((BPMNTask2) objectTo).getInputPlace();
 		} else if (objectTo instanceof BPMNGateway) {
-			toPlace = ((BPMNGateway) objectTo).makeInputPlace();
+			toPlace = ((BPMNGateway) objectTo).getInputPlace();
 		} else if (objectTo instanceof BPMNEndEvent) {
 			toPlace = ((BPMNEndEvent) objectTo).getInputPlace();
 		} else if (objectTo instanceof BPMNEvent) {

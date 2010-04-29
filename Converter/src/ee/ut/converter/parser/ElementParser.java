@@ -24,4 +24,6 @@ public interface ElementParser {
 	public String getEventTime(Object obj);
 
 	public String getBoundaryEventTaskId(Object obj);
+
+	public boolean isEventTimer(Object obj);
 }

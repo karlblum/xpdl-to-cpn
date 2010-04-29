@@ -34,6 +34,13 @@
           <layout>colset SLIST = list STRING;</layout>
         </color>
       </block>
+      <var id="ID1264314582">
+        <type>
+          <id>INT</id>
+        </type>
+        <id>p</id>
+        <layout>var p:INT;</layout>
+      </var>
       <color id="ID1264313641">
         <id>TRIG_TOKEN</id>
         <timed/>
@@ -1374,6 +1381,7 @@ action
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
         </IndexNode>
+        <IndexNode expanded="true"/>
         <IndexNode expanded="false"/>
         <IndexNode expanded="false"/>
         <IndexNode expanded="false">

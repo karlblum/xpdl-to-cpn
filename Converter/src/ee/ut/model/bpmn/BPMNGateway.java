@@ -44,7 +44,7 @@ public class BPMNGateway extends BPMNElement {
 	 * 
 	 * @return
 	 */
-	public Place makeInputPlace() {
+	public Place getInputPlace() {
 		Place p = null;
 
 		if (getGwType() == GatewayType.EXCLUSIVE_DATA) {
@@ -61,7 +61,7 @@ public class BPMNGateway extends BPMNElement {
 		return p;
 	}
 
-	public Place makeOutputPlace(String id) {
+	public Place getOutputPlace(String id) {
 		
 		if(getGwType() == GatewayType.EXCLUSIVE_EVENT) {
 			return cPNProcess.getCpnet().getPlace(eventXOROutputPlacecId);

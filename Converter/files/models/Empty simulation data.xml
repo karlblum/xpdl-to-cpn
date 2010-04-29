@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimulationData xsi:noNamespaceSchemaLocation="../schemas/simulation.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SimulationProfile>
+		<StartTime>2000,1,1,0,0,0</StartTime>
+		<EndTime>2005,1,1,0,0,0</EndTime>
+		<TokensInBundle>4</TokensInBundle>
+		<TotalTokens>40</TotalTokens>
+		<CostPerToken>1</CostPerToken>
+		<Resources>
+			<Resource>
+				<TODO></TODO>
+			</Resource>
+		</Resources>
+	</SimulationProfile>	
+	<Tasks>
+	</Tasks>
+	<Gateways>
+  </Gateways> 
+   	<Resources>
+  	<Resource>
+    	<ResourceType>WORKER</ResourceType>
+      <ResourceAmount>1</ResourceAmount>
+  	</Resource>
+  	</Resources>
+</SimulationData>

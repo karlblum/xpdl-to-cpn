@@ -2733,7 +2733,7 @@ end</layout>
         <bendpoint id="ID1264963045"
                    serial="1">
           <posattr x="-1002.000000"
-                   y="-1044.000000"/>
+                   y="-1043.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2745,7 +2745,7 @@ end</layout>
         </bendpoint>
         <annot id="ID1264945109">
           <posattr x="-994.000000"
-                   y="-1173.000000"/>
+                   y="-1172.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3532,14 +3532,14 @@ end</layout>
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="279"
-                 y="46"
+                 x="92"
+                 y="55"
                  width="1322"
                  height="726">
         <sheets>
           <cpnsheet id="ID1264219682"
-                    panx="790.000000"
-                    pany="-1092.000000"
+                    panx="773.000000"
+                    pany="-1075.000000"
                     zoom="1.000000"
                     instance="ID1264218879">
             <zorder>
