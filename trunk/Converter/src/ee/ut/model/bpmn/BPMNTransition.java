@@ -26,7 +26,7 @@ public class BPMNTransition extends BPMNElement {
 		if (objectFrom instanceof BPMNTask) {
 			fromPlace = ((BPMNTask) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNGateway) {
-			fromPlace = ((BPMNGateway) objectFrom).makeOutputPlace(elementId);
+			fromPlace = ((BPMNGateway) objectFrom).getOutputPlace(elementId);
 		} else if (objectFrom instanceof BPMNStartEvent) {
 			fromPlace = ((BPMNStartEvent) objectFrom).getOutputPlace();
 		}
@@ -34,7 +34,7 @@ public class BPMNTransition extends BPMNElement {
 		if (objectTo instanceof BPMNTask) {
 			toPlace = ((BPMNTask) objectTo).makeInputPlace();
 		} else if (objectTo instanceof BPMNGateway) {
-			toPlace = ((BPMNGateway) objectTo).makeInputPlace();
+			toPlace = ((BPMNGateway) objectTo).getInputPlace();
 		} else if (objectTo instanceof BPMNEndEvent) {
 			toPlace = ((BPMNEndEvent) objectTo).getInputPlace();
 		}

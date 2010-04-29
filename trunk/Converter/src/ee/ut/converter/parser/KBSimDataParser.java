@@ -119,4 +119,10 @@ public class KBSimDataParser implements SimDataParser {
 				.getTimeBetweenBundles();
 		return String.valueOf(tbb);
 	}
+
+	@Override
+	public int getBoundEventProbability(String elementId) {
+		// TODO Auto-generated method stub
+		return 10;
+	}
 }

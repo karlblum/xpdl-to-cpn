@@ -177,6 +177,7 @@ public class XPDL2ElementParser implements ElementParser {
 	@Override
 	//TODO: this is just sooo ugly
 	public String getEventTime(Object obj) {
+		//TODO: The EVENT object does not have to be the first one always
 		if (isEventRecurring(obj)) {
 			return ((Event) ((Activity) obj).getContent().get(0))
 					.getIntermediateEvent().getTriggerTimer().getTimeCycle()
@@ -190,6 +191,7 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public boolean isEventRecurring(Object obj) {
+		//TODO: The EVENT object does not have to be the first one always
 		Object o = ((Event) ((Activity) obj).getContent().get(0))
 				.getIntermediateEvent().getTriggerTimer().getTimeCycle();
 		if (o != null) {
@@ -200,7 +202,18 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public String getBoundaryEventTaskId(Object obj) {
+		//TODO: The EVENT object does not have to be the first one always
 		return ((Event) ((Activity) obj).getContent().get(0))
 		.getIntermediateEvent().getTarget();
+	}
+
+	@Override
+	public boolean isEventTimer(Object obj) {
+		Object o = ((Event) ((Activity) obj).getContent().get(0))
+				.getIntermediateEvent().getTriggerTimer();
+		if (o != null) {
+			return true;
+		}
+		return false;
 	}
 }

@@ -45,7 +45,7 @@ public class BPMNEvent extends BPMNElement{
 	}
 
 	public Trans getInputPlace() {
-		return cPNProcess.getCpnet().getTransition(transitionId);
+		return cPNProcess.getCpnet().getTrans(transitionId);
 	}
 
 	public Place getOutputPlace() {

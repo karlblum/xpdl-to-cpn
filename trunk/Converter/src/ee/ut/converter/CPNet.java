@@ -36,7 +36,7 @@ public class CPNet {
 	private Page page;
 	private HashMap<String, Place> places = new HashMap<String, Place>();
 	private HashMap<String, Arc> arcs = new HashMap<String, Arc>();
-	private HashMap<String, Trans> transitions = new HashMap<String, Trans>();
+	private HashMap<String, Trans> transs = new HashMap<String, Trans>();
 	private String resourcePlaceId;
 	private int currentId = 1;
 
@@ -128,7 +128,7 @@ public class CPNet {
 		code.setId(createId());
 		code.addNewText();
 
-		transitions.put(id, trans);
+		transs.put(id, trans);
 		return trans;
 	}
 
@@ -158,11 +158,11 @@ public class CPNet {
 		Arc arc = page.addNewArc();
 		arc.setId(id);
 
-		if (places.get(sourceId) != null && transitions.get(targetId) != null) {
+		if (places.get(sourceId) != null && transs.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(sourceId);
 			arc.addNewTransend().setIdref(targetId);
 			arc.setOrientation("PtoT");
-		} else if (transitions.get(sourceId) != null
+		} else if (transs.get(sourceId) != null
 				&& places.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(targetId);
 			arc.addNewTransend().setIdref(sourceId);
@@ -236,6 +236,10 @@ public class CPNet {
 	public Place getPlace(String id) {
 		return places.get(id);
 	}
+	
+	public Arc getArc(String id) {
+		return arcs.get(id);
+	}
 
 	public Page getPage(String id) {
 		for (Page p : cpnet.getPageArray()) {
@@ -245,8 +249,8 @@ public class CPNet {
 		return null;
 	}
 
-	public Trans getTransition(String id) {
-		return transitions.get(id);
+	public Trans getTrans(String id) {
+		return transs.get(id);
 	}
 
 	public Instance getRootInstance() {
@@ -254,13 +258,13 @@ public class CPNet {
 	}
 
 	public void setTransitionTime(String id, String value) {
-		Trans trans = transitions.get(id);
+		Trans trans = transs.get(id);
 		trans.getTimeArray()[0].getText()
 				.set(XmlString.Factory.newValue(value));
 	}
 
 	public void setTransitionAction(String id, String value) {
-		Trans trans = transitions.get(id);
+		Trans trans = transs.get(id);
 		trans.getCodeArray()[0].getText()
 				.set(XmlString.Factory.newValue(value));
 
@@ -308,7 +312,7 @@ public class CPNet {
 	}
 
 	public void setTransitionGuard(String id, String value) {
-		Trans trans = transitions.get(id);
+		Trans trans = transs.get(id);
 		trans.getCondArray()[0].getText()
 				.set(XmlString.Factory.newValue(value));
 

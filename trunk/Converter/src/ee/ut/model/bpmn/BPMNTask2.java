@@ -1,17 +1,26 @@
 package ee.ut.model.bpmn;
 
+import java.util.HashMap;
+
+import noNamespace.Arc;
 import noNamespace.Place;
-import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
 
 public final class BPMNTask2 extends BPMNElement {
 
-	private String midInputPlaceId;
+	private String inputPlaceId;
 	private String midOutputTransitionId;
 	private String midOutputArcId;
-	private String transitionId;
+	private String taskTransitionId;
+	private String eventTransitionId;
+	private String eventToTaskArcId;
+
+	// Event probabilities
+	private int prevEventTreshold = 0;
+	private HashMap<String, String> eventArcs = new HashMap<String, String>();
+
 	private boolean usesResources = false;
 
 	public BPMNTask2(CPNProcess cPNProcess, Object o,
@@ -21,23 +30,37 @@ public final class BPMNTask2 extends BPMNElement {
 		elementId = elementParser.getId(o);
 		elementName = elementParser.getName(o);
 
-		// We assume that we only need a transition, because all the inputs and
-		// outputs can be generated dynamically.
-		Trans trans = cPNProcess.getCpnet().addTrans(elementName);
+		taskTransitionId = cPNProcess.getCpnet().addTrans(elementName).getId();
 
-		transitionId = trans.getId();
-
-		// This will be our central output where we can set the timing for simulation for example
-		String midOutPlaceId = cPNProcess.getCpnet().addPlace(elementName+"_MID_OUT").getId();
-		midOutputArcId = cPNProcess.getCpnet().addArc(transitionId, midOutPlaceId)
-				.getId();
+		// This will be our central output where we can set the timing for
+		// simulation for example
+		String midOutPlaceId = cPNProcess.getCpnet().addPlace(
+				elementName + "_MID_OUT").getId();
+		midOutputArcId = cPNProcess.getCpnet().addArc(taskTransitionId,
+				midOutPlaceId).getId();
 		midOutputTransitionId = cPNProcess.getCpnet().addTrans().getId();
 		cPNProcess.getCpnet().addArc(midOutPlaceId, midOutputTransitionId);
 
-		// This will be the mid-input place where we add input connections
-		// to
-		setMidInputPlaceId(cPNProcess.getCpnet().addPlace(elementName+"_MID_IN").getId());
-		cPNProcess.getCpnet().addArc(getMidInputPlaceId(), transitionId);
+		
+		// This will be our task input. We only need one of these.
+		inputPlaceId = cPNProcess.getCpnet().addPlace(elementName + "_IN")
+				.getId();
+		
+		// This is the event transition that generates exceptions based on boundary event probabilities
+		eventTransitionId = cPNProcess.getCpnet().addTrans(
+				elementName + "_EVENTS").getId();
+		cPNProcess
+				.getCpnet()
+				.setTransitionAction(eventTransitionId,
+						"input ();\noutput (p);\naction\n(round(uniform(0.0,100.0))\n);");
+
+		cPNProcess.getCpnet().addArc(inputPlaceId, eventTransitionId);
+
+		String tempPlace = cPNProcess.getCpnet().addPlace().getId();
+		eventToTaskArcId = cPNProcess.getCpnet().addArc(eventTransitionId,
+				tempPlace).getId();
+
+		cPNProcess.getCpnet().addArc(tempPlace, taskTransitionId);
 
 	}
 
@@ -46,20 +69,12 @@ public final class BPMNTask2 extends BPMNElement {
 	 * 
 	 * @return input place for the task
 	 */
-	public Place makeInputPlace() {
-		Place inputPlace = cPNProcess.getCpnet().addPlace();
-
-		Trans trans = cPNProcess.getCpnet().addTrans(elementName+"_IN");
-
-		// Here we connect the input to the mid-input place for Exclusive join
-		cPNProcess.getCpnet().addArc(inputPlace.getId(), trans.getId());
-		cPNProcess.getCpnet().addArc(trans.getId(), getMidInputPlaceId());
-
-		return inputPlace;
+	public Place getInputPlace() {
+		return cPNProcess.getCpnet().getPlace(inputPlaceId);
 	}
 
-	public Place makeOutputPlace() {
-		Place out = cPNProcess.getCpnet().addPlace(elementName+"_OUT");
+	public Place getOutputPlace() {
+		Place out = cPNProcess.getCpnet().addPlace(elementName + "_OUT");
 		cPNProcess.getCpnet().addArc(midOutputTransitionId, out.getId());
 		return out;
 	}
@@ -69,15 +84,16 @@ public final class BPMNTask2 extends BPMNElement {
 
 		// Add resource consumption data from here
 		String resourceUsed = simDataParser.getResources(elementId);
-		if (resourceUsed != null && resourceUsed.length()>0) {
-			cPNProcess.getCpnet().setTransitionGuard(transitionId,
+		if (resourceUsed != null && resourceUsed.length() > 0) {
+			cPNProcess.getCpnet().setTransitionGuard(taskTransitionId,
 					"[check_roles(#Roles(r),[\"" + resourceUsed + "\"])]");
 
 			String resourcePlaceId = cPNProcess.getCpnet().getResourcePlace();
 
-			cPNProcess.getCpnet().addArc(transitionId, resourcePlaceId,
+			cPNProcess.getCpnet().addArc(taskTransitionId, resourcePlaceId,
 					"r @+pt");
-			cPNProcess.getCpnet().addArc(resourcePlaceId, transitionId, "r");
+			cPNProcess.getCpnet()
+					.addArc(resourcePlaceId, taskTransitionId, "r");
 			usesResources = true;
 		}
 
@@ -107,7 +123,7 @@ public final class BPMNTask2 extends BPMNElement {
 				+ elementName + "\",\n" + "    NoOfResources=1}\n" + "in\n"
 				+ taskActionf + "\n" + "end);";
 
-		cPNProcess.getCpnet().setTransitionAction(transitionId, taskAction);
+		cPNProcess.getCpnet().setTransitionAction(taskTransitionId, taskAction);
 
 		// The simulation data has to be added to the output arc. The CPN
 		// transition outputs the total time consumed and the arc uses it to
@@ -117,17 +133,24 @@ public final class BPMNTask2 extends BPMNElement {
 
 	}
 
-	private void setMidInputPlaceId(String midInputPlaceId) {
-		this.midInputPlaceId = midInputPlaceId;
-	}
-
-	public String getMidInputPlaceId() {
-		return midInputPlaceId;
-	}
-
 	public void addBoundaryEvent(BPMNBoundEvent bpmnBoundEvent) {
-		String t = bpmnBoundEvent.getTransitionId();
-		cPNProcess.getCpnet().addArc(midInputPlaceId, t);
+		String place = bpmnBoundEvent.getOutputPlace().getId();
+		String eventArcId = cPNProcess.getCpnet().addArc(eventTransitionId,
+				place).getId();
+		eventArcs.put(bpmnBoundEvent.getId(), eventArcId);
+	}
+
+	public void setBoundEventProbability(String elementId, int probability) {
+		cPNProcess.getCpnet().setArcAnnot(
+				eventArcs.get(elementId),
+				"if p>" + prevEventTreshold + " andalso p<"
+						+ (prevEventTreshold + probability)
+						+ " then 1`c else empty");
+		prevEventTreshold = prevEventTreshold + probability;
+
+		cPNProcess.getCpnet().setArcAnnot(eventToTaskArcId,
+				"if p> " + prevEventTreshold + " then 1`c else empty");
+
 	}
 
 }

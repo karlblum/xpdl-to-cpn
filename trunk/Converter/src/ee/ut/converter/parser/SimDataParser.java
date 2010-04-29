@@ -23,4 +23,6 @@ public interface SimDataParser {
 	public HashMap<String, Integer> getResourceData();
 
 	public String getTimeBetweenBundles();
+
+	public int getBoundEventProbability(String elementId);
 }

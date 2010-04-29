@@ -10,15 +10,15 @@ public class TestCPNModel {
 	public static void main(String[] args) {
 
 		// XPDL process model file
-		File xpdlFile = new File("./files/models/Simple boundary event.xpdl");
+		File xpdlFile = new File("./files/models/4 tasks.xpdl");
 
 		// Simulation data to the corresponding XPDL simulation model
 		File simDataFile = new File(
-				"./files/models/Simple boundary event (Simulation data with resources).xml");
+				"./files/models/Empty simulation data.xml");
 
 		CPNProcess p = new BPMNProcess(xpdlFile, simDataFile);
 
 		// OUTPUT FILE
-		p.saveToCPN("./files/cpn/test3.cpn");
+		p.saveToCPN("./files/cpn/test4.cpn");
 	}
 }
