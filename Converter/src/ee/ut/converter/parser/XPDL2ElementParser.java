@@ -50,13 +50,20 @@ public class XPDL2ElementParser implements ElementParser {
 				} else if (((Event) aContent).getEndEvent() != null) {
 					return BPMNElement.END;
 				} else if (((Event) aContent).getIntermediateEvent() != null) {
-					String target = ((Event) aContent).getIntermediateEvent().getTarget();
-					if(target != null && target.length() > 0){
-						return BPMNElement.BOUND_EVENT;
+					String target = ((Event) aContent).getIntermediateEvent()
+							.getTarget();
+					if (target != null && target.length() > 0) {
+						String trigger = ((Event) aContent)
+								.getIntermediateEvent().getTrigger();
+						if (trigger.equals("Timer")) {
+							return BPMNElement.BOUND_TIMER_EVENT;
+						} else {
+							return BPMNElement.BOUND_MESSAGE_EVENT;
+						}
 					} else {
-						return BPMNElement.EVENT;	
+						return BPMNElement.EVENT;
 					}
-					
+
 				}
 			} else if (aContent instanceof Route) {
 				if (((Route) aContent).getGatewayType().equals("Exclusive")) {
@@ -175,9 +182,9 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	@Override
-	//TODO: this is just sooo ugly
+	// TODO: this is just sooo ugly
 	public String getEventTime(Object obj) {
-		//TODO: The EVENT object does not have to be the first one always
+		// TODO: The EVENT object does not have to be the first one always
 		if (isEventRecurring(obj)) {
 			return ((Event) ((Activity) obj).getContent().get(0))
 					.getIntermediateEvent().getTriggerTimer().getTimeCycle()
@@ -191,7 +198,7 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public boolean isEventRecurring(Object obj) {
-		//TODO: The EVENT object does not have to be the first one always
+		// TODO: The EVENT object does not have to be the first one always
 		Object o = ((Event) ((Activity) obj).getContent().get(0))
 				.getIntermediateEvent().getTriggerTimer().getTimeCycle();
 		if (o != null) {
@@ -202,9 +209,9 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public String getBoundaryEventTaskId(Object obj) {
-		//TODO: The EVENT object does not have to be the first one always
+		// TODO: The EVENT object does not have to be the first one always
 		return ((Event) ((Activity) obj).getContent().get(0))
-		.getIntermediateEvent().getTarget();
+				.getIntermediateEvent().getTarget();
 	}
 
 	@Override

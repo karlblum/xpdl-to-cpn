@@ -3,11 +3,12 @@ package ee.ut.converter.factory;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.parser.ElementParser;
-import ee.ut.model.bpmn.BPMNBoundEvent;
+import ee.ut.model.bpmn.BPMNBoundMessageEvent;
+import ee.ut.model.bpmn.BPMNBoundTimerEvent;
 
-public class BPMNBoundEventFactory extends AbstractElementFactory{
+public class BPMNBoundTimerEventFactory extends AbstractElementFactory{
 
-	public BPMNBoundEventFactory(CPNProcess cPNProcess,
+	public BPMNBoundTimerEventFactory(CPNProcess cPNProcess,
 			ElementParser elementParser) {
 		super(cPNProcess, elementParser);
 		// TODO Auto-generated constructor stub
@@ -15,7 +16,7 @@ public class BPMNBoundEventFactory extends AbstractElementFactory{
 
 	@Override
 	Element create(Object obj) throws Exception {
-		return new BPMNBoundEvent(cPNProcess, obj, elementParser);
+		return new BPMNBoundTimerEvent(cPNProcess, obj, elementParser);
 	}
 
 }

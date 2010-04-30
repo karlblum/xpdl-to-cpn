@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.CPNet;
 import ee.ut.converter.Element;
-import ee.ut.converter.factory.BPMNBoundEventFactory;
+import ee.ut.converter.factory.BPMNBoundMessageEventFactory;
+import ee.ut.converter.factory.BPMNBoundTimerEventFactory;
 import ee.ut.converter.factory.BPMNEndEventFactory;
 import ee.ut.converter.factory.BPMNEventFactory;
 import ee.ut.converter.factory.BPMNFactory;
@@ -42,14 +43,20 @@ public class BPMNProcess extends CPNProcess {
 
 		elementFactory.registerStartEventFactory(new BPMNStartEventFactory(
 				this, elementParser));
-		
-		elementFactory.registerEventFactory(new BPMNEventFactory(
-				this, elementParser));
+
+		elementFactory.registerEventFactory(new BPMNEventFactory(this,
+				elementParser));
 
 		elementFactory.registerEndEventFactory(new BPMNEndEventFactory(this,
 				elementParser));
-		
-		elementFactory.registerBoundEventFactory(new BPMNBoundEventFactory(this, elementParser));
+
+		elementFactory
+				.registerBoundMessageEventFactory(new BPMNBoundMessageEventFactory(
+						this, elementParser));
+
+		elementFactory
+				.registerBoundTimerEventFactory(new BPMNBoundTimerEventFactory(
+						this, elementParser));
 
 		// Generate process model
 		ArrayList<Object> allElements = elementParser

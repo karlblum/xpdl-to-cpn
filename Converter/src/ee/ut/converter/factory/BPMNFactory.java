@@ -17,7 +17,8 @@ public final class BPMNFactory extends AbstractElementFactory {
 	AbstractElementFactory startEventFactory = null;
 	AbstractElementFactory endEventFactory = null;
 	AbstractElementFactory eventFactory = null;
-	AbstractElementFactory boundEventFactory = null;
+	AbstractElementFactory boundMessageEventFactory = null;
+	AbstractElementFactory boundTimerEventFactory = null;
 
 	public void registerActivityFactory(AbstractElementFactory f) {
 		this.activityFactory = f;
@@ -43,8 +44,12 @@ public final class BPMNFactory extends AbstractElementFactory {
 		this.eventFactory = f;
 	}
 	
-	public void registerBoundEventFactory(AbstractElementFactory f) {
-		this.boundEventFactory = f;
+	public void registerBoundMessageEventFactory(AbstractElementFactory f) {
+		this.boundMessageEventFactory = f;
+	}
+	
+	public void registerBoundTimerEventFactory(AbstractElementFactory f) {
+		this.boundTimerEventFactory = f;
 	}
 
 	public void registerPraserHelper(ElementParser h) {
@@ -66,8 +71,10 @@ public final class BPMNFactory extends AbstractElementFactory {
 			return transitionFactory.create(obj);
 		case BPMNElement.EVENT:
 			return eventFactory.create(obj);
-		case BPMNElement.BOUND_EVENT:
-			return boundEventFactory.create(obj);	
+		case BPMNElement.BOUND_MESSAGE_EVENT:
+			return boundMessageEventFactory.create(obj);
+		case BPMNElement.BOUND_TIMER_EVENT:
+			return boundTimerEventFactory.create(obj);	
 		default:
 			throw new Exception("Unknown BPMNElement type");
 		}

@@ -5,17 +5,15 @@ import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
 
-public class BPMNBoundEvent extends BPMNElement{
+public class BPMNBoundMessageEvent extends BPMNElement{
 
 	private String outputPlaceId;
 	private int percentage; //how frequently this event will happen
 	private String taskId;
 	
-	public int getPercentage() {
-		return percentage;
-	}
 
-	public BPMNBoundEvent(CPNProcess cPNProcess, Object obj,
+
+	public BPMNBoundMessageEvent(CPNProcess cPNProcess, Object obj,
 			ElementParser elementParser) {
 		super(cPNProcess);
 		
@@ -28,14 +26,14 @@ public class BPMNBoundEvent extends BPMNElement{
 
 		taskId = elementParser.getBoundaryEventTaskId(obj);
 		BPMNTask2 task = (BPMNTask2) cPNProcess.getElement(taskId);
-		task.addBoundaryEvent(this);
+		task.addBounMessageEvent(this);
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		int probability = simDataParser.getBoundEventProbability(elementId);
+		int probability = simDataParser.getBoundMessageEventProbability(elementId);
 		BPMNTask2 task = (BPMNTask2) cPNProcess.getElement(taskId);
-		task.setBoundEventProbability(elementId,probability);
+		task.setBoundMessageEventProbability(elementId,probability);
 		
 	}
 
@@ -43,4 +41,7 @@ public class BPMNBoundEvent extends BPMNElement{
 		return cPNProcess.getCpnet().getPlace(outputPlaceId);
 	}
 
+	public int getPercentage() {
+		return percentage;
+	}
 }
