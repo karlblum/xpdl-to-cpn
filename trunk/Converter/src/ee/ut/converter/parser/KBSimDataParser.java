@@ -121,8 +121,14 @@ public class KBSimDataParser implements SimDataParser {
 	}
 
 	@Override
-	public int getBoundEventProbability(String elementId) {
-		// TODO Auto-generated method stub
+	public int getBoundMessageEventProbability(String elementId) {
+		// TODO: Not implemented
 		return 10;
+	}
+
+	@Override
+	public int getBoundTimer(String elementId) {
+		// TODO: Not implemented
+		return 20;
 	}
 }

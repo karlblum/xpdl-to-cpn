@@ -24,5 +24,7 @@ public interface SimDataParser {
 
 	public String getTimeBetweenBundles();
 
-	public int getBoundEventProbability(String elementId);
+	public int getBoundMessageEventProbability(String elementId);
+
+	public int getBoundTimer(String elementId);
 }

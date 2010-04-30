@@ -82,7 +82,7 @@ public class CPNet {
 		Type type = place.addNewType();
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
-		name = name != null && name != "" ? name + " _" + id: "";
+		name = name != null && name != "" ? name + " (" + id + ")": "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		Initmark im = place.addNewInitmark();

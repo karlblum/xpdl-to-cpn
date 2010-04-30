@@ -40,9 +40,11 @@ public class BPMNTransition2 extends BPMNElement {
 			fromPlace = ((BPMNStartEvent) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNEvent) {
 			fromPlace = ((BPMNEvent) objectFrom).getOutputPlace();
-		} else if (objectFrom instanceof BPMNBoundEvent) {
-			fromPlace = ((BPMNBoundEvent) objectFrom).getOutputPlace();
-		} else {
+		} else if (objectFrom instanceof BPMNBoundMessageEvent) {
+			fromPlace = ((BPMNBoundMessageEvent) objectFrom).getOutputPlace();
+		} else if (objectFrom instanceof BPMNBoundTimerEvent) {
+			fromPlace = ((BPMNBoundTimerEvent) objectFrom).getOutputPlace();
+		}else {
 			throw new Exception("Unknown BPMNElement type: " + objectFrom);
 		}
 
