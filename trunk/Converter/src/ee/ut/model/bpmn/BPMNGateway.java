@@ -15,8 +15,7 @@ public class BPMNGateway extends BPMNElement {
 	private String gatewayTransitionId;
 	private String gatewayPlaceId;
 	private GatewayType gwType;
-	
-	private String eventXOROutputPlacecId;
+	private int ebXORTimerDelay;
 
 	public BPMNGateway(CPNProcess cPNProcess, Object obj,
 			ElementParser elementParser) {
@@ -26,14 +25,9 @@ public class BPMNGateway extends BPMNElement {
 		elementName = elementParser.getName(obj);
 
 		setGwType((GatewayType) elementParser.getGatewayType(obj));
-		
+
 		gatewayTransitionId = cPNProcess.getCpnet().addTrans(elementName)
 				.getId();
-		
-		if(getGwType() == GatewayType.EXCLUSIVE_EVENT){
-			eventXOROutputPlacecId = cPNProcess.getCpnet().addPlace().getId();
-			cPNProcess.getCpnet().addArc(gatewayTransitionId, eventXOROutputPlacecId);
-		}
 
 	}
 
@@ -47,7 +41,7 @@ public class BPMNGateway extends BPMNElement {
 	public Place getInputPlace() {
 		Place p = null;
 
-		if (getGwType() == GatewayType.EXCLUSIVE_DATA) {
+		if (getGwType() == GatewayType.EXCLUSIVE) {
 			if (gatewayPlaceId == null) {
 				gatewayPlaceId = cPNProcess.getCpnet().addPlace().getId();
 				cPNProcess.getCpnet().addArc(gatewayPlaceId,
@@ -62,16 +56,12 @@ public class BPMNGateway extends BPMNElement {
 	}
 
 	public Place getOutputPlace(String id) {
-		
-		if(getGwType() == GatewayType.EXCLUSIVE_EVENT) {
-			return cPNProcess.getCpnet().getPlace(eventXOROutputPlacecId);
-		}
-		
+
 		Place p = cPNProcess.getCpnet().addPlace();
 		String arcId = cPNProcess.getCpnet().addArc(gatewayTransitionId,
 				p.getId()).getId();
-		
-		if (getGwType() == GatewayType.EXCLUSIVE_DATA) {
+
+		if (getGwType() == GatewayType.EXCLUSIVE) {
 			String arcAnnotation = "(if path=" + id + " then 1`"
 					+ cPNProcess.getCpnet().getFlowObjectVariable()
 					+ " else empty)";
@@ -83,50 +73,53 @@ public class BPMNGateway extends BPMNElement {
 					+ "\n);";
 			cPNProcess.getCpnet().setTransitionAction(gatewayTransitionId,
 					function);
-		} 
+		}
 
 		return p;
 	}
 
 	public enum GatewayType {
-		EXCLUSIVE_DATA, EXCLUSIVE_EVENT, INCLUSIVE, COMPLEX, PARALLEL
+		EXCLUSIVE, INCLUSIVE, COMPLEX, PARALLEL
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		if(getGwType() != GatewayType.EXCLUSIVE_DATA) return;
-		
-		HashMap<String, String> distribution = simDataParser
-				.getDistribution(elementId);
+		if (getGwType() == GatewayType.EXCLUSIVE) {
 
-		if (distribution.size() > 1) {
-			String function = "input ();\noutput (path);\naction\n(\n  let\n    val p = discrete(0, 99);\n  in";
+			HashMap<String, String> distribution = simDataParser
+					.getDistribution(elementId);
 
-			int lowerLimit = 0;
-			boolean first = true;
+			if (distribution.size() > 1) {
+				String function = "input ();\noutput (path);\naction\n(\n  let\n    val p = discrete(0, 99);\n  in";
 
-			for (String ref : distribution.keySet()) {
-				int percentage = Integer.parseInt(distribution.get(ref));
-				int upperLimit = percentage + lowerLimit;
-				if (first) {
-					function += "\n if p>" + lowerLimit + " andalso p<"
-							+ upperLimit + " then " + ref;
-				} else {
-					function += "\n else if p>" + lowerLimit + " andalso p<"
-							+ upperLimit + " then " + ref;
+				int lowerLimit = 0;
+				boolean first = true;
+
+				for (String ref : distribution.keySet()) {
+					int percentage = Integer.parseInt(distribution.get(ref));
+					int upperLimit = percentage + lowerLimit;
+					if (first) {
+						function += "\n if p>" + lowerLimit + " andalso p<"
+								+ upperLimit + " then " + ref;
+					} else {
+						function += "\n else if p>" + lowerLimit
+								+ " andalso p<" + upperLimit + " then " + ref;
+					}
+					first = false;
+					lowerLimit = upperLimit;
 				}
-				first = false;
-				lowerLimit = upperLimit;
+				function += "\nend\n);";
+
+				int idxLastIf = function.lastIndexOf(" if ");
+				int idxLastThen = function.lastIndexOf(" then ");
+				function = function.subSequence(0, idxLastIf)
+						+ ""
+						+ function.subSequence(idxLastThen + 5, function
+								.length());
+
+				cPNProcess.getCpnet().setTransitionAction(gatewayTransitionId,
+						function);
 			}
-			function += "\nend\n);";
-
-			int idxLastIf = function.lastIndexOf(" if ");
-			int idxLastThen = function.lastIndexOf(" then ");
-			function = function.subSequence(0, idxLastIf) + ""
-					+ function.subSequence(idxLastThen + 5, function.length());
-
-			cPNProcess.getCpnet().setTransitionAction(gatewayTransitionId,
-					function);
 		}
 
 	}
@@ -137,6 +130,14 @@ public class BPMNGateway extends BPMNElement {
 
 	public GatewayType getGwType() {
 		return gwType;
+	}
+
+	public void setEBXORTimerDelay(int timerDelay) {
+		ebXORTimerDelay = timerDelay;
+	};
+	
+	public int getEBXORTimerDelay() {
+		return	ebXORTimerDelay;
 	};
 
 }

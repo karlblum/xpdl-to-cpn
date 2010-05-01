@@ -10,6 +10,21 @@
 	</SimulationProfile>	
 	<Tasks>
 	</Tasks>
+		<Gateways>
+		<Gateway>
+			<Id>140</Id>
+			<GateRefs>
+				<GateRef>
+					<IdRef>151</IdRef>
+					<Probability>75</Probability>
+				</GateRef>
+				<GateRef>
+					<IdRef>150</IdRef>
+					<Probability>25</Probability>
+				</GateRef>
+			</GateRefs>
+		</Gateway>
+	</Gateways>
 	   	<Resources>
   	</Resources>
 </SimulationData>

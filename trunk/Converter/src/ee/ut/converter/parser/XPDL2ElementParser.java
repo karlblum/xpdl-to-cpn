@@ -61,7 +61,13 @@ public class XPDL2ElementParser implements ElementParser {
 							return BPMNElement.BOUND_MESSAGE_EVENT;
 						}
 					} else {
-						return BPMNElement.EVENT;
+						Object o = ((Event) aContent).getIntermediateEvent()
+								.getTriggerTimer();
+						if (o != null) {
+							return BPMNElement.INTERMEDIATE_TIMER_EVENT;
+						} else {
+							return BPMNElement.INTERMEDIATE_MESSAGE_EVENT;
+						}
 					}
 
 				}
@@ -118,15 +124,8 @@ public class XPDL2ElementParser implements ElementParser {
 		String type = ((Route) ((Activity) obj).getContent().get(0))
 				.getGatewayType();
 
-		String xORType = ((Route) ((Activity) obj).getContent().get(0))
-				.getXORType();
-
 		if (type.equals("Exclusive")) {
-			if (xORType.isEmpty() && xORType.equals("Event")) {
-				return GatewayType.EXCLUSIVE_DATA;
-			} else {
-				return GatewayType.EXCLUSIVE_EVENT;
-			}
+			return GatewayType.EXCLUSIVE;
 		} else if (type.equals("Inclusive")) {
 			return GatewayType.INCLUSIVE;
 		} else {
@@ -182,32 +181,6 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	@Override
-	// TODO: this is just sooo ugly
-	public String getEventTime(Object obj) {
-		// TODO: The EVENT object does not have to be the first one always
-		if (isEventRecurring(obj)) {
-			return ((Event) ((Activity) obj).getContent().get(0))
-					.getIntermediateEvent().getTriggerTimer().getTimeCycle()
-					.getContent().get(0).toString();
-		} else {
-			return ((Event) ((Activity) obj).getContent().get(0))
-					.getIntermediateEvent().getTriggerTimer().getTimeDate()
-					.getContent().get(0).toString();
-		}
-	}
-
-	@Override
-	public boolean isEventRecurring(Object obj) {
-		// TODO: The EVENT object does not have to be the first one always
-		Object o = ((Event) ((Activity) obj).getContent().get(0))
-				.getIntermediateEvent().getTriggerTimer().getTimeCycle();
-		if (o != null) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
 	public String getBoundaryEventTaskId(Object obj) {
 		// TODO: The EVENT object does not have to be the first one always
 		return ((Event) ((Activity) obj).getContent().get(0))
@@ -215,12 +188,10 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	@Override
-	public boolean isEventTimer(Object obj) {
-		Object o = ((Event) ((Activity) obj).getContent().get(0))
-				.getIntermediateEvent().getTriggerTimer();
-		if (o != null) {
-			return true;
-		}
-		return false;
+	public int getEventTimer(Object obj) {
+		String timer = ((Event) ((Activity) obj).getContent().get(0))
+				.getIntermediateEvent().getTriggerTimer().getTimeDate()
+				.getContent().get(0).toString();
+		return Integer.valueOf(timer).intValue();
 	}
 }
