@@ -9,9 +9,10 @@ import ee.ut.converter.Element;
 import ee.ut.converter.factory.BPMNBoundMessageEventFactory;
 import ee.ut.converter.factory.BPMNBoundTimerEventFactory;
 import ee.ut.converter.factory.BPMNEndEventFactory;
-import ee.ut.converter.factory.BPMNEventFactory;
 import ee.ut.converter.factory.BPMNFactory;
 import ee.ut.converter.factory.BPMNGatewayFactory;
+import ee.ut.converter.factory.BPMNIntermediateMessageEventFactory;
+import ee.ut.converter.factory.BPMNIntermediateTimerEventFactory;
 import ee.ut.converter.factory.BPMNStartEventFactory;
 import ee.ut.converter.factory.BPMNTask2Factory;
 import ee.ut.converter.factory.BPMNTransition2Factory;
@@ -44,8 +45,13 @@ public class BPMNProcess extends CPNProcess {
 		elementFactory.registerStartEventFactory(new BPMNStartEventFactory(
 				this, elementParser));
 
-		elementFactory.registerEventFactory(new BPMNEventFactory(this,
-				elementParser));
+		elementFactory
+				.registerIntermediateTimerEventFactory(new BPMNIntermediateTimerEventFactory(
+						this, elementParser));
+
+		elementFactory
+				.registerIntermediateMessageEventFactory(new BPMNIntermediateMessageEventFactory(
+						this, elementParser));
 
 		elementFactory.registerEndEventFactory(new BPMNEndEventFactory(this,
 				elementParser));

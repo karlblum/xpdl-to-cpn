@@ -82,7 +82,7 @@ public class CPNet {
 		Type type = place.addNewType();
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
-		name = name != null && name != "" ? name + " (" + id + ")": "";
+		name = name != null && name != "" ? name + " (" + id + ")" : "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		Initmark im = place.addNewInitmark();
@@ -113,7 +113,7 @@ public class CPNet {
 		String id = createId();
 		Trans trans = page.addNewTrans();
 		trans.setId(id);
-		name = name != null && name != "" ? name + " (" + id + ")": "";
+		name = name != null && name != "" ? name + " (" + id + ")" : "";
 		trans.addNewText().set(XmlString.Factory.newValue(name));
 
 		Cond cond = trans.addNewCond();
@@ -162,8 +162,7 @@ public class CPNet {
 			arc.addNewPlaceend().setIdref(sourceId);
 			arc.addNewTransend().setIdref(targetId);
 			arc.setOrientation("PtoT");
-		} else if (transs.get(sourceId) != null
-				&& places.get(targetId) != null) {
+		} else if (transs.get(sourceId) != null && places.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(targetId);
 			arc.addNewTransend().setIdref(sourceId);
 			arc.setOrientation("TtoP");
@@ -236,7 +235,7 @@ public class CPNet {
 	public Place getPlace(String id) {
 		return places.get(id);
 	}
-	
+
 	public Arc getArc(String id) {
 		return arcs.get(id);
 	}

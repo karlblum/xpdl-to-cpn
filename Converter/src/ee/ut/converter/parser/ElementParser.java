@@ -9,21 +9,17 @@ public interface ElementParser {
 
 	public String getId(Object o);
 
-	public String getTransitionFrom(Object object);
+	public String getTransitionFrom(Object o);
 
-	public String getTransitionTo(Object object);
+	public String getTransitionTo(Object o);
 
-	public Object getGatewayType(Object obj);
+	public Object getGatewayType(Object o);
 
-	public String getName(Object obj);
+	public String getName(Object o);
 
 	public ArrayList<Object> getAllElements(File file);
 
-	public boolean isEventRecurring(Object obj);
+	public String getBoundaryEventTaskId(Object o);
 
-	public String getEventTime(Object obj);
-
-	public String getBoundaryEventTaskId(Object obj);
-
-	public boolean isEventTimer(Object obj);
+	public int getEventTimer(Object o);
 }

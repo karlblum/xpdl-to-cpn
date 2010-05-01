@@ -17,7 +17,6 @@ import noNamespace.Posattr;
 import noNamespace.Trans;
 import noNamespace.WorkspaceElementsDocument;
 import EDU.auburn.VGJ.algorithm.GraphUpdate;
-import EDU.auburn.VGJ.algorithm.cgd.CGDAlgorithm;
 import EDU.auburn.VGJ.algorithm.tree.TreeAlgorithm;
 import EDU.auburn.VGJ.graph.Graph;
 import EDU.auburn.VGJ.graph.Node;
@@ -104,8 +103,8 @@ public class ExLucianoWrapper {
 			graph.insertEdge(map.get(source), map.get(target));
 		}
 
-		 TreeAlgorithm layouter = new TreeAlgorithm('l');
-		//CGDAlgorithm layouter = new CGDAlgorithm();
+		TreeAlgorithm layouter = new TreeAlgorithm('l');
+		// CGDAlgorithm layouter = new CGDAlgorithm();
 
 		layouter.compute(graph, new GraphUpdate() {
 			double hSpacing = 20, vSpacing = 40;
@@ -195,8 +194,7 @@ public class ExLucianoWrapper {
 			}
 		}
 	}
-	
-	
+
 	public static void doLayouting(Page page) {
 		Graph graph = new Graph(true);
 		HashMap<String, Node> map = new HashMap<String, Node>();
@@ -242,8 +240,8 @@ public class ExLucianoWrapper {
 			graph.insertEdge(map.get(source), map.get(target));
 		}
 
-		 TreeAlgorithm layouter = new TreeAlgorithm('l');
-		//CGDAlgorithm layouter = new CGDAlgorithm();
+		TreeAlgorithm layouter = new TreeAlgorithm('l');
+		// CGDAlgorithm layouter = new CGDAlgorithm();
 
 		layouter.compute(graph, new GraphUpdate() {
 			double hSpacing = 20, vSpacing = 40;
@@ -334,7 +332,7 @@ public class ExLucianoWrapper {
 		}
 	}
 
-	public static double getRandom(int max){
+	public static double getRandom(int max) {
 		return new Random().nextInt(max);
 	}
 }

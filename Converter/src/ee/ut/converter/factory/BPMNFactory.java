@@ -16,7 +16,8 @@ public final class BPMNFactory extends AbstractElementFactory {
 	AbstractElementFactory gatewayFactory = null;
 	AbstractElementFactory startEventFactory = null;
 	AbstractElementFactory endEventFactory = null;
-	AbstractElementFactory eventFactory = null;
+	AbstractElementFactory intermediateTimerEventFactory = null;
+	AbstractElementFactory intermediateMessageEventFactory = null;
 	AbstractElementFactory boundMessageEventFactory = null;
 	AbstractElementFactory boundTimerEventFactory = null;
 
@@ -39,15 +40,19 @@ public final class BPMNFactory extends AbstractElementFactory {
 	public void registerEndEventFactory(AbstractElementFactory f) {
 		this.endEventFactory = f;
 	}
-	
-	public void registerEventFactory(AbstractElementFactory f) {
-		this.eventFactory = f;
+
+	public void registerIntermediateTimerEventFactory(AbstractElementFactory f) {
+		this.intermediateTimerEventFactory = f;
 	}
-	
+
+	public void registerIntermediateMessageEventFactory(AbstractElementFactory f) {
+		this.intermediateMessageEventFactory = f;
+	}
+
 	public void registerBoundMessageEventFactory(AbstractElementFactory f) {
 		this.boundMessageEventFactory = f;
 	}
-	
+
 	public void registerBoundTimerEventFactory(AbstractElementFactory f) {
 		this.boundTimerEventFactory = f;
 	}
@@ -69,12 +74,14 @@ public final class BPMNFactory extends AbstractElementFactory {
 			return endEventFactory.create(obj);
 		case BPMNElement.TRANSITION:
 			return transitionFactory.create(obj);
-		case BPMNElement.EVENT:
-			return eventFactory.create(obj);
+		case BPMNElement.INTERMEDIATE_TIMER_EVENT:
+			return intermediateTimerEventFactory.create(obj);
+		case BPMNElement.INTERMEDIATE_MESSAGE_EVENT:
+			return intermediateMessageEventFactory.create(obj);
 		case BPMNElement.BOUND_MESSAGE_EVENT:
 			return boundMessageEventFactory.create(obj);
 		case BPMNElement.BOUND_TIMER_EVENT:
-			return boundTimerEventFactory.create(obj);	
+			return boundTimerEventFactory.create(obj);
 		default:
 			throw new Exception("Unknown BPMNElement type");
 		}
