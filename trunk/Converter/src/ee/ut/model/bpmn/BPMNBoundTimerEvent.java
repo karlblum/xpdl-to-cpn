@@ -25,7 +25,7 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 		cPNProcess.getCpnet().addArc(placeId, transId);
 		cPNProcess.getCpnet().addArc(transId, outputPlaceId);
 
-		int timer = elementParser.getEventTimer(elementId);
+		int timer = elementParser.getEventTimer(obj);
 		task = (BPMNTask2) cPNProcess.getElement(taskId);
 		task.setBoundTimer(timer);
 

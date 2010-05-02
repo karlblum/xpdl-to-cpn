@@ -18,6 +18,9 @@ public abstract class BPMNElement implements Element {
 	public static final int INTERMEDIATE_MESSAGE_EVENT = 6;
 	public static final int BOUND_MESSAGE_EVENT = 7;
 	public static final int BOUND_TIMER_EVENT = 8;
+	public static final int SUB_PROCESS = 9;
+	public static final int SUB_PROCESS_START = 10;
+	public static final int SUB_PROCESS_END = 11;
 
 	public BPMNElement(CPNProcess cPNProcess) {
 		this.cPNProcess = cPNProcess;
