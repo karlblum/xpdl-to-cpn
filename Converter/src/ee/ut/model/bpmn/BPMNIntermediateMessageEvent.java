@@ -28,25 +28,27 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 		outputPlaceId = cPNProcess.getCpnet().addPlace(elementName + "OUT")
 				.getId();
 
-		delayArcId = cPNProcess.getCpnet().addArc(transitionId,
-				outputPlaceId).getId();
+		delayArcId = cPNProcess.getCpnet().addArc(transitionId, outputPlaceId)
+				.getId();
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		
+
 		boolean timerPresent = false;
-		if(ebXORId != null){
-			BPMNGateway gw = (BPMNGateway)cPNProcess.getElement(ebXORId);
+		if (ebXORId != null) {
+			BPMNGateway gw = (BPMNGateway) cPNProcess.getElement(ebXORId);
 			int timerDelay = gw.getEBXORTimerDelay();
-			if(timerDelay > 0){
-				cPNProcess.getCpnet().setArcAnnot(delayArcId, "c@+round(uniform(0.0," + timerDelay+".0))");
+			if (timerDelay > 0) {
+				cPNProcess.getCpnet().setArcAnnot(delayArcId,
+						"c@+round(uniform(0.0," + timerDelay + ".0))");
 				timerPresent = true;
 			}
 		}
-		
-		if(!timerPresent){
-			//TODO: add delay from simulation data (message receiving frequency)
+
+		if (!timerPresent) {
+			// TODO: add delay from simulation data (message receiving
+			// frequency)
 		}
 	}
 
@@ -59,7 +61,7 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 	}
 
 	public void setEBXORId(String id) {
-		ebXORId = id;		
+		ebXORId = id;
 	}
 
 }

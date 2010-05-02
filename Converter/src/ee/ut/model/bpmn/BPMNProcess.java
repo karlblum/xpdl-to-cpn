@@ -66,18 +66,17 @@ public class BPMNProcess extends CPNProcess {
 		elementFactory
 				.registerBoundTimerEventFactory(new BPMNBoundTimerEventFactory(
 						this, elementParser));
-		
-		elementFactory
-		.registerSubProcessFactory(new BPMNSubprocessFactory(
+
+		elementFactory.registerSubProcessFactory(new BPMNSubprocessFactory(
 				this, elementParser));
-		
+
 		elementFactory
-		.registerSubProcessStartFactory(new BPMNSubprocessStartFactory(
-				this, elementParser));
-		
+				.registerSubProcessStartFactory(new BPMNSubprocessStartFactory(
+						this, elementParser));
+
 		elementFactory
-		.registerSubProcessEndFactory(new BPMNSubprocessEndFactory(
-				this, elementParser));
+				.registerSubProcessEndFactory(new BPMNSubprocessEndFactory(
+						this, elementParser));
 
 		// Generate process model
 		ArrayList<Object> allElements = elementParser
@@ -87,13 +86,12 @@ public class BPMNProcess extends CPNProcess {
 			System.out.println("Starting to convert: " + o);
 			try {
 				Element element = elementFactory.create(o);
-				System.out.println("Converted to:" + element+ "\n");
+				System.out.println("Converted to:" + element + "\n");
 				if (element != null)
 					addElement(element.getId(), element);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		for (Element element : elements.values()) {

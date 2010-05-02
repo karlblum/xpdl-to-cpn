@@ -10,12 +10,10 @@ public class TestCPNModel {
 	public static void main(String[] args) {
 
 		// XPDL process model file
-		File xpdlFile = new File(
-				"./files/models/Subprocess4.xpdl");
+		File xpdlFile = new File("./files/models/Subprocess4.xpdl");
 
 		// Simulation data to the corresponding XPDL simulation model
-		File simDataFile = new File(
-				"./files/models/Empty simulation data.xml");
+		File simDataFile = new File("./files/models/Empty simulation data.xml");
 
 		CPNProcess p = new BPMNProcess(xpdlFile, simDataFile);
 
