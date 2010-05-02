@@ -308,7 +308,12 @@ public class CPNConverter {
 		for (Page p : cpnet.getPageArray())
 
 			if (!p.getId().equals("PAGE_GENERATOR"))
-				ExLucianoWrapper.doLayouting(p);
+				try {
+					ExLucianoWrapper.doLayouting(p);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 		try {
 			cpnWorkspace.save(convertedCPNFile);
