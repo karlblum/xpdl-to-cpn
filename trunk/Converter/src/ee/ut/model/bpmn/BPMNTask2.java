@@ -75,7 +75,6 @@ public final class BPMNTask2 extends BPMNElement {
 		boundTimerEventArcOutId = cPNProcess.getCpnet().addArc(
 				boundTimerEventPlaceId, taskTransitionId).getId();
 
-	
 	}
 
 	/**

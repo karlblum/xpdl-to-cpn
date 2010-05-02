@@ -10,8 +10,9 @@ public class BPMNSubprocess extends BPMNElement {
 	String startPlaceId;
 	String endPlaceId;
 	private String subProcessId;
-	
-	public BPMNSubprocess(CPNProcess cPNProcess, Object obj, ElementParser elementParser) {
+
+	public BPMNSubprocess(CPNProcess cPNProcess, Object obj,
+			ElementParser elementParser) {
 		super(cPNProcess);
 		elementId = elementParser.getId(obj);
 		elementName = elementParser.getName(obj);
@@ -22,7 +23,7 @@ public class BPMNSubprocess extends BPMNElement {
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public Place getInputPlace() {
@@ -32,16 +33,16 @@ public class BPMNSubprocess extends BPMNElement {
 	public Place getOutputPlace() {
 		return cPNProcess.getCpnet().getPlace(endPlaceId);
 	}
-	
-	public void setOutputPlace(String id){
+
+	public void setOutputPlace(String id) {
 		endPlaceId = id;
 	}
-	
-	public void setInputPlace(String id){
+
+	public void setInputPlace(String id) {
 		startPlaceId = id;
 	}
-	
-	public String getSubProcessId(){
+
+	public String getSubProcessId() {
 		return subProcessId;
 	}
 

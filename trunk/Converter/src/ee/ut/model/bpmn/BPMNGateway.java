@@ -135,9 +135,9 @@ public class BPMNGateway extends BPMNElement {
 	public void setEBXORTimerDelay(int timerDelay) {
 		ebXORTimerDelay = timerDelay;
 	};
-	
+
 	public int getEBXORTimerDelay() {
-		return	ebXORTimerDelay;
+		return ebXORTimerDelay;
 	};
 
 }

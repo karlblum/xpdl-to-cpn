@@ -28,8 +28,6 @@ import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
 
-import example.ExLucianoWrapper;
-
 /**
  * @author karl
  * 
@@ -348,14 +346,13 @@ public class CPNet {
 
 	}
 
-
 	public static void doLayouting(Page page) throws IOException {
 
 		FileWriter fstream = new FileWriter("./files/cpn/dot_input.txt");
 		BufferedWriter out = new BufferedWriter(fstream);
-		
+
 		HashMap<String, String[]> layoutData = new HashMap<String, String[]>();
-		
+
 		out.write("digraph G {nodesep = 2; ranksep=0.5; \n");
 
 		for (Arc arc : page.getArcArray()) {
@@ -367,50 +364,55 @@ public class CPNet {
 				source = arc.getTransend().getIdref();
 				target = arc.getPlaceend().getIdref();
 			}
-			out.write(source + "->" + target + "\n");	
+			out.write(source + "->" + target + "\n");
 		}
-			out.write("}");
-			out.close();
-		
-		Process pr = Runtime.getRuntime().exec("\"c:\\Program Files\\Graphviz2.26.3\\bin\\dot.exe\" .\\files\\cpn\\dot_input.txt");
-		
+		out.write("}");
+		out.close();
+
+		Process pr = Runtime
+				.getRuntime()
+				.exec(
+						"\"c:\\Program Files\\Graphviz2.26.3\\bin\\dot.exe\" .\\files\\cpn\\dot_input.txt");
+
 		String line;
 		int lineNr = 0;
-		BufferedReader input =
-	        new BufferedReader
-	          (new InputStreamReader(pr.getInputStream()));
-	      while ((line = input.readLine()) != null) {
-	    	  lineNr++;
-	    	  if(lineNr>3 && !line.contains("->") && line.length() > 10){
-	  	        int posIDEnd = line.indexOf("[");
-	  	        int posCoordStart = line.indexOf("\"");
-	  	        int posCoordEnd = line.indexOf("\"", posCoordStart+1);
-	  	        String coords = line.substring(posCoordStart+1, posCoordEnd).trim();
-	  	        String tokenId = line.substring(0,posIDEnd).trim();
-	  	        layoutData.put(tokenId, new String[]{coords.split(",")[0],coords.split(",")[1]});
-	    	  }
-	      }
-	      input.close();
-		
+		BufferedReader input = new BufferedReader(new InputStreamReader(pr
+				.getInputStream()));
+		while ((line = input.readLine()) != null) {
+			lineNr++;
+			if (lineNr > 3 && !line.contains("->") && line.length() > 10) {
+				int posIDEnd = line.indexOf("[");
+				int posCoordStart = line.indexOf("\"");
+				int posCoordEnd = line.indexOf("\"", posCoordStart + 1);
+				String coords = line.substring(posCoordStart + 1, posCoordEnd)
+						.trim();
+				String tokenId = line.substring(0, posIDEnd).trim();
+				layoutData.put(tokenId, new String[] { coords.split(",")[0],
+						coords.split(",")[1] });
+			}
+		}
+		input.close();
+
 		for (Place p : page.getPlaceArray()) {
-			if (layoutData.get(p.getId()) == null) continue;
-			
+			if (layoutData.get(p.getId()) == null)
+				continue;
+
 			String xc = layoutData.get(p.getId())[0];
 			String yc = layoutData.get(p.getId())[1];
 			Posattr pos = Posattr.Factory.newInstance();
 			pos.setX(xc);
 			pos.setY(yc);
 			p.setPosattr(pos);
-			
+
 			p.addNewEllipse().setH("25");
 			p.getEllipse().setW("150");
-						
+
 			Posattr pos2 = Posattr.Factory.newInstance();
-			
+
 			pos2.setX(Double.toString(Double.parseDouble(xc) + 60));
 			pos2.setY(Double.toString(Double.parseDouble(yc) + 20));
 			p.getTypeArray(0).addNewPosattr().set(pos2);
-		
+
 		}
 		for (Trans t : page.getTransArray()) {
 			String xc = layoutData.get(t.getId())[0];
@@ -422,11 +424,11 @@ public class CPNet {
 
 			t.addNewBox().setH("25");
 			t.getBox().setW("150");
-			
+
 			Posattr pos2 = Posattr.Factory.newInstance();
 			pos2.setX(Double.toString(Double.parseDouble(xc) + 160));
 			pos2.setY(Double.toString(Double.parseDouble(yc) + 20));
-			if (t.getCodeArray(0) != null){
+			if (t.getCodeArray(0) != null) {
 				t.getCodeArray(0).addNewPosattr().set(pos2);
 			}
 		}
@@ -440,16 +442,14 @@ public class CPNet {
 				source = arc.getTransend().getIdref();
 				target = arc.getPlaceend().getIdref();
 			}
-			Double xcSource =  Double.parseDouble(layoutData.get(source)[0]);
+			Double xcSource = Double.parseDouble(layoutData.get(source)[0]);
 			Double ycSource = Double.parseDouble(layoutData.get(source)[1]);
-			
-			Double xcTarget= Double.parseDouble(layoutData.get(target)[0]);
+
+			Double xcTarget = Double.parseDouble(layoutData.get(target)[0]);
 			Double ycTarget = Double.parseDouble(layoutData.get(target)[1]);
 
-			double x = xcSource + 10
-					+ Math.abs((xcSource - xcTarget) / 2.0);
-			double y = ycSource
-					- Math.abs((ycSource - ycTarget) / 2.0);
+			double x = xcSource + 10 + Math.abs((xcSource - xcTarget) / 2.0);
+			double y = ycSource - Math.abs((ycSource - ycTarget) / 2.0);
 
 			if (arc.getAnnot() != null) {
 				Posattr pos = Posattr.Factory.newInstance();
@@ -458,8 +458,7 @@ public class CPNet {
 				arc.getAnnot().addNewPosattr().set(pos);
 			}
 		}
-		
+
 	}
 
-	
 }

@@ -33,7 +33,7 @@ public class XPDL2ElementParser implements ElementParser {
 			return BPMNElement.TRANSITION;
 		else
 			System.err.println("Element type: " + obj + " not implemented.");
-			return -1;
+		return -1;
 	}
 
 	@Override
@@ -48,18 +48,20 @@ public class XPDL2ElementParser implements ElementParser {
 
 	public static int getActivityType(Activity activity) {
 		for (Object aContent : activity.getContent()) {
-			if(aContent instanceof BlockActivity){
+			if (aContent instanceof BlockActivity) {
 				return BPMNElement.SUB_PROCESS;
 			}
 			if (aContent instanceof Event) {
 				if (((Event) aContent).getStartEvent() != null) {
-					if(((Event) aContent).getStartEvent().getTrigger().equals("Timer")){
+					if (((Event) aContent).getStartEvent().getTrigger().equals(
+							"Timer")) {
 						return BPMNElement.START;
 					} else {
 						return BPMNElement.SUB_PROCESS_START;
 					}
 				} else if (((Event) aContent).getEndEvent() != null) {
-					if(((Event) aContent).getEndEvent().getTriggerResultSignal() != null){
+					if (((Event) aContent).getEndEvent()
+							.getTriggerResultSignal() != null) {
 						return BPMNElement.SUB_PROCESS_END;
 					} else {
 						return BPMNElement.END;
@@ -183,10 +185,10 @@ public class XPDL2ElementParser implements ElementParser {
 						a.setStatus(aset.getId());
 						allObjects.add(a);
 					}
-						allObjects.addAll(aset.getTransitions().getTransition());
+					allObjects.addAll(aset.getTransitions().getTransition());
 				}
 
-	}
+			}
 		}
 		return allObjects;
 	}
@@ -230,22 +232,21 @@ public class XPDL2ElementParser implements ElementParser {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		try {
-			isParent = ((BlockActivity)((Activity) obj).getContent().get(0)).getActivitySetId();
+			isParent = ((BlockActivity) ((Activity) obj).getContent().get(0))
+					.getActivitySetId();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
-		if(toParent.length() > 0 && !toParent.equals("None")){
+		if (toParent.length() > 0 && !toParent.equals("None")) {
 			System.out.println("found sub:" + toParent);
 			return toParent;
-		}
-		else if (isParent.length() > 0){
+		} else if (isParent.length() > 0) {
 			System.out.println("found parent:" + isParent);
 			return isParent;
-		}
-		else {
+		} else {
 			System.out.println("PROBLEM WITH SUBACTIVITY!");
 			return null;
 		}

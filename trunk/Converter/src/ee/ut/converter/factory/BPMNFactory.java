@@ -63,15 +63,15 @@ public final class BPMNFactory extends AbstractElementFactory {
 	public void registerSubProcessFactory(AbstractElementFactory f) {
 		this.subProcessFactory = f;
 	}
-	
+
 	public void registerSubProcessStartFactory(AbstractElementFactory f) {
 		this.subProcessStartFactory = f;
 	}
-	
+
 	public void registerSubProcessEndFactory(AbstractElementFactory f) {
 		this.subProcessEndFactory = f;
 	}
-	
+
 	public void registerPraserHelper(ElementParser h) {
 		this.elementParser = h;
 	}

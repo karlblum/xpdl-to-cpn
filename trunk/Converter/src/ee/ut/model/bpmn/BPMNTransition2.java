@@ -49,7 +49,7 @@ public class BPMNTransition2 extends BPMNElement {
 			fromPlace = ((BPMNSubprocess) objectFrom).getOutputPlace();
 		} else if (objectFrom instanceof BPMNSubprocessStart) {
 			fromPlace = ((BPMNSubprocessStart) objectFrom).getOutputPlace();
-		}  else {
+		} else {
 			throw new Exception("Unknown BPMNElement type: " + objectFrom);
 		}
 
@@ -66,7 +66,7 @@ public class BPMNTransition2 extends BPMNElement {
 			toPlace = ((BPMNIntermediateMessageEvent) objectTo).getInputPlace();
 		} else if (objectTo instanceof BPMNSubprocess) {
 			toPlace = ((BPMNSubprocess) objectTo).getInputPlace();
-		}else if (objectTo instanceof BPMNSubprocessEnd) {
+		} else if (objectTo instanceof BPMNSubprocessEnd) {
 			toPlace = ((BPMNSubprocessEnd) objectTo).getInputPlace();
 		} else {
 			throw new Exception("Unknown BPMNElement type: " + objectTo);
