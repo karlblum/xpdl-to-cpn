@@ -22,4 +22,6 @@ public interface ElementParser {
 	public String getBoundaryEventTaskId(Object o);
 
 	public int getEventTimer(Object o);
+
+	public String getSubprocessId(Object obj);
 }

@@ -42,4 +42,8 @@ public class CPNProcess {
 		this.elements.put(key, value);
 	}
 
+	public HashMap<String, Element> getElelments() {
+		return elements;
+	}
+
 }

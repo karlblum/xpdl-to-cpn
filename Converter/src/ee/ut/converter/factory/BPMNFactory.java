@@ -18,8 +18,11 @@ public final class BPMNFactory extends AbstractElementFactory {
 	AbstractElementFactory endEventFactory = null;
 	AbstractElementFactory intermediateTimerEventFactory = null;
 	AbstractElementFactory intermediateMessageEventFactory = null;
+	AbstractElementFactory subProcessFactory = null;
 	AbstractElementFactory boundMessageEventFactory = null;
 	AbstractElementFactory boundTimerEventFactory = null;
+	AbstractElementFactory subProcessStartFactory = null;
+	AbstractElementFactory subProcessEndFactory = null;
 
 	public void registerActivityFactory(AbstractElementFactory f) {
 		this.activityFactory = f;
@@ -57,6 +60,18 @@ public final class BPMNFactory extends AbstractElementFactory {
 		this.boundTimerEventFactory = f;
 	}
 
+	public void registerSubProcessFactory(AbstractElementFactory f) {
+		this.subProcessFactory = f;
+	}
+	
+	public void registerSubProcessStartFactory(AbstractElementFactory f) {
+		this.subProcessStartFactory = f;
+	}
+	
+	public void registerSubProcessEndFactory(AbstractElementFactory f) {
+		this.subProcessEndFactory = f;
+	}
+	
 	public void registerPraserHelper(ElementParser h) {
 		this.elementParser = h;
 	}
@@ -82,6 +97,12 @@ public final class BPMNFactory extends AbstractElementFactory {
 			return boundMessageEventFactory.create(obj);
 		case BPMNElement.BOUND_TIMER_EVENT:
 			return boundTimerEventFactory.create(obj);
+		case BPMNElement.SUB_PROCESS:
+			return subProcessFactory.create(obj);
+		case BPMNElement.SUB_PROCESS_START:
+			return subProcessStartFactory.create(obj);
+		case BPMNElement.SUB_PROCESS_END:
+			return subProcessEndFactory.create(obj);
 		default:
 			throw new Exception("Unknown BPMNElement type");
 		}

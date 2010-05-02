@@ -6,17 +6,17 @@
       <ActivitySets>                                                 
         <ActivitySet AdHocOrdering="Sequential" Id="activitySet1">
           <Activities>
-            <Activity Id="end2">
+            <Activity Id="end2" Name="end2">
               <Event>
                 <EndEvent Result="None" />
               </Event>
               </Activity>
-            <Activity Id="start2">
+            <Activity Id="start2" Name="start2">
               <Event>
                 <StartEvent Trigger="None" />
               </Event>
               </Activity>
-            <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskC">
+            <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskC" Name="Task C">
               <Implementation>
                 <No />
               </Implementation>
@@ -30,25 +30,27 @@
             <No />
           </Implementation>
         </Activity>
-        <Activity Id="start1">
-          <Event>
-            <StartEvent Trigger="None" />
-          </Event>
+        <Activity Id="start1" Name="start1">
+        <Event>
+            <StartEvent Trigger="Timer">
+              <TriggerTimer />
+            </StartEvent>
+            </Event>
         </Activity>
-        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="subProcess1">
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="subProcess1" Name="Subprocess 1">
           <BlockActivity ActivitySetId="activitySet1" View="EXTENDED" />
         </Activity>
-        <Activity Id="end2">
+        <Activity Id="end2" Name="end2">
           <Event>
             <EndEvent Result="None" />
           </Event>
         </Activity>
-        <Activity Id="start2">
+        <Activity Id="start2" Name="start2">
           <Event>
             <StartEvent Trigger="None" />
           </Event>
         </Activity>
-        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskC">
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="taskC" Name="Task C">
           <Implementation>
             <No />
           </Implementation>
@@ -58,7 +60,7 @@
             <No />
           </Implementation>
         </Activity>
-        <Activity Id="end1">
+        <Activity Id="end1" Name="end1">
           <Event>
             <EndEvent Result="None" />
           </Event>

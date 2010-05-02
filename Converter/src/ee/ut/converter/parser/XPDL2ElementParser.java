@@ -12,6 +12,9 @@ import ee.ut.model.bpmn.BPMNElement;
 import ee.ut.model.bpmn.BPMNGateway.GatewayType;
 import ee.ut.model.xpdl2.Activities;
 import ee.ut.model.xpdl2.Activity;
+import ee.ut.model.xpdl2.ActivitySet;
+import ee.ut.model.xpdl2.ActivitySets;
+import ee.ut.model.xpdl2.BlockActivity;
 import ee.ut.model.xpdl2.Event;
 import ee.ut.model.xpdl2.PackageType;
 import ee.ut.model.xpdl2.ProcessType;
@@ -29,6 +32,7 @@ public class XPDL2ElementParser implements ElementParser {
 		else if (obj instanceof ee.ut.model.xpdl2.Transition)
 			return BPMNElement.TRANSITION;
 		else
+			System.err.println("Element type: " + obj + " not implemented.");
 			return -1;
 	}
 
@@ -44,11 +48,22 @@ public class XPDL2ElementParser implements ElementParser {
 
 	public static int getActivityType(Activity activity) {
 		for (Object aContent : activity.getContent()) {
+			if(aContent instanceof BlockActivity){
+				return BPMNElement.SUB_PROCESS;
+			}
 			if (aContent instanceof Event) {
 				if (((Event) aContent).getStartEvent() != null) {
-					return BPMNElement.START;
+					if(((Event) aContent).getStartEvent().getTrigger().equals("Timer")){
+						return BPMNElement.START;
+					} else {
+						return BPMNElement.SUB_PROCESS_START;
+					}
 				} else if (((Event) aContent).getEndEvent() != null) {
-					return BPMNElement.END;
+					if(((Event) aContent).getEndEvent().getTriggerResultSignal() != null){
+						return BPMNElement.SUB_PROCESS_END;
+					} else {
+						return BPMNElement.END;
+					}
 				} else if (((Event) aContent).getIntermediateEvent() != null) {
 					String target = ((Event) aContent).getIntermediateEvent()
 							.getTarget();
@@ -160,7 +175,18 @@ public class XPDL2ElementParser implements ElementParser {
 				allObjects.addAll(((Activities) o).getActivity());
 			} else if (o instanceof Transitions) {
 				allObjects.addAll(((Transitions) o).getTransition());
-			}
+			} else if (o instanceof ActivitySets) {
+				for (ActivitySet aset : ((ActivitySets) o).getActivitySet()) {
+					for (Activity a : aset.getActivities().getActivity()) {
+						// We set the status to refer to the set ID, otherwise
+						// we don't know which set the activity belongs
+						a.setStatus(aset.getId());
+						allObjects.add(a);
+					}
+						allObjects.addAll(aset.getTransitions().getTransition());
+				}
+
+	}
 		}
 		return allObjects;
 	}
@@ -193,5 +219,35 @@ public class XPDL2ElementParser implements ElementParser {
 				.getIntermediateEvent().getTriggerTimer().getTimeDate()
 				.getContent().get(0).toString();
 		return Integer.valueOf(timer).intValue();
+	}
+
+	@Override
+	public String getSubprocessId(Object obj) {
+		String toParent = "";
+		String isParent = "";
+		try {
+			toParent = ((Activity) obj).getStatus();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		try {
+			isParent = ((BlockActivity)((Activity) obj).getContent().get(0)).getActivitySetId();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		if(toParent.length() > 0 && !toParent.equals("None")){
+			System.out.println("found sub:" + toParent);
+			return toParent;
+		}
+		else if (isParent.length() > 0){
+			System.out.println("found parent:" + isParent);
+			return isParent;
+		}
+		else {
+			System.out.println("PROBLEM WITH SUBACTIVITY!");
+			return null;
+		}
 	}
 }

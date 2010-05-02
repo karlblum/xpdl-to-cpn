@@ -14,6 +14,9 @@ import ee.ut.converter.factory.BPMNGatewayFactory;
 import ee.ut.converter.factory.BPMNIntermediateMessageEventFactory;
 import ee.ut.converter.factory.BPMNIntermediateTimerEventFactory;
 import ee.ut.converter.factory.BPMNStartEventFactory;
+import ee.ut.converter.factory.BPMNSubprocessEndFactory;
+import ee.ut.converter.factory.BPMNSubprocessFactory;
+import ee.ut.converter.factory.BPMNSubprocessStartFactory;
 import ee.ut.converter.factory.BPMNTask2Factory;
 import ee.ut.converter.factory.BPMNTransition2Factory;
 import ee.ut.converter.parser.ElementParser;
@@ -63,14 +66,28 @@ public class BPMNProcess extends CPNProcess {
 		elementFactory
 				.registerBoundTimerEventFactory(new BPMNBoundTimerEventFactory(
 						this, elementParser));
+		
+		elementFactory
+		.registerSubProcessFactory(new BPMNSubprocessFactory(
+				this, elementParser));
+		
+		elementFactory
+		.registerSubProcessStartFactory(new BPMNSubprocessStartFactory(
+				this, elementParser));
+		
+		elementFactory
+		.registerSubProcessEndFactory(new BPMNSubprocessEndFactory(
+				this, elementParser));
 
 		// Generate process model
 		ArrayList<Object> allElements = elementParser
 				.getAllElements(processFile);
 
 		for (Object o : allElements) {
+			System.out.println("Starting to convert: " + o);
 			try {
 				Element element = elementFactory.create(o);
+				System.out.println("Converted to:" + element+ "\n");
 				if (element != null)
 					addElement(element.getId(), element);
 			} catch (Exception e) {
