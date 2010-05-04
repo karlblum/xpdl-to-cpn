@@ -15,6 +15,6 @@ public abstract class AbstractElementFactory {
 		this.elementParser = elementParser;
 	}
 
-	abstract Element create(Object obj) throws Exception;
+	public abstract Element create(Object obj) throws Exception;
 
 }

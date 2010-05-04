@@ -12,7 +12,7 @@ public class BPMNGatewayFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	Element create(Object obj) {
+	public Element create(Object obj) {
 		return new BPMNGateway(cPNProcess, obj, elementParser);
 	}
 

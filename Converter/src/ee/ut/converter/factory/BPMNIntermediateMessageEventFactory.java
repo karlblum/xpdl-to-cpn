@@ -14,7 +14,7 @@ public class BPMNIntermediateMessageEventFactory extends AbstractElementFactory 
 	}
 
 	@Override
-	Element create(Object obj) throws Exception {
+	public Element create(Object obj) throws Exception {
 		return new BPMNIntermediateMessageEvent(cPNProcess, obj, elementParser);
 	}
 

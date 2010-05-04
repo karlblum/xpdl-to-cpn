@@ -14,7 +14,7 @@ public class BPMNBoundTimerEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	Element create(Object obj) throws Exception {
+	public Element create(Object obj) throws Exception {
 		return new BPMNBoundTimerEvent(cPNProcess, obj, elementParser);
 	}
 

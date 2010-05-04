@@ -13,7 +13,7 @@ public class BPMNEndEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	Element create(Object obj) {
+	public Element create(Object obj) {
 		return new BPMNEndEvent(cPNProcess, obj, elementParser);
 	}
 

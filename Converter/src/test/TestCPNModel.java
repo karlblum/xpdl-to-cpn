@@ -20,4 +20,6 @@ public class TestCPNModel {
 		// OUTPUT FILE
 		p.saveToCPN("./files/cpn/test4.cpn");
 	}
+	
+	
 }
