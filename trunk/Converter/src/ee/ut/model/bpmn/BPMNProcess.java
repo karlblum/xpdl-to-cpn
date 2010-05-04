@@ -17,6 +17,7 @@ import ee.ut.converter.factory.BPMNStartEventFactory;
 import ee.ut.converter.factory.BPMNSubprocessEndFactory;
 import ee.ut.converter.factory.BPMNSubprocessFactory;
 import ee.ut.converter.factory.BPMNSubprocessStartFactory;
+import ee.ut.converter.factory.BPMNSubprocessTimerFactory;
 import ee.ut.converter.factory.BPMNTask2Factory;
 import ee.ut.converter.factory.BPMNTransition2Factory;
 import ee.ut.converter.parser.ElementParser;
@@ -77,6 +78,10 @@ public class BPMNProcess extends CPNProcess {
 		elementFactory
 				.registerSubProcessEndFactory(new BPMNSubprocessEndFactory(
 						this, elementParser));
+		
+		elementFactory
+		.registerSubProcessTimerFactory(new BPMNSubprocessTimerFactory(
+				this, elementParser));
 
 		// Generate process model
 		ArrayList<Object> allElements = elementParser
