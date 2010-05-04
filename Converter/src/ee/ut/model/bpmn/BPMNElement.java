@@ -21,6 +21,7 @@ public abstract class BPMNElement implements Element {
 	public static final int SUB_PROCESS = 9;
 	public static final int SUB_PROCESS_START = 10;
 	public static final int SUB_PROCESS_END = 11;
+	public static final int SUB_PROCESS_TIMER_EVENT = 12;
 
 	public BPMNElement(CPNProcess cPNProcess) {
 		this.cPNProcess = cPNProcess;

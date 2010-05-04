@@ -73,7 +73,9 @@ public class XPDL2ElementParser implements ElementParser {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
 						if (trigger.equals("Timer")) {
-							return BPMNElement.BOUND_TIMER_EVENT;
+							//TODO: We don't know if it is a timer for task or a subprocess!
+							//return BPMNElement.BOUND_TIMER_EVENT;
+							return BPMNElement.SUB_PROCESS_TIMER_EVENT;
 						} else {
 							return BPMNElement.BOUND_MESSAGE_EVENT;
 						}
