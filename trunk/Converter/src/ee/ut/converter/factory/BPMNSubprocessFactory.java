@@ -13,7 +13,7 @@ public class BPMNSubprocessFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	Element create(Object obj) throws Exception {
+	public Element create(Object obj) throws Exception {
 		return new BPMNSubprocess(cPNProcess, obj, elementParser);
 	}
 

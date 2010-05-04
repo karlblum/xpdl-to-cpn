@@ -14,7 +14,7 @@ public class BPMNBoundMessageEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	Element create(Object obj) throws Exception {
+	public Element create(Object obj) throws Exception {
 		return new BPMNBoundMessageEvent(cPNProcess, obj, elementParser);
 	}
 
