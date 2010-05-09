@@ -21,7 +21,6 @@ public final class RelayFactory extends AbstractElementFactory {
 	public void resetFactoryMap() {
 		factories.clear();
 	}
-	
 
 	@Override
 	public Element create(Object obj) throws Exception {

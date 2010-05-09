@@ -1,5 +1,8 @@
 package ee.ut.model.bpmn;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
@@ -10,13 +13,13 @@ public class BPMNSubprocess extends BPMNElement {
 	String startPlaceId;
 	String endPlaceId;
 	private String subProcessId;
+	List bpmnTask = new ArrayList<BPMNTask2>();
 
 	public BPMNSubprocess(CPNProcess cPNProcess, Object obj,
 			ElementParser elementParser) {
 		super(cPNProcess);
 		elementId = elementParser.getId(obj);
 		elementName = elementParser.getName(obj);
-
 		subProcessId = elementParser.getSubprocessId(obj);
 	}
 
@@ -44,6 +47,10 @@ public class BPMNSubprocess extends BPMNElement {
 
 	public String getSubProcessId() {
 		return subProcessId;
+	}
+
+	public void addChildTransition(BPMNTask2 bpmnTask2) {
+		bpmnTask.add(bpmnTask2);
 	}
 
 }

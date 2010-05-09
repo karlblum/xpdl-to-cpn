@@ -23,6 +23,19 @@ public class BPMNSubprocessTimer extends BPMNElement {
 		timerTokenPlaceId = cPNProcess.getCpnet().addTrans(elementName + "TIMER").getId();
 		String exeptionTransId = cPNProcess.getCpnet().addTrans(elementName + "EXCEPTION").getId();
 		
+		boolean connectedToParent = false;
+		
+		String parentProcessId = elementParser.getSubprocessId(obj);
+		//TODO: This is hack at the moment
+		for (Object o : cPNProcess.getElelments().values()) {
+			if (o instanceof BPMNSubprocess
+					&& ((BPMNSubprocess) o).getSubProcessId().equals(
+							parentProcessId)) {
+				//((BPMNSubprocess) o).setInputPlace(startPlaceId);
+				connectedToParent = true;
+			}
+		}
+		
 	}
 
 	@Override
