@@ -56,11 +56,7 @@
       <Activities>
         <Activity Id="4" Name="Start1">
           <Event>
-            <StartEvent Trigger="Timer">
-              <TriggerTimer>
-                <TimeDate />
-              </TriggerTimer>
-            </StartEvent>
+            <StartEvent Trigger="None" />
           </Event>
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
@@ -108,7 +104,7 @@
           </NodeGraphicsInfos>
         </Activity>
       </Activities>
-        <ActivitySets>
+      <ActivitySets>
         <ActivitySet Id="2" Name="p2">
           <Activities>
             <Activity Id="10" Name="Start2">
@@ -206,8 +202,8 @@
         <Transition Id="61" From="4" To="7">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="79.9994125366211" YCoordinate="290.18829345703125" />
-              <Coordinates XCoordinate="150.5" YCoordinate="290.6464538574219" />
+              <Coordinates XCoordinate="79.99937438964844" YCoordinate="290.1940612792969" />
+              <Coordinates XCoordinate="150.5" YCoordinate="290.65093994140625" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>

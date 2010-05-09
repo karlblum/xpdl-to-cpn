@@ -50,7 +50,7 @@ public final class BPMNTask2 extends BPMNElement {
 		// This is the event transition that generates exceptions based on
 		// boundary event probabilities
 		boundMessageEventTransitionId = cPNProcess.getCpnet().addTrans(
-				elementName + " EVENTS").getId();
+				elementName + " MESSAGE EVENTS").getId();
 		cPNProcess
 				.getCpnet()
 				.setTransitionAction(boundMessageEventTransitionId,
@@ -75,6 +75,25 @@ public final class BPMNTask2 extends BPMNElement {
 		boundTimerEventArcOutId = cPNProcess.getCpnet().addArc(
 				boundTimerEventPlaceId, taskTransitionId).getId();
 
+		
+		//TODO: This is hack at the moment. We collect the data about subprocess activities in the subprocess element
+		String parentProcessId = elementParser.getSubprocessId(o);
+		boolean connectedToParent = false;
+		for (Object obj : cPNProcess.getElelments().values()) {
+			if (o instanceof BPMNSubprocess
+					&& ((BPMNSubprocess) obj).getSubProcessId().equals(
+							parentProcessId)) {
+				((BPMNSubprocess) obj).addChildTransition(this);
+				connectedToParent = true;
+			}
+		}
+
+		if (connectedToParent) {
+			System.out.println("Task parent connected");
+		} else if (parentProcessId.length() > 0) {
+			System.out.println("Task parent connection failed");
+		}
+		
 	}
 
 	/**

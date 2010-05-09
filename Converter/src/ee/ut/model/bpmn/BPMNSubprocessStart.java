@@ -20,6 +20,7 @@ public class BPMNSubprocessStart extends BPMNElement {
 
 		boolean connectedToParent = false;
 
+		//TODO: This is hack at the moment
 		for (Object o : cPNProcess.getElelments().values()) {
 			if (o instanceof BPMNSubprocess
 					&& ((BPMNSubprocess) o).getSubProcessId().equals(
@@ -30,10 +31,11 @@ public class BPMNSubprocessStart extends BPMNElement {
 		}
 
 		if (connectedToParent) {
-			System.out.println("Parent connected");
+			System.out.println("Start event parent connected");
 		} else {
-			System.out.println("Parent connection failed");
+			System.out.println("Start event parent connection failed");
 		}
+		//END TODO:
 	}
 
 	public Place getInputPlace() {
