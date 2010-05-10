@@ -1,7 +1,6 @@
 package ee.ut.model.bpmn;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
@@ -12,8 +11,10 @@ public class BPMNSubprocess extends BPMNElement {
 
 	String startPlaceId;
 	String endPlaceId;
+	String timerTransitionId;
+
 	private String subProcessId;
-	List bpmnTask = new ArrayList<BPMNTask2>();
+	ArrayList<BPMNTask2> bpmnTasks = new ArrayList<BPMNTask2>();
 
 	public BPMNSubprocess(CPNProcess cPNProcess, Object obj,
 			ElementParser elementParser) {
@@ -50,7 +51,24 @@ public class BPMNSubprocess extends BPMNElement {
 	}
 
 	public void addChildTransition(BPMNTask2 bpmnTask2) {
-		bpmnTask.add(bpmnTask2);
+		bpmnTasks.add(bpmnTask2);
+	}
+
+	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer) {
+		for (BPMNTask2 task : bpmnTasks) {
+			task.addSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
+					bpmnSubprocessTimer.getOKPlaceId());
+		}
+
+		cPNProcess.getCpnet().addArc(timerTransitionId,
+				bpmnSubprocessTimer.getOKPlaceId());
+		cPNProcess.getCpnet().addArc(timerTransitionId,
+				bpmnSubprocessTimer.getTimerTokenPlaceId());
+
+	}
+
+	public void setTimerTransitionId(String timerTransitionId) {
+		this.timerTransitionId = timerTransitionId;
 	}
 
 }

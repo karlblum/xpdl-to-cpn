@@ -1,5 +1,6 @@
 package ee.ut.model.bpmn;
 
+import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -11,39 +12,55 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	String nokPlaceId;
 	String timerTokenPlaceId;
 	String completeTransId;
-	
-	public BPMNSubprocessTimer(CPNProcess cPNProcess, Object obj, ElementParser elementParser) {
+	String parentProcessId;
+
+	public BPMNSubprocessTimer(CPNProcess cPNProcess, Object obj,
+			ElementParser elementParser) {
 		super(cPNProcess);
 		elementId = elementParser.getId(obj);
 		elementName = elementParser.getName(obj);
-		
+
 		okPlaceId = cPNProcess.getCpnet().addPlace(elementName + "OK").getId();
-		nokPlaceId = cPNProcess.getCpnet().addPlace(elementName + "NOK").getId();
-		completeTransId = cPNProcess.getCpnet().addTrans(elementName + "COMPLETE").getId();
-		timerTokenPlaceId = cPNProcess.getCpnet().addTrans(elementName + "TIMER").getId();
-		String exeptionTransId = cPNProcess.getCpnet().addTrans(elementName + "EXCEPTION").getId();
-		
-		boolean connectedToParent = false;
-		
-		String parentProcessId = elementParser.getSubprocessId(obj);
-		//TODO: This is hack at the moment
-		for (Object o : cPNProcess.getElelments().values()) {
-			if (o instanceof BPMNSubprocess
-					&& ((BPMNSubprocess) o).getSubProcessId().equals(
-							parentProcessId)) {
-				//((BPMNSubprocess) o).setInputPlace(startPlaceId);
-				connectedToParent = true;
-			}
-		}
-		
+		nokPlaceId = cPNProcess.getCpnet().addPlace(elementName + "NOK")
+				.getId();
+		timerTokenPlaceId = cPNProcess.getCpnet().addPlace(
+				elementName + "TIMER").getId();
+		String exeptionTransId = cPNProcess.getCpnet().addTrans(
+				elementName + "EXCEPTION").getId();
+		outputPlaceId = cPNProcess.getCpnet().addPlace(
+				elementName + "TIMER OUT").getId();
+
+		cPNProcess.getCpnet().addArc(okPlaceId, exeptionTransId);
+		cPNProcess.getCpnet().addArc(exeptionTransId, nokPlaceId);
+
+		cPNProcess.getCpnet().addArc(timerTokenPlaceId, exeptionTransId);
+
+		parentProcessId = elementParser.getBoundaryEventTaskId(obj);
+
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		// TODO Auto-generated method stub
+		BPMNSubprocess parentProcess = (BPMNSubprocess) cPNProcess
+				.getElement(parentProcessId);
+		parentProcess.setBoundTimer(this);
 
 	}
 
+	public String getOKPlaceId() {
+		return okPlaceId;
+	}
 
+	public String getNOKPlaceId() {
+		return nokPlaceId;
+	}
+
+	public Place getOutputPlace() {
+		return cPNProcess.getCpnet().getPlace(outputPlaceId);
+	}
+
+	public String getTimerTokenPlaceId() {
+		return timerTokenPlaceId;
+	}
 
 }

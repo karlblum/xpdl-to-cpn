@@ -9,7 +9,6 @@ import ee.ut.converter.Element;
 import ee.ut.converter.factory.BPMNBoundMessageEventFactory;
 import ee.ut.converter.factory.BPMNBoundTimerEventFactory;
 import ee.ut.converter.factory.BPMNEndEventFactory;
-import ee.ut.converter.factory.RelayFactory;
 import ee.ut.converter.factory.BPMNGatewayFactory;
 import ee.ut.converter.factory.BPMNIntermediateMessageEventFactory;
 import ee.ut.converter.factory.BPMNIntermediateTimerEventFactory;
@@ -20,6 +19,7 @@ import ee.ut.converter.factory.BPMNSubprocessStartFactory;
 import ee.ut.converter.factory.BPMNSubprocessTimerFactory;
 import ee.ut.converter.factory.BPMNTask2Factory;
 import ee.ut.converter.factory.BPMNTransition2Factory;
+import ee.ut.converter.factory.RelayFactory;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.KBSimDataParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -29,7 +29,7 @@ public class BPMNProcess extends CPNProcess {
 	ElementParser elementParser;
 	SimDataParser simDataParser;
 	RelayFactory elementFactory;
-	
+
 	public BPMNProcess(File processFile, File simulationDataFile) {
 
 		this.setCpnet(new CPNet());
@@ -37,21 +37,34 @@ public class BPMNProcess extends CPNProcess {
 		elementParser = new XPDL2ElementParser();
 		simDataParser = new KBSimDataParser(simulationDataFile);
 		elementFactory = new RelayFactory(this, elementParser);
-		
+
 		elementFactory.resetFactoryMap();
-		elementFactory.registerFactory(BPMNElement.TASK, new BPMNTask2Factory(this,elementParser));
-		elementFactory.registerFactory(BPMNElement.GATEWAY, new BPMNGatewayFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.START, new BPMNStartEventFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.END, new BPMNEndEventFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.TRANSITION, new BPMNTransition2Factory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.INTERMEDIATE_MESSAGE_EVENT, new BPMNIntermediateMessageEventFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.INTERMEDIATE_TIMER_EVENT, new BPMNIntermediateTimerEventFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.BOUND_MESSAGE_EVENT, new BPMNBoundMessageEventFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.BOUND_TIMER_EVENT, new BPMNBoundTimerEventFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.SUB_PROCESS, new BPMNSubprocessFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.SUB_PROCESS_START, new BPMNSubprocessStartFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.SUB_PROCESS_END, new BPMNSubprocessEndFactory(this, elementParser));
-		elementFactory.registerFactory(BPMNElement.SUB_PROCESS_TIMER_EVENT, new BPMNSubprocessTimerFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.TASK, new BPMNTask2Factory(
+				this, elementParser));
+		elementFactory.registerFactory(BPMNElement.GATEWAY,
+				new BPMNGatewayFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.START,
+				new BPMNStartEventFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.END,
+				new BPMNEndEventFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.TRANSITION,
+				new BPMNTransition2Factory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.INTERMEDIATE_MESSAGE_EVENT,
+				new BPMNIntermediateMessageEventFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.INTERMEDIATE_TIMER_EVENT,
+				new BPMNIntermediateTimerEventFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.BOUND_MESSAGE_EVENT,
+				new BPMNBoundMessageEventFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.BOUND_TIMER_EVENT,
+				new BPMNBoundTimerEventFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.SUB_PROCESS,
+				new BPMNSubprocessFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.SUB_PROCESS_START,
+				new BPMNSubprocessStartFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.SUB_PROCESS_END,
+				new BPMNSubprocessEndFactory(this, elementParser));
+		elementFactory.registerFactory(BPMNElement.SUB_PROCESS_TIMER_EVENT,
+				new BPMNSubprocessTimerFactory(this, elementParser));
 
 		// Generate process model
 		ArrayList<Object> allElements = elementParser
@@ -73,6 +86,5 @@ public class BPMNProcess extends CPNProcess {
 			element.addSimulationData(simDataParser);
 		}
 	}
-
 
 }

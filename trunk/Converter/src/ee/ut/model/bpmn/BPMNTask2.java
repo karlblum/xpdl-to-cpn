@@ -18,6 +18,7 @@ public final class BPMNTask2 extends BPMNElement {
 	private String boundTimerEventArcInId;
 	private String boundTimerEventArcOutId;
 	private String boundTimerEventPlaceId;
+	private String midOutPlaceId;
 	private int boundTimerTime;
 
 	// Event probabilities
@@ -37,7 +38,7 @@ public final class BPMNTask2 extends BPMNElement {
 
 		// This will be our central output where we can set the timing for
 		// simulation for example
-		String midOutPlaceId = cPNProcess.getCpnet().addPlace().getId();
+		midOutPlaceId = cPNProcess.getCpnet().addPlace().getId();
 		midOutputArcId = cPNProcess.getCpnet().addArc(taskTransitionId,
 				midOutPlaceId).getId();
 		midOutputTransitionId = cPNProcess.getCpnet().addTrans().getId();
@@ -75,25 +76,29 @@ public final class BPMNTask2 extends BPMNElement {
 		boundTimerEventArcOutId = cPNProcess.getCpnet().addArc(
 				boundTimerEventPlaceId, taskTransitionId).getId();
 
-		
-		//TODO: This is hack at the moment. We collect the data about subprocess activities in the subprocess element
+		// TODO: This is hack at the moment. We collect the data about
+		// subprocess activities in the subprocess element
 		String parentProcessId = elementParser.getSubprocessId(o);
+
 		boolean connectedToParent = false;
-		for (Object obj : cPNProcess.getElelments().values()) {
-			if (o instanceof BPMNSubprocess
-					&& ((BPMNSubprocess) obj).getSubProcessId().equals(
-							parentProcessId)) {
-				((BPMNSubprocess) obj).addChildTransition(this);
-				connectedToParent = true;
+		if (parentProcessId != null) {
+			for (Object obj : cPNProcess.getElelments().values()) {
+				if (obj instanceof BPMNSubprocess
+						&& ((BPMNSubprocess) obj).getSubProcessId().equals(
+								parentProcessId)) {
+					((BPMNSubprocess) obj).addChildTransition(this);
+					connectedToParent = true;
+				}
+			}
+
+			if (connectedToParent) {
+				System.out.println("Task parent connected");
+			} else {
+				System.out.println("Task parent connection failed. Parent: "
+						+ parentProcessId);
 			}
 		}
 
-		if (connectedToParent) {
-			System.out.println("Task parent connected");
-		} else if (parentProcessId.length() > 0) {
-			System.out.println("Task parent connection failed");
-		}
-		
 	}
 
 	/**
@@ -202,6 +207,24 @@ public final class BPMNTask2 extends BPMNElement {
 
 	public int getBoundTimer() {
 		return boundTimerTime;
+	}
+
+	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId) {
+
+		// Create a skipper transition and connect it to the task and NOK place
+		// in subprocess timer
+		String skipTrans = cPNProcess.getCpnet()
+				.addTrans(elementName + " SKIP").getId();
+		cPNProcess.getCpnet().addArc(boundTimerEventPlaceId, skipTrans);
+		cPNProcess.getCpnet().addArc(skipTrans, midOutPlaceId);
+
+		cPNProcess.getCpnet().addArc(nokPlaceId, skipTrans);
+		cPNProcess.getCpnet().addArc(skipTrans, nokPlaceId);
+
+		// Connect the transition to subprocess timer OK place.
+		cPNProcess.getCpnet().addArc(taskTransitionId, okPlaceId);
+		cPNProcess.getCpnet().addArc(okPlaceId, taskTransitionId);
+
 	}
 
 }

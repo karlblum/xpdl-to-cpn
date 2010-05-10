@@ -8,6 +8,8 @@ import ee.ut.converter.parser.SimDataParser;
 public class BPMNSubprocessStart extends BPMNElement {
 
 	private String startPlaceId;
+	private String outputPlaceId;
+	private String timerTransitionId;
 
 	public BPMNSubprocessStart(CPNProcess cPNProcess, Object obj,
 			ElementParser elementParser) {
@@ -16,16 +18,23 @@ public class BPMNSubprocessStart extends BPMNElement {
 		elementName = elementParser.getName(obj);
 
 		startPlaceId = cPNProcess.getCpnet().addPlace(elementName).getId();
+		outputPlaceId = cPNProcess.getCpnet().addPlace(elementName).getId();
+
+		timerTransitionId = cPNProcess.getCpnet().addTrans().getId();
+		cPNProcess.getCpnet().addArc(startPlaceId, timerTransitionId);
+		cPNProcess.getCpnet().addArc(timerTransitionId, outputPlaceId);
+
 		String parentProcessId = elementParser.getSubprocessId(obj);
 
 		boolean connectedToParent = false;
 
-		//TODO: This is hack at the moment
+		// TODO: This is hack at the moment
 		for (Object o : cPNProcess.getElelments().values()) {
 			if (o instanceof BPMNSubprocess
 					&& ((BPMNSubprocess) o).getSubProcessId().equals(
 							parentProcessId)) {
 				((BPMNSubprocess) o).setInputPlace(startPlaceId);
+				((BPMNSubprocess) o).setTimerTransitionId(timerTransitionId);
 				connectedToParent = true;
 			}
 		}
@@ -35,7 +44,7 @@ public class BPMNSubprocessStart extends BPMNElement {
 		} else {
 			System.out.println("Start event parent connection failed");
 		}
-		//END TODO:
+		// END TODO:
 	}
 
 	public Place getInputPlace() {
@@ -43,7 +52,7 @@ public class BPMNSubprocessStart extends BPMNElement {
 	}
 
 	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(startPlaceId);
+		return cPNProcess.getCpnet().getPlace(outputPlaceId);
 	}
 
 	@Override
