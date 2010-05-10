@@ -2,6 +2,7 @@ package ee.ut.converter.factory;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.parser.ElementParser;
@@ -9,7 +10,7 @@ import ee.ut.converter.parser.ElementParser;
 public final class RelayFactory extends AbstractElementFactory {
 
 	protected Map<Object, AbstractElementFactory> factories = new HashMap<Object, AbstractElementFactory>();
-	
+
 	public RelayFactory(CPNProcess cPNProcess, ElementParser elementParser) {
 		super(cPNProcess, elementParser);
 	}
@@ -17,7 +18,7 @@ public final class RelayFactory extends AbstractElementFactory {
 	public void registerFactory(Object key, AbstractElementFactory concrete) {
 		factories.put(key, concrete);
 	}
-	
+
 	public void resetFactoryMap() {
 		factories.clear();
 	}

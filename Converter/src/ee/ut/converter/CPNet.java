@@ -375,12 +375,10 @@ public class CPNet {
 						"\"c:\\Program Files\\Graphviz2.26.3\\bin\\dot.exe\" .\\files\\cpn\\dot_input.txt");
 
 		String line;
-		int lineNr = 0;
 		BufferedReader input = new BufferedReader(new InputStreamReader(pr
 				.getInputStream()));
 		while ((line = input.readLine()) != null) {
-			lineNr++;
-			if (lineNr > 3 && !line.contains("->") && line.length() > 10) {
+			if (line.contains("[pos=\"") && !line.contains("->")) {
 				int posIDEnd = line.indexOf("[");
 				int posCoordStart = line.indexOf("\"");
 				int posCoordEnd = line.indexOf("\"", posCoordStart + 1);

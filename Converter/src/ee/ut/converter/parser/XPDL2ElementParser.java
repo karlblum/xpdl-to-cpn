@@ -73,8 +73,9 @@ public class XPDL2ElementParser implements ElementParser {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
 						if (trigger.equals("Timer")) {
-							//TODO: We don't know if it is a timer for task or a subprocess!
-							//return BPMNElement.BOUND_TIMER_EVENT;
+							// TODO: We don't know if it is a timer for task or
+							// a subprocess!
+							// return BPMNElement.BOUND_TIMER_EVENT;
 							return BPMNElement.SUB_PROCESS_TIMER_EVENT;
 						} else {
 							return BPMNElement.BOUND_MESSAGE_EVENT;
@@ -229,6 +230,7 @@ public class XPDL2ElementParser implements ElementParser {
 	public String getSubprocessId(Object obj) {
 		String toParent = "";
 		String isParent = "";
+
 		try {
 			toParent = ((Activity) obj).getStatus();
 		} catch (Exception e) {
@@ -243,14 +245,14 @@ public class XPDL2ElementParser implements ElementParser {
 		}
 
 		if (toParent.length() > 0 && !toParent.equals("None")) {
-			System.out.println("found sub:" + toParent);
+			System.out.println("Found child: " + ((Activity) obj).getId()
+					+ ", to parent: " + toParent + ".");
 			return toParent;
 		} else if (isParent.length() > 0) {
-			System.out.println("found parent:" + isParent);
+			System.out.println("Found parent: " + ((Activity) obj).getId()
+					+ ", to child: " + isParent + ". ");
 			return isParent;
-		} else {
-			System.out.println("PROBLEM WITH SUBACTIVITY!");
-			return null;
 		}
+		return null;
 	}
 }
