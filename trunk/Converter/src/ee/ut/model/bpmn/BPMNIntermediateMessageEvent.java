@@ -1,6 +1,5 @@
 package ee.ut.model.bpmn;
 
-import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -52,16 +51,18 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 		}
 	}
 
-	public Place getInputPlace() {
-		return cPNProcess.getCpnet().getPlace(inputPlaceId);
-	}
-
-	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
-	}
-
 	public void setEBXORId(String id) {
 		ebXORId = id;
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		return inputPlaceId;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return outputPlaceId;
 	}
 
 }

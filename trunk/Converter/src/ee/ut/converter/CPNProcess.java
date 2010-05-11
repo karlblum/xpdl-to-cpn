@@ -34,11 +34,11 @@ public class CPNProcess {
 		this.elementFactory = elementFactory;
 	}
 
-	public Object getElement(String key) {
+	public Element getElement(String key) {
 		return elements.get(key);
 	}
 
-	public void addElement(String key, Element value) {
+	public void addConvertedElement(String key, Element value) {
 		this.elements.put(key, value);
 	}
 

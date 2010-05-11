@@ -23,7 +23,40 @@ import ee.ut.model.xpdl2.Transition;
 import ee.ut.model.xpdl2.TransitionRestrictions;
 import ee.ut.model.xpdl2.Transitions;
 
+/**
+ * @author karl
+ * 
+ */
 public class XPDL2ElementParser implements ElementParser {
+
+	ProcessType xpdlProcess;
+	ArrayList<Activity> allActivities = new ArrayList<Activity>();
+	ArrayList<Transition> allTransitions = new ArrayList<Transition>();
+
+	public XPDL2ElementParser(File processFile) {
+
+		JAXBElement<PackageType> xpdlRoot = unMasrhall(processFile,
+				"ee.ut.model.xpdl2");
+
+		xpdlProcess = xpdlRoot.getValue().getWorkflowProcesses()
+				.getWorkflowProcess().get(0);
+
+		for (Object o : xpdlProcess.getContent()) {
+			if (o instanceof Activities) {
+				allActivities.addAll(((Activities) o).getActivity());
+			} else if (o instanceof Transitions) {
+				allTransitions.addAll(((Transitions) o).getTransition());
+			} else if (o instanceof ActivitySets) {
+				for (ActivitySet aset : ((ActivitySets) o).getActivitySet()) {
+					allActivities.addAll(aset.getActivities().getActivity());
+					allTransitions
+							.addAll(aset.getTransitions().getTransition());
+				}
+
+			}
+		}
+
+	}
 
 	@Override
 	public int getElementType(Object obj) {
@@ -55,9 +88,9 @@ public class XPDL2ElementParser implements ElementParser {
 				if (((Event) aContent).getStartEvent() != null) {
 					if (((Event) aContent).getStartEvent().getTrigger().equals(
 							"Timer")) {
-						return BPMNElement.START;
-					} else {
 						return BPMNElement.SUB_PROCESS_START;
+					} else {
+						return BPMNElement.START;
 					}
 				} else if (((Event) aContent).getEndEvent() != null) {
 					if (((Event) aContent).getEndEvent()
@@ -164,40 +197,7 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public ArrayList<Object> getAllElements(File file) {
-
-		JAXBElement<PackageType> xpdlRoot = unMasrhall(file,
-				"ee.ut.model.xpdl2");
-
-		ProcessType xpdlProcess = xpdlRoot.getValue().getWorkflowProcesses()
-				.getWorkflowProcess().get(0);
-
-		ArrayList<Object> allObjects = new ArrayList<Object>();
-
-		for (Object o : xpdlProcess.getContent()) {
-			if (o instanceof Activities) {
-				allObjects.addAll(((Activities) o).getActivity());
-			} else if (o instanceof Transitions) {
-				allObjects.addAll(((Transitions) o).getTransition());
-			} else if (o instanceof ActivitySets) {
-				for (ActivitySet aset : ((ActivitySets) o).getActivitySet()) {
-					for (Activity a : aset.getActivities().getActivity()) {
-						// We set the status to refer to the set ID, otherwise
-						// we don't know which set the activity belongs
-						a.setStatus(aset.getId());
-						allObjects.add(a);
-					}
-					allObjects.addAll(aset.getTransitions().getTransition());
-				}
-
-			}
-		}
-		return allObjects;
-	}
-
-	@SuppressWarnings("unchecked")
-	protected JAXBElement unMasrhall(File file, String model) {
+	protected JAXBElement<PackageType> unMasrhall(File file, String model) {
 		JAXBContext jc;
 		try {
 			jc = JAXBContext.newInstance(model);
@@ -255,4 +255,73 @@ public class XPDL2ElementParser implements ElementParser {
 		}
 		return null;
 	}
+
+	/**
+	 * Method searches for the first starting node.
+	 * 
+	 * @return process starting node
+	 */
+	public Object getStartElement() {
+		for (Object o : xpdlProcess.getContent()) {
+			if (o instanceof Activities) {
+				for (Activity a : ((Activities) o).getActivity()) {
+					for (Object o2 : a.getContent()) {
+						if (o2 instanceof Event
+								&& ((Event) o2).getStartEvent() != null) {
+							return a;
+						}
+					}
+				}
+
+			}
+
+		}
+		return null;
+	}
+
+	/*
+	 * Method returns the list of all the connected elements.
+	 * 
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getNextElements(java.lang.Object)
+	 */
+	@Override
+	public ArrayList<Object> getNextElements(Object element) {
+		ArrayList<Object> nextElems = new ArrayList<Object>();
+
+		nextElems.addAll(getNextActivities((Activity) element));
+		nextElems.addAll(getBoundElements((Activity) element));
+
+		return nextElems;
+	}
+
+	private ArrayList<Object> getBoundElements(Activity element) {
+		ArrayList<Object> nextElems = new ArrayList<Object>();
+		return nextElems;
+	}
+
+	/**
+	 * Method searches for all the next connected activities.
+	 * 
+	 * @param element
+	 * @return
+	 */
+	private ArrayList<Object> getNextActivities(Activity element) {
+		ArrayList<Object> nextElems = new ArrayList<Object>();
+
+		for (Transition t : allTransitions) {
+			if (t.getFrom().equals(element.getId())) {
+				for (Activity a : allActivities) {
+					if (a.getId().equals(t.getTo())) {
+						nextElems.add(a);
+					}
+				}
+			}
+		}
+
+		return nextElems;
+	}
+
 }

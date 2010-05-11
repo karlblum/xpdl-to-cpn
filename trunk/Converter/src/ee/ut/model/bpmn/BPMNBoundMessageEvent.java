@@ -1,6 +1,5 @@
 package ee.ut.model.bpmn;
 
-import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -32,7 +31,7 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 		delayArcId = cPNProcess.getCpnet().addArc(t, outputPlaceId).getId();
 
 		taskId = elementParser.getBoundaryEventTaskId(obj);
-		BPMNTask2 task = (BPMNTask2) cPNProcess.getElement(taskId);
+		BPMNTask task = (BPMNTask) cPNProcess.getElement(taskId);
 		task.addBounMessageEvent(this);
 	}
 
@@ -40,7 +39,7 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 	public void addSimulationData(SimDataParser simDataParser) {
 		int probability = simDataParser
 				.getBoundMessageEventProbability(elementId);
-		BPMNTask2 task = (BPMNTask2) cPNProcess.getElement(taskId);
+		BPMNTask task = (BPMNTask) cPNProcess.getElement(taskId);
 		task.setBoundMessageEventProbability(elementId, probability);
 
 		int i = task.getBoundTimer();
@@ -51,15 +50,17 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 
 	}
 
-	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
-	}
-
 	public int getPercentage() {
 		return percentage;
 	}
 
-	public Place getInputPlace() {
-		return cPNProcess.getCpnet().getPlace(inputPlaceId);
+	@Override
+	public String getInputPlaceId() {
+		return inputPlaceId;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return outputPlaceId;
 	}
 }

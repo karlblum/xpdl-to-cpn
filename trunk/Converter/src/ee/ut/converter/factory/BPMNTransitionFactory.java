@@ -13,7 +13,7 @@ public class BPMNTransitionFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(Object obj) {
+	public Element create(Object obj) throws Exception {
 		return new BPMNTransition(cPNProcess, obj, elementParser);
 	}
 

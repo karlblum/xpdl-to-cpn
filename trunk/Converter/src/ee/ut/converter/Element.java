@@ -7,4 +7,8 @@ public interface Element {
 	public String getId();
 
 	public void addSimulationData(SimDataParser simDataParser);
+
+	public String getInputPlaceId();
+
+	public String getOutputPlaceId(String ref);
 }

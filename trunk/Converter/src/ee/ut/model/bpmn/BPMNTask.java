@@ -1,17 +1,31 @@
 package ee.ut.model.bpmn;
 
+import java.util.HashMap;
+
 import noNamespace.Place;
-import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
 
 public final class BPMNTask extends BPMNElement {
 
-	private String midInputPlaceId;
-	private String outputPlaceId;
-	private String outputArcId;
-	private String transitionId;
+	private String inputPlaceId;
+	private String midOutputTransitionId;
+	private String midOutputArcId;
+	private String taskTransitionId;
+	private String boundMessageEventTransitionId;
+	private String boundMessageEventToTaskArcId;
+	private String boundTimerEventArcInId;
+	private String boundTimerEventArcOutId;
+	private String boundTimerEventPlaceId;
+	private String midOutPlaceId;
+	private int boundTimerTime;
+
+	// Event probabilities
+	private int prevBoundMessageEventTreshold = 0;
+	private HashMap<String, String> boundMessageEventArcs = new HashMap<String, String>();
+
+	private boolean usesResources = false;
 
 	public BPMNTask(CPNProcess cPNProcess, Object o, ElementParser elementParser) {
 		super(cPNProcess);
@@ -19,22 +33,70 @@ public final class BPMNTask extends BPMNElement {
 		elementId = elementParser.getId(o);
 		elementName = elementParser.getName(o);
 
-		// We assume that we only need a transition, because all the inputs and
-		// outputs can be generated dynamically.
-		Trans trans = cPNProcess.getCpnet().addTrans(elementName);
+		taskTransitionId = cPNProcess.getCpnet().addTrans(elementName).getId();
 
-		transitionId = trans.getId();
+		// This will be our central output where we can set the timing for
+		// simulation for example
+		midOutPlaceId = cPNProcess.getCpnet().addPlace().getId();
+		midOutputArcId = cPNProcess.getCpnet().addArc(taskTransitionId,
+				midOutPlaceId).getId();
+		midOutputTransitionId = cPNProcess.getCpnet().addTrans().getId();
+		cPNProcess.getCpnet().addArc(midOutPlaceId, midOutputTransitionId);
 
-		// Activity can have only one output place, because it is like an
-		// inclusive gateway
-		outputPlaceId = cPNProcess.getCpnet().addPlace().getId();
-		outputArcId = cPNProcess.getCpnet().addArc(transitionId, outputPlaceId)
+		// This will be our task input. We only need one of these.
+		inputPlaceId = cPNProcess.getCpnet().addPlace(elementName + " IN")
 				.getId();
 
-		// This will be the mid-input place where we add input connections
-		// to
-		midInputPlaceId = cPNProcess.getCpnet().addPlace().getId();
-		cPNProcess.getCpnet().addArc(midInputPlaceId, transitionId);
+		// This is the event transition that generates exceptions based on
+		// boundary event probabilities
+		boundMessageEventTransitionId = cPNProcess.getCpnet().addTrans(
+				elementName + " MESSAGE EVENTS").getId();
+		cPNProcess
+				.getCpnet()
+				.setTransitionAction(boundMessageEventTransitionId,
+						"input ();\noutput (p);\naction\n(round(uniform(0.0,100.0))\n);");
+
+		cPNProcess.getCpnet().addArc(inputPlaceId,
+				boundMessageEventTransitionId);
+
+		String tempPlace = cPNProcess.getCpnet().addPlace().getId();
+		boundMessageEventToTaskArcId = cPNProcess.getCpnet().addArc(
+				boundMessageEventTransitionId, tempPlace).getId();
+
+		// Here we can add timer event in the future
+		String boundTimerEventTransitionId = cPNProcess.getCpnet().addTrans(
+				elementName + " TIMER EVENTS").getId();
+		cPNProcess.getCpnet().addArc(tempPlace, boundTimerEventTransitionId)
+				.getId();
+
+		boundTimerEventPlaceId = cPNProcess.getCpnet().addPlace().getId();
+		boundTimerEventArcInId = cPNProcess.getCpnet().addArc(
+				boundTimerEventTransitionId, boundTimerEventPlaceId).getId();
+		boundTimerEventArcOutId = cPNProcess.getCpnet().addArc(
+				boundTimerEventPlaceId, taskTransitionId).getId();
+
+		// TODO: This is hack at the moment. We collect the data about
+		// subprocess activities in the subprocess element
+		String parentProcessId = elementParser.getSubprocessId(o);
+
+		boolean connectedToParent = false;
+		if (parentProcessId != null) {
+			for (Object obj : cPNProcess.getElelments().values()) {
+				if (obj instanceof BPMNSubprocess
+						&& ((BPMNSubprocess) obj).getSubProcessId().equals(
+								parentProcessId)) {
+					((BPMNSubprocess) obj).addChildTransition(this);
+					connectedToParent = true;
+				}
+			}
+
+			if (connectedToParent) {
+				System.out.println("Task parent connected");
+			} else {
+				System.out.println("Task parent connection failed. Parent: "
+						+ parentProcessId);
+			}
+		}
 
 	}
 
@@ -43,26 +105,44 @@ public final class BPMNTask extends BPMNElement {
 	 * 
 	 * @return input place for the task
 	 */
-	public Place makeInputPlace() {
-		Place inputPlace = cPNProcess.getCpnet().addPlace();
-
-		Trans trans = cPNProcess.getCpnet().addTrans("XOR_JOIN");
-
-		// Here we connect the input to the mid-input place for Exclusive join
-		cPNProcess.getCpnet().addArc(inputPlace.getId(), trans.getId());
-		cPNProcess.getCpnet().addArc(trans.getId(), midInputPlaceId);
-
-		return inputPlace;
+	public Place getInputPlace() {
+		return cPNProcess.getCpnet().getPlace(inputPlaceId);
 	}
 
 	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
+		Place out = cPNProcess.getCpnet().addPlace(elementName + " OUT");
+		cPNProcess.getCpnet().addArc(midOutputTransitionId, out.getId());
+		return out;
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 
-		String taskAction = "input (c);\n"
+		// Add resource consumption data from here
+		String resourceUsed = simDataParser.getResources(elementId);
+		if (resourceUsed != null && resourceUsed.length() > 0) {
+			cPNProcess.getCpnet().setTransitionGuard(taskTransitionId,
+					"[check_roles(#Roles(r),[\"" + resourceUsed + "\"])]");
+
+			String resourcePlaceId = cPNProcess.getCpnet().getResourcePlace();
+
+			cPNProcess.getCpnet().addArc(taskTransitionId, resourcePlaceId,
+					"r @+pt");
+			cPNProcess.getCpnet()
+					.addArc(resourcePlaceId, taskTransitionId, "r");
+			usesResources = true;
+		}
+
+		String taskActionInput = "(c)";
+		String taskActionf = "transitionAction(c, transParams)";
+		if (usesResources) {
+			taskActionInput = "(c,r)";
+			taskActionf = "transitionActionR(c,r, transParams)";
+		}
+
+		String taskAction = "input "
+				+ taskActionInput
+				+ ";\n"
 				+ "output (pt);\n"
 				+ "action\n"
 				+ "(let\n  "
@@ -73,19 +153,90 @@ public final class BPMNTask extends BPMNElement {
 				+ "    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
 				+ "    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
 				+ "    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"
-				+ "    pWaitTimeDur=0,\n" + "    pWaitTimeCost=0,\n"
-				+ "    transitionName=\"" + elementName + "\",\n"
-				+ "    NoOfResources=1}\n" + "in\n"
-				+ "  transitionAction(c, transParams)\n" + "end);";
+				+ "    pWaitTimeDur="
+				+ simDataParser.getWaitTimeDuration(elementId) + ",\n"
+				+ "    pWaitTimeCost=0,\n" + "    transitionName=\""
+				+ elementName + "\",\n" + "    NoOfResources=1}\n" + "in\n"
+				+ taskActionf + "\n" + "end);";
 
-		cPNProcess.getCpnet().setTransitionAction(transitionId, taskAction);
+		cPNProcess.getCpnet().setTransitionAction(taskTransitionId, taskAction);
 
 		// The simulation data has to be added to the output arc. The CPN
 		// transition outputs the total time consumed and the arc uses it to
 		// generate the proper delay.
 		String arcAnnot = "CASE.set_ts c (pt+intTime()) @+pt";
-		cPNProcess.getCpnet().setArcAnnot(outputArcId, arcAnnot);
+		cPNProcess.getCpnet().setArcAnnot(midOutputArcId, arcAnnot);
 
+	}
+
+	public void addBounMessageEvent(BPMNBoundMessageEvent bpmnBoundEvent) {
+		String place = bpmnBoundEvent.getInputPlaceId();
+		String eventArcId = cPNProcess.getCpnet().addArc(
+				boundMessageEventTransitionId, place).getId();
+		boundMessageEventArcs.put(bpmnBoundEvent.getId(), eventArcId);
+	}
+
+	public void setBoundMessageEventProbability(String elementId,
+			int probability) {
+		cPNProcess.getCpnet().setArcAnnot(
+				boundMessageEventArcs.get(elementId),
+				"if p>=" + prevBoundMessageEventTreshold + " andalso p<"
+						+ (prevBoundMessageEventTreshold + probability)
+						+ " then 1`c else empty");
+		prevBoundMessageEventTreshold = prevBoundMessageEventTreshold
+				+ probability;
+
+		cPNProcess.getCpnet().setArcAnnot(
+				boundMessageEventToTaskArcId,
+				"if p>= " + prevBoundMessageEventTreshold
+						+ " then 1`c else empty");
+
+	}
+
+	public String getBoundTimerPlaceId() {
+		return boundTimerEventPlaceId;
+	}
+
+	public void setBoundTimer(int timer) {
+		cPNProcess.getCpnet()
+				.setArcAnnot(boundTimerEventArcInId, "c@+" + timer);
+		cPNProcess.getCpnet().setArcAnnot(boundTimerEventArcOutId,
+				"c@+" + timer);
+	}
+
+	public int getBoundTimer() {
+		return boundTimerTime;
+	}
+
+	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId) {
+
+		// Create a skipper transition and connect it to the task and NOK place
+		// in subprocess timer
+		String skipTrans = cPNProcess.getCpnet()
+				.addTrans(elementName + " SKIP").getId();
+		cPNProcess.getCpnet().addArc(boundTimerEventPlaceId, skipTrans);
+		cPNProcess.getCpnet().addArc(skipTrans, midOutPlaceId);
+
+		cPNProcess.getCpnet().addArc(nokPlaceId, skipTrans);
+		cPNProcess.getCpnet().addArc(skipTrans, nokPlaceId);
+
+		// Connect the transition to subprocess timer OK place.
+		cPNProcess.getCpnet().addArc(taskTransitionId, okPlaceId);
+		cPNProcess.getCpnet().addArc(okPlaceId, taskTransitionId);
+
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		return inputPlaceId;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		String out = cPNProcess.getCpnet().addPlace(elementName + " OUT")
+				.getId();
+		cPNProcess.getCpnet().addArc(midOutputTransitionId, out);
+		return out;
 	}
 
 }

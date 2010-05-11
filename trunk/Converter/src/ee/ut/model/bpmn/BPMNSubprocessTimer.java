@@ -1,6 +1,5 @@
 package ee.ut.model.bpmn;
 
-import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -55,12 +54,18 @@ public class BPMNSubprocessTimer extends BPMNElement {
 		return nokPlaceId;
 	}
 
-	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
-	}
-
 	public String getTimerTokenPlaceId() {
 		return timerTokenPlaceId;
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		return null;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return outputPlaceId;
 	}
 
 }
