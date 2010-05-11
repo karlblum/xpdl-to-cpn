@@ -38,7 +38,8 @@ public class BPMNGateway extends BPMNElement {
 	 * 
 	 * @return
 	 */
-	public Place getInputPlace() {
+	@Override
+	public String getInputPlaceId() {
 		Place p = null;
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {
@@ -52,10 +53,11 @@ public class BPMNGateway extends BPMNElement {
 			p = cPNProcess.getCpnet().addPlace();
 			cPNProcess.getCpnet().addArc(p.getId(), gatewayTransitionId);
 		}
-		return p;
+		return p.getId();
 	}
 
-	public Place getOutputPlace(String id) {
+	@Override
+	public String getOutputPlaceId(String id) {
 
 		Place p = cPNProcess.getCpnet().addPlace();
 		String arcId = cPNProcess.getCpnet().addArc(gatewayTransitionId,
@@ -75,7 +77,7 @@ public class BPMNGateway extends BPMNElement {
 					function);
 		}
 
-		return p;
+		return p.getId();
 	}
 
 	public enum GatewayType {
@@ -138,6 +140,6 @@ public class BPMNGateway extends BPMNElement {
 
 	public int getEBXORTimerDelay() {
 		return ebXORTimerDelay;
-	};
+	}
 
 }

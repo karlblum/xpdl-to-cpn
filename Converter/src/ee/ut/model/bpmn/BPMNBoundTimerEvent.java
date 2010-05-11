@@ -16,7 +16,7 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 		elementName = elementParser.getName(obj);
 		taskId = elementParser.getBoundaryEventTaskId(obj);
 
-		BPMNTask2 task = (BPMNTask2) cPNProcess.getElement(taskId);
+		BPMNTask task = (BPMNTask) cPNProcess.getElement(taskId);
 		String placeId = task.getBoundTimerPlaceId();
 		String transId = cPNProcess.getCpnet().addTrans(elementName + " EVENT")
 				.getId();
@@ -26,7 +26,7 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 		cPNProcess.getCpnet().addArc(transId, outputPlaceId);
 
 		int timer = elementParser.getEventTimer(obj);
-		task = (BPMNTask2) cPNProcess.getElement(taskId);
+		task = (BPMNTask) cPNProcess.getElement(taskId);
 		task.setBoundTimer(timer);
 
 	}
@@ -38,6 +38,17 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 
 	public Place getOutputPlace() {
 		return cPNProcess.getCpnet().getPlace(outputPlaceId);
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return outputPlaceId;
 	}
 
 }

@@ -1,6 +1,5 @@
 package ee.ut.converter.parser;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public interface ElementParser {
@@ -17,11 +16,13 @@ public interface ElementParser {
 
 	public String getName(Object o);
 
-	public ArrayList<Object> getAllElements(File file);
-
 	public String getBoundaryEventTaskId(Object o);
 
 	public int getEventTimer(Object o);
 
 	public String getSubprocessId(Object obj);
+
+	public Object getStartElement();
+
+	public ArrayList<Object> getNextElements(Object element);
 }

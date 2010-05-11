@@ -10,6 +10,7 @@ import ee.ut.converter.parser.ElementParser;
 public final class RelayFactory extends AbstractElementFactory {
 
 	protected Map<Object, AbstractElementFactory> factories = new HashMap<Object, AbstractElementFactory>();
+	protected AbstractElementFactory connectorFactory = null;
 
 	public RelayFactory(CPNProcess cPNProcess, ElementParser elementParser) {
 		super(cPNProcess, elementParser);
@@ -30,5 +31,18 @@ public final class RelayFactory extends AbstractElementFactory {
 		if (concrete == null)
 			throw new Exception("Factory missing for object: " + obj);
 		return concrete.create(obj);
+	}
+
+	public void connectElements(Element convertedElement, Element element)
+			throws Exception {
+		if (connectorFactory == null)
+			throw new Exception("Missing connector factory!");
+
+		connectorFactory.create(new Object[] { convertedElement, element });
+	}
+
+	public void registerConnectorFactory(AbstractElementFactory concrete) {
+		connectorFactory = concrete;
+
 	}
 }

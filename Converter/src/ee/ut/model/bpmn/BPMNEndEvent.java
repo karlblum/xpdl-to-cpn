@@ -1,6 +1,5 @@
 package ee.ut.model.bpmn;
 
-import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -17,14 +16,20 @@ public class BPMNEndEvent extends BPMNElement {
 		elementId = elementParser.getId(obj);
 	}
 
-	public Place getInputPlace() {
-		return cPNProcess.getCpnet().getPlace(endPlaceId);
-	}
-
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		return endPlaceId;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return null;
 	}
 
 }

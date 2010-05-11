@@ -216,9 +216,8 @@ public class CPNet {
 			if (!p.getId().equals("PAGE_GENERATOR")) {
 				try {
 					doLayouting(p);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} catch (Exception e) {
+					System.err.println("LAYOUTING FAILED!");
 				}
 			}
 		}

@@ -2,7 +2,6 @@ package ee.ut.model.bpmn;
 
 import java.util.HashMap;
 
-import noNamespace.Place;
 import noNamespace.Subst;
 import noNamespace.Trans;
 import ee.ut.converter.CPNProcess;
@@ -32,10 +31,6 @@ public class BPMNStartEvent extends BPMNElement {
 		Subst subst = cPNProcess.getCpnet().addSubst(trans, "PAGE_GENERATOR");
 		subst.setPortsock(String.format("(%s,%s)", "ID1264234111",
 				outputPlaceId)); // TODO: modify the place id in cpnet template
-	}
-
-	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
 	}
 
 	@Override
@@ -73,6 +68,16 @@ public class BPMNStartEvent extends BPMNElement {
 
 		cPNProcess.getCpnet().setResourcePlaceValue(resourceString);
 
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		return null;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return outputPlaceId;
 	}
 
 }

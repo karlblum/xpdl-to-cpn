@@ -1,6 +1,5 @@
 package ee.ut.model.bpmn;
 
-import noNamespace.Place;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.parser.ElementParser;
 import ee.ut.converter.parser.SimDataParser;
@@ -47,17 +46,19 @@ public class BPMNSubprocessStart extends BPMNElement {
 		// END TODO:
 	}
 
-	public Place getInputPlace() {
-		return cPNProcess.getCpnet().getPlace(startPlaceId);
-	}
-
-	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
-	}
-
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public String getInputPlaceId() {
+		return startPlaceId;
+	}
+
+	@Override
+	public String getOutputPlaceId(String ref) {
+		return outputPlaceId;
 	}
 }
