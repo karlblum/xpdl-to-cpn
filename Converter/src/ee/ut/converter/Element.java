@@ -2,13 +2,19 @@ package ee.ut.converter;
 
 import ee.ut.converter.parser.SimDataParser;
 
-public interface Element {
+public abstract class Element {
 
-	public String getId();
+	protected CPNProcess cPNProcess;
+	protected String elementId;
+	protected String elementName;
 
-	public void addSimulationData(SimDataParser simDataParser);
+	public String getId() {
+		return elementId;
+	}
 
-	public String getInputPlaceId();
+	public abstract void addSimulationData(SimDataParser simDataParser);
 
-	public String getOutputPlaceId(String ref);
+	public abstract String getInputPlaceId();
+
+	public abstract String getOutputPlaceId(String ref);
 }

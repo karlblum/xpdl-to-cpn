@@ -7,10 +7,14 @@ import ee.ut.converter.CPNProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.parser.ElementParser;
 
-public final class RelayFactory extends AbstractElementFactory {
+public abstract class RelayFactory extends AbstractElementFactory {
 
 	protected Map<Object, AbstractElementFactory> factories = new HashMap<Object, AbstractElementFactory>();
 	protected AbstractElementFactory connectorFactory = null;
+
+	public RelayFactory() {
+		super();
+	}
 
 	public RelayFactory(CPNProcess cPNProcess, ElementParser elementParser) {
 		super(cPNProcess, elementParser);
@@ -45,4 +49,6 @@ public final class RelayFactory extends AbstractElementFactory {
 		connectorFactory = concrete;
 
 	}
+
+	public abstract void prepareFactory();
 }

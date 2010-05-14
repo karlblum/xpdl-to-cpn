@@ -2,12 +2,17 @@ package ee.ut.converter.parser;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import ee.ut.converter.Element;
 import ee.ut.model.bpmn.BPMNElement;
 import ee.ut.model.bpmn.BPMNGateway.GatewayType;
 import ee.ut.model.xpdl2.Activities;
@@ -30,8 +35,15 @@ import ee.ut.model.xpdl2.Transitions;
 public class XPDL2ElementParser implements ElementParser {
 
 	ProcessType xpdlProcess;
-	ArrayList<Activity> allActivities = new ArrayList<Activity>();
+	HashMap<String, Activity> allActivities = new HashMap<String, Activity>();
 	ArrayList<Transition> allTransitions = new ArrayList<Transition>();
+	protected Map<Activity, List<Activity>> adjList = new HashMap<Activity, List<Activity>>();
+
+	public void addEdge(Activity v1, Activity v2) {
+		if (!adjList.containsKey(v1))
+			adjList.put(v1, new LinkedList<Activity>());
+		adjList.get(v1).add(v2);
+	}
 
 	public XPDL2ElementParser(File processFile) {
 
@@ -43,12 +55,16 @@ public class XPDL2ElementParser implements ElementParser {
 
 		for (Object o : xpdlProcess.getContent()) {
 			if (o instanceof Activities) {
-				allActivities.addAll(((Activities) o).getActivity());
+				for (Activity a : ((Activities) o).getActivity()) {
+					allActivities.put(a.getId(), a);
+				}
 			} else if (o instanceof Transitions) {
 				allTransitions.addAll(((Transitions) o).getTransition());
 			} else if (o instanceof ActivitySets) {
 				for (ActivitySet aset : ((ActivitySets) o).getActivitySet()) {
-					allActivities.addAll(aset.getActivities().getActivity());
+					for (Activity a : aset.getActivities().getActivity()) {
+						allActivities.put(a.getId(), a);
+					}
 					allTransitions
 							.addAll(aset.getTransitions().getTransition());
 				}
@@ -56,6 +72,10 @@ public class XPDL2ElementParser implements ElementParser {
 			}
 		}
 
+		for (Transition t : allTransitions) {
+			addEdge(allActivities.get(t.getFrom()), allActivities
+					.get(t.getTo()));
+		}
 	}
 
 	@Override
@@ -291,7 +311,9 @@ public class XPDL2ElementParser implements ElementParser {
 	public ArrayList<Object> getNextElements(Object element) {
 		ArrayList<Object> nextElems = new ArrayList<Object>();
 
-		nextElems.addAll(getNextActivities((Activity) element));
+		if (adjList.get(element) != null) {
+			nextElems.addAll(adjList.get(element));
+		}
 		nextElems.addAll(getBoundElements((Activity) element));
 
 		return nextElems;
@@ -299,28 +321,6 @@ public class XPDL2ElementParser implements ElementParser {
 
 	private ArrayList<Object> getBoundElements(Activity element) {
 		ArrayList<Object> nextElems = new ArrayList<Object>();
-		return nextElems;
-	}
-
-	/**
-	 * Method searches for all the next connected activities.
-	 * 
-	 * @param element
-	 * @return
-	 */
-	private ArrayList<Object> getNextActivities(Activity element) {
-		ArrayList<Object> nextElems = new ArrayList<Object>();
-
-		for (Transition t : allTransitions) {
-			if (t.getFrom().equals(element.getId())) {
-				for (Activity a : allActivities) {
-					if (a.getId().equals(t.getTo())) {
-						nextElems.add(a);
-					}
-				}
-			}
-		}
-
 		return nextElems;
 	}
 
