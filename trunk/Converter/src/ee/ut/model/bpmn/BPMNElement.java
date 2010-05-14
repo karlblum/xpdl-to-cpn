@@ -3,11 +3,7 @@ package ee.ut.model.bpmn;
 import ee.ut.converter.CPNProcess;
 import ee.ut.converter.Element;
 
-public abstract class BPMNElement implements Element {
-
-	protected CPNProcess cPNProcess;
-	protected String elementId;
-	protected String elementName;
+public abstract class BPMNElement extends Element {
 
 	public static final int TASK = 0;
 	public static final int GATEWAY = 1;

@@ -2,8 +2,10 @@ package test;
 
 import java.io.File;
 
-import ee.ut.converter.CPNProcess;
-import ee.ut.model.bpmn.BPMNProcess;
+import ee.ut.converter.factory.BPMNRelayFactory;
+import ee.ut.converter.parser.KBSimDataParser;
+import ee.ut.converter.parser.Parser;
+import ee.ut.converter.parser.XPDL2ElementParser;
 
 public class TestCPNModel {
 
@@ -15,10 +17,18 @@ public class TestCPNModel {
 		// Simulation data to the corresponding XPDL simulation model
 		File simDataFile = new File("./files/models/Empty simulation data.xml");
 
-		CPNProcess p = new BPMNProcess(xpdlFile, simDataFile);
+		// CPNProcess p = new BPMNProcess(xpdlFile, simDataFile);
 
 		// OUTPUT FILE
-		p.saveToCPN("./files/cpn/test4.cpn");
+		// p.saveToCPN("./files/cpn/test4.cpn");
+
+		Parser p = new Parser();
+		p.setElementFactory(new BPMNRelayFactory());
+		p.setElementParser(new XPDL2ElementParser(xpdlFile));
+		p.setSimDataParser(new KBSimDataParser(simDataFile));
+		p.parse();
+		p.printAdjList();
+		p.save();
 	}
 
 }

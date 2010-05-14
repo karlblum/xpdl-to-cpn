@@ -14,6 +14,8 @@ public class BPMNTransition extends BPMNElement {
 		Element objectFrom = (Element) ((Object[]) object)[1];
 		Element objectTo = (Element) ((Object[]) object)[0];
 
+		cPNProcess.addEdge(objectFrom, objectTo);
+		
 		// If we have a connection from XOR gateway to Message intermediate
 		// event (Event based XOR gateway), then we let the message event know
 		// where it has to get its delay range if there are timers present in
