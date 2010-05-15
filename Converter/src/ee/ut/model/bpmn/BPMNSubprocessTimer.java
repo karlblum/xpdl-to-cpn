@@ -1,7 +1,7 @@
 package ee.ut.model.bpmn;
 
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNSubprocessTimer extends BPMNElement {
@@ -13,37 +13,36 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	String completeTransId;
 	String parentProcessId;
 
-	public BPMNSubprocessTimer(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
-		elementId = elementParser.getId(obj);
-		elementName = elementParser.getName(obj);
+	public BPMNSubprocessTimer(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		okPlaceId = cPNProcess.getCpnet().addPlace(elementName + "OK").getId();
-		nokPlaceId = cPNProcess.getCpnet().addPlace(elementName + "NOK")
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
+
+		okPlaceId = process.getCpnet().addPlace(elementName + "OK").getId();
+		nokPlaceId = process.getCpnet().addPlace(elementName + "NOK").getId();
+		timerTokenPlaceId = process.getCpnet().addPlace(elementName + "TIMER")
 				.getId();
-		timerTokenPlaceId = cPNProcess.getCpnet().addPlace(
-				elementName + "TIMER").getId();
-		String exeptionTransId = cPNProcess.getCpnet().addTrans(
+		String exeptionTransId = process.getCpnet().addTrans(
 				elementName + "EXCEPTION").getId();
-		outputPlaceId = cPNProcess.getCpnet().addPlace(
-				elementName + "TIMER OUT").getId();
+		outputPlaceId = process.getCpnet().addPlace(elementName + "TIMER OUT")
+				.getId();
 
-		cPNProcess.getCpnet().addArc(okPlaceId, exeptionTransId);
-		cPNProcess.getCpnet().addArc(exeptionTransId, nokPlaceId);
+		process.getCpnet().addArc(okPlaceId, exeptionTransId);
+		process.getCpnet().addArc(exeptionTransId, nokPlaceId);
 
-		cPNProcess.getCpnet().addArc(timerTokenPlaceId, exeptionTransId);
+		process.getCpnet().addArc(timerTokenPlaceId, exeptionTransId);
 
-		parentProcessId = elementParser.getBoundaryEventTaskId(obj);
+		parentProcessId = parser.getElementParser().getBoundaryEventTaskId(o);
 
 	}
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		BPMNSubprocess parentProcess = (BPMNSubprocess) cPNProcess
-				.getElement(parentProcessId);
-		parentProcess.setBoundTimer(this);
-
+		/*
+		 * BPMNSubprocess parentProcess = (BPMNSubprocess) process
+		 * .getElement(parentProcessId); parentProcess.setBoundTimer(this);
+		 */
 	}
 
 	public String getOKPlaceId() {

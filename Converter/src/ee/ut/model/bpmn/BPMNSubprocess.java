@@ -2,8 +2,8 @@ package ee.ut.model.bpmn;
 
 import java.util.ArrayList;
 
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNSubprocess extends BPMNElement {
@@ -15,12 +15,18 @@ public class BPMNSubprocess extends BPMNElement {
 	private String subProcessId;
 	ArrayList<BPMNTask> bpmnTasks = new ArrayList<BPMNTask>();
 
-	public BPMNSubprocess(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
-		elementId = elementParser.getId(obj);
-		elementName = elementParser.getName(obj);
-		subProcessId = elementParser.getSubprocessId(obj);
+	public BPMNSubprocess(BProcess pr, Parser p, Object o) throws Exception {
+		super(p, pr);
+
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
+		subProcessId = parser.getElementParser().getSubprocessId(o);
+
+		BProcess subProcess = process.createSubprocess(subProcessId);
+		parser.parse(subProcess);
+
+		startPlaceId = subProcess.getSource().getInputPlaceId();
+		endPlaceId = subProcess.getSource().getOutputPlaceId(null);
 	}
 
 	@Override
@@ -51,9 +57,9 @@ public class BPMNSubprocess extends BPMNElement {
 					bpmnSubprocessTimer.getOKPlaceId());
 		}
 
-		cPNProcess.getCpnet().addArc(timerTransitionId,
+		process.getCpnet().addArc(timerTransitionId,
 				bpmnSubprocessTimer.getOKPlaceId());
-		cPNProcess.getCpnet().addArc(timerTransitionId,
+		process.getCpnet().addArc(timerTransitionId,
 				bpmnSubprocessTimer.getTimerTokenPlaceId());
 
 	}

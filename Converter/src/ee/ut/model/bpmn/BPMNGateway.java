@@ -3,8 +3,8 @@ package ee.ut.model.bpmn;
 import java.util.HashMap;
 
 import noNamespace.Place;
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 /**
@@ -17,17 +17,15 @@ public class BPMNGateway extends BPMNElement {
 	private GatewayType gwType;
 	private int ebXORTimerDelay;
 
-	public BPMNGateway(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
+	public BPMNGateway(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		elementId = elementParser.getId(obj);
-		elementName = elementParser.getName(obj);
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
 
-		setGwType((GatewayType) elementParser.getGatewayType(obj));
+		setGwType((GatewayType) parser.getElementParser().getGatewayType(o));
 
-		gatewayTransitionId = cPNProcess.getCpnet().addTrans(elementName)
-				.getId();
+		gatewayTransitionId = process.getCpnet().addTrans(elementName).getId();
 
 	}
 
@@ -44,14 +42,13 @@ public class BPMNGateway extends BPMNElement {
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {
 			if (gatewayPlaceId == null) {
-				gatewayPlaceId = cPNProcess.getCpnet().addPlace().getId();
-				cPNProcess.getCpnet().addArc(gatewayPlaceId,
-						gatewayTransitionId);
+				gatewayPlaceId = process.getCpnet().addPlace().getId();
+				process.getCpnet().addArc(gatewayPlaceId, gatewayTransitionId);
 			}
-			p = cPNProcess.getCpnet().getPlace(gatewayPlaceId);
+			p = process.getCpnet().getPlace(gatewayPlaceId);
 		} else {
-			p = cPNProcess.getCpnet().addPlace();
-			cPNProcess.getCpnet().addArc(p.getId(), gatewayTransitionId);
+			p = process.getCpnet().addPlace();
+			process.getCpnet().addArc(p.getId(), gatewayTransitionId);
 		}
 		return p.getId();
 	}
@@ -59,21 +56,21 @@ public class BPMNGateway extends BPMNElement {
 	@Override
 	public String getOutputPlaceId(String id) {
 
-		Place p = cPNProcess.getCpnet().addPlace();
-		String arcId = cPNProcess.getCpnet().addArc(gatewayTransitionId,
-				p.getId()).getId();
+		Place p = process.getCpnet().addPlace();
+		String arcId = process.getCpnet()
+				.addArc(gatewayTransitionId, p.getId()).getId();
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {
 			String arcAnnotation = "(if path=" + id + " then 1`"
-					+ cPNProcess.getCpnet().getFlowObjectVariable()
+					+ process.getCpnet().getFlowObjectVariable()
 					+ " else empty)";
-			cPNProcess.getCpnet().setArcAnnot(arcId, arcAnnotation);
+			process.getCpnet().setArcAnnot(arcId, arcAnnotation);
 
 			// We set the default route for the gateway to the latest output
 			// created. This is needed if we have only one output
 			String function = "input ();\noutput (path);\naction\n(\n" + id
 					+ "\n);";
-			cPNProcess.getCpnet().setTransitionAction(gatewayTransitionId,
+			process.getCpnet().setTransitionAction(gatewayTransitionId,
 					function);
 		}
 
@@ -119,7 +116,7 @@ public class BPMNGateway extends BPMNElement {
 						+ function.subSequence(idxLastThen + 5, function
 								.length());
 
-				cPNProcess.getCpnet().setTransitionAction(gatewayTransitionId,
+				process.getCpnet().setTransitionAction(gatewayTransitionId,
 						function);
 			}
 		}

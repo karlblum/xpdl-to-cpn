@@ -1,7 +1,7 @@
 package ee.ut.model.bpmn;
 
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNIntermediateMessageEvent extends BPMNElement {
@@ -11,23 +11,20 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 	String delayArcId;
 	String ebXORId;
 
-	public BPMNIntermediateMessageEvent(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
+	public BPMNIntermediateMessageEvent(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		elementName = elementParser.getName(obj);
-		elementId = elementParser.getId(obj);
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
 
-		inputPlaceId = cPNProcess.getCpnet().addPlace(elementName + "IN")
-				.getId();
-		String transitionId = cPNProcess.getCpnet().addTrans(elementName)
-				.getId();
+		inputPlaceId = process.getCpnet().addPlace(elementName + "IN").getId();
+		String transitionId = process.getCpnet().addTrans(elementName).getId();
 
-		cPNProcess.getCpnet().addArc(inputPlaceId, transitionId);
-		outputPlaceId = cPNProcess.getCpnet().addPlace(elementName + "OUT")
+		process.getCpnet().addArc(inputPlaceId, transitionId);
+		outputPlaceId = process.getCpnet().addPlace(elementName + "OUT")
 				.getId();
 
-		delayArcId = cPNProcess.getCpnet().addArc(transitionId, outputPlaceId)
+		delayArcId = process.getCpnet().addArc(transitionId, outputPlaceId)
 				.getId();
 	}
 
@@ -36,10 +33,10 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 
 		boolean timerPresent = false;
 		if (ebXORId != null) {
-			BPMNGateway gw = (BPMNGateway) cPNProcess.getElement(ebXORId);
+			BPMNGateway gw = (BPMNGateway) process.getElement(ebXORId);
 			int timerDelay = gw.getEBXORTimerDelay();
 			if (timerDelay > 0) {
-				cPNProcess.getCpnet().setArcAnnot(delayArcId,
+				process.getCpnet().setArcAnnot(delayArcId,
 						"c@+round(uniform(0.0," + timerDelay + ".0))");
 				timerPresent = true;
 			}

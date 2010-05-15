@@ -1,20 +1,19 @@
 package ee.ut.converter.factory;
 
-import ee.ut.converter.CPNProcess;
+import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.parser.Parser;
 import ee.ut.model.bpmn.BPMNIntermediateTimerEvent;
 
 public class BPMNIntermediateTimerEventFactory extends AbstractElementFactory {
 
-	public BPMNIntermediateTimerEventFactory(CPNProcess cPNProcess,
-			ElementParser elementParser) {
-		super(cPNProcess, elementParser);
+	public BPMNIntermediateTimerEventFactory(Parser p) {
+		super(p);
 	}
 
 	@Override
-	public Element create(Object obj) throws Exception {
-		return new BPMNIntermediateTimerEvent(cPNProcess, obj, elementParser);
+	public Element create(BProcess pr, Object obj) throws Exception {
+		return new BPMNIntermediateTimerEvent(pr, parser, obj);
 	}
 
 }

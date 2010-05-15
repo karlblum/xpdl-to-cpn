@@ -1,19 +1,21 @@
 package ee.ut.model.bpmn;
 
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNEndEvent extends BPMNElement {
 
 	String endPlaceId;
 
-	public BPMNEndEvent(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
+	public BPMNEndEvent(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		this.endPlaceId = cPNProcess.getCpnet().addPlace().getId();
-		elementId = elementParser.getId(obj);
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
+
+		this.endPlaceId = process.getCpnet().addPlace().getId();
+		elementId = parser.getElementParser().getId(o);
 	}
 
 	@Override
@@ -29,7 +31,7 @@ public class BPMNEndEvent extends BPMNElement {
 
 	@Override
 	public String getOutputPlaceId(String ref) {
-		return null;
+		return endPlaceId;
 	}
 
 }
