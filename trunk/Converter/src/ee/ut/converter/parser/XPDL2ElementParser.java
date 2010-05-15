@@ -20,6 +20,7 @@ import ee.ut.model.xpdl2.ActivitySet;
 import ee.ut.model.xpdl2.ActivitySets;
 import ee.ut.model.xpdl2.BlockActivity;
 import ee.ut.model.xpdl2.Event;
+import ee.ut.model.xpdl2.IntermediateEvent;
 import ee.ut.model.xpdl2.PackageType;
 import ee.ut.model.xpdl2.ProcessType;
 import ee.ut.model.xpdl2.Route;
@@ -42,6 +43,7 @@ public class XPDL2ElementParser implements ElementParser {
 
 	protected HashMap<String, List<Activity>> sinks = new HashMap<String, List<Activity>>();
 	protected HashMap<String, List<Activity>> sources = new HashMap<String, List<Activity>>();
+	private HashMap<String, Activity> boundEvents = new HashMap<String, Activity>();
 
 	private void addEdge(Activity v1, Activity v2) {
 		if (!adjList.containsKey(v1)) {
@@ -111,21 +113,18 @@ public class XPDL2ElementParser implements ElementParser {
 
 		activities.get(processId).put(a.getId(), a);
 		activityToProcess.put(a.getId(), processId);
-
 	}
 
 	private void addSink(String processId, Activity a) {
 		if (sinks.get(processId) == null)
 			sinks.put(processId, new LinkedList<Activity>());
 		sinks.get(processId).add(a);
-
 	}
 
 	private void addSource(String processId, List<Activity> s) {
 		if (sources.get(processId) == null)
 			sources.put(processId, new LinkedList<Activity>());
 		sources.get(processId).addAll(s);
-
 	}
 
 	public XPDL2ElementParser(File processFile) {
@@ -140,6 +139,7 @@ public class XPDL2ElementParser implements ElementParser {
 			if (o instanceof Activities) {
 				for (Activity a : ((Activities) o).getActivity()) {
 					addProcessActivity("0", a);
+					ifBoundEventAddTransition(a);
 				}
 			} else if (o instanceof Transitions) {
 				transitions.addAll(((Transitions) o).getTransition());
@@ -147,10 +147,10 @@ public class XPDL2ElementParser implements ElementParser {
 				for (ActivitySet aset : ((ActivitySets) o).getActivitySet()) {
 					for (Activity a : aset.getActivities().getActivity()) {
 						addProcessActivity(aset.getId(), a);
+						ifBoundEventAddTransition(a);
 					}
 					transitions.addAll(aset.getTransitions().getTransition());
 				}
-
 			}
 		}
 
@@ -159,6 +159,18 @@ public class XPDL2ElementParser implements ElementParser {
 			addEdge(activities.get(activityToProcess.get(t.getFrom())).get(
 					t.getFrom()), activities.get(
 					activityToProcess.get(t.getTo())).get(t.getTo()));
+		}
+		
+		// Add bounded events to the adjacency list. This is done separately because there is no transition between boundary events.
+		for(String target: boundEvents.keySet()){
+			for(String p: activities.keySet()){
+				if(activities.get(p).containsKey(target)){
+					addEdge(activities.get(p).get(target), boundEvents.get(target));
+					//DEBUG
+					System.out.println("Found boundary event: "+ boundEvents.get(target).getId() + " (" + boundEvents.get(target).getName() + ")");
+					//DEBUG END
+				}
+			}
 		}
 
 		// Find sinks
@@ -170,6 +182,18 @@ public class XPDL2ElementParser implements ElementParser {
 		// DEBUG
 		printAdjList();
 		// DEBUG END
+	}
+
+	private void ifBoundEventAddTransition(Activity a) {
+		for(Object c: a.getContent()){
+			if(c instanceof Event){
+				IntermediateEvent ie = ((Event)c).getIntermediateEvent();
+				if(ie != null && ie.getTarget() != null){
+					boundEvents.put(ie.getTarget(), a);
+				}
+										
+			}
+		}
 	}
 
 	@Override

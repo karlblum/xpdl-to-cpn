@@ -11,7 +11,6 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	String nokPlaceId;
 	String timerTokenPlaceId;
 	String completeTransId;
-	String parentProcessId;
 
 	public BPMNSubprocessTimer(BProcess pr, Parser p, Object o) {
 		super(p, pr);
@@ -33,7 +32,7 @@ public class BPMNSubprocessTimer extends BPMNElement {
 
 		process.getCpnet().addArc(timerTokenPlaceId, exeptionTransId);
 
-		parentProcessId = parser.getElementParser().getBoundaryEventTaskId(o);
+		//parentProcessId = parser.getElementParser().getBoundaryEventTaskId(o);
 
 	}
 
