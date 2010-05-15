@@ -12,6 +12,7 @@ public class BPMNeEBXORGateway extends BPMNeXORGateway implements BPMNeGateway {
 		super(page, name, type, color, variable);
 	}
 
+	@Override
 	public Place addExitPlace(String to) {
 		return splittingPlace;
 	}

@@ -10,6 +10,7 @@ public class BPMNRelayFactory extends RelayFactory {
 		prepareFactory();
 	}
 
+	@Override
 	public void prepareFactory() {
 		resetFactoryMap();
 		registerFactory(BPMNElement.TASK, new BPMNTaskFactory(parser));
@@ -28,7 +29,7 @@ public class BPMNRelayFactory extends RelayFactory {
 				new BPMNBoundTimerEventFactory(parser));
 		registerFactory(BPMNElement.SUB_PROCESS_TIMER_EVENT,
 				new BPMNSubprocessTimerFactory(parser));
-		registerFactory(BPMNElement.SUB_PROCESS, new BPMNSubProcessFactory(
+		registerFactory(BPMNElement.SUB_PROCESS, new BPMNSubprocessFactory(
 				parser));
 
 		registerConnectorFactory(new BPMNTransitionFactory(parser));

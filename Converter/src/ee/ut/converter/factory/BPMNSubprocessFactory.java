@@ -5,9 +5,9 @@ import ee.ut.converter.Element;
 import ee.ut.converter.parser.Parser;
 import ee.ut.model.bpmn.BPMNSubprocess;
 
-public class BPMNSubProcessFactory extends AbstractElementFactory {
+public class BPMNSubprocessFactory extends AbstractElementFactory {
 
-	public BPMNSubProcessFactory(Parser p) {
+	public BPMNSubprocessFactory(Parser p) {
 		super(p);
 	}
 
