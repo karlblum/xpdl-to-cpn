@@ -4,22 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
-import ee.ut.converter.CPNProcess;
+import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.factory.RelayFactory;
 import ee.ut.model.xpdl2.Activity;
 
 public class Parser {
 
-	ElementParser elementParser;
-	SimDataParser simDataParser;
-	RelayFactory relayFactory;
-	CPNProcess process = new CPNProcess();
-	
+	private ElementParser elementParser;
+	private SimDataParser simDataParser;
+	private RelayFactory relayFactory;
+	private BProcess rootProcess = new BProcess(null, "0");
 
 	public void setElementParser(ElementParser p) {
 		elementParser = p;
-		prepare();
 	}
 
 	public void setSimDataParser(SimDataParser p) {
@@ -28,13 +26,18 @@ public class Parser {
 
 	public void setElementFactory(RelayFactory f) {
 		relayFactory = f;
-
 	}
 
-	public CPNProcess parse() throws Exception {
+	public BProcess parse() throws Exception {
+		return parse(rootProcess);
+	}
 
+	public BProcess parse(BProcess p) throws Exception {
+		System.out.println("\n\n===== STARTING TO CONVERT PROCESS: "
+				+ p.getId() + " =====");
+
+		Object startElement = elementParser.getSource(p.getId());
 		Stack<Object> elementsToParse = new Stack<Object>();
-		Object startElement = elementParser.getStartElement();
 		elementsToParse.push(startElement);
 
 		HashMap<Object, Element> parsedElements = new HashMap<Object, Element>();
@@ -52,17 +55,15 @@ public class Parser {
 					.getNextElements(element);
 
 			if (!parsedElements.containsKey(element)) {
-				convertedElement = relayFactory.create(element);
-				process.addElement(convertedElement.getId(),
-						convertedElement);
+				convertedElement = relayFactory.create(p, element);
+				p.addElement(convertedElement.getId(), convertedElement);
 				parsedElements.put(element, convertedElement);
 			}
 
-			if (convertedElement != null){
+			if (convertedElement != null) {
 				System.out.println("Converted elem:"
 						+ ((Activity) element).getId() + " to: "
 						+ convertedElement);
-
 
 				for (Object e : nextElements) {
 					elementsToParse.push(e);
@@ -72,31 +73,39 @@ public class Parser {
 
 			// Here we connect the two object
 			if (prevElem != null) {
-				relayFactory.connectElements(parsedElements.get(element),
-						process.getElement(prevElem));
+				relayFactory.connectElements(p, parsedElements.get(element), p
+						.getElement(prevElem));
 				System.out.println("Transition: "
-						+ parsedElements.get(element).getId() + " -> "
-						+ process.getElement(prevElem).getId());
-				
+						+ p.getElement(prevElem).getId() + " -> "
+						+ parsedElements.get(element).getId());
+
 			}
 		}
 
-		return process;
+		p.printAdjList();
+		p.findSink();
+		p.findSource();
+		return p;
 	}
 
-	private void prepare() {
-		relayFactory.setcPNProcess(process);
-		relayFactory.setElementParser(elementParser);
-		relayFactory.prepareFactory();
-
+	public void save(String s) {
+		rootProcess.saveToCPN(s);
 	}
 
-	public void save() {
-		process.saveToCPN("newArchitecture.cpn");
+	public ElementParser getElementParser() {
+		return elementParser;
 	}
 
-	public void printAdjList() {
-		process.printAdjList();
+	public SimDataParser getSimDataParser() {
+		return simDataParser;
+	}
+
+	public RelayFactory getRelayFactory() {
+		return relayFactory;
+	}
+
+	public BProcess getRootProcess() {
+		return rootProcess;
 	}
 
 }

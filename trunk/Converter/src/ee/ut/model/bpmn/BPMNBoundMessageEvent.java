@@ -1,7 +1,7 @@
 package ee.ut.model.bpmn;
 
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNBoundMessageEvent extends BPMNElement {
@@ -12,26 +12,24 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 	private String inputPlaceId;
 	private String delayArcId;
 
-	public BPMNBoundMessageEvent(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
+	public BPMNBoundMessageEvent(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		elementId = elementParser.getId(obj);
-		elementName = elementParser.getName(obj);
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
 
-		inputPlaceId = cPNProcess.getCpnet().addPlace(elementName + "IN")
+		inputPlaceId = process.getCpnet().addPlace(elementName + "IN").getId();
+
+		outputPlaceId = process.getCpnet().addPlace(elementName + "OUT")
 				.getId();
 
-		outputPlaceId = cPNProcess.getCpnet().addPlace(elementName + "OUT")
-				.getId();
+		String t = process.getCpnet().addTrans().getId();
 
-		String t = cPNProcess.getCpnet().addTrans().getId();
+		process.getCpnet().addArc(inputPlaceId, t);
+		delayArcId = process.getCpnet().addArc(t, outputPlaceId).getId();
 
-		cPNProcess.getCpnet().addArc(inputPlaceId, t);
-		delayArcId = cPNProcess.getCpnet().addArc(t, outputPlaceId).getId();
-
-		taskId = elementParser.getBoundaryEventTaskId(obj);
-		BPMNTask task = (BPMNTask) cPNProcess.getElement(taskId);
+		taskId = parser.getElementParser().getBoundaryEventTaskId(o);
+		BPMNTask task = (BPMNTask) process.getElement(taskId);
 		task.addBounMessageEvent(this);
 	}
 
@@ -39,12 +37,12 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 	public void addSimulationData(SimDataParser simDataParser) {
 		int probability = simDataParser
 				.getBoundMessageEventProbability(elementId);
-		BPMNTask task = (BPMNTask) cPNProcess.getElement(taskId);
+		BPMNTask task = (BPMNTask) process.getElement(taskId);
 		task.setBoundMessageEventProbability(elementId, probability);
 
 		int i = task.getBoundTimer();
 		if (i > 0) {
-			cPNProcess.getCpnet().setArcAnnot(delayArcId,
+			process.getCpnet().setArcAnnot(delayArcId,
 					"@+round(uniform(0.0," + i + ".0))");
 		}
 

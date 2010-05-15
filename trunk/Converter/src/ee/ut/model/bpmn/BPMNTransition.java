@@ -1,21 +1,23 @@
 package ee.ut.model.bpmn;
 
-import ee.ut.converter.CPNProcess;
+import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNTransition extends BPMNElement {
 
-	public BPMNTransition(CPNProcess cPNProcess, Object object,
-			ElementParser elementParser) throws Exception {
-		super(cPNProcess);
+	public BPMNTransition(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		Element objectFrom = (Element) ((Object[]) object)[1];
-		Element objectTo = (Element) ((Object[]) object)[0];
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
 
-		cPNProcess.addEdge(objectFrom, objectTo);
-		
+		Element objectFrom = (Element) ((Object[]) o)[1];
+		Element objectTo = (Element) ((Object[]) o)[0];
+
+		process.addEdge(objectFrom, objectTo);
+
 		// If we have a connection from XOR gateway to Message intermediate
 		// event (Event based XOR gateway), then we let the message event know
 		// where it has to get its delay range if there are timers present in
@@ -36,11 +38,10 @@ public class BPMNTransition extends BPMNElement {
 							.getTimerDelay());
 		}
 
-		String transId = cPNProcess.getCpnet().addTrans().getId();
+		String transId = process.getCpnet().addTrans().getId();
 
-		cPNProcess.getCpnet()
-				.addArc(objectFrom.getOutputPlaceId(null), transId);
-		cPNProcess.getCpnet().addArc(transId, objectTo.getInputPlaceId());
+		process.getCpnet().addArc(objectFrom.getOutputPlaceId(null), transId);
+		process.getCpnet().addArc(transId, objectTo.getInputPlaceId());
 	}
 
 	@Override

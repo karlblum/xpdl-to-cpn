@@ -1,7 +1,8 @@
 package ee.ut.model.bpmn;
 
-import ee.ut.converter.CPNProcess;
+import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
+import ee.ut.converter.parser.Parser;
 
 public abstract class BPMNElement extends Element {
 
@@ -19,19 +20,8 @@ public abstract class BPMNElement extends Element {
 	public static final int SUB_PROCESS_END = 11;
 	public static final int SUB_PROCESS_TIMER_EVENT = 12;
 
-	public BPMNElement(CPNProcess cPNProcess) {
-		this.cPNProcess = cPNProcess;
+	public BPMNElement(Parser p, BProcess pr) {
+		super(p, pr);
 	}
 
-	public String getId() {
-		return elementId;
-	}
-
-	public void setId(String id) {
-		elementId = id;
-	}
-
-	public void setName(String name) {
-		this.elementName = name;
-	}
 }

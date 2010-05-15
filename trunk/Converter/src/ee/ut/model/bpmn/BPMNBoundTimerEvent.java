@@ -1,32 +1,32 @@
 package ee.ut.model.bpmn;
 
 import noNamespace.Place;
-import ee.ut.converter.CPNProcess;
-import ee.ut.converter.parser.ElementParser;
+import ee.ut.converter.BProcess;
+import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNBoundTimerEvent extends BPMNElement {
 	private String taskId;
 	private String outputPlaceId;
 
-	public BPMNBoundTimerEvent(CPNProcess cPNProcess, Object obj,
-			ElementParser elementParser) {
-		super(cPNProcess);
-		elementId = elementParser.getId(obj);
-		elementName = elementParser.getName(obj);
-		taskId = elementParser.getBoundaryEventTaskId(obj);
+	public BPMNBoundTimerEvent(BProcess pr, Parser p, Object o) {
+		super(p, pr);
 
-		BPMNTask task = (BPMNTask) cPNProcess.getElement(taskId);
+		elementId = parser.getElementParser().getId(o);
+		elementName = parser.getElementParser().getName(o);
+		taskId = parser.getElementParser().getBoundaryEventTaskId(o);
+
+		BPMNTask task = (BPMNTask) process.getElement(taskId);
 		String placeId = task.getBoundTimerPlaceId();
-		String transId = cPNProcess.getCpnet().addTrans(elementName + " EVENT")
+		String transId = process.getCpnet().addTrans(elementName + " EVENT")
 				.getId();
-		outputPlaceId = cPNProcess.getCpnet().addPlace(elementName + " OUT")
+		outputPlaceId = process.getCpnet().addPlace(elementName + " OUT")
 				.getId();
-		cPNProcess.getCpnet().addArc(placeId, transId);
-		cPNProcess.getCpnet().addArc(transId, outputPlaceId);
+		process.getCpnet().addArc(placeId, transId);
+		process.getCpnet().addArc(transId, outputPlaceId);
 
-		int timer = elementParser.getEventTimer(obj);
-		task = (BPMNTask) cPNProcess.getElement(taskId);
+		int timer = parser.getElementParser().getEventTimer(o);
+		task = (BPMNTask) process.getElement(taskId);
 		task.setBoundTimer(timer);
 
 	}
@@ -37,7 +37,7 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 	}
 
 	public Place getOutputPlace() {
-		return cPNProcess.getCpnet().getPlace(outputPlaceId);
+		return process.getCpnet().getPlace(outputPlaceId);
 	}
 
 	@Override

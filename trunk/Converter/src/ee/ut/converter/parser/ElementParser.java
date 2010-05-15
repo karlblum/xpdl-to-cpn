@@ -20,9 +20,9 @@ public interface ElementParser {
 
 	public int getEventTimer(Object o);
 
-	public String getSubprocessId(Object obj);
-
-	public Object getStartElement();
-
 	public ArrayList<Object> getNextElements(Object element);
+
+	public Object getSource(String process);
+
+	public String getSubprocessId(Object o);
 }
