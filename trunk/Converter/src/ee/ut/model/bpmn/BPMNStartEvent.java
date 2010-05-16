@@ -13,7 +13,7 @@ public class BPMNStartEvent extends BPMNElement {
 	private String outputPlaceId;
 	private String transitionId;
 
-	public BPMNStartEvent(BProcess pr, Parser p, Object o) {
+	public BPMNStartEvent(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);

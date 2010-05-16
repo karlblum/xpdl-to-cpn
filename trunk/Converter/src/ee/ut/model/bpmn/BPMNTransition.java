@@ -28,6 +28,11 @@ public class BPMNTransition extends BPMNElement {
 			((BPMNSubprocess)objectFrom).setBoundTimer((BPMNSubprocessTimer)objectTo);
 			return;
 		}
+		
+		if(objectTo instanceof BPMNCatchExceptionEvent){
+			((BPMNSubprocess)objectFrom).addExceptionHandler(((BPMNCatchExceptionEvent)objectTo).getInputPlaceId());
+			return;
+		}
 
 		process.addEdge(objectFrom, objectTo);
 

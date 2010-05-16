@@ -28,7 +28,7 @@ public class BPMNSubprocess extends BPMNElement {
 
 		startPlaceId = subProcess.getSource().getInputPlaceId();
 		timerTransitionId = ((BPMNSubprocessStart)subProcess.getSource()).getTimerTransitionId();
-		endPlaceId = subProcess.getSink().getOutputPlaceId(null);
+		endPlaceId = subProcess.getDefaultSink().getOutputPlaceId(null);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class BPMNSubprocess extends BPMNElement {
 	}
 
 
-	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer) {
+	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer) throws Exception {
 		ArrayList<Element> lastTasks = subProcess.getLastBeforeSink();
 		for (Element e : subProcess.getElements().values()) {
 			if(e instanceof BPMNTask){
@@ -81,6 +81,16 @@ public class BPMNSubprocess extends BPMNElement {
 	@Override
 	public String getOutputPlaceId(String ref) {
 		return endPlaceId;
+	}
+
+	public void addExceptionHandler(String handlerId) throws Exception {
+			for(Element e: subProcess.getSinks()){
+				if(e instanceof BPMNThrowExceptionEvent){
+					String t = process.getCpnet().addTrans().getId();
+					process.getCpnet().addArc(e.getOutputPlaceId(null), t);
+					process.getCpnet().addArc(t, handlerId);
+				}
+			}
 	}
 
 }

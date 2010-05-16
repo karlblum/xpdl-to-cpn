@@ -12,7 +12,7 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 	private String inputPlaceId;
 	private String delayArcId;
 
-	public BPMNBoundMessageEvent(BProcess pr, Parser p, Object o) {
+	public BPMNBoundMessageEvent(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);

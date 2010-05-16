@@ -27,7 +27,7 @@ public final class BPMNTask extends BPMNElement {
 
 	private boolean usesResources = false;
 
-	public BPMNTask(BProcess pr, Parser p, Object o) {
+	public BPMNTask(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -84,14 +84,14 @@ public final class BPMNTask extends BPMNElement {
 		return process.getCpnet().getPlace(inputPlaceId);
 	}
 
-	public Place getOutputPlace() {
+	public Place getOutputPlace() throws Exception {
 		Place out = process.getCpnet().addPlace(elementName + " OUT");
 		process.getCpnet().addArc(midOutputTransitionId, out.getId());
 		return out;
 	}
 
 	@Override
-	public void addSimulationData(SimDataParser simDataParser) {
+	public void addSimulationData(SimDataParser simDataParser) throws Exception {
 
 		// Add resource consumption data from here
 		String resourceUsed = simDataParser.getResources(elementId);
@@ -143,7 +143,7 @@ public final class BPMNTask extends BPMNElement {
 
 	}
 
-	public void addBounMessageEvent(BPMNBoundMessageEvent bpmnBoundEvent) {
+	public void addBounMessageEvent(BPMNBoundMessageEvent bpmnBoundEvent) throws Exception {
 		String place = bpmnBoundEvent.getInputPlaceId();
 		String eventArcId = process.getCpnet().addArc(
 				boundMessageEventTransitionId, place).getId();
@@ -180,7 +180,7 @@ public final class BPMNTask extends BPMNElement {
 		return boundTimerTime;
 	}
 
-	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId) {
+	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId) throws Exception {
 
 		// Create a skipper transition and connect it to the task and NOK place
 		// in subprocess timer
@@ -204,14 +204,14 @@ public final class BPMNTask extends BPMNElement {
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPlaceId(String ref) throws Exception {
 		String out = process.getCpnet().addPlace(elementName + " OUT").getId();
 		process.getCpnet().addArc(midOutputTransitionId, out);
 		return out;
 	}
 
 	public void addLastSubprocessSkipper(String nokPlaceId, String okPlaceId,
-			String timerOutputPlaceId) {
+			String timerOutputPlaceId) throws Exception {
 		// Create a skipper transition and connect it to the task and NOK place
 		// in subprocess timer
 		String skipTrans = process.getCpnet().addTrans(elementName + " SKIP")
