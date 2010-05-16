@@ -83,7 +83,7 @@ public class Parser {
 		}
 
 		p.printAdjList();
-		p.findSink();
+		p.findSinks();
 		p.findSource();
 		
 		for(Element e: p.getElements().values()){

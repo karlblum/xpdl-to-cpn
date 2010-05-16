@@ -6,12 +6,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import ee.ut.model.bpmn.BPMNEndEvent;
+import ee.ut.model.bpmn.BPMNSubprocessStart;
+
 public class BProcess {
 
 	private CPNet cpnet;
 	protected HashMap<String, Element> elements = new HashMap<String, Element>();
 	protected Map<Element, List<Element>> adjList = new HashMap<Element, List<Element>>();
-	protected Element sink;
+	protected ArrayList<Element> sinks = new ArrayList<Element>();
 	protected Element source;
 	private String id;
 
@@ -32,11 +35,10 @@ public class BProcess {
 		adjList.get(v1).add(v2);
 	}
 
-	public void findSink() {
+	public void findSinks() {
 		for (Element i : adjList.keySet()) {
 			if (adjList.get(i).isEmpty()) {
-				sink = i;
-				break;
+				sinks.add(i);
 			}
 		}
 	}
@@ -59,8 +61,10 @@ public class BProcess {
 	public ArrayList<Element> getLastBeforeSink(){
 		ArrayList<Element> elements = new ArrayList<Element>();
 		for(Element e: adjList.keySet()){
-			if(adjList.get(e).contains(sink)){
-				elements.add(e);
+			for(Element s: sinks){
+				if(adjList.get(e).contains(s)){
+					elements.add(e);
+				}
 			}
 		}
 		return elements;
@@ -121,8 +125,16 @@ public class BProcess {
 		this.subprocesses = subprocesses;
 	}
 
-	public Element getSink() {
-		return sink;
+	public Element getDefaultSink() {
+		for(Element e: sinks){
+			if(e instanceof BPMNEndEvent)
+				return e;
+		}
+		return null;
+	}
+	
+	public ArrayList<Element> getSinks(){
+		return sinks;
 	}
 
 	public Element getSource() {

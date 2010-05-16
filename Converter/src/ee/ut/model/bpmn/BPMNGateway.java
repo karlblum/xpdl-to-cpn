@@ -35,9 +35,10 @@ public class BPMNGateway extends BPMNElement {
 	 * ends. It generates kind of AND Joins.
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPlaceId() throws Exception {
 		Place p = null;
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {

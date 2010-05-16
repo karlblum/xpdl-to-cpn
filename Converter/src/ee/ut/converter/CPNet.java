@@ -142,8 +142,9 @@ public class CPNet {
 	 * @param sourceId
 	 * @param targetId
 	 * @return
+	 * @throws Exception 
 	 */
-	public Arc addArc(String sourceId, String targetId) {
+	public Arc addArc(String sourceId, String targetId) throws Exception {
 		return addArc(sourceId, targetId, flowObjectVariable);
 	}
 
@@ -155,8 +156,9 @@ public class CPNet {
 	 * @param targetId
 	 * @param variable
 	 * @return
+	 * @throws Exception 
 	 */
-	public Arc addArc(String sourceId, String targetId, String variable) {
+	public Arc addArc(String sourceId, String targetId, String variable) throws Exception {
 		String id = createId();
 		Arc arc = page.addNewArc();
 		arc.setId(id);
@@ -170,7 +172,7 @@ public class CPNet {
 			arc.addNewTransend().setIdref(sourceId);
 			arc.setOrientation("TtoP");
 		} else {
-			System.out.println("ERROR in CPNet.addArc  source: " + sourceId
+			throw new Exception("ERROR in CPNet.addArc  source: " + sourceId
 					+ " target: " + targetId);
 		}
 

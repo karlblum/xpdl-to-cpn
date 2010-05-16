@@ -230,6 +230,9 @@ public class XPDL2ElementParser implements ElementParser {
 				IntermediateEvent ie = ((Event) c).getIntermediateEvent();
 				if (ie != null && ie.getTarget() != null) {
 					boundEvents.put(a, ie.getTarget());
+					//DEBUG
+					System.out.println("FOUND BOUNDARY EVENT: " + a.getName());
+					//DEBUG END
 				}
 
 			}
@@ -274,23 +277,28 @@ public class XPDL2ElementParser implements ElementParser {
 					if (target != null && target.length() > 0) {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
+						String process = activityToProcess.get(boundEvents.get(activity));
+						Activity targetActivity = activities.get(process).get(
+								boundEvents.get(activity));
 						if (trigger.equals("Timer")) {
-							String process = activityToProcess.get(boundEvents.get(activity));
-							Activity targetActivity = activities.get(process).get(
-									boundEvents.get(activity));
 							if(getElementType(targetActivity) == BPMNElement.SUB_PROCESS){
 								return BPMNElement.SUB_PROCESS_TIMER_EVENT;
 							} else {
 								return BPMNElement.BOUND_TIMER_EVENT;
 							}							
+						} else if (trigger.equals("Error")) {
+							if(getElementType(targetActivity) == BPMNElement.SUB_PROCESS){
+								return BPMNElement.SUB_PROCESS_EXCEPTION;
+							} 							
 						} else {
 							return BPMNElement.BOUND_MESSAGE_EVENT;
 						}
 					} else {
-						Object o = ((Event) aContent).getIntermediateEvent()
-								.getTriggerTimer();
-						if (o != null) {
+						String trigger = ((Event) aContent).getIntermediateEvent().getTrigger();
+						if (trigger.equals("Timer")) {
 							return BPMNElement.INTERMEDIATE_TIMER_EVENT;
+						} else if (trigger.equals("Error")) {
+							return BPMNElement.THROW_EXCEPTION;
 						} else {
 							return BPMNElement.INTERMEDIATE_MESSAGE_EVENT;
 						}

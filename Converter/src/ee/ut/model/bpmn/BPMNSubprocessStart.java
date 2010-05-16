@@ -10,7 +10,7 @@ public class BPMNSubprocessStart extends BPMNElement {
 	private String startPlaceId;
 	private String timerTransitionId;
 
-	public BPMNSubprocessStart(BProcess pr, Parser p, Object o) {
+	public BPMNSubprocessStart(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);

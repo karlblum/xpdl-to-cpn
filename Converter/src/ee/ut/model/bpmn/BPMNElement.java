@@ -19,6 +19,8 @@ public abstract class BPMNElement extends Element {
 	public static final int SUB_PROCESS_START = 10;
 	public static final int SUB_PROCESS_END = 11;
 	public static final int SUB_PROCESS_TIMER_EVENT = 12;
+	public static final int SUB_PROCESS_EXCEPTION = 13;
+	public static final int THROW_EXCEPTION = 14;
 
 	public BPMNElement(Parser p, BProcess pr) {
 		super(p, pr);
