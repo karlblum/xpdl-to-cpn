@@ -9,7 +9,8 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 	private String taskId;
 	private String outputPlaceId;
 
-	public BPMNBoundTimerEvent(BProcess pr, Parser p, Object o) throws Exception {
+	public BPMNBoundTimerEvent(BProcess pr, Parser p, Object o)
+			throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);

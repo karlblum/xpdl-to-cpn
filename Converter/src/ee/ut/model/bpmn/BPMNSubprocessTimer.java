@@ -12,7 +12,8 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	String timerTokenPlaceId;
 	String completeTransId;
 
-	public BPMNSubprocessTimer(BProcess pr, Parser p, Object o) throws Exception {
+	public BPMNSubprocessTimer(BProcess pr, Parser p, Object o)
+			throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);

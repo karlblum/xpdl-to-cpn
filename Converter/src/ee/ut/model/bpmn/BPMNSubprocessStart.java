@@ -10,7 +10,8 @@ public class BPMNSubprocessStart extends BPMNElement {
 	private String startPlaceId;
 	private String timerTransitionId;
 
-	public BPMNSubprocessStart(BProcess pr, Parser p, Object o) throws Exception {
+	public BPMNSubprocessStart(BProcess pr, Parser p, Object o)
+			throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -18,8 +19,9 @@ public class BPMNSubprocessStart extends BPMNElement {
 
 		startPlaceId = process.getCpnet().addPlace(elementName).getId();
 		outputPlaceId = process.getCpnet().addPlace(elementName).getId();
-		
-		timerTransitionId = process.getCpnet().addTrans(elementName + "TIMER_TRANSITIONS").getId();
+
+		timerTransitionId = process.getCpnet().addTrans(
+				elementName + "TIMER_TRANSITIONS").getId();
 		process.getCpnet().addArc(startPlaceId, timerTransitionId);
 		process.getCpnet().addArc(timerTransitionId, outputPlaceId);
 	}

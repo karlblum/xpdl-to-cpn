@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import ee.ut.model.bpmn.BPMNEndEvent;
-import ee.ut.model.bpmn.BPMNSubprocessStart;
 
 public class BProcess {
 
@@ -57,12 +56,12 @@ public class BProcess {
 		potentialSources.removeAll(targets);
 		source = potentialSources.get(0);
 	}
-	
-	public ArrayList<Element> getLastBeforeSink(){
+
+	public ArrayList<Element> getLastBeforeSink() {
 		ArrayList<Element> elements = new ArrayList<Element>();
-		for(Element e: adjList.keySet()){
-			for(Element s: sinks){
-				if(adjList.get(e).contains(s)){
+		for (Element e : adjList.keySet()) {
+			for (Element s : sinks) {
+				if (adjList.get(e).contains(s)) {
 					elements.add(e);
 				}
 			}
@@ -126,14 +125,14 @@ public class BProcess {
 	}
 
 	public Element getDefaultSink() {
-		for(Element e: sinks){
-			if(e instanceof BPMNEndEvent)
+		for (Element e : sinks) {
+			if (e instanceof BPMNEndEvent)
 				return e;
 		}
 		return null;
 	}
-	
-	public ArrayList<Element> getSinks(){
+
+	public ArrayList<Element> getSinks() {
 		return sinks;
 	}
 

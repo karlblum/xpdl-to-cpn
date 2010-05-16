@@ -5,14 +5,15 @@ import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNThrowExceptionEvent extends BPMNElement {
-	
+
 	String ioID;
 
 	public BPMNThrowExceptionEvent(BProcess pr, Parser parser, Object o) {
 		super(parser, pr);
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
-		ioID = process.getCpnet().addPlace(elementName + "THROW EXCEPTION").getId();
+		ioID = process.getCpnet().addPlace(elementName + "THROW EXCEPTION")
+				.getId();
 	}
 
 	@Override

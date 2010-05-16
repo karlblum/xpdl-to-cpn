@@ -54,7 +54,8 @@ public class XPDL2ElementParser implements ElementParser {
 	// <Process,<Source Activities>> - Process to start activities mappings.
 	protected HashMap<String, List<Activity>> sources = new HashMap<String, List<Activity>>();
 
-	// <Event Activity,Target Activity ID> - Event to target activities mappings.
+	// <Event Activity,Target Activity ID> - Event to target activities
+	// mappings.
 	private HashMap<Activity, String> boundEvents = new HashMap<Activity, String>();
 
 	/**
@@ -95,7 +96,9 @@ public class XPDL2ElementParser implements ElementParser {
 		}
 
 		// Add bounded events to the adjacency list. This is done separately
-		// because there is no transition between boundary events.
+		// because there is no transition between boundary events. All types of
+		// boundary events(task timers, subprocess exception handling etc) are
+		// handled here.
 		for (Activity event : boundEvents.keySet()) {
 			String process = activityToProcess.get(boundEvents.get(event));
 			Activity target = activities.get(process).get(
@@ -116,6 +119,7 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
+	 * Method adds an edge to the adjacency list.
 	 * @param v1
 	 *            Edge from
 	 * @param v2
@@ -135,7 +139,7 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * 
+	 * Method finds all the process sinks (All the activities with no outgoing transition).
 	 */
 	private void findSinks() {
 		for (String process : activities.keySet()) {
@@ -159,7 +163,7 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * 
+	 * Method finds all the source activities (Activities with no incoming transition).
 	 */
 	private void findSources() {
 		for (String process : activities.keySet()) {
@@ -190,8 +194,10 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * @param processId
-	 * @param a
+	 * Method adds an Activity to the process to activity mapping and Activity to process ID mapping.
+	 * 
+	 * @param processId What process Activity it is.
+	 * @param a Activity to add.
 	 */
 	private void addProcessActivity(String processId, Activity a) {
 		if (activities.get(processId) == null)
@@ -202,8 +208,10 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
+	 * Method adds an Activity to certain process sink.
+	 * 
 	 * @param processId
-	 * @param a
+	 * @param a Sink Activity.
 	 */
 	private void addSink(String processId, Activity a) {
 		if (sinks.get(processId) == null)
@@ -212,8 +220,9 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
+	 * Method adds a source Activity to the process to activity mapping.
 	 * @param processId
-	 * @param s
+	 * @param s Source Activity.
 	 */
 	private void addSource(String processId, List<Activity> s) {
 		if (sources.get(processId) == null)
@@ -222,6 +231,7 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
+	 * Checks if the method is a boundary event and if it is then it also generates a transition. This is needed because there is no transition between an event and its boundary event in XPDL.
 	 * @param a
 	 */
 	private void ifBoundEventAddTransition(Activity a) {
@@ -230,20 +240,12 @@ public class XPDL2ElementParser implements ElementParser {
 				IntermediateEvent ie = ((Event) c).getIntermediateEvent();
 				if (ie != null && ie.getTarget() != null) {
 					boundEvents.put(a, ie.getTarget());
-					//DEBUG
-					System.out.println("FOUND BOUNDARY EVENT: " + a.getName());
-					//DEBUG END
 				}
 
 			}
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ee.ut.converter.parser.ElementParser#getId(java.lang.Object)
-	 */
 	@Override
 	public String getId(Object o) {
 		if (o instanceof Activity) {
@@ -254,12 +256,7 @@ public class XPDL2ElementParser implements ElementParser {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getElementType(java.lang.Object)
-	 */
+	@Override
 	public int getElementType(Object element) {
 		Activity activity = (Activity) element;
 		for (Object aContent : activity.getContent()) {
@@ -277,24 +274,26 @@ public class XPDL2ElementParser implements ElementParser {
 					if (target != null && target.length() > 0) {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
-						String process = activityToProcess.get(boundEvents.get(activity));
+						String process = activityToProcess.get(boundEvents
+								.get(activity));
 						Activity targetActivity = activities.get(process).get(
 								boundEvents.get(activity));
 						if (trigger.equals("Timer")) {
-							if(getElementType(targetActivity) == BPMNElement.SUB_PROCESS){
+							if (getElementType(targetActivity) == BPMNElement.SUB_PROCESS) {
 								return BPMNElement.SUB_PROCESS_TIMER_EVENT;
 							} else {
 								return BPMNElement.BOUND_TIMER_EVENT;
-							}							
+							}
 						} else if (trigger.equals("Error")) {
-							if(getElementType(targetActivity) == BPMNElement.SUB_PROCESS){
+							if (getElementType(targetActivity) == BPMNElement.SUB_PROCESS) {
 								return BPMNElement.SUB_PROCESS_EXCEPTION;
-							} 							
+							}
 						} else {
 							return BPMNElement.BOUND_MESSAGE_EVENT;
 						}
 					} else {
-						String trigger = ((Event) aContent).getIntermediateEvent().getTrigger();
+						String trigger = ((Event) aContent)
+								.getIntermediateEvent().getTrigger();
 						if (trigger.equals("Timer")) {
 							return BPMNElement.INTERMEDIATE_TIMER_EVENT;
 						} else if (trigger.equals("Error")) {
@@ -343,34 +342,16 @@ public class XPDL2ElementParser implements ElementParser {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getTransitionFrom(java.lang.Object)
-	 */
 	@Override
 	public String getTransitionFrom(Object object) {
 		return ((Transition) object).getFrom();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getTransitionTo(java.lang.Object)
-	 */
 	@Override
 	public String getTransitionTo(Object object) {
 		return ((Transition) object).getTo();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getGatewayType(java.lang.Object)
-	 */
 	@Override
 	public GatewayType getGatewayType(Object obj) {
 		String type = ((Route) ((Activity) obj).getContent().get(0))
@@ -384,14 +365,8 @@ public class XPDL2ElementParser implements ElementParser {
 			System.err.println("Gateway type: " + type + " not implemented.");
 			return null;
 		}
-
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ee.ut.converter.parser.ElementParser#getName(java.lang.Object)
-	 */
 	@Override
 	public String getName(Object o) {
 		if (o instanceof Activity) {
@@ -401,9 +376,11 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * @param file
-	 * @param model
-	 * @return
+	 * Method generates the XPDL in-memory representation.
+	 * 
+	 * @param file Input XPDL file.
+	 * @param model XPDL Java model.
+	 * @return XPDL root element.
 	 */
 	@SuppressWarnings("unchecked")
 	protected JAXBElement<PackageType> unMasrhall(File file, String model) {
@@ -420,23 +397,11 @@ public class XPDL2ElementParser implements ElementParser {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getBoundaryEventTaskId(java.lang
-	 * .Object)
-	 */
 	@Override
 	public String getBoundaryEventTaskId(Object obj) {
 		return boundEvents.get(obj);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ee.ut.converter.parser.ElementParser#getEventTimer(java.lang.Object)
-	 */
 	@Override
 	public int getEventTimer(Object obj) {
 		String timer = ((Event) ((Activity) obj).getContent().get(0))
@@ -445,14 +410,6 @@ public class XPDL2ElementParser implements ElementParser {
 		return Integer.valueOf(timer).intValue();
 	}
 
-	/*
-	 * Method returns the list of all the connected elements.
-	 * 
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getNextElements(java.lang.Object)
-	 */
 	@Override
 	public ArrayList<Object> getNextElements(Object element) {
 		ArrayList<Object> nextElems = new ArrayList<Object>();
@@ -460,25 +417,9 @@ public class XPDL2ElementParser implements ElementParser {
 		if (adjList.get(element) != null) {
 			nextElems.addAll(adjList.get(element));
 		}
-		nextElems.addAll(getBoundElements((Activity) element));
-
 		return nextElems;
 	}
 
-	/**
-	 * @param element
-	 * @return
-	 */
-	private ArrayList<Object> getBoundElements(Activity element) {
-		ArrayList<Object> nextElems = new ArrayList<Object>();
-		return nextElems;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ee.ut.converter.parser.ElementParser#getSource(java.lang.String)
-	 */
 	@Override
 	public Object getSource(String process) {
 		// We currently support only one start event
@@ -486,7 +427,7 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * 
+	 * For testing purposes only.
 	 */
 	public void printAdjList() {
 		System.out.println("===== XPDL ADJACENY LIST =====");
@@ -501,12 +442,6 @@ public class XPDL2ElementParser implements ElementParser {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ee.ut.converter.parser.ElementParser#getSubprocessId(java.lang.Object)
-	 */
 	@Override
 	public String getSubprocessId(Object o) {
 		for (Object aContent : ((Activity) o).getContent()) {
@@ -519,11 +454,10 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public String getXorGWOutputIdentifier(String id, String id2) {
-		for(Transition t: transitions){
-			if(t.getFrom().equals(id) && t.getTo().equals(id2))
+		for (Transition t : transitions) {
+			if (t.getFrom().equals(id) && t.getTo().equals(id2))
 				return t.getId();
 		}
 		return null;
 	}
-
 }

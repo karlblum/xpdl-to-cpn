@@ -20,17 +20,20 @@ public class BPMNTransition extends BPMNElement {
 			throw new Exception("Error making transition between:"
 					+ objectFrom.getId() + " AND " + objectTo.getId());
 		}
-		
+
 		if (objectTo instanceof BPMNBoundTimerEvent)
 			return;
-		
-		if(objectTo instanceof BPMNSubprocessTimer){
-			((BPMNSubprocess)objectFrom).setBoundTimer((BPMNSubprocessTimer)objectTo);
+
+		if (objectTo instanceof BPMNSubprocessTimer) {
+			((BPMNSubprocess) objectFrom)
+					.setBoundTimer((BPMNSubprocessTimer) objectTo);
 			return;
 		}
-		
-		if(objectTo instanceof BPMNCatchExceptionEvent){
-			((BPMNSubprocess)objectFrom).addExceptionHandler(((BPMNCatchExceptionEvent)objectTo).getInputPlaceId());
+
+		if (objectTo instanceof BPMNCatchExceptionEvent) {
+			((BPMNSubprocess) objectFrom)
+					.addExceptionHandler(((BPMNCatchExceptionEvent) objectTo)
+							.getInputPlaceId());
 			return;
 		}
 

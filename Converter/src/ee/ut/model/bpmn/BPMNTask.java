@@ -143,7 +143,8 @@ public final class BPMNTask extends BPMNElement {
 
 	}
 
-	public void addBounMessageEvent(BPMNBoundMessageEvent bpmnBoundEvent) throws Exception {
+	public void addBounMessageEvent(BPMNBoundMessageEvent bpmnBoundEvent)
+			throws Exception {
 		String place = bpmnBoundEvent.getInputPlaceId();
 		String eventArcId = process.getCpnet().addArc(
 				boundMessageEventTransitionId, place).getId();
@@ -180,7 +181,8 @@ public final class BPMNTask extends BPMNElement {
 		return boundTimerTime;
 	}
 
-	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId) throws Exception {
+	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId)
+			throws Exception {
 
 		// Create a skipper transition and connect it to the task and NOK place
 		// in subprocess timer
@@ -224,7 +226,6 @@ public final class BPMNTask extends BPMNElement {
 		// Connect the transition to subprocess timer OK place.
 		process.getCpnet().addArc(okPlaceId, taskTransitionId);
 
-		
 	}
 
 }

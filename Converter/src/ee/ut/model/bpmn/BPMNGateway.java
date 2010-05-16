@@ -35,7 +35,7 @@ public class BPMNGateway extends BPMNElement {
 	 * ends. It generates kind of AND Joins.
 	 * 
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@Override
 	public String getInputPlaceId() throws Exception {
@@ -56,16 +56,16 @@ public class BPMNGateway extends BPMNElement {
 
 	@Override
 	public String getOutputPlaceId(String id) throws Exception {
-		
+
 		Place p = process.getCpnet().addPlace();
 		String arcId = process.getCpnet()
 				.addArc(gatewayTransitionId, p.getId()).getId();
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {
-			if(id == null){
+			if (id == null) {
 				throw new Exception("Exclusive gateway output not defined!");
 			}
-			
+
 			String arcAnnotation = "(if path=" + id + " then 1`"
 					+ process.getCpnet().getFlowObjectVariable()
 					+ " else empty)";
