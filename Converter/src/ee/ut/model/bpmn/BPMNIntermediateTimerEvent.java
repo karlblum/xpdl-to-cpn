@@ -6,9 +6,9 @@ import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNIntermediateTimerEvent extends BPMNElement {
 
-	String inputPlaceId;
-	String outputPlaceId;
-	int timerDelay;
+	private String inputPlaceId;
+	private String outputPlaceId;
+	private int timerDelay;
 
 	public BPMNIntermediateTimerEvent(BProcess pr, Parser p, Object o) {
 		super(p, pr);

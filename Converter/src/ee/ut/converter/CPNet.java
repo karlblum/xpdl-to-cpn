@@ -170,7 +170,7 @@ public class CPNet {
 			arc.addNewTransend().setIdref(sourceId);
 			arc.setOrientation("TtoP");
 		} else {
-			System.err.println("ERROR in CPNet.addArc  source: " + sourceId
+			System.out.println("ERROR in CPNet.addArc  source: " + sourceId
 					+ " target: " + targetId);
 		}
 
