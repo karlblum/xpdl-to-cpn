@@ -11,7 +11,8 @@ public class TestCPNModel {
 
 	public static void main(String[] args) throws Exception {
 
-		testAll();
+		test("Subprocess Timer");
+		//testAll();
 	}
 	
 	private static void testAll() throws Exception{
