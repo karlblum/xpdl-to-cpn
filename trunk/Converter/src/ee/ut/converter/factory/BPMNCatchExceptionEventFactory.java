@@ -5,7 +5,7 @@ import ee.ut.converter.Element;
 import ee.ut.converter.parser.Parser;
 import ee.ut.model.bpmn.BPMNCatchExceptionEvent;
 
-public class BPMNCatchExceptionEventFactory  extends AbstractElementFactory {
+public class BPMNCatchExceptionEventFactory extends AbstractElementFactory {
 
 	public BPMNCatchExceptionEventFactory(Parser p) {
 		super(p);

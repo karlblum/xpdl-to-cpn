@@ -31,7 +31,8 @@ public abstract class Element {
 		return elementName;
 	}
 
-	public abstract void addSimulationData(SimDataParser simDataParser) throws Exception;
+	public abstract void addSimulationData(SimDataParser simDataParser)
+			throws Exception;
 
 	public abstract String getInputPlaceId() throws Exception;
 

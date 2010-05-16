@@ -11,7 +11,8 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 	String delayArcId;
 	String ebXORId;
 
-	public BPMNIntermediateMessageEvent(BProcess pr, Parser p, Object o) throws Exception {
+	public BPMNIntermediateMessageEvent(BProcess pr, Parser p, Object o)
+			throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);

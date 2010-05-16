@@ -3,10 +3,9 @@ package ee.ut.converter.factory;
 import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.parser.Parser;
-import ee.ut.model.bpmn.BPMNTask;
 import ee.ut.model.bpmn.BPMNThrowExceptionEvent;
 
-public class BPMNThrowExceptionEventFactory  extends AbstractElementFactory {
+public class BPMNThrowExceptionEventFactory extends AbstractElementFactory {
 
 	public BPMNThrowExceptionEventFactory(Parser p) {
 		super(p);

@@ -22,12 +22,13 @@ public class BPMNSubprocess extends BPMNElement {
 		String pid = parser.getElementParser().getSubprocessId(o);
 
 		subProcess = process.createSubprocess(pid);
-		
-		//Here we will recursively parse the subprocess.
+
+		// Here we will recursively parse the subprocess.
 		parser.parse(subProcess);
 
 		startPlaceId = subProcess.getSource().getInputPlaceId();
-		timerTransitionId = ((BPMNSubprocessStart)subProcess.getSource()).getTimerTransitionId();
+		timerTransitionId = ((BPMNSubprocessStart) subProcess.getSource())
+				.getTimerTransitionId();
 		endPlaceId = subProcess.getDefaultSink().getOutputPlaceId(null);
 	}
 
@@ -49,19 +50,22 @@ public class BPMNSubprocess extends BPMNElement {
 		return subProcess.getId();
 	}
 
-
-	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer) throws Exception {
+	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer)
+			throws Exception {
 		ArrayList<Element> lastTasks = subProcess.getLastBeforeSink();
 		for (Element e : subProcess.getElements().values()) {
-			if(e instanceof BPMNTask){
-				BPMNTask task = (BPMNTask)e;
-				if(!lastTasks.contains(task)){
-				task.addSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
-						bpmnSubprocessTimer.getOKPlaceId());
+			if (e instanceof BPMNTask) {
+				BPMNTask task = (BPMNTask) e;
+				if (!lastTasks.contains(task)) {
+					task.addSubprocessSkipper(bpmnSubprocessTimer
+							.getNOKPlaceId(), bpmnSubprocessTimer
+							.getOKPlaceId());
 				} else {
 					System.out.println("LAST TASK: " + task.getName());
-					task.addLastSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
-							bpmnSubprocessTimer.getOKPlaceId(),bpmnSubprocessTimer.getOutputPlaceId(null));
+					task.addLastSubprocessSkipper(bpmnSubprocessTimer
+							.getNOKPlaceId(), bpmnSubprocessTimer
+							.getOKPlaceId(), bpmnSubprocessTimer
+							.getOutputPlaceId(null));
 				}
 			}
 		}
@@ -84,13 +88,13 @@ public class BPMNSubprocess extends BPMNElement {
 	}
 
 	public void addExceptionHandler(String handlerId) throws Exception {
-			for(Element e: subProcess.getSinks()){
-				if(e instanceof BPMNThrowExceptionEvent){
-					String t = process.getCpnet().addTrans().getId();
-					process.getCpnet().addArc(e.getOutputPlaceId(null), t);
-					process.getCpnet().addArc(t, handlerId);
-				}
+		for (Element e : subProcess.getSinks()) {
+			if (e instanceof BPMNThrowExceptionEvent) {
+				String t = process.getCpnet().addTrans().getId();
+				process.getCpnet().addArc(e.getOutputPlaceId(null), t);
+				process.getCpnet().addArc(t, handlerId);
 			}
+		}
 	}
 
 }

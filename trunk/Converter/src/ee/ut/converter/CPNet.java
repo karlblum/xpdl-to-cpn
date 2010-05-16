@@ -142,7 +142,7 @@ public class CPNet {
 	 * @param sourceId
 	 * @param targetId
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public Arc addArc(String sourceId, String targetId) throws Exception {
 		return addArc(sourceId, targetId, flowObjectVariable);
@@ -156,9 +156,10 @@ public class CPNet {
 	 * @param targetId
 	 * @param variable
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
-	public Arc addArc(String sourceId, String targetId, String variable) throws Exception {
+	public Arc addArc(String sourceId, String targetId, String variable)
+			throws Exception {
 		String id = createId();
 		Arc arc = page.addNewArc();
 		arc.setId(id);
