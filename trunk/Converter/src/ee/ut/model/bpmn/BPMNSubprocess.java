@@ -1,5 +1,7 @@
 package ee.ut.model.bpmn;
 
+import java.util.ArrayList;
+
 import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
 import ee.ut.converter.parser.Parser;
@@ -7,25 +9,25 @@ import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNSubprocess extends BPMNElement {
 
-	String startPlaceId;
-	String endPlaceId;
-	String timerTransitionId;
-
-	private String subProcessId;
+	private String startPlaceId;
+	private String endPlaceId;
+	private String timerTransitionId;
+	private BProcess subProcess;
 
 	public BPMNSubprocess(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
-		subProcessId = parser.getElementParser().getSubprocessId(o);
+		String pid = parser.getElementParser().getSubprocessId(o);
 
-		BProcess subProcess = process.createSubprocess(subProcessId);
+		subProcess = process.createSubprocess(pid);
 		
 		//Here we will recursively parse the subprocess.
 		parser.parse(subProcess);
 
 		startPlaceId = subProcess.getSource().getInputPlaceId();
+		timerTransitionId = ((BPMNSubprocessStart)subProcess.getSource()).getTimerTransitionId();
 		endPlaceId = subProcess.getSink().getOutputPlaceId(null);
 	}
 
@@ -44,16 +46,23 @@ public class BPMNSubprocess extends BPMNElement {
 	}
 
 	public String getSubProcessId() {
-		return subProcessId;
+		return subProcess.getId();
 	}
 
 
 	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer) {
-		for (Element e : process.getElements().values()) {
+		ArrayList<Element> lastTasks = subProcess.getLastBeforeSink();
+		for (Element e : subProcess.getElements().values()) {
 			if(e instanceof BPMNTask){
 				BPMNTask task = (BPMNTask)e;
+				if(!lastTasks.contains(task)){
 				task.addSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
 						bpmnSubprocessTimer.getOKPlaceId());
+				} else {
+					System.out.println("LAST TASK: " + task.getName());
+					task.addLastSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
+							bpmnSubprocessTimer.getOKPlaceId(),bpmnSubprocessTimer.getOutputPlaceId(null));
+				}
 			}
 		}
 
@@ -62,10 +71,6 @@ public class BPMNSubprocess extends BPMNElement {
 		process.getCpnet().addArc(timerTransitionId,
 				bpmnSubprocessTimer.getTimerTokenPlaceId());
 
-	}
-
-	public void setTimerTransitionId(String timerTransitionId) {
-		this.timerTransitionId = timerTransitionId;
 	}
 
 	@Override

@@ -55,6 +55,16 @@ public class BProcess {
 		potentialSources.removeAll(targets);
 		source = potentialSources.get(0);
 	}
+	
+	public ArrayList<Element> getLastBeforeSink(){
+		ArrayList<Element> elements = new ArrayList<Element>();
+		for(Element e: adjList.keySet()){
+			if(adjList.get(e).contains(sink)){
+				elements.add(e);
+			}
+		}
+		return elements;
+	}
 
 	public BProcess createSubprocess(String id) {
 		BProcess p = new BProcess(cpnet, id);

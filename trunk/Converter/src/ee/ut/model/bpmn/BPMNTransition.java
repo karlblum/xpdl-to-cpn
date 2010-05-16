@@ -16,12 +16,17 @@ public class BPMNTransition extends BPMNElement {
 		Element objectFrom = (Element) ((Object[]) o)[1];
 		Element objectTo = (Element) ((Object[]) o)[0];
 
-		if (objectTo instanceof BPMNBoundTimerEvent)
-			return;
-
 		if (objectFrom == null || objectTo == null) {
 			throw new Exception("Error making transition between:"
 					+ objectFrom.getId() + " AND " + objectTo.getId());
+		}
+		
+		if (objectTo instanceof BPMNBoundTimerEvent)
+			return;
+		
+		if(objectTo instanceof BPMNSubprocessTimer){
+			((BPMNSubprocess)objectFrom).setBoundTimer((BPMNSubprocessTimer)objectTo);
+			return;
 		}
 
 		process.addEdge(objectFrom, objectTo);

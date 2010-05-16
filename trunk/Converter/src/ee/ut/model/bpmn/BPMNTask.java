@@ -210,4 +210,21 @@ public final class BPMNTask extends BPMNElement {
 		return out;
 	}
 
+	public void addLastSubprocessSkipper(String nokPlaceId, String okPlaceId,
+			String timerOutputPlaceId) {
+		// Create a skipper transition and connect it to the task and NOK place
+		// in subprocess timer
+		String skipTrans = process.getCpnet().addTrans(elementName + " SKIP")
+				.getId();
+		process.getCpnet().addArc(boundTimerEventPlaceId, skipTrans);
+		process.getCpnet().addArc(skipTrans, timerOutputPlaceId);
+
+		process.getCpnet().addArc(nokPlaceId, skipTrans);
+
+		// Connect the transition to subprocess timer OK place.
+		process.getCpnet().addArc(okPlaceId, taskTransitionId);
+
+		
+	}
+
 }

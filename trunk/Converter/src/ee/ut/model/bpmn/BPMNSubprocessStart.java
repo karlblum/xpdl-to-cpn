@@ -7,6 +7,8 @@ import ee.ut.converter.parser.SimDataParser;
 public class BPMNSubprocessStart extends BPMNElement {
 
 	private String outputPlaceId;
+	private String startPlaceId;
+	private String timerTransitionId;
 
 	public BPMNSubprocessStart(BProcess pr, Parser p, Object o) {
 		super(p, pr);
@@ -14,7 +16,12 @@ public class BPMNSubprocessStart extends BPMNElement {
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
 
-		outputPlaceId = process.getCpnet().addPlace().getId();
+		startPlaceId = process.getCpnet().addPlace(elementName).getId();
+		outputPlaceId = process.getCpnet().addPlace(elementName).getId();
+		
+		timerTransitionId = process.getCpnet().addTrans(elementName + "TIMER_TRANSITIONS").getId();
+		process.getCpnet().addArc(startPlaceId, timerTransitionId);
+		process.getCpnet().addArc(timerTransitionId, outputPlaceId);
 	}
 
 	@Override
@@ -24,12 +31,16 @@ public class BPMNSubprocessStart extends BPMNElement {
 
 	@Override
 	public String getInputPlaceId() {
-		return outputPlaceId;
+		return startPlaceId;
 	}
 
 	@Override
 	public String getOutputPlaceId(String ref) {
 		return outputPlaceId;
+	}
+
+	public String getTimerTransitionId() {
+		return timerTransitionId;
 	}
 
 }
