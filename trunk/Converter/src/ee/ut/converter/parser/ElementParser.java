@@ -25,4 +25,6 @@ public interface ElementParser {
 	public Object getSource(String process);
 
 	public String getSubprocessId(Object o);
+
+	public String getXorGWOutputIdentifier(String id, String id2);
 }

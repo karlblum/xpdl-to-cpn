@@ -36,97 +36,30 @@ public class XPDL2ElementParser implements ElementParser {
 
 	ProcessType xpdlProcess;
 
+	// <Process,<Key,Activity>> - Process to activities mappings.
 	protected Map<String, HashMap<String, Activity>> activities = new HashMap<String, HashMap<String, Activity>>();
+
+	// <Activity ID, Process ID> - Activity to process mappings.
 	protected Map<String, String> activityToProcess = new HashMap<String, String>();
+
+	// <Transition> - List of all transitions (Boundary events excluded)
 	protected ArrayList<Transition> transitions = new ArrayList<Transition>();
+
+	// <Activity,<Next Activities>> - Adjacency list
 	protected Map<Activity, List<Activity>> adjList = new HashMap<Activity, List<Activity>>();
 
+	// <Process,<Sink Activities>> - Process to end activities mappings.
 	protected HashMap<String, List<Activity>> sinks = new HashMap<String, List<Activity>>();
+
+	// <Process,<Source Activities>> - Process to start activities mappings.
 	protected HashMap<String, List<Activity>> sources = new HashMap<String, List<Activity>>();
-	private HashMap<String, Activity> boundEvents = new HashMap<String, Activity>();
 
-	private void addEdge(Activity v1, Activity v2) {
-		if (!adjList.containsKey(v1)) {
-			adjList.put(v1, new LinkedList<Activity>());
-		}
+	// <Event Activity,Target Activity ID> - Event to target activities mappings.
+	private HashMap<Activity, String> boundEvents = new HashMap<Activity, String>();
 
-		if (!adjList.containsKey(v2)) {
-			adjList.put(v2, new LinkedList<Activity>());
-		}
-
-		adjList.get(v1).add(v2);
-
-	}
-
-	private void findSinks() {
-		for (String process : activities.keySet()) {
-			HashMap<String, Activity> aSet = activities.get(process);
-			for (Activity a : aSet.values()) {
-				if (adjList.get(a).isEmpty()) {
-					addSink(process, a);
-				}
-			}
-		}
-
-		// DEBUG
-		System.out.print("Sinks: ");
-		for (String process : sinks.keySet()) {
-			for (Activity a : sinks.get(process)) {
-				System.out.print(a.getName() + ", ");
-			}
-		}
-		System.out.println();
-		// DEBUG END
-	}
-
-	private void findSources() {
-		for (String process : activities.keySet()) {
-			List<Activity> targets = new ArrayList<Activity>();
-			List<Activity> sources = new ArrayList<Activity>();
-
-			HashMap<String, Activity> aSet = activities.get(process);
-			for (Activity a : aSet.values()) {
-				sources.add(a);
-				for (Activity t : adjList.get(a)) {
-					targets.add(t);
-				}
-			}
-			sources.removeAll(targets);
-			addSource(process, sources);
-
-		}
-
-		// DEBUG
-		System.out.print("Sources: ");
-		for (String process : sources.keySet()) {
-			for (Activity a : sources.get(process)) {
-				System.out.print(a.getName() + ", ");
-			}
-		}
-		System.out.println();
-		// DEBUG END
-	}
-
-	private void addProcessActivity(String processId, Activity a) {
-		if (activities.get(processId) == null)
-			activities.put(processId, new HashMap<String, Activity>());
-
-		activities.get(processId).put(a.getId(), a);
-		activityToProcess.put(a.getId(), processId);
-	}
-
-	private void addSink(String processId, Activity a) {
-		if (sinks.get(processId) == null)
-			sinks.put(processId, new LinkedList<Activity>());
-		sinks.get(processId).add(a);
-	}
-
-	private void addSource(String processId, List<Activity> s) {
-		if (sources.get(processId) == null)
-			sources.put(processId, new LinkedList<Activity>());
-		sources.get(processId).addAll(s);
-	}
-
+	/**
+	 * @param processFile
+	 */
 	public XPDL2ElementParser(File processFile) {
 
 		JAXBElement<PackageType> xpdlRoot = unMasrhall(processFile,
@@ -160,23 +93,21 @@ public class XPDL2ElementParser implements ElementParser {
 					t.getFrom()), activities.get(
 					activityToProcess.get(t.getTo())).get(t.getTo()));
 		}
-		
-		// Add bounded events to the adjacency list. This is done separately because there is no transition between boundary events.
-		for(String target: boundEvents.keySet()){
-			for(String p: activities.keySet()){
-				if(activities.get(p).containsKey(target)){
-					addEdge(activities.get(p).get(target), boundEvents.get(target));
-					//DEBUG
-					System.out.println("Found boundary event: "+ boundEvents.get(target).getId() + " (" + boundEvents.get(target).getName() + ")");
-					//DEBUG END
-				}
-			}
+
+		// Add bounded events to the adjacency list. This is done separately
+		// because there is no transition between boundary events.
+		for (Activity event : boundEvents.keySet()) {
+			String process = activityToProcess.get(boundEvents.get(event));
+			Activity target = activities.get(process).get(
+					boundEvents.get(event));
+			addEdge(target, event);
+			// DEBUG
+			System.out.println("Found boundary event: " + event.getId() + " ("
+					+ event.getName() + ")");
+			// DEBUG END
 		}
 
-		// Find sinks
 		findSinks();
-
-		// Find sources
 		findSources();
 
 		// DEBUG
@@ -184,18 +115,132 @@ public class XPDL2ElementParser implements ElementParser {
 		// DEBUG END
 	}
 
-	private void ifBoundEventAddTransition(Activity a) {
-		for(Object c: a.getContent()){
-			if(c instanceof Event){
-				IntermediateEvent ie = ((Event)c).getIntermediateEvent();
-				if(ie != null && ie.getTarget() != null){
-					boundEvents.put(ie.getTarget(), a);
+	/**
+	 * @param v1
+	 *            Edge from
+	 * @param v2
+	 *            Edge to
+	 */
+	private void addEdge(Activity v1, Activity v2) {
+		if (!adjList.containsKey(v1)) {
+			adjList.put(v1, new LinkedList<Activity>());
+		}
+
+		if (!adjList.containsKey(v2)) {
+			adjList.put(v2, new LinkedList<Activity>());
+		}
+
+		adjList.get(v1).add(v2);
+
+	}
+
+	/**
+	 * 
+	 */
+	private void findSinks() {
+		for (String process : activities.keySet()) {
+			HashMap<String, Activity> aSet = activities.get(process);
+			for (Activity a : aSet.values()) {
+				if (adjList.get(a).isEmpty()) {
+					addSink(process, a);
 				}
-										
+			}
+		}
+
+		// DEBUG
+		System.out.print("Sinks: ");
+		for (String process : sinks.keySet()) {
+			for (Activity a : sinks.get(process)) {
+				System.out.print(a.getName() + ", ");
+			}
+		}
+		System.out.println();
+		// DEBUG END
+	}
+
+	/**
+	 * 
+	 */
+	private void findSources() {
+		for (String process : activities.keySet()) {
+			List<Activity> targets = new ArrayList<Activity>();
+			List<Activity> sources = new ArrayList<Activity>();
+
+			HashMap<String, Activity> aSet = activities.get(process);
+			for (Activity a : aSet.values()) {
+				sources.add(a);
+				for (Activity t : adjList.get(a)) {
+					targets.add(t);
+				}
+			}
+			sources.removeAll(targets);
+			addSource(process, sources);
+
+		}
+
+		// DEBUG
+		System.out.print("Sources: ");
+		for (String process : sources.keySet()) {
+			for (Activity a : sources.get(process)) {
+				System.out.print(a.getName() + ", ");
+			}
+		}
+		System.out.println();
+		// DEBUG END
+	}
+
+	/**
+	 * @param processId
+	 * @param a
+	 */
+	private void addProcessActivity(String processId, Activity a) {
+		if (activities.get(processId) == null)
+			activities.put(processId, new HashMap<String, Activity>());
+
+		activities.get(processId).put(a.getId(), a);
+		activityToProcess.put(a.getId(), processId);
+	}
+
+	/**
+	 * @param processId
+	 * @param a
+	 */
+	private void addSink(String processId, Activity a) {
+		if (sinks.get(processId) == null)
+			sinks.put(processId, new LinkedList<Activity>());
+		sinks.get(processId).add(a);
+	}
+
+	/**
+	 * @param processId
+	 * @param s
+	 */
+	private void addSource(String processId, List<Activity> s) {
+		if (sources.get(processId) == null)
+			sources.put(processId, new LinkedList<Activity>());
+		sources.get(processId).addAll(s);
+	}
+
+	/**
+	 * @param a
+	 */
+	private void ifBoundEventAddTransition(Activity a) {
+		for (Object c : a.getContent()) {
+			if (c instanceof Event) {
+				IntermediateEvent ie = ((Event) c).getIntermediateEvent();
+				if (ie != null && ie.getTarget() != null) {
+					boundEvents.put(a, ie.getTarget());
+				}
+
 			}
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ee.ut.converter.parser.ElementParser#getId(java.lang.Object)
+	 */
 	@Override
 	public String getId(Object o) {
 		if (o instanceof Activity) {
@@ -206,6 +251,12 @@ public class XPDL2ElementParser implements ElementParser {
 		return null;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getElementType(java.lang.Object)
+	 */
 	public int getElementType(Object element) {
 		Activity activity = (Activity) element;
 		for (Object aContent : activity.getContent()) {
@@ -214,19 +265,9 @@ public class XPDL2ElementParser implements ElementParser {
 			}
 			if (aContent instanceof Event) {
 				if (((Event) aContent).getStartEvent() != null) {
-					if (((Event) aContent).getStartEvent().getTrigger().equals(
-							"Timer")) {
-						return BPMNElement.SUB_PROCESS_START;
-					} else {
-						return BPMNElement.START;
-					}
+					return BPMNElement.START;
 				} else if (((Event) aContent).getEndEvent() != null) {
-					if (((Event) aContent).getEndEvent()
-							.getTriggerResultSignal() != null) {
-						return BPMNElement.SUB_PROCESS_END;
-					} else {
-						return BPMNElement.END;
-					}
+					return BPMNElement.END;
 				} else if (((Event) aContent).getIntermediateEvent() != null) {
 					String target = ((Event) aContent).getIntermediateEvent()
 							.getTarget();
@@ -234,10 +275,14 @@ public class XPDL2ElementParser implements ElementParser {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
 						if (trigger.equals("Timer")) {
-							// TODO: We don't know if it is a timer for task or
-							// a subprocess!
-							// return BPMNElement.BOUND_TIMER_EVENT;
-							return BPMNElement.SUB_PROCESS_TIMER_EVENT;
+							String process = activityToProcess.get(boundEvents.get(activity));
+							Activity targetActivity = activities.get(process).get(
+									boundEvents.get(activity));
+							if(getElementType(targetActivity) == BPMNElement.SUB_PROCESS){
+								return BPMNElement.SUB_PROCESS_TIMER_EVENT;
+							} else {
+								return BPMNElement.BOUND_TIMER_EVENT;
+							}							
 						} else {
 							return BPMNElement.BOUND_MESSAGE_EVENT;
 						}
@@ -290,16 +335,34 @@ public class XPDL2ElementParser implements ElementParser {
 		return false;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getTransitionFrom(java.lang.Object)
+	 */
 	@Override
 	public String getTransitionFrom(Object object) {
 		return ((Transition) object).getFrom();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getTransitionTo(java.lang.Object)
+	 */
 	@Override
 	public String getTransitionTo(Object object) {
 		return ((Transition) object).getTo();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getGatewayType(java.lang.Object)
+	 */
 	@Override
 	public GatewayType getGatewayType(Object obj) {
 		String type = ((Route) ((Activity) obj).getContent().get(0))
@@ -316,6 +379,11 @@ public class XPDL2ElementParser implements ElementParser {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ee.ut.converter.parser.ElementParser#getName(java.lang.Object)
+	 */
 	@Override
 	public String getName(Object o) {
 		if (o instanceof Activity) {
@@ -324,6 +392,11 @@ public class XPDL2ElementParser implements ElementParser {
 		return null;
 	}
 
+	/**
+	 * @param file
+	 * @param model
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	protected JAXBElement<PackageType> unMasrhall(File file, String model) {
 		JAXBContext jc;
@@ -339,13 +412,23 @@ public class XPDL2ElementParser implements ElementParser {
 		return null;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getBoundaryEventTaskId(java.lang
+	 * .Object)
+	 */
 	@Override
 	public String getBoundaryEventTaskId(Object obj) {
-		// TODO: The EVENT object does not have to be the first one always
-		return ((Event) ((Activity) obj).getContent().get(0))
-				.getIntermediateEvent().getTarget();
+		return boundEvents.get(obj);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ee.ut.converter.parser.ElementParser#getEventTimer(java.lang.Object)
+	 */
 	@Override
 	public int getEventTimer(Object obj) {
 		String timer = ((Event) ((Activity) obj).getContent().get(0))
@@ -374,17 +457,29 @@ public class XPDL2ElementParser implements ElementParser {
 		return nextElems;
 	}
 
+	/**
+	 * @param element
+	 * @return
+	 */
 	private ArrayList<Object> getBoundElements(Activity element) {
 		ArrayList<Object> nextElems = new ArrayList<Object>();
 		return nextElems;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ee.ut.converter.parser.ElementParser#getSource(java.lang.String)
+	 */
 	@Override
 	public Object getSource(String process) {
-		return sources.get(process).get(0); // We currently support only one
-		// start event
+		// We currently support only one start event
+		return sources.get(process).get(0);
 	}
 
+	/**
+	 * 
+	 */
 	public void printAdjList() {
 		System.out.println("===== XPDL ADJACENY LIST =====");
 		System.out.println("===== SIZE: " + adjList.size() + " =====");
@@ -398,12 +493,27 @@ public class XPDL2ElementParser implements ElementParser {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ee.ut.converter.parser.ElementParser#getSubprocessId(java.lang.Object)
+	 */
 	@Override
 	public String getSubprocessId(Object o) {
 		for (Object aContent : ((Activity) o).getContent()) {
 			if (aContent instanceof BlockActivity) {
 				return ((BlockActivity) aContent).getActivitySetId();
 			}
+		}
+		return null;
+	}
+
+	@Override
+	public String getXorGWOutputIdentifier(String id, String id2) {
+		for(Transition t: transitions){
+			if(t.getFrom().equals(id) && t.getTo().equals(id2))
+				return t.getId();
 		}
 		return null;
 	}

@@ -1,8 +1,7 @@
 package ee.ut.model.bpmn;
 
-import java.util.ArrayList;
-
 import ee.ut.converter.BProcess;
+import ee.ut.converter.Element;
 import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
 
@@ -13,7 +12,6 @@ public class BPMNSubprocess extends BPMNElement {
 	String timerTransitionId;
 
 	private String subProcessId;
-	ArrayList<BPMNTask> bpmnTasks = new ArrayList<BPMNTask>();
 
 	public BPMNSubprocess(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
@@ -23,10 +21,12 @@ public class BPMNSubprocess extends BPMNElement {
 		subProcessId = parser.getElementParser().getSubprocessId(o);
 
 		BProcess subProcess = process.createSubprocess(subProcessId);
+		
+		//Here we will recursively parse the subprocess.
 		parser.parse(subProcess);
 
 		startPlaceId = subProcess.getSource().getInputPlaceId();
-		endPlaceId = subProcess.getSource().getOutputPlaceId(null);
+		endPlaceId = subProcess.getSink().getOutputPlaceId(null);
 	}
 
 	@Override
@@ -47,14 +47,14 @@ public class BPMNSubprocess extends BPMNElement {
 		return subProcessId;
 	}
 
-	public void addChildTransition(BPMNTask bpmnTask2) {
-		bpmnTasks.add(bpmnTask2);
-	}
 
 	public void setBoundTimer(BPMNSubprocessTimer bpmnSubprocessTimer) {
-		for (BPMNTask task : bpmnTasks) {
-			task.addSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
-					bpmnSubprocessTimer.getOKPlaceId());
+		for (Element e : process.getElements().values()) {
+			if(e instanceof BPMNTask){
+				BPMNTask task = (BPMNTask)e;
+				task.addSubprocessSkipper(bpmnSubprocessTimer.getNOKPlaceId(),
+						bpmnSubprocessTimer.getOKPlaceId());
+			}
 		}
 
 		process.getCpnet().addArc(timerTransitionId,

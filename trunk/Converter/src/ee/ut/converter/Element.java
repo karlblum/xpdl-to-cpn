@@ -35,5 +35,5 @@ public abstract class Element {
 
 	public abstract String getInputPlaceId();
 
-	public abstract String getOutputPlaceId(String ref);
+	public abstract String getOutputPlaceId(String ref) throws Exception;
 }

@@ -28,7 +28,6 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 		int timer = parser.getElementParser().getEventTimer(o);
 		task = (BPMNTask) process.getElement(taskId);
 		task.setBoundTimer(timer);
-
 	}
 
 	@Override

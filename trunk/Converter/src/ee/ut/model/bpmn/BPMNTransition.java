@@ -7,7 +7,7 @@ import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNTransition extends BPMNElement {
 
-	public BPMNTransition(BProcess pr, Parser p, Object o) {
+	public BPMNTransition(BProcess pr, Parser p, Object o) throws Exception {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -15,6 +15,14 @@ public class BPMNTransition extends BPMNElement {
 
 		Element objectFrom = (Element) ((Object[]) o)[1];
 		Element objectTo = (Element) ((Object[]) o)[0];
+
+		if (objectTo instanceof BPMNBoundTimerEvent)
+			return;
+
+		if (objectFrom == null || objectTo == null) {
+			throw new Exception("Error making transition between:"
+					+ objectFrom.getId() + " AND " + objectTo.getId());
+		}
 
 		process.addEdge(objectFrom, objectTo);
 
@@ -40,7 +48,12 @@ public class BPMNTransition extends BPMNElement {
 
 		String transId = process.getCpnet().addTrans().getId();
 
-		process.getCpnet().addArc(objectFrom.getOutputPlaceId(null), transId);
+		String tId = null;
+		if (objectFrom instanceof BPMNGateway)
+			tId = parser.getElementParser().getXorGWOutputIdentifier(
+					objectFrom.getId(), objectTo.getId());
+
+		process.getCpnet().addArc(objectFrom.getOutputPlaceId(tId), transId);
 		process.getCpnet().addArc(transId, objectTo.getInputPlaceId());
 	}
 
