@@ -120,6 +120,7 @@ public class XPDL2ElementParser implements ElementParser {
 
 	/**
 	 * Method adds an edge to the adjacency list.
+	 * 
 	 * @param v1
 	 *            Edge from
 	 * @param v2
@@ -139,7 +140,8 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * Method finds all the process sinks (All the activities with no outgoing transition).
+	 * Method finds all the process sinks (All the activities with no outgoing
+	 * transition).
 	 */
 	private void findSinks() {
 		for (String process : activities.keySet()) {
@@ -163,7 +165,8 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * Method finds all the source activities (Activities with no incoming transition).
+	 * Method finds all the source activities (Activities with no incoming
+	 * transition).
 	 */
 	private void findSources() {
 		for (String process : activities.keySet()) {
@@ -194,10 +197,13 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * Method adds an Activity to the process to activity mapping and Activity to process ID mapping.
+	 * Method adds an Activity to the process to activity mapping and Activity
+	 * to process ID mapping.
 	 * 
-	 * @param processId What process Activity it is.
-	 * @param a Activity to add.
+	 * @param processId
+	 *            What process Activity it is.
+	 * @param a
+	 *            Activity to add.
 	 */
 	private void addProcessActivity(String processId, Activity a) {
 		if (activities.get(processId) == null)
@@ -211,7 +217,8 @@ public class XPDL2ElementParser implements ElementParser {
 	 * Method adds an Activity to certain process sink.
 	 * 
 	 * @param processId
-	 * @param a Sink Activity.
+	 * @param a
+	 *            Sink Activity.
 	 */
 	private void addSink(String processId, Activity a) {
 		if (sinks.get(processId) == null)
@@ -221,8 +228,10 @@ public class XPDL2ElementParser implements ElementParser {
 
 	/**
 	 * Method adds a source Activity to the process to activity mapping.
+	 * 
 	 * @param processId
-	 * @param s Source Activity.
+	 * @param s
+	 *            Source Activity.
 	 */
 	private void addSource(String processId, List<Activity> s) {
 		if (sources.get(processId) == null)
@@ -231,7 +240,10 @@ public class XPDL2ElementParser implements ElementParser {
 	}
 
 	/**
-	 * Checks if the method is a boundary event and if it is then it also generates a transition. This is needed because there is no transition between an event and its boundary event in XPDL.
+	 * Checks if the method is a boundary event and if it is then it also
+	 * generates a transition. This is needed because there is no transition
+	 * between an event and its boundary event in XPDL.
+	 * 
 	 * @param a
 	 */
 	private void ifBoundEventAddTransition(Activity a) {
@@ -378,8 +390,10 @@ public class XPDL2ElementParser implements ElementParser {
 	/**
 	 * Method generates the XPDL in-memory representation.
 	 * 
-	 * @param file Input XPDL file.
-	 * @param model XPDL Java model.
+	 * @param file
+	 *            Input XPDL file.
+	 * @param model
+	 *            XPDL Java model.
 	 * @return XPDL root element.
 	 */
 	@SuppressWarnings("unchecked")

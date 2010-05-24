@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:g360="http://www.global360.com/XPDL2.0alpha" Id="Three-tasks-and-event-gateway.xpdl" Name="Three tasks and event gateway.xpdl">
+  <ConformanceClass GraphConformance="NON-BLOCKED" BPMNModelPortabilityConformance="STANDARD" />
+  <Pools>
+    <Pool BoundaryVisible="false" MainPool="true" Process="MainPool-process" Orientation="HORIZONTAL" Id="MainPool" Name="Main Pool">
+      <NodeGraphicsInfos>
+        <NodeGraphicsInfo FillColor="#ffffff" Height="0.0" Width="0.0" BorderColor="#0,0,0" ToolId="Oryx">
+          <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+        </NodeGraphicsInfo>
+      </NodeGraphicsInfos>
+    </Pool>
+  </Pools>
+  <WorkflowProcesses>
+    <WorkflowProcess AdhocOrdering="Sequential" ProcessType="None" Status="None" SuppressJoinFailure="true" Id="MainPool-process" Name="MainProcess">
+      <ActivitySets>
+        <ActivitySet AdHocOrdering="Sequential" Id="oryx_50845BAF-CA3F-4E36-95C3-4DDE57894472-activitySet">
+          <Activities>
+            <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="oryx_1EDF11D7-329A-4883-90D1-49D022834654" Name="Task B&#xa;">
+              <Implementation>
+                <No />
+              </Implementation>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo FillColor="#ffffcc" Height="80.0" Width="100.0" BorderColor="#0,0,0" ToolId="Oryx">
+                  <Coordinates XCoordinate="105.0" YCoordinate="40.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+              <ExtendedAttributes>
+                <ExtendedAttribute Name="activitytype" Value="Task" />
+              </ExtendedAttributes>
+            </Activity>
+            <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="oryx_91C93FAB-9A75-466F-8A53-DD7A0F0BDAAD" Name="Task C&#xa;">
+              <Implementation>
+                <No />
+              </Implementation>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo FillColor="#ffffcc" Height="80.0" Width="100.0" BorderColor="#0,0,0" ToolId="Oryx">
+                  <Coordinates XCoordinate="225.0" YCoordinate="40.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+              <ExtendedAttributes>
+                <ExtendedAttribute Name="activitytype" Value="Task" />
+              </ExtendedAttributes>
+            </Activity>
+            <Activity Id="oryx_912B258D-9A0F-4242-BDB2-72B4C90820AD" Name="SubStartEvent1&#xa;&#xa;">
+              <Event>
+                <StartEvent Trigger="None" />
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo FillColor="#ffffff" Height="30.0" Width="30.0" BorderColor="#0,0,0" ToolId="Oryx">
+                  <Coordinates XCoordinate="30.0" YCoordinate="65.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="oryx_1A623219-67B8-4BFB-BC8D-AE9DB6381EEC" Name="SubEnd&#xa;">
+              <Event>
+                <EndEvent Result="None" />
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo FillColor="#ffffff" Height="28.0" Width="28.0" BorderColor="#0,0,0" ToolId="Oryx">
+                  <Coordinates XCoordinate="355.0" YCoordinate="66.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+          </Activities>
+        </ActivitySet>
+      </ActivitySets>
+      <Activities>
+        <Activity Id="oryx_B123E49D-D82E-4BF1-9E49-A42BAAFBEACC" Name="StartEvent1">
+          <Event>
+            <StartEvent Trigger="Timer">
+              <TriggerTimer />
+            </StartEvent>
+            </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffff" Height="30.0" Width="30.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="30.0" YCoordinate="160.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="oryx_93B9C911-8D10-47A3-9C6E-BC4F79F72804" Name="EndEvent1">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffff" Height="28.0" Width="28.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="915.0" YCoordinate="161.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="oryx_50845BAF-CA3F-4E36-95C3-4DDE57894472" Name="SubProcess1">
+          <BlockActivity ActivitySetId="oryx_50845BAF-CA3F-4E36-95C3-4DDE57894472-activitySet" View="EXTENDED" />
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="white" Height="160.0" Width="415.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="330.0" YCoordinate="95.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="activitytype" Value="Sub-Process" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="oryx_1EDF11D7-329A-4883-90D1-49D022834654" Name="Task B&#xa;">
+          <Implementation>
+            <No />
+          </Implementation>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffcc" Height="80.0" Width="100.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="105.0" YCoordinate="40.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="activitytype" Value="Task" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="oryx_91C93FAB-9A75-466F-8A53-DD7A0F0BDAAD" Name="Task C&#xa;">
+          <Implementation>
+            <No />
+          </Implementation>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffcc" Height="80.0" Width="100.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="225.0" YCoordinate="40.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="activitytype" Value="Task" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="oryx_912B258D-9A0F-4242-BDB2-72B4C90820AD" Name="SubStartEvent1&#xa;&#xa;">
+          <Event>
+            <StartEvent Trigger="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffff" Height="30.0" Width="30.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="30.0" YCoordinate="65.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="oryx_1A623219-67B8-4BFB-BC8D-AE9DB6381EEC" Name="SubEnd&#xa;">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffff" Height="28.0" Width="28.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="355.0" YCoordinate="66.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity CompletionQuantity="1" StartQuantity="1" Status="None" Id="oryx_1AD3AE04-0AA6-46CA-A500-829CAC4EBFEE" Name="Task A&#xa;">
+          <Implementation>
+            <No />
+          </Implementation>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo FillColor="#ffffcc" Height="80.0" Width="100.0" BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="150.0" YCoordinate="135.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="activitytype" Value="Task" />
+          </ExtendedAttributes>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition From="oryx_B123E49D-D82E-4BF1-9E49-A42BAAFBEACC" Quantity="1" To="oryx_1AD3AE04-0AA6-46CA-A500-829CAC4EBFEE" Id="oryx_78F051F9-624C-40D5-80C0-DA9A6BA611CC">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="45.0" YCoordinate="175.0" />
+              <Coordinates XCoordinate="177.0" YCoordinate="176.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="showdiamondmarker" Value="false" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition From="oryx_1AD3AE04-0AA6-46CA-A500-829CAC4EBFEE" Quantity="1" To="oryx_50845BAF-CA3F-4E36-95C3-4DDE57894472" Id="oryx_C107CB73-E632-4326-8AE0-6813E94BC373">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="200.0" YCoordinate="175.0" />
+              <Coordinates XCoordinate="537.5" YCoordinate="175.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="showdiamondmarker" Value="false" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition From="oryx_50845BAF-CA3F-4E36-95C3-4DDE57894472" Quantity="1" To="oryx_93B9C911-8D10-47A3-9C6E-BC4F79F72804" Id="oryx_D12B2701-3BEC-46BE-B7E6-36D7EC804E28">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="537.5" YCoordinate="175.0" />
+              <Coordinates XCoordinate="929.0" YCoordinate="175.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="showdiamondmarker" Value="false" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition From="oryx_912B258D-9A0F-4242-BDB2-72B4C90820AD" Quantity="1" To="oryx_1EDF11D7-329A-4883-90D1-49D022834654" Id="oryx_78F63BB7-749F-4DA0-9CA7-9C845D6A55F6">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="45.0" YCoordinate="80.0" />
+              <Coordinates XCoordinate="155.0" YCoordinate="80.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="showdiamondmarker" Value="false" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition From="oryx_1EDF11D7-329A-4883-90D1-49D022834654" Quantity="1" To="oryx_91C93FAB-9A75-466F-8A53-DD7A0F0BDAAD" Id="oryx_D4B7C3BA-06E8-4539-9C07-D4DC055E8ECB">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="155.0" YCoordinate="80.0" />
+              <Coordinates XCoordinate="275.0" YCoordinate="80.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="showdiamondmarker" Value="false" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition From="oryx_91C93FAB-9A75-466F-8A53-DD7A0F0BDAAD" Quantity="1" To="oryx_1A623219-67B8-4BFB-BC8D-AE9DB6381EEC" Id="oryx_924C1D21-CAC8-4A74-8CEE-0840F4DA2225">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo BorderColor="#0,0,0" ToolId="Oryx">
+              <Coordinates XCoordinate="275.0" YCoordinate="80.0" />
+              <Coordinates XCoordinate="369.0" YCoordinate="80.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="showdiamondmarker" Value="false" />
+          </ExtendedAttributes>
+        </Transition>
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+</Package>

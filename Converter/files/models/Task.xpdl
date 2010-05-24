@@ -4,6 +4,7 @@
     <XPDLVersion>2.1</XPDLVersion>
     <Vendor>Global 360</Vendor>
     <Created>2010-05-16T11:18:40+03:00</Created>
+    <ModificationDate>2010-05-17T21:07:42+03:00</ModificationDate>
     <LayoutInfo PixelsPerMillimeter="18.2" />
   </PackageHeader>
   <ConformanceClass BPMNModelPortabilityConformance="STANDARD" />
@@ -54,7 +55,7 @@
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="7" Name="T1">
+        <Activity Id="7" Name="Task1">
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="80.0" LaneId="3">
               <Coordinates XCoordinate="250.0" YCoordinate="310.0" />
@@ -66,16 +67,16 @@
         <Transition Id="136" From="4" To="7">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="169.9996337890625" YCoordinate="340.14923095703125" />
-              <Coordinates XCoordinate="250.5" YCoordinate="340.5497131347656" />
+              <Coordinates XCoordinate="169.9996337890625" YCoordinate="340.1492614746094" />
+              <Coordinates XCoordinate="250.5" YCoordinate="340.54974365234375" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>
         <Transition Id="137" From="7" To="5">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="330.5" YCoordinate="340.5229797363281" />
-              <Coordinates XCoordinate="460.0001525878906" YCoordinate="340.0983581542969" />
+              <Coordinates XCoordinate="330.5" YCoordinate="340.5231628417969" />
+              <Coordinates XCoordinate="460.0001525878906" YCoordinate="340.098388671875" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>

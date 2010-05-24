@@ -1,0 +1,4055 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- MXML version 1.0 -->
+<!-- This is a process enactment event log created to be analyzed by ProM. -->
+<!-- ProM is the process mining framework. It can be freely obtained at http://www.processmining.org/. -->
+<WorkflowLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://is.tm.tue.nl/research/processmining/WorkflowLog.xsd" description="CPN Tools simulation log">
+	<Source program="CPN Tools simulation"/>
+	<Process id="DEFAULT" description="Simulated process">
+		<ProcessInstance id="1" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">0 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:00:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">0 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="10" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:15:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">900 </Attribute>
+			</Data><WorkflowModelElement>Expedited processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:15:00.000+01:00</Timestamp>
+			<Originator>MANAGER</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">14400 </Attribute>
+			<Attribute name = "Cost">40000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">40000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">15300 </Attribute>
+			</Data><WorkflowModelElement>Expedited processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:15:00.000+01:00</Timestamp>
+			<Originator>MANAGER</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">15300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T04:15:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">15300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:15:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="100" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:45:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10100 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:48:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10100 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:48:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="11" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:16:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">1200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="12" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:18:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:18:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="13" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:20:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:20:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:20:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="14" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:21:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:21:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="15" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:23:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:23:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:23:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:23:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:23:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="16" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:25:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:25:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:25:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="17" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:26:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:26:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:26:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:26:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:26:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="18" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:28:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:45:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">2700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:45:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="19" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:30:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:46:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">2800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:46:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="2" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:01:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">100 </Attribute>
+			</Data><WorkflowModelElement>Expedited processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:01:40.000+01:00</Timestamp>
+			<Originator>MANAGER</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">14400 </Attribute>
+			<Attribute name = "Cost">40000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">40000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">14500 </Attribute>
+			</Data><WorkflowModelElement>Expedited processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:01:40.000+01:00</Timestamp>
+			<Originator>MANAGER</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">14500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T04:01:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">14500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:01:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="20" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">1900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:31:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:48:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">2900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:48:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="21" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:33:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:36:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">2200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:36:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="22" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:35:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:38:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">2300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:38:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="23" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:36:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:53:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:53:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="24" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:38:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:55:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:55:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="25" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:40:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:56:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:56:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="26" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:41:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:58:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:58:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="27" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:43:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="28" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:45:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:01:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:01:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="29" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:46:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="3" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:03:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:03:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="30" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">2900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:48:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="31" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:50:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">800 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="32" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:51:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">500 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="33" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:53:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">800 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:06:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="34" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:55:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="35" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:56:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">900 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="36" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:58:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:15:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:15:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="37" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:00:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">300 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="38" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:01:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="39" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:03:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">900 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:18:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="4" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:05:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:05:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="40" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">3900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:05:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:08:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="41" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:06:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">800 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:20:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:20:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="42" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:08:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">300 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:13:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:13:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:13:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:13:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="43" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:10:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">700 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:21:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="44" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:15:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:15:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="45" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:13:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:16:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:16:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="46" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:15:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:31:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">5500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:31:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="47" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:16:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:23:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:23:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:23:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:23:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="48" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:18:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="49" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:20:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:26:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:26:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:26:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:26:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="5" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:06:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:06:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:06:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="50" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:21:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:25:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="51" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:23:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6000 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:40:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6000 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:40:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="52" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:25:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6100 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:41:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6100 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:41:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="53" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:26:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:43:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:43:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="54" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:28:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:45:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:45:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="55" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:30:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:46:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:46:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="56" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:31:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:48:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:48:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="57" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:33:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:50:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:50:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="58" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:35:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:51:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:51:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="59" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:36:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:53:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:53:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="6" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:08:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:08:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:08:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="60" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">5900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:38:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:55:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">6900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:55:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="61" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:40:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7000 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:56:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7000 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:56:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="62" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:41:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7100 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:58:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7100 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:58:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="63" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:43:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="64" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:45:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:01:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:01:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="65" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:46:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">800 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10800 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="66" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:48:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="67" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:50:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:06:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="68" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:51:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="69" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:53:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:10:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:10:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="7" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:10:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">600 </Attribute>
+			</Data><WorkflowModelElement>Expedited processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:10:00.000+01:00</Timestamp>
+			<Originator>MANAGER</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">14400 </Attribute>
+			<Attribute name = "Cost">40000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">40000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">15000 </Attribute>
+			</Data><WorkflowModelElement>Expedited processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:10:00.000+01:00</Timestamp>
+			<Originator>MANAGER</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">15000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T04:10:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">15000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:10:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="70" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">6900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:55:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="71" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:56:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:03:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="72" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:58:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:05:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:05:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="73" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:00:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="74" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:01:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:08:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:08:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="75" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:03:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="76" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:05:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:11:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11500 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="77" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:06:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:10:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">7800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:10:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="78" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:08:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="79" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:10:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">500 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:18:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11900 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:18:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11900 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:18:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="8" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:11:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:11:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:11:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="80" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">7900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:11:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">100 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:13:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:13:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">11600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:13:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">11600 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:13:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="81" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:13:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">400 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:20:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12000 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:20:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">12000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12000 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:20:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="82" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:15:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">600 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12300 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:25:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">12300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12300 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:25:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="83" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:16:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">300 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8500 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:21:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12100 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:21:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">12100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12100 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:21:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="84" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:18:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">300 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8600 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:23:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12200 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:23:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">12200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:23:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12200 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:23:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="85" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:20:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:36:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">9400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:36:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="86" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:21:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:38:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">9500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:38:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="87" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:23:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:26:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:26:40.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">12400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:26:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">12400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T03:26:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="88" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:25:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:41:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">9700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:41:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="89" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:26:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:43:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">9800 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:43:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="9" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T00:13:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T00:13:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:13:20.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">4400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T01:13:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">4400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T01:13:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="90" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">8900 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:28:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:45:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">9900 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:45:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="91" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9000 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:30:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10000 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:46:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10000 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:46:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="92" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9100 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:31:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">200 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:35:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">9300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:35:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="93" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9200 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:33:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:50:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10200 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:50:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="94" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9300 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:35:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:51:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10300 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:51:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="95" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9400 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:36:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:53:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10400 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:53:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="96" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9500 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:38:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:55:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10500 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:55:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="97" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9600 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:40:00.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:56:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10600 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:56:40.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="98" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9700 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:41:40.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T02:58:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">10700 </Attribute>
+			</Data><WorkflowModelElement>Application processing not sucessful.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:58:20.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+		<ProcessInstance id="99" description="Simulated process instance">
+			<AuditTrailEntry>
+			<Data><Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">9800 </Attribute>
+			</Data><WorkflowModelElement>Generated input</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T02:43:20.000+01:00</Timestamp>
+			<Originator>generator</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">1000 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">10800 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T03:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">3600 </Attribute>
+			<Attribute name = "Cost">10000 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "ResourceCost">10000 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">14400 </Attribute>
+			</Data><WorkflowModelElement>Normal processing</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:00:00.000+01:00</Timestamp>
+			<Originator>CLERK</Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "WaitingTime">0 </Attribute>
+			<Attribute name = "WaitTimeCost">0 </Attribute>
+			<Attribute name = "ModelTimeStamp">14400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >start</EventType>
+			<Timestamp>2000-01-01T04:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+			<AuditTrailEntry>
+			<Data><Attribute name = "ProcessingTime">0 </Attribute>
+			<Attribute name = "Cost">0 </Attribute>
+			<Attribute name = "StartupCost">0 </Attribute>
+			<Attribute name = "Revenue">0 </Attribute>
+			<Attribute name = "NoOfResources">1 </Attribute>
+			<Attribute name = "ModelTimeStamp">14400 </Attribute>
+			</Data><WorkflowModelElement>Application successfuly processed.</WorkflowModelElement>
+			<EventType >complete</EventType>
+			<Timestamp>2000-01-01T04:00:00.000+01:00</Timestamp>
+			<Originator></Originator>
+			</AuditTrailEntry>
+		</ProcessInstance>
+	</Process>
+</WorkflowLog>
