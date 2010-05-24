@@ -131,4 +131,10 @@ public class KBSimDataParser implements SimDataParser {
 		// TODO: Not implemented
 		return 20;
 	}
+
+	@Override
+	public boolean hasData() {
+		if(simDataRoot != null) return true;
+		return false;
+	}
 }

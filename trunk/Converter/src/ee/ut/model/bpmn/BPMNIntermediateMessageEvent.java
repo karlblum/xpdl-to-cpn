@@ -44,8 +44,8 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 		}
 
 		if (!timerPresent) {
-			// TODO: add delay from simulation data (message receiving
-			// frequency)
+			process.getCpnet().setArcAnnot(delayArcId,
+					"c@+round(uniform(0.0,300.0))");
 		}
 	}
 

@@ -11,8 +11,8 @@ public class TestCPNModel {
 
 	public static void main(String[] args) throws Exception {
 
-		test("Subprocess exception");
-		// testAll();
+		//test("Subprocess exception");
+		test("example_in_paper");
 	}
 
 	private static void testAll() throws Exception {
@@ -23,11 +23,12 @@ public class TestCPNModel {
 		test("Gateway EX");
 		test("Task split");
 		test("Task");
+		test("Subprocess exception");
 	}
 
 	private static void test(String f) throws Exception {
 		File xpdlFile = new File("./files/models/Tests/" + f + ".xpdl");
-		File simDataFile = new File("./files/models/Empty simulation data.xml");
+		File simDataFile = new File("./files/models/Tests/" + f + ".xml");
 
 		Parser p = new Parser();
 		p.setElementFactory(new BPMNRelayFactory(p));

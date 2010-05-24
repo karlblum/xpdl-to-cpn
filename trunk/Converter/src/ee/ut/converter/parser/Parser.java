@@ -85,7 +85,7 @@ public class Parser {
 		p.printAdjList();
 		p.findSinks();
 		p.findSource();
-
+		
 		for (Element e : p.getElements().values()) {
 			e.addSimulationData(simDataParser);
 		}

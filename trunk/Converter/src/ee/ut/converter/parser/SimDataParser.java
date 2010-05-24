@@ -27,4 +27,6 @@ public interface SimDataParser {
 	public int getBoundMessageEventProbability(String elementId);
 
 	public int getBoundTimer(String elementId);
+
+	public boolean hasData();
 }

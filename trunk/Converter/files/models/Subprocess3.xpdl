@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><xpdl:Package Id="newpkg1" Name="newpkg1" xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:xpdl="http://www.wfmc.org/2008/XPDL2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wfmc.org/2008/XPDL2.1 bpmnxpdl_31.xsd">
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>2.1</xpdl:XPDLVersion>
+        <xpdl:Vendor>Yaoqiang</xpdl:Vendor>
+        <xpdl:Created>2010-05-02 13:25:50</xpdl:Created>
+    </xpdl:PackageHeader>
+    <xpdl:ExtendedAttributes>
+        <xpdl:ExtendedAttribute Name="EDITING_TOOL" Value="Yaoqiang XPDL/BPMN Editor"/>
+        <xpdl:ExtendedAttribute Name="EDITING_TOOL_VERSION" Value="1.1.1-C-20100502-1711"/>
+        <xpdl:ExtendedAttribute Name="YqXE_CONFIGURATION" Value="default"/>
+    </xpdl:ExtendedAttributes>
+</xpdl:Package>
