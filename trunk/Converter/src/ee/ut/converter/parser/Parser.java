@@ -86,14 +86,16 @@ public class Parser {
 		p.findSinks();
 		p.findSource();
 		
-		for (Element e : p.getElements().values()) {
-			e.addSimulationData(simDataParser);
+		if (simDataParser.hasData()){
+			for (Element e : p.getElements().values()) {
+				e.addSimulationData(simDataParser);
+			}
 		}
 		return p;
 	}
 
-	public void save(String s) {
-		rootProcess.saveToCPN(s);
+	public void save(String s,Boolean layouting) {
+		rootProcess.saveToCPN(s, layouting);
 	}
 
 	public ElementParser getElementParser() {

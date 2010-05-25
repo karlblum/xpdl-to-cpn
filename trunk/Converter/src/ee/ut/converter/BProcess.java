@@ -79,8 +79,8 @@ public class BProcess {
 		return subprocesses.get(id);
 	}
 
-	public void saveToCPN(String location) {
-		cpnet.saveToFile(location);
+	public void saveToCPN(String location, Boolean layouting) {
+		cpnet.saveToFile(location, layouting);
 	}
 
 	public CPNet getCpnet() {
