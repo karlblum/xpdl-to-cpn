@@ -8,11 +8,14 @@ import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.XPDL2ElementParser;
 
 public class TestCPNModel {
+	
+	private static final String MODEL_PATH = "files/models/";
+	private static final String CPN_PATH = "files/cpn/";
 
 	public static void main(String[] args) throws Exception {
 
 		//test("Subprocess exception");
-		test("example_in_paper");
+		testAll();
 	}
 
 	private static void testAll() throws Exception {
@@ -27,15 +30,15 @@ public class TestCPNModel {
 	}
 
 	private static void test(String f) throws Exception {
-		File xpdlFile = new File("./files/models/Tests/" + f + ".xpdl");
-		File simDataFile = new File("./files/models/Tests/" + f + ".xml");
+		File xpdlFile = new File(MODEL_PATH + f + ".xpdl");
+		File simDataFile = new File(MODEL_PATH + f + ".xml");
 
 		Parser p = new Parser();
 		p.setElementFactory(new BPMNRelayFactory(p));
 		p.setElementParser(new XPDL2ElementParser(xpdlFile));
 		p.setSimDataParser(new KBSimDataParser(simDataFile));
 		p.parse();
-		p.save("files/cpn/Tests/" + f + ".cpn");
+		p.save(CPN_PATH + f + ".cpn",false);
 	}
 
 }

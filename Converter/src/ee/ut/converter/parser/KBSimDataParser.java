@@ -20,7 +20,8 @@ public class KBSimDataParser implements SimDataParser {
 
 	@SuppressWarnings("unchecked")
 	public KBSimDataParser(File simulationDataFile) {
-		simDataRoot = unMasrhall(simulationDataFile, "ee.ut.model.sim");
+		if(simulationDataFile.exists())
+			simDataRoot = unMasrhall(simulationDataFile, "ee.ut.model.sim");
 	}
 
 	@SuppressWarnings("unchecked")

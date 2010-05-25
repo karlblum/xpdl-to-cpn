@@ -86,7 +86,7 @@ public class CPNet {
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
-		//name = "";
+		// name = "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		Initmark im = place.addNewInitmark();
@@ -118,7 +118,7 @@ public class CPNet {
 		Trans trans = page.addNewTrans();
 		trans.setId(id);
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
-		//name = "";
+		// name = "";
 		trans.addNewText().set(XmlString.Factory.newValue(name));
 
 		Cond cond = trans.addNewCond();
@@ -216,23 +216,25 @@ public class CPNet {
 		return "ID" + (currentId++);
 	};
 
-	public void saveToFile(String file) {
-		for (Page p : cpnet.getPageArray()) {
-			if (!p.getId().equals("PAGE_GENERATOR")) {
-				try {
-					doLayouting(p);
-				} catch (Exception e) {
-					System.err.println("LAYOUTING FAILED!");
+	public void saveToFile(String file, Boolean layouting) {
+		if (layouting) {
+			for (Page p : cpnet.getPageArray()) {
+				if (!p.getId().equals("PAGE_GENERATOR")) {
+					try {
+						doLayouting(p);
+					} catch (Exception e) {
+						System.err.println("LAYOUTING FAILED!");
+					}
 				}
 			}
-		}
 
-		try {
-			File convertedCPNFile = new File(file);
-			cpnWorkspace.save(convertedCPNFile);
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
+			try {
+				File convertedCPNFile = new File(file);
+				cpnWorkspace.save(convertedCPNFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
 	}
 
