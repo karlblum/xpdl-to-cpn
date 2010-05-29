@@ -11,8 +11,10 @@ import javax.xml.bind.Unmarshaller;
 import ee.ut.model.sim.GateRef;
 import ee.ut.model.sim.Gateway;
 import ee.ut.model.sim.Resource;
+import ee.ut.model.sim.Resources;
 import ee.ut.model.sim.SimulationData;
 import ee.ut.model.sim.Task;
+import ee.ut.model.sim.Tasks;
 
 public class KBSimDataParser implements SimDataParser {
 
@@ -20,7 +22,7 @@ public class KBSimDataParser implements SimDataParser {
 
 	@SuppressWarnings("unchecked")
 	public KBSimDataParser(File simulationDataFile) {
-		if(simulationDataFile.exists())
+		if (simulationDataFile.exists())
 			simDataRoot = unMasrhall(simulationDataFile, "ee.ut.model.sim");
 	}
 
@@ -41,9 +43,12 @@ public class KBSimDataParser implements SimDataParser {
 
 	@Override
 	public String getTaskDuration(String id) {
-		for (Task t : simDataRoot.getValue().getTasks().getTask()) {
-			if (t.getId().equals(id))
-				return t.getProcessingTime();
+		Tasks ts = simDataRoot.getValue().getTasks();
+		if (ts != null) {
+			for (Task t : simDataRoot.getValue().getTasks().getTask()) {
+				if (t.getId().equals(id))
+					return t.getProcessingTime();
+			}
 		}
 		return "0";
 	}
@@ -86,20 +91,26 @@ public class KBSimDataParser implements SimDataParser {
 
 	@Override
 	public String getWaitTimeDuration(String elementId) {
-		for (Task t : simDataRoot.getValue().getTasks().getTask()) {
-			if (t.getId().equals(elementId))
+		Tasks ts = simDataRoot.getValue().getTasks();
+		if (ts != null) {
+			for (Task t : simDataRoot.getValue().getTasks().getTask()) {
+				if (t.getId().equals(elementId))
 
-				return t.getResourceWaitTime();
+					return t.getResourceWaitTime();
+			}
 		}
 		return "0";
 	}
 
 	@Override
 	public String getResources(String elementId) {
-		for (Task t : simDataRoot.getValue().getTasks().getTask()) {
-			if (t.getId().equals(elementId))
+		Tasks ts = simDataRoot.getValue().getTasks();
+		if (ts != null) {
+			for (Task t : ts.getTask()) {
+				if (t.getId().equals(elementId))
 
-				return t.getResourceType();
+					return t.getResourceType();
+			}
 		}
 		return "";
 	}
@@ -107,9 +118,12 @@ public class KBSimDataParser implements SimDataParser {
 	@Override
 	public HashMap<String, Integer> getResourceData() {
 		HashMap<String, Integer> resources = new HashMap<String, Integer>();
-
-		for (Resource r : simDataRoot.getValue().getResources().getResource()) {
-			resources.put(r.getResourceType(), r.getResourceAmount());
+		Resources rs = simDataRoot.getValue().getResources();
+		if (rs != null) {
+			for (Resource r : simDataRoot.getValue().getResources()
+					.getResource()) {
+				resources.put(r.getResourceType(), r.getResourceAmount());
+			}
 		}
 		return resources;
 	}
@@ -135,7 +149,8 @@ public class KBSimDataParser implements SimDataParser {
 
 	@Override
 	public boolean hasData() {
-		if(simDataRoot != null) return true;
+		if (simDataRoot != null)
+			return true;
 		return false;
 	}
 }

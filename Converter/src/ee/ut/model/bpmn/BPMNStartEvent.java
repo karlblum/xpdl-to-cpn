@@ -55,11 +55,13 @@ public class BPMNStartEvent extends BPMNElement {
 			process
 					.getCpnet()
 					.createOrUpdateDef(
-							"val " + key + " = ",
-							"{Name=\""
+							"val "
+									+ key
+									+ " = "
+									+ "{Name=\""
 									+ key
 									+ "\", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=[\""
-									+ key + "\"], Availability=[tt_week]};");
+									+ key + "\"], Availability=[tt_week]};", 2);
 			resourceString += "++" + resources.get(key) + "`" + key;
 		}
 		if (resourceString.length() > 3)

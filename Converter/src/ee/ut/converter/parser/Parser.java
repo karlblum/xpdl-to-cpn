@@ -85,8 +85,8 @@ public class Parser {
 		p.printAdjList();
 		p.findSinks();
 		p.findSource();
-		
-		if (simDataParser.hasData()){
+
+		if (simDataParser.hasData()) {
 			for (Element e : p.getElements().values()) {
 				e.addSimulationData(simDataParser);
 			}
@@ -94,7 +94,7 @@ public class Parser {
 		return p;
 	}
 
-	public void save(String s,Boolean layouting) {
+	public void save(String s, Boolean layouting) {
 		rootProcess.saveToCPN(s, layouting);
 	}
 

@@ -50,7 +50,6 @@ public class BPMNeStartEvent {
 		outputPlace.addNewPort().setType("Out");
 		outputPlace.getTypeArray()[0].getText().set(caseType.copy());
 
-		// TODO: THIS DOES NOT SEEM TO WORK!
 		transition.getSubst()
 				.setPortsock(
 						String.format("(%s,%s)", "PAGE_GENERATOR", outputPlace

@@ -6,20 +6,5 @@
 		<TokensInBundle>4</TokensInBundle>
 		<TotalTokens>40</TotalTokens>
 		<CostPerToken>1</CostPerToken>
-		<Resources>
-			<Resource>
-				<TODO></TODO>
-			</Resource>
-		</Resources>
 	</SimulationProfile>	
-	<Tasks>
-	</Tasks>
-	<Gateways>
-  </Gateways> 
-   	<Resources>
-  	<Resource>
-    	<ResourceType>WORKER</ResourceType>
-      <ResourceAmount>1</ResourceAmount>
-  	</Resource>
-  	</Resources>
 </SimulationData>
