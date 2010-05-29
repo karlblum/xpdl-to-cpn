@@ -6,10 +6,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import noNamespace.Annot;
 import noNamespace.Arc;
+import noNamespace.Block;
 import noNamespace.Code;
 import noNamespace.Cond;
 import noNamespace.Cpnet;
@@ -24,6 +27,7 @@ import noNamespace.Subst;
 import noNamespace.Time;
 import noNamespace.Trans;
 import noNamespace.Type;
+import noNamespace.Var;
 import noNamespace.WorkspaceElementsDocument;
 
 import org.apache.xmlbeans.XmlString;
@@ -42,12 +46,14 @@ public class CPNet {
 	private HashMap<String, Trans> transs = new HashMap<String, Trans>();
 	private String resourcePlaceId;
 	private int currentId = 1000;
+	private List<Block> varBlocks = new ArrayList<Block>();
+	private int numberOfVarBolcks = 3;
 
 	private String flowObjectType = "CASE";
 	private String flowObjectVariable = "c";
 
 	public CPNet() {
-		File blankCPN = new File("./files/cpn/template.cpn");
+		File blankCPN = new File("./files/cpn/blank.cpn");
 
 		try {
 			cpnWorkspace = WorkspaceElementsDocument.Factory.parse(blankCPN);
@@ -57,6 +63,250 @@ public class CPNet {
 
 		cpnet = cpnWorkspace.getWorkspaceElements().getCpnet();
 		page = cpnet.getPageArray()[0];
+
+		for (int i = 0; i < numberOfVarBolcks; i++) {
+			varBlocks.add(cpnet.getGlobbox().addNewBlock());
+		}
+
+		initCPNetDeclarations();
+	}
+
+	private void initCPNetDeclarations() {
+		addVar("p", "INT", "var p:INT;", 1);
+		// createOrUpdateDef("colset TRIG_TOKEN = INT timed;", 1);
+		addVar("tt", "TRIG_TOKEN", "var tt:TRIG_TOKEN;", 1);
+		createOrUpdateDef("val FILE = \"logs/logsCPN\"", 1);
+		createOrUpdateDef("val FILE_EXTENSION = \".cpnxml\"", 1);
+		createOrUpdateDef("use \"loggingFunctionsMultipleFiles.sml\";", 1);
+		addVar("pt", "INT", "var pt:INT;", 1);
+		createOrUpdateDef("fun et(mean:INT,stdD:INT)=\n" + "let\n"
+				+ "val realMean = Real.fromInt mean\n"
+				+ "val realStdD = Real.fromInt stdD\n" + "in\n"
+				+ "round(uniform(realMean-realStdD, realMean+realStdD))\n"
+				+ "end;", 1);
+		// createOrUpdateDef("colset DTYPE = with specific | normal;", 1);
+		// createOrUpdateDef("colset DISTRIBUTION = record dtype:DTYPE * specificValue:INT * mean:INT * std:INT;",
+		// 1);
+		createOrUpdateDef("fun intTime() = IntInf.toInt (time());", 1);
+		createOrUpdateDef(
+				"fun dateFromString(s:STRING) =\n"
+						+ "let\n"
+						+ "  val s1 = \"Sat Jan 01 10:51:07 2000\"\n"
+						+ "  val dateSplit = String.tokens(fn(c) => c = #\" \") s\n"
+						+ "  val timeStr = List.nth(dateSplit, 3)\n"
+						+ "  val time = String.tokens(fn(c) => c = #\":\") timeStr\n"
+						+ "  val day = Option.getOpt(Int.fromString(List.nth(dateSplit, 2)), 0)\n"
+						+ "  val hour = Option.getOpt(Int.fromString(List.nth(time, 0)), 0)\n"
+						+ "  val minute = Option.getOpt(Int.fromString(List.nth(time, 1)), 0)\n"
+						+ "  val second = Option.getOpt(Int.fromString(List.nth(time, 2)), 0)\n"
+						+ "  val year = Option.getOpt(Int.fromString(List.nth(dateSplit, 4)), 0)\n"
+						+ "  val monthStr = List.nth(dateSplit, 1)\n"
+						+ "  val month = case monthStr of\n"
+						+ "      \"Jan\" => Date.Jan\n"
+						+ "    | \"Feb\" => Date.Feb\n"
+						+ "    | \"Mar\" => Date.Mar\n"
+						+ "    | \"Apr\" => Date.Apr\n"
+						+ "    | \"May\" => Date.May\n"
+						+ "    | \"Jun\" => Date.Jun\n"
+						+ "    | \"Jul\" => Date.Jul\n"
+						+ "    | \"Aug\" => Date.Aug\n"
+						+ "    | \"Sep\" => Date.Sep\n"
+						+ "    | \"Oct\" => Date.Oct\n"
+						+ "    | \"Nov\" => Date.Nov\n"
+						+ "    | \"Dec\" => Date.Dec\n"
+						+ "    | _     => Date.Jan;\n"
+						+ "in\n"
+						+ "  Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}\n"
+						+ "end", 1);
+		// createOrUpdateDef("colset ID = int timed;", 1);
+		addVar("i", "ID", "var i:ID;", 1);
+		createOrUpdateDef("val OneTimeCostPerToken = 0;", 1);
+		// createOrUpdateDef("colset CASE = record ID:INT * ats:INT * ts:INT timed;",
+		// 1);
+		addVar("c", "CASE", "var c:CASE;", 1);
+		createOrUpdateDef(
+				"fun calcDisValue(value:DISTRIBUTION) =\r\n"
+						+ "let\r\n"
+						+ "  val dtype = #dtype(value)\r\n"
+						+ "  val specificValue = #specificValue(value)\r\n"
+						+ "  val mean = #mean(value)\r\n"
+						+ "  val std = #std(value)\r\n"
+						+ "in\r\n"
+						+ "  case dtype of normal => et(mean, std) | specific => specificValue\r\n"
+						+ "end;", 1);
+		createOrUpdateDef(
+				"fun add2StartDate(ts:INT) =\r\n"
+						+ "let\r\n"
+						+ "val day = Date.day(startDate)\r\n"
+						+ "val second = Date.second(startDate)\r\n"
+						+ "val hour = Date.hour (startDate)\r\n"
+						+ "val minute = Date.minute(startDate)\r\n"
+						+ "val month = Date.month (startDate)\r\n"
+						+ "val offset = Date.offset (startDate)\r\n"
+						+ "val second = Date.second(startDate)+ ts\r\n"
+						+ "val year = Date.year (startDate)\r\n"
+						+ "in\r\n"
+						+ "Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}\r\n"
+						+ "end;", 1);
+		createOrUpdateDef(
+				"fun generateCase(id:ID)=\r\n"
+						+ "let\r\n"
+						+ "\r\n"
+						+ "val _ = createCaseFile(id);\r\n"
+						+ "val curDate = add2StartDate(intTime()) ;\r\n"
+						+ "val timestamp = (Date.fmt \"%Y-%m-%dT%H:%M:%S.000+01:00\" curDate);\r\n"
+						+ "val data = [\"Cost\", Int.toString(OneTimeCostPerToken), \"ModelTimeStamp\", Int.toString(intTime())];\r\n"
+						+ "val _ = addATE(id, \"Generated input\", [\"complete\"], timestamp, \"generator\", data);\r\n"
+						+ "in\r\n"
+						+ "  {ID=id, ts=intTime(), ats=intTime()}\r\n" + "end;",
+				1);
+		createOrUpdateDef(
+				"fun generatorGuard(i:ID) =\r\n"
+						+ "let\r\n"
+						+ "val dateCompare = Date.compare(add2StartDate(intTime()), endDate) <> GREATER;\r\n"
+						+ "in\r\n"
+						+ "if i <= totalNoOfToken andalso dateCompare=true then true else false\r\n"
+						+ "end;", 1);
+		addVar("caseInfop", "CASE", "var caseInfop: CASE;", 1);
+		addVar("path", "INT", "var path: INT;", 1);
+		createOrUpdateDef(
+				"fun initCaseInfo(id) = {Id=id,CaseStartTime=IntInf.toInt(time()),CaseEndTime=0};",
+				1);
+		// createOrUpdateDef("colset RECINT = record Name:STRING * StartTime:INT * Duration:INT;\r\n"
+		// +
+		// "(*All durations are in seconds*)", 1);
+		// createOrUpdateDef("colset RECURRINGINTERVALS = list RECINT;", 1);
+		// createOrUpdateDef("colset TTEXCEPTION = record Name:STRING * RepeatCount:INT * RepetitionDuration:INT * BeginDate:STRING * RecurringIntervals:RECURRINGINTERVALS;",
+		// 1);
+		// createOrUpdateDef("colset TTEXCEPTIONS = list TTEXCEPTION;", 1);
+		// createOrUpdateDef("colset TIMETABLE = record Name:STRING * RepeatCount:INT * RepetitionDuration:INT * BeginDate:STRING * RecurringIntervals:RECURRINGINTERVALS * TTExceptions:TTEXCEPTIONS;",
+		// 1);
+		// createOrUpdateDef("colset TIMETABLES = list TIMETABLE;", 1);
+		createOrUpdateDef(
+				"fun isRole(roles:SLIST, required:STRING) = List.exists (fn x => x = required) roles;",
+				1);
+		createOrUpdateDef(
+				"fun checkRoles [] [] = true\r\n"
+						+ "| checkRoles _ [] = true\r\n"
+						+ "| checkRoles roles (role::reqRoles) = List.exists (fn x => x = role) roles andalso checkRoles roles reqRoles ;",
+				1);
+		createOrUpdateDef(
+				"fun check_roles(roles:SLIST, required:SLIST) = checkRoles roles required;",
+				1);
+		// createOrUpdateDef("colset RCOST = record Value:INT * CostPerDuration:INT * CostPerQuantity:INT * CostApplicableTT:TIMETABLES;",
+		// 1);
+		// createOrUpdateDef("colset RCOSTS = list RCOST;", 1);
+		// createOrUpdateDef("colset RES = record Name:STRING * Costs:RCOSTS * Roles:SLIST * Availability:TIMETABLES timed;",
+		// 1);
+		createOrUpdateDef(
+				"val recint_weekend = {Name=\"weekend\", StartTime=0, Duration=((60*60)*24*2)};",
+				1);
+		createOrUpdateDef(
+				"val recint_dayShift = {Name=\"Day shift\", StartTime=((60*60)*9), Duration=((60*60)*9)};",
+				1);
+		createOrUpdateDef(
+				"val recint_bulk = {Name=\"bulk\", StartDate=0, Duration=((60*60)*24)};",
+				1);
+		createOrUpdateDef(
+				"val tte_weekend = {Name=\"weekend\", RepeatCount=0, RepetitionDuration=((60*60)*24*7), BeginDate=\"\", RecurringIntervals=[recint_weekend]};",
+				1);
+		createOrUpdateDef(
+				"val tt_bulkweek = {Name=\"week\", RepeatCount=0, RepetitionDuration=((60*60)*24), BeginDate=\"\", RecurringIntervals=[recint_bulk], Exceptions=[tte_weekend]};",
+				1);
+		createOrUpdateDef(
+				"val tt_week = {Name=\"week\", RepeatCount=0, RepetitionDuration=604800, BeginDate=\"dasdas\", RecurringIntervals=[recint_dayShift], TTExceptions=[tte_weekend]};",
+				1);
+		addVar("r", "RES", "var r:RES;", 1);
+		// createOrUpdateDef("colset TRANSPARAMS  = record \r\n" +
+		// "transitionName:STRING * pt: DISTRIBUTION * pCost:DISTRIBUTION * sCost:DISTRIBUTION * revenue:DISTRIBUTION * pWaitTimeDur:INT * pWaitTimeCost:INT * NoOfResources:INT;",
+		// 1);
+		createOrUpdateDef(
+				"fun transitionAction (a:CASE, params:TRANSPARAMS) = \r\n"
+						+ "let\r\n"
+						+ "  val id = #ID(a)\r\n"
+						+ "  val ts = #ts(a)\r\n"
+						+ "  val ats = #ats(a)\r\n"
+						+ "  val transitionName = #transitionName(params)\r\n"
+						+ "  val noOr = #NoOfResources(params)\r\n"
+						+ "  val waitTime = intTime() - ts\r\n"
+						+ "  val waitTimeDur = #pWaitTimeDur(params)\r\n"
+						+ "  val waitTimeDur = Real.fromInt waitTimeDur\r\n"
+						+ "  val waitTimeCost = #pWaitTimeCost(params)\r\n"
+						+ "  val waitTimeCost = Real.fromInt waitTimeCost\r\n"
+						+ "  val waitTime_real = Real.fromInt waitTime\r\n"
+						+ "  val waitTimeCost = if waitTimeDur > 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;\r\n"
+						+ "\r\n"
+						+ "  val procTime = calcDisValue(#pt(params))\r\n"
+						+ "  val procTime_real = Real.fromInt procTime\r\n"
+						+ "\r\n"
+						+ "  val processcost = calcDisValue(#pCost(params))\r\n"
+						+ "  val scost = calcDisValue(#sCost(params))\r\n"
+						+ "  val revenue = calcDisValue(#revenue(params))\r\n"
+						+ "  val allcost = processcost + scost\r\n"
+						+ "\r\n"
+						+ "val curDate = add2StartDate(intTime()) ;\r\n"
+						+ "val timestamp = (Date.fmt \"%Y-%m-%dT%H:%M:%S.000+01:00\" curDate);\r\n"
+						+ "val data = [\"WaitingTime\", Int.toString(waitTime), \"WaitTimeCost\", Int.toString(waitTimeCost), \"ModelTimeStamp\", Int.toString(intTime())];\r\n"
+						+ "val _ = addATE(id, transitionName, [\"start\"], timestamp, \"\", data);\r\n"
+						+ "\r\n"
+						+ "val curDate = add2StartDate(intTime() +procTime) ;\r\n"
+						+ "val timestamp = (Date.fmt \"%Y-%m-%dT%H:%M:%S.000+01:00\" curDate);\r\n"
+						+ "val data = [\"ProcessingTime\", Int.toString(procTime), \"Cost\", Int.toString(allcost), \"StartupCost\", Int.toString(scost)]\r\n"
+						+ "val data = data ++ [\"Revenue\", Int.toString(revenue), \"NoOfResources\", Int.toString(#NoOfResources(params)), \"ModelTimeStamp\", Int.toString(intTime()+procTime)];\r\n"
+						+ "val _ = addATE(id, transitionName, [\"complete\"], timestamp, \"\", data);\r\n"
+						+ "in\r\n" + "  (procTime)\r\n" + "end", 1);
+		createOrUpdateDef(
+				"fun transitionActionR (a:CASE, r:RES, params:TRANSPARAMS) = \r\n"
+						+ "let\r\n"
+						+ "  val id = #ID(a)\r\n"
+						+ "  val ts = #ts(a)\r\n"
+						+ "  val ats = #ats(a)\r\n"
+						+ "  val transitionName = #transitionName(params)\r\n"
+						+ "  val resourceName = #Name(r)\r\n"
+						+ "  val noOr = #NoOfResources(params)\r\n"
+						+ "  val waitTime = intTime() - ts\r\n"
+						+ "  val waitTimeDur = #pWaitTimeDur(params)\r\n"
+						+ "  val waitTimeDur = Real.fromInt waitTimeDur\r\n"
+						+ "  val waitTimeCost = #pWaitTimeCost(params)\r\n"
+						+ "  val waitTimeCost = Real.fromInt waitTimeCost\r\n"
+						+ "  val waitTime_real = Real.fromInt waitTime\r\n"
+						+ "  val waitTimeCost = if waitTimeDur > 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;\r\n"
+						+ "\r\n"
+						+ "  val procTime = calcDisValue(#pt(params))\r\n"
+						+ "  val procTime_real = Real.fromInt procTime\r\n"
+						+ "\r\n"
+						+ "(*Sum up the costs of resources*)\r\n"
+						+ "val rcosts = #Costs(r)\r\n"
+						+ "(*TODO: to check the timetable*)\r\n"
+						+ "fun calcResourceCost(n:RCOST) = \r\n"
+						+ "let\r\n"
+						+ "  val costDur = #CostPerDuration(n)\r\n"
+						+ "  val costDur = Real.fromInt costDur \r\n"
+						+ "  val value = #Value(n)\r\n"
+						+ "  val value = Real.fromInt value\r\n"
+						+ "in\r\n"
+						+ "  if costDur > 0.0 then round((procTime_real/costDur)*value) else round(value)\r\n"
+						+ "end;\r\n"
+						+ "val rec rCost = fn ([]) => 0 | n::s => calcResourceCost(n) + rCost  s\r\n"
+						+ "val resCost = rCost(rcosts)*noOr;\r\n"
+						+ "(*end sum up*)\r\n"
+						+ "\r\n"
+						+ "  val processcost = calcDisValue(#pCost(params))\r\n"
+						+ "  val scost = calcDisValue(#sCost(params))\r\n"
+						+ "  val revenue = calcDisValue(#revenue(params))\r\n"
+						+ "  val allcost = processcost + resCost + scost\r\n"
+						+ "\r\n"
+						+ "val curDate = add2StartDate(intTime()) ;\r\n"
+						+ "val timestamp = (Date.fmt \"%Y-%m-%dT%H:%M:%S.000+01:00\" curDate);\r\n"
+						+ "val data = [\"WaitingTime\", Int.toString(waitTime), \"WaitTimeCost\", Int.toString(waitTimeCost), \"ModelTimeStamp\", Int.toString(intTime())];\r\n"
+						+ "val _ = addATE(id, transitionName, [\"start\"], timestamp, resourceName, data);\r\n"
+						+ "\r\n"
+						+ "val curDate = add2StartDate(intTime() +procTime) ;\r\n"
+						+ "val timestamp = (Date.fmt \"%Y-%m-%dT%H:%M:%S.000+01:00\" curDate);\r\n"
+						+ "val data = [\"ProcessingTime\", Int.toString(procTime), \"Cost\", Int.toString(allcost), \"StartupCost\", Int.toString(scost)]\r\n"
+						+ "val data = data ++ [\"ResourceCost\", Int.toString(resCost), \"Revenue\", Int.toString(revenue), \"NoOfResources\", Int.toString(#NoOfResources(params)), \"ModelTimeStamp\", Int.toString(intTime()+procTime)];\r\n"
+						+ "val _ = addATE(id, transitionName, [\"complete\"], timestamp, resourceName, data);\r\n"
+						+ "in\r\n" + "  (procTime)\r\n" + "end", 1);
 	}
 
 	public Place addPlace() {
@@ -229,12 +479,12 @@ public class CPNet {
 			}
 
 		}
-			try {
-				File convertedCPNFile = new File(file);
-				cpnWorkspace.save(convertedCPNFile);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		try {
+			File convertedCPNFile = new File(file);
+			cpnWorkspace.save(convertedCPNFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -284,19 +534,33 @@ public class CPNet {
 	}
 
 	public void setTotalTokens(String startTokens) {
-		createOrUpdateDef("val totalNoOfToken = ", startTokens);
+		createOrUpdateDef("val totalNoOfToken = " + startTokens + ";", 0);
 	}
 
 	public void setTokensPerBundle(String bundleTokens) {
-		createOrUpdateDef("val noOfTokensPerBundle = ", bundleTokens);
+		createOrUpdateDef("val noOfTokensPerBundle = " + bundleTokens + ";", 0);
 	}
 
-	public void createOrUpdateDef(String def, String value) {
-		// TODO: no update functionality yet
-		Ml ml = cpnet.getGlobbox().addNewMl();
+	public void createOrUpdateDef(String def, int order) {
+		Ml ml = varBlocks.get(order).addNewMl();
 		ml.setId(createId());
-		ml.set(XmlString.Factory.newValue(def + value + ";"));
+		ml.set(XmlString.Factory.newValue(def));
+	}
 
+	public void addVar(String var, String type, String layout, int order) {
+		Var v = varBlocks.get(order).addNewVar();
+		v.addNewType().addNewId().set(XmlString.Factory.newValue(type));
+		v.addNewId().set(XmlString.Factory.newValue(var));
+		v.addNewLayout().set(XmlString.Factory.newValue(layout));
+		v.setId2(createId());
+	}
+
+	public void addColor(String name, String type, String layout, int order) {
+		try {
+			throw new Exception("Not implemented");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setStartTime(String startTime) {
@@ -305,7 +569,7 @@ public class CPNet {
 				+ ", minute = " + arg[4]
 				+ ", month = Date.Jan, offset = NONE, second = " + arg[5]
 				+ ", year = " + arg[0] + "}";
-		createOrUpdateDef("val startDate = ", value);
+		createOrUpdateDef("val startDate = " + value + ";", 0);
 	}
 
 	public void setEndTime(String endTime) {
@@ -314,7 +578,7 @@ public class CPNet {
 				+ ", minute = " + arg[4]
 				+ ", month = Date.Jan, offset = NONE, second = " + arg[5]
 				+ ", year = " + arg[0] + "}";
-		createOrUpdateDef("val endDate = ", value);
+		createOrUpdateDef("val endDate = " + value + ";", 0);
 	}
 
 	public String getResourcePlace() {
@@ -328,14 +592,12 @@ public class CPNet {
 		Trans trans = transs.get(id);
 		trans.getCondArray()[0].getText()
 				.set(XmlString.Factory.newValue(value));
-
 	}
 
 	public void setResourcePlaceValue(String resourceString) {
 		String resourcePlaceId = getResourcePlace();
 		Place p = getPlace(resourcePlaceId);
 		setPlaceValue(p.getId(), resourceString);
-
 	}
 
 	public void setPlaceValue(String place, String value) {
@@ -348,7 +610,7 @@ public class CPNet {
 	public void setTimeBetweenBundles(String timeBetweenBundles) {
 		String value = "{dtype=specific, specificValue=" + timeBetweenBundles
 				+ ", mean=0, std=0};";
-		createOrUpdateDef("val timeBetweenBundles = ", value);
+		createOrUpdateDef("val timeBetweenBundles = " + value + ";", 0);
 
 	}
 
