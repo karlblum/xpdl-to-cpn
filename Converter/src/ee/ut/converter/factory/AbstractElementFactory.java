@@ -12,10 +12,6 @@ public abstract class AbstractElementFactory {
 		parser = p;
 	}
 
-	public AbstractElementFactory() {
-
-	}
-
 	public abstract Element create(BProcess pr, Object obj) throws Exception;
 
 }

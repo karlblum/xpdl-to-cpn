@@ -92,7 +92,7 @@ public class BPMNGateway extends BPMNElement {
 
 			HashMap<String, String> distribution = simDataParser
 					.getDistribution(elementId);
-
+			if(distribution == null) return;
 			if (distribution.size() > 1) {
 				String function = "input ();\noutput (path);\naction\n(\n  let\n    val p = discrete(0, 99);\n  in";
 

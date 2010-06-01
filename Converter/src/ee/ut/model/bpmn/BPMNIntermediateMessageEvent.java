@@ -10,6 +10,7 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 	String outputPlaceId;
 	String delayArcId;
 	String ebXORId;
+	int timerTime;
 
 	public BPMNIntermediateMessageEvent(BProcess pr, Parser p, Object o)
 			throws Exception {
@@ -17,6 +18,7 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
+		timerTime = parser.getElementParser().getEventTimer(o);
 
 		inputPlaceId = process.getCpnet().addPlace(elementName + "IN").getId();
 		String transitionId = process.getCpnet().addTrans(elementName).getId();
@@ -45,7 +47,7 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 
 		if (!timerPresent) {
 			process.getCpnet().setArcAnnot(delayArcId,
-					"c@+round(uniform(0.0,300.0))");
+					"c@+round(uniform(0.0,"+ timerTime +".0))");
 		}
 	}
 

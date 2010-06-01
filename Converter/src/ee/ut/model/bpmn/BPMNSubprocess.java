@@ -61,7 +61,6 @@ public class BPMNSubprocess extends BPMNElement {
 							.getNOKPlaceId(), bpmnSubprocessTimer
 							.getOKPlaceId());
 				} else {
-					System.out.println("LAST TASK: " + task.getName());
 					task.addLastSubprocessSkipper(bpmnSubprocessTimer
 							.getNOKPlaceId(), bpmnSubprocessTimer
 							.getOKPlaceId(), bpmnSubprocessTimer
@@ -72,8 +71,9 @@ public class BPMNSubprocess extends BPMNElement {
 
 		process.getCpnet().addArc(timerTransitionId,
 				bpmnSubprocessTimer.getOKPlaceId());
-		process.getCpnet().addArc(timerTransitionId,
-				bpmnSubprocessTimer.getTimerTokenPlaceId());
+		String arcId = process.getCpnet().addArc(timerTransitionId,
+				bpmnSubprocessTimer.getTimerTokenPlaceId()).getId();
+		process.getCpnet().setArcAnnot(arcId, "c@+" + bpmnSubprocessTimer.getTimerTime());
 
 	}
 

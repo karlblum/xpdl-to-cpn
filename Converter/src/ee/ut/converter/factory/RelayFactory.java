@@ -35,11 +35,19 @@ public abstract class RelayFactory extends AbstractElementFactory {
 	}
 
 	public void connectElements(BProcess pr, Element convertedElement,
-			Element element) throws Exception {
-		if (connectorFactory == null)
-			throw new Exception("Missing connector factory!");
+			Element element){
+			try {
+				if (connectorFactory == null)
+				throw new Exception("Missing connector factory!");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
-		connectorFactory.create(pr, new Object[] { convertedElement, element });
+		try {
+			connectorFactory.create(pr, new Object[] { convertedElement, element });
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void registerConnectorFactory(AbstractElementFactory concrete) {
