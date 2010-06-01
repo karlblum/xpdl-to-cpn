@@ -11,11 +11,19 @@ import ee.ut.model.xpdl2.Activity;
 
 public class Parser {
 
+	// Process model file parser 
 	private ElementParser elementParser;
+	
+	// Simulation data file parser
 	private SimDataParser simDataParser;
+	
+	// RelayFactory for handling the element mappings
 	private RelayFactory relayFactory;
+	
+	// Root process instance with id=0
 	private BProcess rootProcess = new BProcess(null, "0");
 
+	
 	public void setElementParser(ElementParser p) {
 		elementParser = p;
 	}
@@ -28,11 +36,21 @@ public class Parser {
 		relayFactory = f;
 	}
 
-	public BProcess parse() throws Exception {
+	/**
+	 * Method starts parsing from the root process.
+	 * @return Root process.
+	 */
+	public BProcess parse() {
 		return parse(rootProcess);
 	}
 
-	public BProcess parse(BProcess p) throws Exception {
+	
+	/**
+	 * Method converts a given process instance.
+	 * @param p In-memory empty process instance.
+	 * @return Created process.
+	 */
+	public BProcess parse(BProcess p) {
 		System.out.println("\n\n===== STARTING TO CONVERT PROCESS: "
 				+ p.getId() + " =====");
 
@@ -55,7 +73,11 @@ public class Parser {
 					.getNextElements(element);
 
 			if (!parsedElements.containsKey(element)) {
-				convertedElement = relayFactory.create(p, element);
+				try {
+					convertedElement = relayFactory.create(p, element);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				p.addElement(convertedElement.getId(), convertedElement);
 				parsedElements.put(element, convertedElement);
 			}
@@ -88,7 +110,11 @@ public class Parser {
 
 		if (simDataParser.hasData()) {
 			for (Element e : p.getElements().values()) {
-				e.addSimulationData(simDataParser);
+				try {
+					e.addSimulationData(simDataParser);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 		return p;

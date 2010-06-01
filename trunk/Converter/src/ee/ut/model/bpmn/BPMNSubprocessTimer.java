@@ -11,6 +11,7 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	String nokPlaceId;
 	String timerTokenPlaceId;
 	String completeTransId;
+	int timerTime;
 
 	public BPMNSubprocessTimer(BProcess pr, Parser p, Object o)
 			throws Exception {
@@ -18,6 +19,7 @@ public class BPMNSubprocessTimer extends BPMNElement {
 
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
+		timerTime = parser.getElementParser().getEventTimer(o);
 
 		okPlaceId = process.getCpnet().addPlace(elementName + "OK").getId();
 		nokPlaceId = process.getCpnet().addPlace(elementName + "NOK").getId();
@@ -25,13 +27,15 @@ public class BPMNSubprocessTimer extends BPMNElement {
 				.getId();
 		String exeptionTransId = process.getCpnet().addTrans(
 				elementName + "EXCEPTION").getId();
+		
 		outputPlaceId = process.getCpnet().addPlace(elementName + "TIMER OUT")
 				.getId();
+		
 
-		process.getCpnet().addArc(okPlaceId, exeptionTransId);
-		process.getCpnet().addArc(exeptionTransId, nokPlaceId);
+		process.getCpnet().addArc(okPlaceId, exeptionTransId,"c");
+		process.getCpnet().addArc(exeptionTransId, nokPlaceId,"c");
 
-		process.getCpnet().addArc(timerTokenPlaceId, exeptionTransId);
+		process.getCpnet().addArc(timerTokenPlaceId, exeptionTransId,"c");
 
 	}
 
@@ -59,6 +63,10 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	@Override
 	public String getOutputPlaceId(String ref) {
 		return outputPlaceId;
+	}
+
+	public int getTimerTime() {
+		return timerTime;
 	}
 
 }

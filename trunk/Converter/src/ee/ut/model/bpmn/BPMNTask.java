@@ -188,15 +188,26 @@ public final class BPMNTask extends BPMNElement {
 		// in subprocess timer
 		String skipTrans = process.getCpnet().addTrans(elementName + " SKIP")
 				.getId();
-		process.getCpnet().addArc(boundTimerEventPlaceId, skipTrans);
-		process.getCpnet().addArc(skipTrans, midOutPlaceId);
+		process.getCpnet().setTransitionGuard(skipTrans, "[#ID c = (#ID c1)]");
+		process.getCpnet().addArc(boundTimerEventPlaceId, skipTrans, "c");
+		process.getCpnet().addArc(skipTrans, midOutPlaceId,"c");
 
-		process.getCpnet().addArc(nokPlaceId, skipTrans);
-		process.getCpnet().addArc(skipTrans, nokPlaceId);
+		process.getCpnet().addArc(nokPlaceId, skipTrans, "c1");
+		process.getCpnet().addArc(skipTrans, nokPlaceId, "c1");
 
 		// Connect the transition to subprocess timer OK place.
-		process.getCpnet().addArc(taskTransitionId, okPlaceId);
-		process.getCpnet().addArc(okPlaceId, taskTransitionId);
+		process.getCpnet().addArc(taskTransitionId, okPlaceId,"c1");
+		process.getCpnet().addArc(okPlaceId, taskTransitionId,"c1");
+		
+		String currentGuard = process.getCpnet().getTransitionGuard(taskTransitionId);
+		if(currentGuard.length() > 3){
+			currentGuard = currentGuard.substring(0, currentGuard.length()-1) + " andalso ";
+		} else {
+			currentGuard = " [";
+		}
+		
+		process.getCpnet().setTransitionGuard(taskTransitionId,
+				currentGuard + "#ID c = (#ID c1)]");
 
 	}
 
@@ -218,13 +229,26 @@ public final class BPMNTask extends BPMNElement {
 		// in subprocess timer
 		String skipTrans = process.getCpnet().addTrans(elementName + " SKIP")
 				.getId();
+		process.getCpnet().setTransitionGuard(skipTrans, "[#ID c = (#ID c1)]");
+		
 		process.getCpnet().addArc(boundTimerEventPlaceId, skipTrans);
 		process.getCpnet().addArc(skipTrans, timerOutputPlaceId);
 
-		process.getCpnet().addArc(nokPlaceId, skipTrans);
+		process.getCpnet().addArc(nokPlaceId, skipTrans,"c1");
 
 		// Connect the transition to subprocess timer OK place.
-		process.getCpnet().addArc(okPlaceId, taskTransitionId);
+		process.getCpnet().addArc(okPlaceId, taskTransitionId,"c1");
+		
+		String currentGuard = process.getCpnet().getTransitionGuard(taskTransitionId);
+		if(currentGuard.length() > 3){
+			currentGuard = currentGuard.substring(0, currentGuard.length()-1) + " andalso ";
+		} else {
+			currentGuard = " [";
+		}
+		
+		process.getCpnet().setTransitionGuard(taskTransitionId,
+				currentGuard + "#ID c = (#ID c1)]");
+		
 
 	}
 

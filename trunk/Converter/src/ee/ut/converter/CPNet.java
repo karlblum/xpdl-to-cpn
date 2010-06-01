@@ -24,12 +24,14 @@ import noNamespace.Place;
 import noNamespace.Posattr;
 import noNamespace.Subpageinfo;
 import noNamespace.Subst;
+import noNamespace.Text;
 import noNamespace.Time;
 import noNamespace.Trans;
 import noNamespace.Type;
 import noNamespace.Var;
 import noNamespace.WorkspaceElementsDocument;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlString;
 
 /**
@@ -48,6 +50,7 @@ public class CPNet {
 	private int currentId = 1000;
 	private List<Block> varBlocks = new ArrayList<Block>();
 	private int numberOfVarBolcks = 3;
+	private boolean cancelNaming = true;
 
 	private String flowObjectType = "CASE";
 	private String flowObjectVariable = "c";
@@ -75,9 +78,9 @@ public class CPNet {
 		addVar("p", "INT", "var p:INT;", 1);
 		// createOrUpdateDef("colset TRIG_TOKEN = INT timed;", 1);
 		addVar("tt", "TRIG_TOKEN", "var tt:TRIG_TOKEN;", 1);
-		createOrUpdateDef("val FILE = \"logs/logsCPN\"", 1);
-		createOrUpdateDef("val FILE_EXTENSION = \".cpnxml\"", 1);
-		createOrUpdateDef("use \"loggingFunctionsMultipleFiles.sml\";", 1);
+		//createOrUpdateDef("val FILE = \"logs/logsCPN\"", 1);
+		//createOrUpdateDef("val FILE_EXTENSION = \".cpnxml\"", 1);
+		//createOrUpdateDef("use \"loggingFunctionsMultipleFiles.sml\";", 1);
 		addVar("pt", "INT", "var pt:INT;", 1);
 		createOrUpdateDef("fun et(mean:INT,stdD:INT)=\n" + "let\n"
 				+ "val realMean = Real.fromInt mean\n"
@@ -124,6 +127,7 @@ public class CPNet {
 		// createOrUpdateDef("colset CASE = record ID:INT * ats:INT * ts:INT timed;",
 		// 1);
 		addVar("c", "CASE", "var c:CASE;", 1);
+		addVar("c1", "CASE", "var c1:CASE;", 1);
 		createOrUpdateDef(
 				"fun calcDisValue(value:DISTRIBUTION) =\r\n"
 						+ "let\r\n"
@@ -336,7 +340,7 @@ public class CPNet {
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
-		// name = "";
+		if (cancelNaming) name = "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		Initmark im = place.addNewInitmark();
@@ -368,7 +372,7 @@ public class CPNet {
 		Trans trans = page.addNewTrans();
 		trans.setId(id);
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
-		// name = "";
+		if (cancelNaming) name = "";
 		trans.addNewText().set(XmlString.Factory.newValue(name));
 
 		Cond cond = trans.addNewCond();
@@ -724,7 +728,16 @@ public class CPNet {
 				arc.getAnnot().addNewPosattr().set(pos);
 			}
 		}
+	}
 
+	public String getTransitionGuard(String taskTransitionId) {
+		Trans trans = transs.get(taskTransitionId);
+		Text t = trans.getCondArray()[0].getText();
+		XmlCursor c = t.newCursor();
+		if (c.hasNextToken()){
+			return c.getTextValue();
+		}
+		return "";
 	}
 
 }

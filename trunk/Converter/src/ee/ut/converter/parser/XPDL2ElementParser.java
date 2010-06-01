@@ -279,7 +279,13 @@ public class XPDL2ElementParser implements ElementParser {
 				if (((Event) aContent).getStartEvent() != null) {
 					return BPMNElement.START;
 				} else if (((Event) aContent).getEndEvent() != null) {
-					return BPMNElement.END;
+					String result = ((Event) aContent).getEndEvent()
+							.getResult();
+					if (result.equals("Error")) {
+						return BPMNElement.THROW_EXCEPTION;
+					} else {
+						return BPMNElement.END;
+					}
 				} else if (((Event) aContent).getIntermediateEvent() != null) {
 					String target = ((Event) aContent).getIntermediateEvent()
 							.getTarget();
@@ -418,7 +424,9 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public int getEventTimer(Object obj) {
-		String timer = ((Event) ((Activity) obj).getContent().get(0))
+		Event e = (Event) ((Activity) obj).getContent().get(0);
+		if(e == null || e.getIntermediateEvent() == null || e.getIntermediateEvent().getTriggerTimer() == null) return 0;
+		String timer = e
 				.getIntermediateEvent().getTriggerTimer().getTimeDate()
 				.getContent().get(0).toString();
 		return Integer.valueOf(timer).intValue();

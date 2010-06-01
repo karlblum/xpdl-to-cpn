@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 
 import ee.ut.model.sim.GateRef;
 import ee.ut.model.sim.Gateway;
+import ee.ut.model.sim.Gateways;
 import ee.ut.model.sim.Resource;
 import ee.ut.model.sim.Resources;
 import ee.ut.model.sim.SimulationData;
@@ -56,15 +57,19 @@ public class KBSimDataParser implements SimDataParser {
 	@Override
 	public HashMap<String, String> getDistribution(String id) {
 		HashMap<String, String> distributions = new HashMap<String, String>();
-		for (Gateway gw : simDataRoot.getValue().getGateways().getGateway()) {
-			if (gw.getId().equals(id)) {
-				for (GateRef gwRef : gw.getGateRefs().getGateRef()) {
-					distributions.put(gwRef.getIdRef(), String.valueOf(gwRef
-							.getProbability()));
+		Gateways gws = simDataRoot.getValue().getGateways();
+		if (gws != null) {
+			for (Gateway gw : gws.getGateway()) {
+				if (gw.getId().equals(id)) {
+					for (GateRef gwRef : gw.getGateRefs().getGateRef()) {
+						distributions.put(gwRef.getIdRef(), String
+								.valueOf(gwRef.getProbability()));
+					}
 				}
 			}
+			return distributions;
 		}
-		return distributions;
+		return null;
 	}
 
 	@Override
