@@ -31,6 +31,16 @@
           <layout>colset SLIST = list STRING;</layout>
         </color>
       </block>
+      <ml id="ID1264333160">val FILE = "logs/log";
+        <layout>val FILE = "logs/log";</layout>
+      </ml>
+      <ml id="ID1264333265">val FILE_EXTENSION = ".cpnxml";
+        <layout>val FILE_EXTENSION = ".cpnxml";</layout>
+      </ml>
+      <use id="ID1264332971">
+        <ml>"loggingFunctionsMultipleFiles.sml"</ml>
+        <layout>use "loggingFunctionsMultipleFiles.sml";</layout>
+      </use>
       <block id="ID1264329061">
         <id>Coloursets</id>
         <color id="ID1264329169">
@@ -284,13 +294,13 @@
 transitionName:STRING * pt: DISTRIBUTION * pCost:DISTRIBUTION * sCost:DISTRIBUTION * revenue:DISTRIBUTION * pWaitTimeDur:INT * pWaitTimeCost:INT * NoOfResources:INT;</layout>
         </color>
       </block>
-    <block><ml id="ID1092">val totalNoOfToken = 100;</ml><ml id="ID1093">val noOfTokensPerBundle = 1;</ml><ml id="ID1094">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000};</ml><ml id="ID1095">val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2005};</ml><ml id="ID1096">val timeBetweenBundles = {dtype=specific, specificValue=100, mean=0, std=0};;</ml></block><block><var id="ID1000"><type><id>INT</id></type><id>p</id><layout>var p:INT;</layout></var><var id="ID1001"><type><id>TRIG_TOKEN</id></type><id>tt</id><layout>var tt:TRIG_TOKEN;</layout></var><ml id="ID1002">val FILE = "logs/logsCPN"</ml><ml id="ID1003">val FILE_EXTENSION = ".cpnxml"</ml><ml id="ID1004">use "loggingFunctionsMultipleFiles.sml";</ml><var id="ID1005"><type><id>INT</id></type><id>pt</id><layout>var pt:INT;</layout></var><ml id="ID1006">fun et(mean:INT,stdD:INT)=
+    <block><ml id="ID1090">val totalNoOfToken = 100;</ml><ml id="ID1091">val noOfTokensPerBundle = 1;</ml><ml id="ID1092">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000};</ml><ml id="ID1093">val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2005};</ml><ml id="ID1094">val timeBetweenBundles = {dtype=specific, specificValue=100, mean=0, std=0};;</ml></block><block><var id="ID1000"><type><id>INT</id></type><id>p</id><layout>var p:INT;</layout></var><var id="ID1001"><type><id>TRIG_TOKEN</id></type><id>tt</id><layout>var tt:TRIG_TOKEN;</layout></var><var id="ID1002"><type><id>INT</id></type><id>pt</id><layout>var pt:INT;</layout></var><ml id="ID1003">fun et(mean:INT,stdD:INT)=
 let
 val realMean = Real.fromInt mean
 val realStdD = Real.fromInt stdD
 in
 round(uniform(realMean-realStdD, realMean+realStdD))
-end;</ml><ml id="ID1007">fun intTime() = IntInf.toInt (time());</ml><ml id="ID1008">fun dateFromString(s:STRING) =
+end;</ml><ml id="ID1004">fun intTime() = IntInf.toInt (time());</ml><ml id="ID1005">fun dateFromString(s:STRING) =
 let
   val s1 = "Sat Jan 01 10:51:07 2000"
   val dateSplit = String.tokens(fn(c) => c = #" ") s
@@ -318,7 +328,7 @@ let
     | _     => Date.Jan;
 in
   Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
-end</ml><var id="ID1009"><type><id>ID</id></type><id>i</id><layout>var i:ID;</layout></var><ml id="ID1010">val OneTimeCostPerToken = 0;</ml><var id="ID1011"><type><id>CASE</id></type><id>c</id><layout>var c:CASE;</layout></var><ml id="ID1012">fun calcDisValue(value:DISTRIBUTION) =
+end</ml><var id="ID1006"><type><id>ID</id></type><id>i</id><layout>var i:ID;</layout></var><ml id="ID1007">val OneTimeCostPerToken = 0;</ml><var id="ID1008"><type><id>CASE</id></type><id>c</id><layout>var c:CASE;</layout></var><var id="ID1009"><type><id>CASE</id></type><id>c1</id><layout>var c1:CASE;</layout></var><ml id="ID1010">fun calcDisValue(value:DISTRIBUTION) =
 let
   val dtype = #dtype(value)
   val specificValue = #specificValue(value)
@@ -326,7 +336,7 @@ let
   val std = #std(value)
 in
   case dtype of normal => et(mean, std) | specific => specificValue
-end;</ml><ml id="ID1013">fun add2StartDate(ts:INT) =
+end;</ml><ml id="ID1011">fun add2StartDate(ts:INT) =
 let
 val day = Date.day(startDate)
 val second = Date.second(startDate)
@@ -338,7 +348,7 @@ val second = Date.second(startDate)+ ts
 val year = Date.year (startDate)
 in
 Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
-end;</ml><ml id="ID1014">fun generateCase(id:ID)=
+end;</ml><ml id="ID1012">fun generateCase(id:ID)=
 let
 
 val _ = createCaseFile(id);
@@ -348,14 +358,14 @@ val data = ["Cost", Int.toString(OneTimeCostPerToken), "ModelTimeStamp", Int.toS
 val _ = addATE(id, "Generated input", ["complete"], timestamp, "generator", data);
 in
   {ID=id, ts=intTime(), ats=intTime()}
-end;</ml><ml id="ID1015">fun generatorGuard(i:ID) =
+end;</ml><ml id="ID1013">fun generatorGuard(i:ID) =
 let
 val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;> GREATER;
 in
 if i &lt;= totalNoOfToken andalso dateCompare=true then true else false
-end;</ml><var id="ID1016"><type><id>CASE</id></type><id>caseInfop</id><layout>var caseInfop: CASE;</layout></var><var id="ID1017"><type><id>INT</id></type><id>path</id><layout>var path: INT;</layout></var><ml id="ID1018">fun initCaseInfo(id) = {Id=id,CaseStartTime=IntInf.toInt(time()),CaseEndTime=0};</ml><ml id="ID1019">fun isRole(roles:SLIST, required:STRING) = List.exists (fn x => x = required) roles;</ml><ml id="ID1020">fun checkRoles [] [] = true
+end;</ml><var id="ID1014"><type><id>CASE</id></type><id>caseInfop</id><layout>var caseInfop: CASE;</layout></var><var id="ID1015"><type><id>INT</id></type><id>path</id><layout>var path: INT;</layout></var><ml id="ID1016">fun initCaseInfo(id) = {Id=id,CaseStartTime=IntInf.toInt(time()),CaseEndTime=0};</ml><ml id="ID1017">fun isRole(roles:SLIST, required:STRING) = List.exists (fn x => x = required) roles;</ml><ml id="ID1018">fun checkRoles [] [] = true
 | checkRoles _ [] = true
-| checkRoles roles (role::reqRoles) = List.exists (fn x => x = role) roles andalso checkRoles roles reqRoles ;</ml><ml id="ID1021">fun check_roles(roles:SLIST, required:SLIST) = checkRoles roles required;</ml><ml id="ID1022">val recint_weekend = {Name="weekend", StartTime=0, Duration=((60*60)*24*2)};</ml><ml id="ID1023">val recint_dayShift = {Name="Day shift", StartTime=((60*60)*9), Duration=((60*60)*9)};</ml><ml id="ID1024">val recint_bulk = {Name="bulk", StartDate=0, Duration=((60*60)*24)};</ml><ml id="ID1025">val tte_weekend = {Name="weekend", RepeatCount=0, RepetitionDuration=((60*60)*24*7), BeginDate="", RecurringIntervals=[recint_weekend]};</ml><ml id="ID1026">val tt_bulkweek = {Name="week", RepeatCount=0, RepetitionDuration=((60*60)*24), BeginDate="", RecurringIntervals=[recint_bulk], Exceptions=[tte_weekend]};</ml><ml id="ID1027">val tt_week = {Name="week", RepeatCount=0, RepetitionDuration=604800, BeginDate="dasdas", RecurringIntervals=[recint_dayShift], TTExceptions=[tte_weekend]};</ml><var id="ID1028"><type><id>RES</id></type><id>r</id><layout>var r:RES;</layout></var><ml id="ID1029">fun transitionAction (a:CASE, params:TRANSPARAMS) = 
+| checkRoles roles (role::reqRoles) = List.exists (fn x => x = role) roles andalso checkRoles roles reqRoles ;</ml><ml id="ID1019">fun check_roles(roles:SLIST, required:SLIST) = checkRoles roles required;</ml><ml id="ID1020">val recint_weekend = {Name="weekend", StartTime=0, Duration=((60*60)*24*2)};</ml><ml id="ID1021">val recint_dayShift = {Name="Day shift", StartTime=((60*60)*9), Duration=((60*60)*9)};</ml><ml id="ID1022">val recint_bulk = {Name="bulk", StartDate=0, Duration=((60*60)*24)};</ml><ml id="ID1023">val tte_weekend = {Name="weekend", RepeatCount=0, RepetitionDuration=((60*60)*24*7), BeginDate="", RecurringIntervals=[recint_weekend]};</ml><ml id="ID1024">val tt_bulkweek = {Name="week", RepeatCount=0, RepetitionDuration=((60*60)*24), BeginDate="", RecurringIntervals=[recint_bulk], Exceptions=[tte_weekend]};</ml><ml id="ID1025">val tt_week = {Name="week", RepeatCount=0, RepetitionDuration=604800, BeginDate="dasdas", RecurringIntervals=[recint_dayShift], TTExceptions=[tte_weekend]};</ml><var id="ID1026"><type><id>RES</id></type><id>r</id><layout>var r:RES;</layout></var><ml id="ID1027">fun transitionAction (a:CASE, params:TRANSPARAMS) = 
 let
   val id = #ID(a)
   val ts = #ts(a)
@@ -390,7 +400,7 @@ val data = data ++ ["Revenue", Int.toString(revenue), "NoOfResources", Int.toStr
 val _ = addATE(id, transitionName, ["complete"], timestamp, "", data);
 in
   (procTime)
-end</ml><ml id="ID1030">fun transitionActionR (a:CASE, r:RES, params:TRANSPARAMS) = 
+end</ml><ml id="ID1028">fun transitionActionR (a:CASE, r:RES, params:TRANSPARAMS) = 
 let
   val id = #ID(a)
   val ts = #ts(a)
@@ -442,10 +452,10 @@ val data = data ++ ["ResourceCost", Int.toString(resCost), "Revenue", Int.toStri
 val _ = addATE(id, transitionName, ["complete"], timestamp, resourceName, data);
 in
   (procTime)
-end</ml></block><block><ml id="ID1097">val WORKER = {Name="WORKER", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=["WORKER"], Availability=[tt_week]};</ml></block></globbox>
+end</ml></block><block><ml id="ID1095">val WORKER = {Name="WORKER", Costs=[{Value=10000, CostPerDuration=3600, CostPerQuantity=0, CostApplicableTT=[]}], Roles=["WORKER"], Availability=[tt_week]};</ml></block></globbox>
     <page id="PAGE_PROCESS">
       <pageattr name="Process"/>
-    <trans id="ID1031"><posattr x="261" y="954"/><text>Start (ID1031)</text><box h="25" w="150"/><subst subpage="PAGE_GENERATOR" portsock="(ID1264234111,ID1035)"><subpageinfo id="ID1038"/></subst><cond id="ID1032"><text/></cond><time id="ID1033"><text/></time><code id="ID1034"><posattr x="421.0" y="974.0"/><text/></code></trans><place id="ID1035"><posattr x="261" y="882"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="902.0"/><text>CASE</text></type><initmark id="ID1036"><text/></initmark></place><arc id="ID1037" orientation="TtoP"><transend idref="ID1031"/><placeend idref="ID1035"/><annot><posattr x="271.0" y="918.0"/><text>c</text></annot></arc><trans id="ID1040"><posattr x="261" y="378"/><text>Task1 (ID1040)</text><box h="25" w="150"/><cond id="ID1041"><text>[check_roles(#Roles(r),["WORKER"])]</text></cond><time id="ID1042"><text/></time><code id="ID1043"><posattr x="421.0" y="398.0"/><text>input (c,r);
+    <trans id="ID1029"><posattr x="261" y="954"/><text>Start (ID1029)</text><box h="25" w="150"/><subst subpage="PAGE_GENERATOR" portsock="(ID1264234111,ID1033)"><subpageinfo id="ID1036"/></subst><cond id="ID1030"><text/></cond><time id="ID1031"><text/></time><code id="ID1032"><posattr x="421.0" y="974.0"/><text/></code></trans><place id="ID1033"><posattr x="261" y="882"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="902.0"/><text>CASE</text></type><initmark id="ID1034"><text/></initmark></place><arc id="ID1035" orientation="TtoP"><transend idref="ID1029"/><placeend idref="ID1033"/><annot><posattr x="271.0" y="918.0"/><text>c</text></annot></arc><trans id="ID1038"><posattr x="261" y="378"/><text>Task1 (ID1038)</text><box h="25" w="150"/><cond id="ID1039"><text>[check_roles(#Roles(r),["WORKER"])]</text></cond><time id="ID1040"><text/></time><code id="ID1041"><posattr x="421.0" y="398.0"/><text>input (c,r);
 output (pt);
 action
 (let
@@ -460,11 +470,11 @@ action
     NoOfResources=1}
 in
 transitionActionR(c,r, transParams)
-end);</text></code></trans><place id="ID1044"><posattr x="39" y="306"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="326.0"/><text>CASE</text></type><initmark id="ID1045"><text/></initmark></place><arc id="ID1046" orientation="TtoP"><transend idref="ID1040"/><placeend idref="ID1044"/><annot><posattr x="382.0" y="342.0"/><text>CASE.set_ts c (pt+intTime()) @+pt</text></annot></arc><trans id="ID1047"><posattr x="39" y="234"/><text/><box h="25" w="150"/><cond id="ID1048"><text/></cond><time id="ID1049"><text/></time><code id="ID1050"><posattr x="199.0" y="254.0"/><text/></code></trans><arc id="ID1051" orientation="PtoT"><transend idref="ID1047"/><placeend idref="ID1044"/><annot><posattr x="49.0" y="270.0"/><text>c</text></annot></arc><place id="ID1052"><posattr x="261" y="738"/><text>Task1 IN (ID1052)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="758.0"/><text>CASE</text></type><initmark id="ID1053"><text/></initmark></place><trans id="ID1054"><posattr x="261" y="666"/><text>Task1 MESSAGE EVENTS (ID1054)</text><box h="25" w="150"/><cond id="ID1055"><text/></cond><time id="ID1056"><text/></time><code id="ID1057"><posattr x="421.0" y="686.0"/><text>input ();
+end);</text></code></trans><place id="ID1042"><posattr x="39" y="306"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="326.0"/><text>CASE</text></type><initmark id="ID1043"><text/></initmark></place><arc id="ID1044" orientation="TtoP"><transend idref="ID1038"/><placeend idref="ID1042"/><annot><posattr x="382.0" y="342.0"/><text>CASE.set_ts c (pt+intTime()) @+pt</text></annot></arc><trans id="ID1045"><posattr x="39" y="234"/><text/><box h="25" w="150"/><cond id="ID1046"><text/></cond><time id="ID1047"><text/></time><code id="ID1048"><posattr x="199.0" y="254.0"/><text/></code></trans><arc id="ID1049" orientation="PtoT"><transend idref="ID1045"/><placeend idref="ID1042"/><annot><posattr x="49.0" y="270.0"/><text>c</text></annot></arc><place id="ID1050"><posattr x="261" y="738"/><text>Task1 IN (ID1050)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="758.0"/><text>CASE</text></type><initmark id="ID1051"><text/></initmark></place><trans id="ID1052"><posattr x="261" y="666"/><text>Task1 MESSAGE EVENTS (ID1052)</text><box h="25" w="150"/><cond id="ID1053"><text/></cond><time id="ID1054"><text/></time><code id="ID1055"><posattr x="421.0" y="686.0"/><text>input ();
 output (p);
 action
 (round(uniform(0.0,100.0))
-);</text></code></trans><arc id="ID1058" orientation="PtoT"><transend idref="ID1054"/><placeend idref="ID1052"/><annot><posattr x="271.0" y="702.0"/><text>c</text></annot></arc><place id="ID1059"><posattr x="261" y="594"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="614.0"/><text>CASE</text></type><initmark id="ID1060"><text/></initmark></place><arc id="ID1061" orientation="TtoP"><transend idref="ID1054"/><placeend idref="ID1059"/><annot><posattr x="271.0" y="630.0"/><text>c</text></annot></arc><trans id="ID1062"><posattr x="261" y="522"/><text>Task1 TIMER EVENTS (ID1062)</text><box h="25" w="150"/><cond id="ID1063"><text/></cond><time id="ID1064"><text/></time><code id="ID1065"><posattr x="421.0" y="542.0"/><text/></code></trans><arc id="ID1066" orientation="PtoT"><transend idref="ID1062"/><placeend idref="ID1059"/><annot><posattr x="271.0" y="558.0"/><text>c</text></annot></arc><place id="ID1067"><posattr x="261" y="450"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="470.0"/><text>CASE</text></type><initmark id="ID1068"><text/></initmark></place><arc id="ID1069" orientation="TtoP"><transend idref="ID1062"/><placeend idref="ID1067"/><annot><posattr x="271.0" y="486.0"/><text>c</text></annot></arc><arc id="ID1070" orientation="PtoT"><transend idref="ID1040"/><placeend idref="ID1067"/><annot><posattr x="271.0" y="414.0"/><text>c</text></annot></arc><trans id="ID1071"><posattr x="261" y="810"/><text/><box h="25" w="150"/><cond id="ID1072"><text/></cond><time id="ID1073"><text/></time><code id="ID1074"><posattr x="421.0" y="830.0"/><text/></code></trans><arc id="ID1075" orientation="PtoT"><transend idref="ID1071"/><placeend idref="ID1035"/><annot><posattr x="271.0" y="846.0"/><text>c</text></annot></arc><arc id="ID1076" orientation="TtoP"><transend idref="ID1071"/><placeend idref="ID1052"/><annot><posattr x="271.0" y="774.0"/><text>c</text></annot></arc><place id="ID1077"><posattr x="39" y="18"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="38.0"/><text>CASE</text></type><initmark id="ID1078"><text/></initmark></place><trans id="ID1079"><posattr x="39" y="90"/><text/><box h="25" w="150"/><cond id="ID1080"><text/></cond><time id="ID1081"><text/></time><code id="ID1082"><posattr x="199.0" y="110.0"/><text/></code></trans><place id="ID1083"><posattr x="39" y="162"/><text>Task1 OUT (ID1083)</text><ellipse h="25" w="150"/><type><posattr x="99.0" y="182.0"/><text>CASE</text></type><initmark id="ID1084"><text/></initmark></place><arc id="ID1085" orientation="TtoP"><transend idref="ID1047"/><placeend idref="ID1083"/><annot><posattr x="49.0" y="198.0"/><text>c</text></annot></arc><arc id="ID1086" orientation="PtoT"><transend idref="ID1079"/><placeend idref="ID1083"/><annot><posattr x="49.0" y="126.0"/><text>c</text></annot></arc><arc id="ID1087" orientation="TtoP"><transend idref="ID1079"/><placeend idref="ID1077"/><annot><posattr x="49.0" y="54.0"/><text>c</text></annot></arc><place id="ID1088"><posattr x="261" y="306"/><text>RESOURCES (ID1088)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="326.0"/><text>RES</text></type><initmark id="ID1089"><text>3`WORKER</text></initmark></place><arc id="ID1090" orientation="TtoP"><transend idref="ID1040"/><placeend idref="ID1088"/><annot><posattr x="271.0" y="342.0"/><text>r @+pt</text></annot></arc><arc id="ID1091" orientation="PtoT"><transend idref="ID1040"/><placeend idref="ID1088"/><annot><posattr x="271.0" y="270.0"/><text>r</text></annot></arc></page>
+);</text></code></trans><arc id="ID1056" orientation="PtoT"><transend idref="ID1052"/><placeend idref="ID1050"/><annot><posattr x="271.0" y="702.0"/><text>c</text></annot></arc><place id="ID1057"><posattr x="261" y="594"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="614.0"/><text>CASE</text></type><initmark id="ID1058"><text/></initmark></place><arc id="ID1059" orientation="TtoP"><transend idref="ID1052"/><placeend idref="ID1057"/><annot><posattr x="271.0" y="630.0"/><text>c</text></annot></arc><trans id="ID1060"><posattr x="261" y="522"/><text>Task1 TIMER EVENTS (ID1060)</text><box h="25" w="150"/><cond id="ID1061"><text/></cond><time id="ID1062"><text/></time><code id="ID1063"><posattr x="421.0" y="542.0"/><text/></code></trans><arc id="ID1064" orientation="PtoT"><transend idref="ID1060"/><placeend idref="ID1057"/><annot><posattr x="271.0" y="558.0"/><text>c</text></annot></arc><place id="ID1065"><posattr x="261" y="450"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="470.0"/><text>CASE</text></type><initmark id="ID1066"><text/></initmark></place><arc id="ID1067" orientation="TtoP"><transend idref="ID1060"/><placeend idref="ID1065"/><annot><posattr x="271.0" y="486.0"/><text>c</text></annot></arc><arc id="ID1068" orientation="PtoT"><transend idref="ID1038"/><placeend idref="ID1065"/><annot><posattr x="271.0" y="414.0"/><text>c</text></annot></arc><trans id="ID1069"><posattr x="261" y="810"/><text/><box h="25" w="150"/><cond id="ID1070"><text/></cond><time id="ID1071"><text/></time><code id="ID1072"><posattr x="421.0" y="830.0"/><text/></code></trans><arc id="ID1073" orientation="PtoT"><transend idref="ID1069"/><placeend idref="ID1033"/><annot><posattr x="271.0" y="846.0"/><text>c</text></annot></arc><arc id="ID1074" orientation="TtoP"><transend idref="ID1069"/><placeend idref="ID1050"/><annot><posattr x="271.0" y="774.0"/><text>c</text></annot></arc><place id="ID1075"><posattr x="39" y="18"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="38.0"/><text>CASE</text></type><initmark id="ID1076"><text/></initmark></place><trans id="ID1077"><posattr x="39" y="90"/><text/><box h="25" w="150"/><cond id="ID1078"><text/></cond><time id="ID1079"><text/></time><code id="ID1080"><posattr x="199.0" y="110.0"/><text/></code></trans><place id="ID1081"><posattr x="39" y="162"/><text>Task1 OUT (ID1081)</text><ellipse h="25" w="150"/><type><posattr x="99.0" y="182.0"/><text>CASE</text></type><initmark id="ID1082"><text/></initmark></place><arc id="ID1083" orientation="TtoP"><transend idref="ID1045"/><placeend idref="ID1081"/><annot><posattr x="49.0" y="198.0"/><text>c</text></annot></arc><arc id="ID1084" orientation="PtoT"><transend idref="ID1077"/><placeend idref="ID1081"/><annot><posattr x="49.0" y="126.0"/><text>c</text></annot></arc><arc id="ID1085" orientation="TtoP"><transend idref="ID1077"/><placeend idref="ID1075"/><annot><posattr x="49.0" y="54.0"/><text>c</text></annot></arc><place id="ID1086"><posattr x="261" y="306"/><text>RESOURCES (ID1086)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="326.0"/><text>RES</text></type><initmark id="ID1087"><text>3`WORKER</text></initmark></place><arc id="ID1088" orientation="TtoP"><transend idref="ID1038"/><placeend idref="ID1086"/><annot><posattr x="271.0" y="342.0"/><text>r @+pt</text></annot></arc><arc id="ID1089" orientation="PtoT"><transend idref="ID1038"/><placeend idref="ID1086"/><annot><posattr x="271.0" y="270.0"/><text>r</text></annot></arc></page>
     <page id="PAGE_GENERATOR">
       <pageattr name="Generator"/>
       <place id="ID1264233943">
@@ -636,7 +646,7 @@ action
       </arc>
     </page>
     <instances>
-      <instance id="ID1264218879" page="PAGE_PROCESS"><instance id="ID1039" trans="ID1031"/></instance>
+      <instance id="ID1264218879" page="PAGE_PROCESS"><instance id="ID1037" trans="ID1029"/></instance>
     </instances>
     <options>
       <option name="outputdirectory">

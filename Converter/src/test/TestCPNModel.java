@@ -14,8 +14,8 @@ public class TestCPNModel {
 
 	public static void main(String[] args) throws Exception {
 
-		// test("Task");
-		testAll();
+		 test("case_study");
+		 //testAll();
 	}
 
 	private static void testAll() throws Exception {

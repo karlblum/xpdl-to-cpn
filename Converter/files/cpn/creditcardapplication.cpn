@@ -75,8 +75,8 @@
           <layout>val FILE_EXTENSION = &quot;.cpnxml&quot;;</layout>
         </ml>
         <use id="ID1004189991">
-          <ml>&quot;C:\\CPNToolsConverter\\MXMLlogs\\loggingFunctionsMultipleFiles.sml&quot;</ml>
-          <layout>use &quot;C:\\CPNToolsConverter\\MXMLlogs\\loggingFunctionsMultipleFiles.sml&quot;;</layout>
+          <ml>&quot;loggingFunctionsMultipleFiles.sml&quot;</ml>
+          <layout>use &quot;loggingFunctionsMultipleFiles.sml&quot;;</layout>
         </use>
       </block>
       <ml id="ID1003389133">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000}
@@ -7660,9 +7660,9 @@ end);</text>
     </options>
     <binders>
       <cpnbinder id="ID1004023698"
-                 x="280"
-                 y="49"
-                 width="1386"
+                 x="756"
+                 y="95"
+                 width="1024"
                  height="759">
         <sheets>
           <cpnsheet id="ID1004023691"
@@ -7842,7 +7842,7 @@ end);</text>
         </IndexNode>
         <IndexNode expanded="true"/>
         <IndexNode expanded="true"/>
-        <IndexNode expanded="false"/>
+        <IndexNode expanded="true"/>
         <IndexNode expanded="true"/>
         <IndexNode expanded="true"/>
         <IndexNode expanded="true"/>
