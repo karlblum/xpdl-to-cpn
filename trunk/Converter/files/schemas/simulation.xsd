@@ -5,7 +5,6 @@
 	<xs:complexType name="Task">
 		<xs:sequence>
 			<xs:element name="Id" type="xs:string"/>
-			<xs:element name="ResourceWaitTime" type="xs:string"/>
 			<xs:element name="ProcessingTime" type="xs:string"/>
 			<xs:element name="ResourceType" type="xs:string"/>
 		</xs:sequence>
@@ -50,6 +49,7 @@
 			<xs:element name="Tasks" type="Tasks" minOccurs="0"/>
 			<xs:element name="Gateways" type="Gateways" minOccurs="0"/>
 			<xs:element name="Resources" type="Resources" minOccurs="0"/>
+			<xs:element name="MessageEvents" type="MessageEvents" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="SimulationProfile"/>
@@ -74,6 +74,18 @@
 		<xs:sequence>
 			<xs:element name="ResourceType" type="xs:string"/>
 			<xs:element name="ResourceAmount" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MessageEvents"/>
+		<xs:complexType name="MessageEvents">
+		<xs:sequence>
+			<xs:element name="MessageEvent" type="MessageEvent"  maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageEvent">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:string"/>
+			<xs:element name="Time" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

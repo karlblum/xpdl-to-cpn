@@ -35,11 +35,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <GateRefs>
         <GateRef>
           <IdRef>58</IdRef>
-          <Probability>30</Probability>
+          <Probability>20</Probability>
         </GateRef>
         <GateRef>
           <IdRef>62</IdRef>
-          <Probability>70</Probability>
+          <Probability>80</Probability>
         </GateRef>
       </GateRefs>
     </Gateway>
@@ -48,11 +48,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <GateRefs>
         <GateRef>
           <IdRef>70</IdRef>
-          <Probability>25</Probability>
+          <Probability>70</Probability>
         </GateRef>
         <GateRef>
           <IdRef>72</IdRef>
-          <Probability>75</Probability>
+          <Probability>30</Probability>
         </GateRef>
       </GateRefs>
     </Gateway>
@@ -60,11 +60,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <MessageEvents>
   <MessageEvent>
   <Id>64</Id>
-  <Time>10800</Time>
+  <Time>5400</Time>
   </MessageEvent>
   <MessageEvent>
   <Id>65</Id>
-  <Time>10800</Time>
+  <Time>5400</Time>
   </MessageEvent>
   </MessageEvents>
   <Resources>
