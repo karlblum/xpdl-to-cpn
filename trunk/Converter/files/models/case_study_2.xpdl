@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:g360="http://www.global360.com/XPDL2.0alpha" Id="case_study_NEW.xpdl" Name="case_study_NEW.xpdl">
+  <PackageHeader>
+    <XPDLVersion>2.1</XPDLVersion>
+    <Vendor>Global 360</Vendor>
+    <Created>2010-06-01T21:11:27+03:00</Created>
+    <ModificationDate>2010-06-02T15:32:04+03:00</ModificationDate>
+    <LayoutInfo PixelsPerMillimeter="18.2" />
+  </PackageHeader>
+  <ConformanceClass BPMNModelPortabilityConformance="STANDARD" />
+  <Pages>
+    <Page Id="1" Name="Page 1" Width="2400" Height="2400">
+      <g360:PageInfo g360:PaperWidth="792.0" g360:PaperHeight="612.0" g360:PaperOrientation="0" g360:MarginBottom="36.0" g360:MarginLeft="36.0" g360:MarginRight="36.0" g360:MarginTop="36.0" />
+    </Page>
+    <Page Id="2" Name="Page 2" Width="2400" Height="2400">
+      <g360:PageInfo g360:PaperWidth="792.0" g360:PaperHeight="612.0" g360:PaperOrientation="0" g360:MarginBottom="36.0" g360:MarginLeft="36.0" g360:MarginRight="36.0" g360:MarginTop="36.0" />
+    </Page>
+  </Pages>
+  <Pools>
+    <Pool Id="2" Orientation="HORIZONTAL" BoundaryVisible="false" Process="1" Name="p1">
+      <Lanes>
+        <Lane Id="3" Name="Lane-1" ParentLane="2">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="2400.0" Width="2400.0" LaneId="3">
+              <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+      </Lanes>
+      <NodeGraphicsInfos>
+        <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="2400.0" Width="2400.0">
+          <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+        </NodeGraphicsInfo>
+      </NodeGraphicsInfos>
+    </Pool>
+    <Pool Id="43" Orientation="HORIZONTAL" BoundaryVisible="false" Process="2">
+      <Lanes>
+        <Lane Id="44" Name="Lane-1" ParentLane="43">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="2400.0" Width="2400.0" LaneId="44">
+              <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+      </Lanes>
+      <NodeGraphicsInfos>
+        <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="2400.0" Width="2400.0">
+          <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+        </NodeGraphicsInfo>
+      </NodeGraphicsInfos>
+    </Pool>
+  </Pools>
+  <WorkflowProcesses>
+    <WorkflowProcess Id="1" Name="p1">
+      <ProcessHeader />
+      <ActivitySets>
+        <ActivitySet Id="2" Name="p2">
+          <Activities>
+            <Activity Id="45">
+              <Event>
+                <StartEvent Trigger="None" />
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="40.0" YCoordinate="270.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="46">
+              <Event>
+                <EndEvent Result="Error">
+                  <ResultError />
+                </EndEvent>
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="380.0" YCoordinate="50.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="47">
+              <Event>
+                <EndEvent Result="None" />
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="870.0" YCoordinate="260.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="48">
+              <Route GatewayType="Exclusive" XORType="Data" MarkerVisible="true" />
+              <TransitionRestrictions>
+                <TransitionRestriction>
+                  <Split Type="Exclusive">
+                    <TransitionRefs>
+                      <TransitionRef Id="58" />
+                      <TransitionRef Id="62" />
+                    </TransitionRefs>
+                  </Split>
+                </TransitionRestriction>
+              </TransitionRestrictions>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="380.0" YCoordinate="260.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="49">
+              <Route GatewayType="Exclusive" XORType="Event" />
+              <TransitionRestrictions>
+                <TransitionRestriction>
+                  <Split Type="Exclusive">
+                    <TransitionRefs>
+                      <TransitionRef Id="72" />
+                      <TransitionRef Id="70" />
+                    </TransitionRefs>
+                  </Split>
+                </TransitionRestriction>
+              </TransitionRestrictions>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="590.0" YCoordinate="260.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="51" Name="Create purchase order">
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="80.0" LaneId="44">
+                  <Coordinates XCoordinate="130.0" YCoordinate="270.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="53" Name="Approve purchase order">
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="80.0" LaneId="44">
+                  <Coordinates XCoordinate="250.0" YCoordinate="270.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="60" Name="Order approved">
+              <Description />
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="80.0" LaneId="44">
+                  <Coordinates XCoordinate="480.0" YCoordinate="260.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="64">
+              <Event>
+                <IntermediateEvent Trigger="Message">
+                  <TriggerResultMessage />
+                </IntermediateEvent>
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="650.0" YCoordinate="150.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="65">
+              <Event>
+                <IntermediateEvent Trigger="Message">
+                  <TriggerResultMessage />
+                </IntermediateEvent>
+              </Event>
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="60.0" LaneId="44">
+                  <Coordinates XCoordinate="640.0" YCoordinate="360.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="67" Name="Confirm purchase order">
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="80.0" LaneId="44">
+                  <Coordinates XCoordinate="760.0" YCoordinate="150.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+            <Activity Id="69" Name="Modify purchase order">
+              <NodeGraphicsInfos>
+                <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="80.0" LaneId="44">
+                  <Coordinates XCoordinate="770.0" YCoordinate="360.0" />
+                </NodeGraphicsInfo>
+              </NodeGraphicsInfos>
+            </Activity>
+          </Activities>
+          <Transitions>
+            <Transition Id="55" From="45" To="51">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="99.99703216552734" YCoordinate="300.4222412109375" />
+                  <Coordinates XCoordinate="130.5" YCoordinate="300.8515930175781" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="56" From="51" To="53">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="210.5" YCoordinate="300.9960021972656" />
+                  <Coordinates XCoordinate="250.5" YCoordinate="300.9981994628906" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="57" From="53" To="48">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="330.5" YCoordinate="297.4268493652344" />
+                  <Coordinates XCoordinate="383.0631408691406" YCoordinate="293.0631408691406" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="62" From="48" To="60">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="440.1072692871094" YCoordinate="290.8927307128906" />
+                  <Coordinates XCoordinate="480.5" YCoordinate="290.9351806640625" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="63" From="60" To="49">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="560.5" YCoordinate="291.08349609375" />
+                  <Coordinates XCoordinate="591.0361938476562" YCoordinate="291.0362243652344" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="72" From="49" To="65">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="630.5169677734375" YCoordinate="310.4830627441406" />
+                  <Coordinates XCoordinate="656.6580810546875" YCoordinate="363.13006591796875" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="70" From="49" To="64">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="631.1690063476562" YCoordinate="271.16900634765625" />
+                  <Coordinates XCoordinate="666.051513671875" YCoordinate="206.5601348876953" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="71" From="64" To="67">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="709.9945678710938" YCoordinate="180.57199096679688" />
+                  <Coordinates XCoordinate="760.5" YCoordinate="181.5351104736328" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="73" From="65" To="69">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="699.9994506835938" YCoordinate="390.1785888671875" />
+                  <Coordinates XCoordinate="770.5" YCoordinate="390.5982666015625" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="120" From="69" To="53">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="810.5" YCoordinate="420.5" />
+                  <Coordinates XCoordinate="810.0" YCoordinate="460.0" />
+                  <Coordinates XCoordinate="290.0" YCoordinate="460.0" />
+                  <Coordinates XCoordinate="290.5" YCoordinate="330.5" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+            <Transition Id="75" From="67" To="47">
+              <ConnectorGraphicsInfos>
+                <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+                  <Coordinates XCoordinate="827.4035034179688" YCoordinate="210.5" />
+                  <Coordinates XCoordinate="879.2317504882812" YCoordinate="268.3509826660156" />
+                </ConnectorGraphicsInfo>
+              </ConnectorGraphicsInfos>
+            </Transition>
+          </Transitions>
+        </ActivitySet>
+      </ActivitySets>
+      <Activities>
+        <Activity Id="6">
+          <BlockActivity ActivitySetId="2" StartActivityId="45" View="EXPANDED" />
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="350.0" Width="620.0" LaneId="3">
+              <Coordinates XCoordinate="80.0" YCoordinate="120.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="7" Name="Purchase order received">
+          <Event>
+            <StartEvent Trigger="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="370.0" YCoordinate="20.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="12" g360:Style="0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="29">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="360.0" YCoordinate="610.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="33" Name="Order timed out">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="80.0" LaneId="3">
+              <Coordinates XCoordinate="170.0" YCoordinate="570.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="12" g360:Style="1" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="76" Name="Timer">
+          <Event>
+            <IntermediateEvent Trigger="Timer" Target="6">
+              <TriggerTimer>
+                <TimeDate>14400</TimeDate>
+              </TriggerTimer>
+            </IntermediateEvent>
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="100.0" YCoordinate="420.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="12" g360:Style="0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="77" Name="Error">
+          <Event>
+            <IntermediateEvent Trigger="Error" Target="6">
+              <ResultError />
+            </IntermediateEvent>
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="200.0" YCoordinate="420.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="12" g360:Style="0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="123" Name="Order not approved">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2" Height="60.0" Width="80.0" LaneId="44">
+              <Coordinates XCoordinate="370.0" YCoordinate="160.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition Id="58" From="48" To="123">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="411.2449035644531" YCoordinate="261.2449035644531" />
+              <Coordinates XCoordinate="411.7696228027344" YCoordinate="220.5" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="151" From="123" To="46">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="411.3815612792969" YCoordinate="160.5" />
+              <Coordinates XCoordinate="411.7646789550781" YCoordinate="129.94805908203125" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="91" From="76" To="33">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="130.0" YCoordinate="480.0" />
+              <Coordinates XCoordinate="130.0" YCoordinate="600.0" />
+              <Coordinates XCoordinate="170.5" YCoordinate="600.5" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="28" From="7" To="6">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="399.4440612792969" YCoordinate="79.9948501586914" />
+              <Coordinates XCoordinate="398.6933288574219" YCoordinate="120.5" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="40" From="33" To="29">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="250.5" YCoordinate="609.3971557617188" />
+              <Coordinates XCoordinate="360.7077941894531" YCoordinate="633.5218505859375" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="169" From="77" To="29">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="230.0" YCoordinate="480.0" />
+              <Coordinates XCoordinate="230.0" YCoordinate="530.0" />
+              <Coordinates XCoordinate="260.0" YCoordinate="530.0" />
+              <Coordinates XCoordinate="367.0984191894531" YCoordinate="620.6217041015625" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="335" From="6" To="29">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="391.050048828125" YCoordinate="470.5" />
+              <Coordinates XCoordinate="390.9901123046875" YCoordinate="610.016357421875" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+      </Transitions>
+    </WorkflowProcess>
+    <WorkflowProcess Id="2" Name="p2">
+      <ProcessHeader />
+      <Activities />
+      <Transitions>
+        <Transition Id="55" From="45" To="51">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="119.91310119628906" YCoordinate="298.13763427734375" />
+              <Coordinates XCoordinate="140.5" YCoordinate="299.2602233886719" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="56" From="51" To="53">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="220.5" YCoordinate="301.6235656738281" />
+              <Coordinates XCoordinate="240.5" YCoordinate="301.6993713378906" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="120" From="69" To="53">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="640.5" YCoordinate="420.5" />
+              <Coordinates XCoordinate="640.0" YCoordinate="450.0" />
+              <Coordinates XCoordinate="280.0" YCoordinate="450.0" />
+              <Coordinates XCoordinate="280.5" YCoordinate="330.5" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="57" From="53" To="48">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="320.5" YCoordinate="301.4383850097656" />
+              <Coordinates XCoordinate="341.4413757324219" YCoordinate="301.4413757324219" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="62" From="48" To="60">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="399.6238708496094" YCoordinate="301.3761291503906" />
+              <Coordinates XCoordinate="420.5" YCoordinate="301.5191650390625" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="63" From="60" To="49">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="500.5" YCoordinate="301.2379455566406" />
+              <Coordinates XCoordinate="521.2319946289062" YCoordinate="301.2319641113281" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="70" From="49" To="64">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="550.5" YCoordinate="270.5" />
+              <Coordinates XCoordinate="550.0" YCoordinate="190.0" />
+              <Coordinates XCoordinate="570.0" YCoordinate="190.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="72" From="49" To="65">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="550.6854248046875" YCoordinate="330.3145446777344" />
+              <Coordinates XCoordinate="550.3732299804688" YCoordinate="360.0023193359375" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="73" From="65" To="69">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="579.9962158203125" YCoordinate="390.4747314453125" />
+              <Coordinates XCoordinate="600.5" YCoordinate="390.81646728515625" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="71" From="64" To="67">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="629.9856567382812" YCoordinate="189.0731964111328" />
+              <Coordinates XCoordinate="650.5" YCoordinate="188.4391326904297" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="75" From="67" To="47">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="2">
+              <Coordinates XCoordinate="700.8963012695312" YCoordinate="220.5" />
+              <Coordinates XCoordinate="723.1245727539062" YCoordinate="281.21893310546875" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes>
+    <ExtendedAttribute Name="Creator" Value="SketchpadBPMN v1.4 A1" />
+    <ExtendedAttribute Name="System" Value="Global 360" />
+  </ExtendedAttributes>
+</Package>
+
