@@ -48,15 +48,25 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <GateRefs>
         <GateRef>
           <IdRef>70</IdRef>
-          <Probability>75</Probability>
+          <Probability>25</Probability>
         </GateRef>
         <GateRef>
           <IdRef>72</IdRef>
-          <Probability>25</Probability>
+          <Probability>75</Probability>
         </GateRef>
       </GateRefs>
     </Gateway>
   </Gateways>
+  <MessageEvents>
+  <MessageEvent>
+  <Id>64</Id>
+  <Time>10800</Time>
+  </MessageEvent>
+  <MessageEvent>
+  <Id>65</Id>
+  <Time>10800</Time>
+  </MessageEvent>
+  </MessageEvents>
   <Resources>
     <Resource>
       <ResourceType>CLERK</ResourceType>
