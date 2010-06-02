@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Tasks complex type.
+ * <p>Java class for MessageEvents complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Tasks">
+ * &lt;complexType name="MessageEvents">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Task" type="{}Task" maxOccurs="unbounded"/>
+ *         &lt;element name="MessageEvent" type="{}MessageEvent" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,41 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Tasks", propOrder = {
-    "task"
+@XmlType(name = "MessageEvents", propOrder = {
+    "messageEvent"
 })
-public class Tasks {
+public class MessageEvents {
 
-    @XmlElement(name = "Task", required = true)
-    protected List<Task> task;
+    @XmlElement(name = "MessageEvent", required = true)
+    protected List<MessageEvent> messageEvent;
 
     /**
-     * Gets the value of the task property.
+     * Gets the value of the messageEvent property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the task property.
+     * This is why there is not a <CODE>set</CODE> method for the messageEvent property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTask().add(newItem);
+     *    getMessageEvent().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Task }
+     * {@link MessageEvent }
      * 
      * 
      */
-    public List<Task> getTask() {
-        if (task == null) {
-            task = new ArrayList<Task>();
+    public List<MessageEvent> getMessageEvent() {
+        if (messageEvent == null) {
+            messageEvent = new ArrayList<MessageEvent>();
         }
-        return this.task;
+        return this.messageEvent;
     }
 
 }

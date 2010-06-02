@@ -127,8 +127,7 @@ public final class BPMNTask extends BPMNElement {
 				+ "    pCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
 				+ "    sCost={dtype=specific, specificValue=0, mean=0,std=0},\n"
 				+ "    revenue={dtype=specific, specificValue=0, mean=0,std=0},\n"
-				+ "    pWaitTimeDur="
-				+ simDataParser.getWaitTimeDuration(elementId) + ",\n"
+				+ "    pWaitTimeDur=0,"
 				+ "    pWaitTimeCost=0,\n" + "    transitionName=\""
 				+ elementName + "\",\n" + "    NoOfResources=1}\n" + "in\n"
 				+ taskActionf + "\n" + "end);";

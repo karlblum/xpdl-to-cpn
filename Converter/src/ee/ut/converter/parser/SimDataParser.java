@@ -16,8 +16,6 @@ public interface SimDataParser {
 
 	public String getEndTime();
 
-	public String getWaitTimeDuration(String elementId);
-
 	public String getResources(String elementId);
 
 	public HashMap<String, Integer> getResourceData();
@@ -29,4 +27,6 @@ public interface SimDataParser {
 	public int getBoundTimer(String elementId);
 
 	public boolean hasData();
+
+	public String getMessageTime(String elementId);
 }

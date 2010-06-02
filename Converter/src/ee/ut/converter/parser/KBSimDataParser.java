@@ -11,6 +11,8 @@ import javax.xml.bind.Unmarshaller;
 import ee.ut.model.sim.GateRef;
 import ee.ut.model.sim.Gateway;
 import ee.ut.model.sim.Gateways;
+import ee.ut.model.sim.MessageEvent;
+import ee.ut.model.sim.MessageEvents;
 import ee.ut.model.sim.Resource;
 import ee.ut.model.sim.Resources;
 import ee.ut.model.sim.SimulationData;
@@ -95,19 +97,6 @@ public class KBSimDataParser implements SimDataParser {
 	}
 
 	@Override
-	public String getWaitTimeDuration(String elementId) {
-		Tasks ts = simDataRoot.getValue().getTasks();
-		if (ts != null) {
-			for (Task t : simDataRoot.getValue().getTasks().getTask()) {
-				if (t.getId().equals(elementId))
-
-					return t.getResourceWaitTime();
-			}
-		}
-		return "0";
-	}
-
-	@Override
 	public String getResources(String elementId) {
 		Tasks ts = simDataRoot.getValue().getTasks();
 		if (ts != null) {
@@ -157,5 +146,17 @@ public class KBSimDataParser implements SimDataParser {
 		if (simDataRoot != null)
 			return true;
 		return false;
+	}
+
+	@Override
+	public String getMessageTime(String elementId) {
+		MessageEvents me = simDataRoot.getValue().getMessageEvents();
+		if (me != null) {
+			for (MessageEvent e : me.getMessageEvent()) {
+				if (e.getId().equals(elementId))
+					return e.getTime();
+			}
+		}
+		return "0";
 	}
 }
