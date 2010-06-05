@@ -13,7 +13,7 @@ public class BPMNStartEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(BProcess pr, Object obj) throws Exception {
+	public Element create(BProcess pr, Object obj) {
 		if (pr.getId().equals("0")) {
 			return new BPMNStartEvent(pr, parser, obj);
 		} else

@@ -6,24 +6,22 @@ import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNSubprocessStart extends BPMNElement {
 
-	private String outputPlaceId;
-	private String startPlaceId;
-	private String timerTransitionId;
+	private String startPID;
+	private String exceptionTID;
+	private String outputPID;
+	
 
-	public BPMNSubprocessStart(BProcess pr, Parser p, Object o)
-			throws Exception {
+	public BPMNSubprocessStart(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
 
-		startPlaceId = process.getCpnet().addPlace(elementName).getId();
-		outputPlaceId = process.getCpnet().addPlace(elementName).getId();
-
-		timerTransitionId = process.getCpnet().addTrans(
-				elementName + "TIMER_TRANSITIONS").getId();
-		process.getCpnet().addArc(startPlaceId, timerTransitionId);
-		process.getCpnet().addArc(timerTransitionId, outputPlaceId);
+		startPID = process.getCpnet().addPlace(elementName).getId();
+		exceptionTID = process.getCpnet().addTrans(elementName + "EXCEPTION_INPUT").getId();
+		outputPID = process.getCpnet().addPlace(elementName).getId();
+		process.getCpnet().addArc(startPID, exceptionTID);
+		process.getCpnet().addArc(exceptionTID, outputPID);
 	}
 
 	@Override
@@ -32,17 +30,22 @@ public class BPMNSubprocessStart extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
-		return startPlaceId;
+	public String getInputPID() {
+		return startPID;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
-		return outputPlaceId;
+	public String getOutputPID(String ref) {
+		return outputPID;
 	}
 
-	public String getTimerTransitionId() {
-		return timerTransitionId;
+	@Override
+	public String getOutputPID() {
+		return outputPID;
+	}
+	
+	public String getExceptionTID(){
+		return exceptionTID;
 	}
 
 }

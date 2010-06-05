@@ -12,6 +12,6 @@ public abstract class AbstractElementFactory {
 		parser = p;
 	}
 
-	public abstract Element create(BProcess pr, Object obj) throws Exception;
+	public abstract Element create(BProcess pr, Object obj);
 
 }

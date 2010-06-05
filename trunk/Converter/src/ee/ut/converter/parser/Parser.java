@@ -11,19 +11,18 @@ import ee.ut.model.xpdl2.Activity;
 
 public class Parser {
 
-	// Process model file parser 
+	// Process model file parser
 	private ElementParser elementParser;
-	
+
 	// Simulation data file parser
 	private SimDataParser simDataParser;
-	
+
 	// RelayFactory for handling the element mappings
 	private RelayFactory relayFactory;
-	
+
 	// Root process instance with id=0
 	private BProcess rootProcess = new BProcess(null, "0");
 
-	
 	public void setElementParser(ElementParser p) {
 		elementParser = p;
 	}
@@ -38,48 +37,55 @@ public class Parser {
 
 	/**
 	 * Method starts parsing from the root process.
+	 * 
 	 * @return Root process.
 	 */
 	public BProcess parse() {
 		return parse(rootProcess);
 	}
 
-	
 	/**
 	 * Method converts a given process instance.
-	 * @param p In-memory empty process instance.
+	 * 
+	 * @param p
+	 *            In-memory empty process instance.
 	 * @return Created process.
 	 */
 	public BProcess parse(BProcess p) {
 		System.out.println("\n\n===== STARTING TO CONVERT PROCESS: "
 				+ p.getId() + " =====");
 
+		// Initial source (only one supported)
 		Object startElement = elementParser.getSource(p.getId());
-		Stack<Object> elementsToParse = new Stack<Object>();
-		elementsToParse.push(startElement);
 
-		HashMap<Object, Element> parsedElements = new HashMap<Object, Element>();
+		// Stack containing the elements that need to be converted
+		Stack<Object> elementsToConvert = new Stack<Object>();
+		elementsToConvert.push(startElement);
+
+		// HashMap of already parsed elements
+		HashMap<Object, Element> convertedElements = new HashMap<Object, Element>();
 		Stack<String> prevElems = new Stack<String>();
 
-		while (!elementsToParse.empty()) {
+		// Loop while there is no element to convert
+		while (!elementsToConvert.empty()) {
 			Element convertedElement = null;
 			String prevElem = null;
 
-			Object element = elementsToParse.pop();
+			Object element = elementsToConvert.pop();
 			if (!prevElems.empty())
 				prevElem = prevElems.pop();
 
 			ArrayList<Object> nextElements = elementParser
 					.getNextElements(element);
 
-			if (!parsedElements.containsKey(element)) {
+			if (!convertedElements.containsKey(element)) {
 				try {
 					convertedElement = relayFactory.create(p, element);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				p.addElement(convertedElement.getId(), convertedElement);
-				parsedElements.put(element, convertedElement);
+				convertedElements.put(element, convertedElement);
 			}
 
 			if (convertedElement != null) {
@@ -88,18 +94,18 @@ public class Parser {
 						+ convertedElement);
 
 				for (Object e : nextElements) {
-					elementsToParse.push(e);
+					elementsToConvert.push(e);
 					prevElems.push(convertedElement.getId());
 				}
 			}
 
 			// Here we connect the two object
 			if (prevElem != null) {
-				relayFactory.connectElements(p, parsedElements.get(element), p
-						.getElement(prevElem));
+				relayFactory.connectElements(p, convertedElements.get(element),
+						p.getElement(prevElem));
 				System.out.println("Transition: "
 						+ p.getElement(prevElem).getId() + " -> "
-						+ parsedElements.get(element).getId());
+						+ convertedElements.get(element).getId());
 
 			}
 		}

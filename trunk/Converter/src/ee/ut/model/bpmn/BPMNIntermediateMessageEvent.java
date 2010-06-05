@@ -11,8 +11,7 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 	String delayArcId;
 	String ebXORId;
 
-	public BPMNIntermediateMessageEvent(BProcess pr, Parser p, Object o)
-			throws Exception {
+	public BPMNIntermediateMessageEvent(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -46,7 +45,7 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 		if (!timerPresent) {
 			String timerTime = simDataParser.getMessageTime(elementId);
 			process.getCpnet().setArcAnnot(delayArcId,
-					"c@+round(uniform(0.0,"+ timerTime +".0))");
+					"c@+round(uniform(0.0," + timerTime + ".0))");
 		}
 	}
 
@@ -55,13 +54,19 @@ public class BPMNIntermediateMessageEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		return inputPlaceId;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
 		return outputPlaceId;
+	}
+
+	@Override
+	public String getOutputPID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

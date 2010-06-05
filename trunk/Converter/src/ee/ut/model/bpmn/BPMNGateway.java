@@ -38,7 +38,7 @@ public class BPMNGateway extends BPMNElement {
 	 * @throws Exception
 	 */
 	@Override
-	public String getInputPlaceId() throws Exception {
+	public String getInputPID() {
 		Place p = null;
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {
@@ -55,7 +55,7 @@ public class BPMNGateway extends BPMNElement {
 	}
 
 	@Override
-	public String getOutputPlaceId(String id) throws Exception {
+	public String getOutputPID(String id) {
 
 		Place p = process.getCpnet().addPlace();
 		String arcId = process.getCpnet()
@@ -63,7 +63,7 @@ public class BPMNGateway extends BPMNElement {
 
 		if (getGwType() == GatewayType.EXCLUSIVE) {
 			if (id == null) {
-				throw new Exception("Exclusive gateway output not defined!");
+				System.err.println("Exclusive gateway output not defined!");
 			}
 
 			String arcAnnotation = "(if path=" + id + " then 1`"
@@ -92,7 +92,8 @@ public class BPMNGateway extends BPMNElement {
 
 			HashMap<String, String> distribution = simDataParser
 					.getDistribution(elementId);
-			if(distribution == null) return;
+			if (distribution == null)
+				return;
 			if (distribution.size() > 1) {
 				String function = "input ();\noutput (path);\naction\n(\n  let\n    val p = discrete(0, 99);\n  in";
 
@@ -142,6 +143,11 @@ public class BPMNGateway extends BPMNElement {
 
 	public int getEBXORTimerDelay() {
 		return ebXORTimerDelay;
+	}
+
+	@Override
+	public String getOutputPID() {
+		return null;
 	}
 
 }

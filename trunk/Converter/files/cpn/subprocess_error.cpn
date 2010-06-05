@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://www.daimi.au.dk/~cpntools/bin/DTD/6/cpn.dtd">
+<workspaceElements>
+  <generator tool="CPN Tools" version="2.2.0" format="6"/>
+  <cpnet>
+    <globbox>
+      <block id="ID1">
+        <id>Standard declarations</id>
+        <color id="ID85042">
+          <id>UNIT</id>
+          <unit/>
+          <layout>colset UNIT = unit;</layout>
+        </color>
+        <color id="ID3">
+          <id>INT</id>
+          <int/>
+        </color>
+        <color id="ID4">
+          <id>BOOL</id>
+          <bool/>
+        </color>
+        <color id="ID5">
+          <id>STRING</id>
+          <string/>
+        </color>
+        <color id="ID1264288320">
+          <id>SLIST</id>
+          <list>
+            <id>STRING</id>
+          </list>
+          <layout>colset SLIST = list STRING;</layout>
+        </color>
+      </block>
+      <ml id="ID1264333160">val FILE = "logs/log";
+        <layout>val FILE = "logs/log";</layout>
+      </ml>
+      <ml id="ID1264333265">val FILE_EXTENSION = ".cpnxml";
+        <layout>val FILE_EXTENSION = ".cpnxml";</layout>
+      </ml>
+      <use id="ID1264332971">
+        <ml>"loggingFunctionsMultipleFiles.sml"</ml>
+        <layout>use "loggingFunctionsMultipleFiles.sml";</layout>
+      </use>
+      <block id="ID1264329061">
+        <id>Coloursets</id>
+        <color id="ID1264329169">
+          <id>DTYPE</id>
+          <enum>
+            <id>specific</id>
+            <id>normal</id>
+          </enum>
+          <layout>colset DTYPE = with specific | normal;</layout>
+        </color>
+        <color id="ID1264329115">
+          <id>TRIG_TOKEN</id>
+          <timed/>
+          <alias>
+            <id>INT</id>
+          </alias>
+          <layout>colset TRIG_TOKEN = INT timed;</layout>
+        </color>
+        <color id="ID1264329235">
+          <id>DISTRIBUTION</id>
+          <record>
+            <recordfield>
+              <id>dtype</id>
+              <id>DTYPE</id>
+            </recordfield>
+            <recordfield>
+              <id>specificValue</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>mean</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>std</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset DISTRIBUTION = record dtype:DTYPE * specificValue:INT * mean:INT * std:INT;</layout>
+        </color>
+        <color id="ID1264329314">
+          <id>ID</id>
+          <timed/>
+          <int/>
+          <layout>colset ID = int timed;</layout>
+        </color>
+        <color id="ID1264329489">
+          <id>CASE</id>
+          <timed/>
+          <record>
+            <recordfield>
+              <id>ID</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ats</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>ts</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset CASE = record ID:INT * ats:INT * ts:INT timed;</layout>
+        </color>
+        <color id="ID1264329656">
+          <id>RECINT</id>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>StartTime</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>Duration</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset RECINT = record Name:STRING * StartTime:INT * Duration:INT;
+(*All durations are in seconds*)</layout>
+        </color>
+        <color id="ID1264329848">
+          <id>RECURRINGINTERVALS</id>
+          <list>
+            <id>RECINT</id>
+          </list>
+          <layout>colset RECURRINGINTERVALS = list RECINT;</layout>
+        </color>
+        <color id="ID1264330069">
+          <id>TTEXCEPTION</id>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RepeatCount</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>RepetitionDuration</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>BeginDate</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RecurringIntervals</id>
+              <id>RECURRINGINTERVALS</id>
+            </recordfield>
+          </record>
+          <layout>colset TTEXCEPTION = record Name:STRING * RepeatCount:INT * RepetitionDuration:INT * BeginDate:STRING * RecurringIntervals:RECURRINGINTERVALS;</layout>
+        </color>
+        <color id="ID1264330315">
+          <id>TTEXCEPTIONS</id>
+          <list>
+            <id>TTEXCEPTION</id>
+          </list>
+          <layout>colset TTEXCEPTIONS = list TTEXCEPTION;</layout>
+        </color>
+        <color id="ID1264330590">
+          <id>TIMETABLE</id>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RepeatCount</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>RepetitionDuration</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>BeginDate</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>RecurringIntervals</id>
+              <id>RECURRINGINTERVALS</id>
+            </recordfield>
+            <recordfield>
+              <id>TTExceptions</id>
+              <id>TTEXCEPTIONS</id>
+            </recordfield>
+          </record>
+          <layout>colset TIMETABLE = record Name:STRING * RepeatCount:INT * RepetitionDuration:INT * BeginDate:STRING * RecurringIntervals:RECURRINGINTERVALS * TTExceptions:TTEXCEPTIONS;</layout>
+        </color>
+        <color id="ID1264330894">
+          <id>TIMETABLES</id>
+          <list>
+            <id>TIMETABLE</id>
+          </list>
+          <layout>colset TIMETABLES = list TIMETABLE;</layout>
+        </color>
+        <color id="ID1264331223">
+          <id>RCOST</id>
+          <record>
+            <recordfield>
+              <id>Value</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>CostPerDuration</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>CostPerQuantity</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>CostApplicableTT</id>
+              <id>TIMETABLES</id>
+            </recordfield>
+          </record>
+          <layout>colset RCOST = record Value:INT * CostPerDuration:INT * CostPerQuantity:INT * CostApplicableTT:TIMETABLES;</layout>
+        </color>
+        <color id="ID1264331577">
+          <id>RCOSTS</id>
+          <list>
+            <id>RCOST</id>
+          </list>
+          <layout>colset RCOSTS = list RCOST;</layout>
+        </color>
+        <color id="ID1264331960">
+          <id>RES</id>
+          <timed/>
+          <record>
+            <recordfield>
+              <id>Name</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>Costs</id>
+              <id>RCOSTS</id>
+            </recordfield>
+            <recordfield>
+              <id>Roles</id>
+              <id>SLIST</id>
+            </recordfield>
+            <recordfield>
+              <id>Availability</id>
+              <id>TIMETABLES</id>
+            </recordfield>
+          </record>
+          <layout>colset RES = record Name:STRING * Costs:RCOSTS * Roles:SLIST * Availability:TIMETABLES timed;</layout>
+        </color>
+        <color id="ID1264332370">
+          <id>TRANSPARAMS</id>
+          <record>
+            <recordfield>
+              <id>transitionName</id>
+              <id>STRING</id>
+            </recordfield>
+            <recordfield>
+              <id>pt</id>
+              <id>DISTRIBUTION</id>
+            </recordfield>
+            <recordfield>
+              <id>pCost</id>
+              <id>DISTRIBUTION</id>
+            </recordfield>
+            <recordfield>
+              <id>sCost</id>
+              <id>DISTRIBUTION</id>
+            </recordfield>
+            <recordfield>
+              <id>revenue</id>
+              <id>DISTRIBUTION</id>
+            </recordfield>
+            <recordfield>
+              <id>pWaitTimeDur</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>pWaitTimeCost</id>
+              <id>INT</id>
+            </recordfield>
+            <recordfield>
+              <id>NoOfResources</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset TRANSPARAMS  = record 
+transitionName:STRING * pt: DISTRIBUTION * pCost:DISTRIBUTION * sCost:DISTRIBUTION * revenue:DISTRIBUTION * pWaitTimeDur:INT * pWaitTimeCost:INT * NoOfResources:INT;</layout>
+        </color>
+      </block>
+    <block><ml id="ID1161">val totalNoOfToken = 100;</ml><ml id="ID1162">val noOfTokensPerBundle = 1;</ml><ml id="ID1163">val startDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2000};</ml><ml id="ID1164">val endDate = Date.date{day = 1, hour = 0, minute = 0, month = Date.Jan, offset = NONE, second = 0, year = 2005};</ml><ml id="ID1165">val timeBetweenBundles = {dtype=specific, specificValue=100, mean=0, std=0};;</ml></block><block><var id="ID1000"><type><id>INT</id></type><id>p</id><layout>var p:INT;</layout></var><var id="ID1001"><type><id>TRIG_TOKEN</id></type><id>tt</id><layout>var tt:TRIG_TOKEN;</layout></var><var id="ID1002"><type><id>INT</id></type><id>pt</id><layout>var pt:INT;</layout></var><ml id="ID1003">fun et(mean:INT,stdD:INT)=
+let
+val realMean = Real.fromInt mean
+val realStdD = Real.fromInt stdD
+in
+round(uniform(realMean-realStdD, realMean+realStdD))
+end;</ml><ml id="ID1004">fun intTime() = IntInf.toInt (time());</ml><ml id="ID1005">fun dateFromString(s:STRING) =
+let
+  val s1 = "Sat Jan 01 10:51:07 2000"
+  val dateSplit = String.tokens(fn(c) => c = #" ") s
+  val timeStr = List.nth(dateSplit, 3)
+  val time = String.tokens(fn(c) => c = #":") timeStr
+  val day = Option.getOpt(Int.fromString(List.nth(dateSplit, 2)), 0)
+  val hour = Option.getOpt(Int.fromString(List.nth(time, 0)), 0)
+  val minute = Option.getOpt(Int.fromString(List.nth(time, 1)), 0)
+  val second = Option.getOpt(Int.fromString(List.nth(time, 2)), 0)
+  val year = Option.getOpt(Int.fromString(List.nth(dateSplit, 4)), 0)
+  val monthStr = List.nth(dateSplit, 1)
+  val month = case monthStr of
+      "Jan" => Date.Jan
+    | "Feb" => Date.Feb
+    | "Mar" => Date.Mar
+    | "Apr" => Date.Apr
+    | "May" => Date.May
+    | "Jun" => Date.Jun
+    | "Jul" => Date.Jul
+    | "Aug" => Date.Aug
+    | "Sep" => Date.Sep
+    | "Oct" => Date.Oct
+    | "Nov" => Date.Nov
+    | "Dec" => Date.Dec
+    | _     => Date.Jan;
+in
+  Date.date{day = day, hour = hour, minute = minute, month =month, offset = NONE, second = second, year = year}
+end</ml><var id="ID1006"><type><id>ID</id></type><id>i</id><layout>var i:ID;</layout></var><ml id="ID1007">val OneTimeCostPerToken = 0;</ml><var id="ID1008"><type><id>CASE</id></type><id>c</id><layout>var c:CASE;</layout></var><var id="ID1009"><type><id>CASE</id></type><id>c1</id><layout>var c1:CASE;</layout></var><ml id="ID1010">fun calcDisValue(value:DISTRIBUTION) =
+let
+  val dtype = #dtype(value)
+  val specificValue = #specificValue(value)
+  val mean = #mean(value)
+  val std = #std(value)
+in
+  case dtype of normal => et(mean, std) | specific => specificValue
+end;</ml><ml id="ID1011">fun add2StartDate(ts:INT) =
+let
+val day = Date.day(startDate)
+val second = Date.second(startDate)
+val hour = Date.hour (startDate)
+val minute = Date.minute(startDate)
+val month = Date.month (startDate)
+val offset = Date.offset (startDate)
+val second = Date.second(startDate)+ ts
+val year = Date.year (startDate)
+in
+Date.date{day = day, hour = hour, minute = minute, second = second, month = month, offset = offset, year = year}
+end;</ml><ml id="ID1012">fun generateCase(id:ID)=
+let
+
+val _ = createCaseFile(id);
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["Cost", Int.toString(OneTimeCostPerToken), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, "Generated input", ["complete"], timestamp, "generator", data);
+in
+  {ID=id, ts=intTime(), ats=intTime()}
+end;</ml><ml id="ID1013">fun generatorGuard(i:ID) =
+let
+val dateCompare = Date.compare(add2StartDate(intTime()), endDate) &lt;> GREATER;
+in
+if i &lt;= totalNoOfToken andalso dateCompare=true then true else false
+end;</ml><var id="ID1014"><type><id>CASE</id></type><id>caseInfop</id><layout>var caseInfop: CASE;</layout></var><var id="ID1015"><type><id>INT</id></type><id>path</id><layout>var path: INT;</layout></var><ml id="ID1016">fun initCaseInfo(id) = {Id=id,CaseStartTime=IntInf.toInt(time()),CaseEndTime=0};</ml><ml id="ID1017">fun isRole(roles:SLIST, required:STRING) = List.exists (fn x => x = required) roles;</ml><ml id="ID1018">fun checkRoles [] [] = true
+| checkRoles _ [] = true
+| checkRoles roles (role::reqRoles) = List.exists (fn x => x = role) roles andalso checkRoles roles reqRoles ;</ml><ml id="ID1019">fun check_roles(roles:SLIST, required:SLIST) = checkRoles roles required;</ml><ml id="ID1020">val recint_weekend = {Name="weekend", StartTime=0, Duration=((60*60)*24*2)};</ml><ml id="ID1021">val recint_dayShift = {Name="Day shift", StartTime=((60*60)*9), Duration=((60*60)*9)};</ml><ml id="ID1022">val recint_bulk = {Name="bulk", StartDate=0, Duration=((60*60)*24)};</ml><ml id="ID1023">val tte_weekend = {Name="weekend", RepeatCount=0, RepetitionDuration=((60*60)*24*7), BeginDate="", RecurringIntervals=[recint_weekend]};</ml><ml id="ID1024">val tt_bulkweek = {Name="week", RepeatCount=0, RepetitionDuration=((60*60)*24), BeginDate="", RecurringIntervals=[recint_bulk], Exceptions=[tte_weekend]};</ml><ml id="ID1025">val tt_week = {Name="week", RepeatCount=0, RepetitionDuration=604800, BeginDate="dasdas", RecurringIntervals=[recint_dayShift], TTExceptions=[tte_weekend]};</ml><var id="ID1026"><type><id>RES</id></type><id>r</id><layout>var r:RES;</layout></var><ml id="ID1027">fun transitionAction (a:CASE, params:TRANSPARAMS) = 
+let
+  val id = #ID(a)
+  val ts = #ts(a)
+  val ats = #ats(a)
+  val transitionName = #transitionName(params)
+  val noOr = #NoOfResources(params)
+  val waitTime = intTime() - ts
+  val waitTimeDur = #pWaitTimeDur(params)
+  val waitTimeDur = Real.fromInt waitTimeDur
+  val waitTimeCost = #pWaitTimeCost(params)
+  val waitTimeCost = Real.fromInt waitTimeCost
+  val waitTime_real = Real.fromInt waitTime
+  val waitTimeCost = if waitTimeDur > 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;
+
+  val procTime = calcDisValue(#pt(params))
+  val procTime_real = Real.fromInt procTime
+
+  val processcost = calcDisValue(#pCost(params))
+  val scost = calcDisValue(#sCost(params))
+  val revenue = calcDisValue(#revenue(params))
+  val allcost = processcost + scost
+
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["WaitingTime", Int.toString(waitTime), "WaitTimeCost", Int.toString(waitTimeCost), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, transitionName, ["start"], timestamp, "", data);
+
+val curDate = add2StartDate(intTime() +procTime) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["ProcessingTime", Int.toString(procTime), "Cost", Int.toString(allcost), "StartupCost", Int.toString(scost)]
+val data = data ++ ["Revenue", Int.toString(revenue), "NoOfResources", Int.toString(#NoOfResources(params)), "ModelTimeStamp", Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, ["complete"], timestamp, "", data);
+in
+  (procTime)
+end</ml><ml id="ID1028">fun transitionActionR (a:CASE, r:RES, params:TRANSPARAMS) = 
+let
+  val id = #ID(a)
+  val ts = #ts(a)
+  val ats = #ats(a)
+  val transitionName = #transitionName(params)
+  val resourceName = #Name(r)
+  val noOr = #NoOfResources(params)
+  val waitTime = intTime() - ts
+  val waitTimeDur = #pWaitTimeDur(params)
+  val waitTimeDur = Real.fromInt waitTimeDur
+  val waitTimeCost = #pWaitTimeCost(params)
+  val waitTimeCost = Real.fromInt waitTimeCost
+  val waitTime_real = Real.fromInt waitTime
+  val waitTimeCost = if waitTimeDur > 0.0 then round((waitTime_real/waitTimeDur)*waitTimeCost) else 0;
+
+  val procTime = calcDisValue(#pt(params))
+  val procTime_real = Real.fromInt procTime
+
+(*Sum up the costs of resources*)
+val rcosts = #Costs(r)
+(*TODO: to check the timetable*)
+fun calcResourceCost(n:RCOST) = 
+let
+  val costDur = #CostPerDuration(n)
+  val costDur = Real.fromInt costDur 
+  val value = #Value(n)
+  val value = Real.fromInt value
+in
+  if costDur > 0.0 then round((procTime_real/costDur)*value) else round(value)
+end;
+val rec rCost = fn ([]) => 0 | n::s => calcResourceCost(n) + rCost  s
+val resCost = rCost(rcosts)*noOr;
+(*end sum up*)
+
+  val processcost = calcDisValue(#pCost(params))
+  val scost = calcDisValue(#sCost(params))
+  val revenue = calcDisValue(#revenue(params))
+  val allcost = processcost + resCost + scost
+
+val curDate = add2StartDate(intTime()) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["WaitingTime", Int.toString(waitTime), "WaitTimeCost", Int.toString(waitTimeCost), "ModelTimeStamp", Int.toString(intTime())];
+val _ = addATE(id, transitionName, ["start"], timestamp, resourceName, data);
+
+val curDate = add2StartDate(intTime() +procTime) ;
+val timestamp = (Date.fmt "%Y-%m-%dT%H:%M:%S.000+01:00" curDate);
+val data = ["ProcessingTime", Int.toString(procTime), "Cost", Int.toString(allcost), "StartupCost", Int.toString(scost)]
+val data = data ++ ["ResourceCost", Int.toString(resCost), "Revenue", Int.toString(revenue), "NoOfResources", Int.toString(#NoOfResources(params)), "ModelTimeStamp", Int.toString(intTime()+procTime)];
+val _ = addATE(id, transitionName, ["complete"], timestamp, resourceName, data);
+in
+  (procTime)
+end</ml></block><block/></globbox>
+    <page id="PAGE_PROCESS">
+      <pageattr name="Process"/>
+    <trans id="ID1029"><posattr x="150" y="1674"/><text/><box h="25" w="150"/><subst subpage="PAGE_GENERATOR" portsock="(ID1264234111,ID1033)"><subpageinfo id="ID1036"/></subst><cond id="ID1030"><text/></cond><time id="ID1031"><text/></time><code id="ID1032"><posattr x="310.0" y="1694.0"/><text/></code></trans><place id="ID1033"><posattr x="150" y="1602"/><text/><ellipse h="25" w="150"/><type><posattr x="210.0" y="1622.0"/><text>CASE</text></type><initmark id="ID1034"><text/></initmark></place><arc id="ID1035" orientation="TtoP"><transend idref="ID1029"/><placeend idref="ID1033"/><annot><posattr x="160.0" y="1638.0"/><text>c</text></annot></arc><place id="ID1038"><posattr x="150" y="1458"/><text/><ellipse h="25" w="150"/><type><posattr x="210.0" y="1478.0"/><text>CASE</text></type><initmark id="ID1039"><text/></initmark></place><place id="ID1040"><posattr x="150" y="1314"/><text/><ellipse h="25" w="150"/><type><posattr x="210.0" y="1334.0"/><text>CASE</text></type><initmark id="ID1041"><text/></initmark></place><trans id="ID1042"><posattr x="150" y="1386"/><text>nullTIMER_TRANSITIONS (ID1042)</text><box h="25" w="150"/><cond id="ID1043"><text/></cond><time id="ID1044"><text/></time><code id="ID1045"><posattr x="310.0" y="1406.0"/><text/></code></trans><arc id="ID1046" orientation="PtoT"><transend idref="ID1042"/><placeend idref="ID1038"/><annot><posattr x="160.0" y="1422.0"/><text>c</text></annot></arc><arc id="ID1047" orientation="TtoP"><transend idref="ID1042"/><placeend idref="ID1040"/><annot><posattr x="160.0" y="1350.0"/><text>c</text></annot></arc><place id="ID1048"><posattr x="150" y="1170"/><text>Register order IN (ID1048)</text><ellipse h="25" w="150"/><type><posattr x="210.0" y="1190.0"/><text>CASE</text></type><initmark id="ID1049"><text/></initmark></place><trans id="ID1050"><posattr x="150" y="1098"/><text>Register order (ID1050)</text><box h="25" w="150"/><cond id="ID1051"><text/></cond><time id="ID1052"><text/></time><code id="ID1053"><posattr x="310.0" y="1118.0"/><text>input (c);
+output (pt);
+action
+(let
+  val transParams = {
+    pt={dtype=specific, specificValue=0, mean=0, std=0},
+    pCost={dtype=specific, specificValue=0, mean=0,std=0},
+    sCost={dtype=specific, specificValue=0, mean=0,std=0},
+    revenue={dtype=specific, specificValue=0, mean=0,std=0},
+    pWaitTimeDur=0,    pWaitTimeCost=0,
+    transitionName="Register order",
+    NoOfResources=1}
+in
+transitionAction(c, transParams)
+end);</text></code></trans><arc id="ID1054" orientation="PtoT"><transend idref="ID1050"/><placeend idref="ID1048"/><annot><posattr x="160.0" y="1134.0"/><text>c</text></annot></arc><place id="ID1055"><posattr x="150" y="1026"/><text>Register order OUT_P (ID1055)</text><ellipse h="25" w="150"/><type><posattr x="210.0" y="1046.0"/><text>CASE</text></type><initmark id="ID1056"><text/></initmark></place><arc id="ID1057" orientation="TtoP"><transend idref="ID1050"/><placeend idref="ID1055"/><annot><posattr x="160.0" y="1062.0"/><text>CASE.set_ts c (pt+intTime()) @+pt</text></annot></arc><trans id="ID1058"><posattr x="150" y="1242"/><text/><box h="25" w="150"/><cond id="ID1059"><text/></cond><time id="ID1060"><text/></time><code id="ID1061"><posattr x="310.0" y="1262.0"/><text/></code></trans><arc id="ID1062" orientation="PtoT"><transend idref="ID1058"/><placeend idref="ID1040"/><annot><posattr x="160.0" y="1278.0"/><text>c</text></annot></arc><arc id="ID1063" orientation="TtoP"><transend idref="ID1058"/><placeend idref="ID1048"/><annot><posattr x="160.0" y="1206.0"/><text>c</text></annot></arc><trans id="ID1064"><posattr x="150" y="810"/><text/><box h="25" w="150"/><cond id="ID1065"><text/></cond><time id="ID1066"><text/></time><code id="ID1067"><posattr x="310.0" y="830.0"/><text>input ();
+output (path);
+action
+(
+  let
+    val p = discrete(0, 99);
+  in
+ if p>0 andalso p&lt;75 then 341
+ else 343
+end
+);</text></code></trans><trans id="ID1068"><posattr x="150" y="954"/><text/><box h="25" w="150"/><cond id="ID1069"><text/></cond><time id="ID1070"><text/></time><code id="ID1071"><posattr x="310.0" y="974.0"/><text/></code></trans><arc id="ID1072" orientation="PtoT"><transend idref="ID1068"/><placeend idref="ID1055"/><annot><posattr x="160.0" y="990.0"/><text>c</text></annot></arc><place id="ID1073"><posattr x="150" y="882"/><text/><ellipse h="25" w="150"/><type><posattr x="210.0" y="902.0"/><text>CASE</text></type><initmark id="ID1074"><text/></initmark></place><arc id="ID1075" orientation="PtoT"><transend idref="ID1064"/><placeend idref="ID1073"/><annot><posattr x="160.0" y="846.0"/><text>c</text></annot></arc><arc id="ID1076" orientation="TtoP"><transend idref="ID1068"/><placeend idref="ID1073"/><annot><posattr x="160.0" y="918.0"/><text>c</text></annot></arc><place id="ID1077"><posattr x="39" y="594"/><text>Approve order IN (ID1077)</text><ellipse h="25" w="150"/><type><posattr x="99.0" y="614.0"/><text>CASE</text></type><initmark id="ID1078"><text/></initmark></place><trans id="ID1079"><posattr x="39" y="522"/><text>Approve order (ID1079)</text><box h="25" w="150"/><cond id="ID1080"><text/></cond><time id="ID1081"><text/></time><code id="ID1082"><posattr x="199.0" y="542.0"/><text>input (c);
+output (pt);
+action
+(let
+  val transParams = {
+    pt={dtype=specific, specificValue=0, mean=0, std=0},
+    pCost={dtype=specific, specificValue=0, mean=0,std=0},
+    sCost={dtype=specific, specificValue=0, mean=0,std=0},
+    revenue={dtype=specific, specificValue=0, mean=0,std=0},
+    pWaitTimeDur=0,    pWaitTimeCost=0,
+    transitionName="Approve order",
+    NoOfResources=1}
+in
+transitionAction(c, transParams)
+end);</text></code></trans><arc id="ID1083" orientation="PtoT"><transend idref="ID1079"/><placeend idref="ID1077"/><annot><posattr x="49.0" y="558.0"/><text>c</text></annot></arc><place id="ID1084"><posattr x="39" y="450"/><text>Approve order OUT_P (ID1084)</text><ellipse h="25" w="150"/><type><posattr x="99.0" y="470.0"/><text>CASE</text></type><initmark id="ID1085"><text/></initmark></place><arc id="ID1086" orientation="TtoP"><transend idref="ID1079"/><placeend idref="ID1084"/><annot><posattr x="49.0" y="486.0"/><text>CASE.set_ts c (pt+intTime()) @+pt</text></annot></arc><trans id="ID1087"><posattr x="39" y="666"/><text/><box h="25" w="150"/><cond id="ID1088"><text/></cond><time id="ID1089"><text/></time><code id="ID1090"><posattr x="199.0" y="686.0"/><text/></code></trans><place id="ID1091"><posattr x="39" y="738"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="758.0"/><text>CASE</text></type><initmark id="ID1092"><text/></initmark></place><arc id="ID1093" orientation="TtoP"><transend idref="ID1064"/><placeend idref="ID1091"/><annot><posattr x="215.5" y="774.0"/><text>(if path=341 then 1`c else empty)</text></annot></arc><arc id="ID1094" orientation="PtoT"><transend idref="ID1087"/><placeend idref="ID1091"/><annot><posattr x="49.0" y="702.0"/><text>c</text></annot></arc><arc id="ID1095" orientation="TtoP"><transend idref="ID1087"/><placeend idref="ID1077"/><annot><posattr x="49.0" y="630.0"/><text>c</text></annot></arc><place id="ID1096"><posattr x="39" y="306"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="326.0"/><text>CASE</text></type><initmark id="ID1097"><text/></initmark></place><trans id="ID1098"><posattr x="39" y="378"/><text/><box h="25" w="150"/><cond id="ID1099"><text/></cond><time id="ID1100"><text/></time><code id="ID1101"><posattr x="199.0" y="398.0"/><text/></code></trans><arc id="ID1102" orientation="PtoT"><transend idref="ID1098"/><placeend idref="ID1084"/><annot><posattr x="49.0" y="414.0"/><text>c</text></annot></arc><arc id="ID1103" orientation="TtoP"><transend idref="ID1098"/><placeend idref="ID1096"/><annot><posattr x="49.0" y="342.0"/><text>c</text></annot></arc><place id="ID1104"><posattr x="261" y="594"/><text>Cancel order IN (ID1104)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="614.0"/><text>CASE</text></type><initmark id="ID1105"><text/></initmark></place><trans id="ID1106"><posattr x="261" y="522"/><text>Cancel order (ID1106)</text><box h="25" w="150"/><cond id="ID1107"><text/></cond><time id="ID1108"><text/></time><code id="ID1109"><posattr x="421.0" y="542.0"/><text>input (c);
+output (pt);
+action
+(let
+  val transParams = {
+    pt={dtype=specific, specificValue=0, mean=0, std=0},
+    pCost={dtype=specific, specificValue=0, mean=0,std=0},
+    sCost={dtype=specific, specificValue=0, mean=0,std=0},
+    revenue={dtype=specific, specificValue=0, mean=0,std=0},
+    pWaitTimeDur=0,    pWaitTimeCost=0,
+    transitionName="Cancel order",
+    NoOfResources=1}
+in
+transitionAction(c, transParams)
+end);</text></code></trans><arc id="ID1110" orientation="PtoT"><transend idref="ID1106"/><placeend idref="ID1104"/><annot><posattr x="271.0" y="558.0"/><text>c</text></annot></arc><place id="ID1111"><posattr x="261" y="450"/><text>Cancel order OUT_P (ID1111)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="470.0"/><text>CASE</text></type><initmark id="ID1112"><text/></initmark></place><arc id="ID1113" orientation="TtoP"><transend idref="ID1106"/><placeend idref="ID1111"/><annot><posattr x="271.0" y="486.0"/><text>CASE.set_ts c (pt+intTime()) @+pt</text></annot></arc><trans id="ID1114"><posattr x="261" y="666"/><text/><box h="25" w="150"/><cond id="ID1115"><text/></cond><time id="ID1116"><text/></time><code id="ID1117"><posattr x="421.0" y="686.0"/><text/></code></trans><place id="ID1118"><posattr x="261" y="738"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="758.0"/><text>CASE</text></type><initmark id="ID1119"><text/></initmark></place><arc id="ID1120" orientation="TtoP"><transend idref="ID1064"/><placeend idref="ID1118"/><annot><posattr x="215.5" y="774.0"/><text>(if path=343 then 1`c else empty)</text></annot></arc><arc id="ID1121" orientation="PtoT"><transend idref="ID1114"/><placeend idref="ID1118"/><annot><posattr x="271.0" y="702.0"/><text>c</text></annot></arc><arc id="ID1122" orientation="TtoP"><transend idref="ID1114"/><placeend idref="ID1104"/><annot><posattr x="271.0" y="630.0"/><text>c</text></annot></arc><place id="ID1123"><posattr x="261" y="306"/><text>ErrorTHROW EXCEPTION (ID1123)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="326.0"/><text>CASE</text></type><initmark id="ID1124"><text/></initmark></place><trans id="ID1125"><posattr x="261" y="378"/><text/><box h="25" w="150"/><cond id="ID1126"><text/></cond><time id="ID1127"><text/></time><code id="ID1128"><posattr x="421.0" y="398.0"/><text/></code></trans><arc id="ID1129" orientation="PtoT"><transend idref="ID1125"/><placeend idref="ID1111"/><annot><posattr x="271.0" y="414.0"/><text>c</text></annot></arc><arc id="ID1130" orientation="TtoP"><transend idref="ID1125"/><placeend idref="ID1123"/><annot><posattr x="271.0" y="342.0"/><text>c</text></annot></arc><trans id="ID1131"><posattr x="150" y="1530"/><text/><box h="25" w="150"/><cond id="ID1132"><text/></cond><time id="ID1133"><text/></time><code id="ID1134"><posattr x="310.0" y="1550.0"/><text/></code></trans><arc id="ID1135" orientation="PtoT"><transend idref="ID1131"/><placeend idref="ID1033"/><annot><posattr x="160.0" y="1566.0"/><text>c</text></annot></arc><arc id="ID1136" orientation="TtoP"><transend idref="ID1131"/><placeend idref="ID1038"/><annot><posattr x="160.0" y="1494.0"/><text>c</text></annot></arc><place id="ID1137"><posattr x="261" y="162"/><text>ErrorCATCH EXCEPTION (ID1137)</text><ellipse h="25" w="150"/><type><posattr x="321.0" y="182.0"/><text>CASE</text></type><initmark id="ID1138"><text/></initmark></place><trans id="ID1139"><posattr x="261" y="234"/><text/><box h="25" w="150"/><cond id="ID1140"><text/></cond><time id="ID1141"><text/></time><code id="ID1142"><posattr x="421.0" y="254.0"/><text/></code></trans><arc id="ID1143" orientation="PtoT"><transend idref="ID1139"/><placeend idref="ID1123"/><annot><posattr x="271.0" y="270.0"/><text>c</text></annot></arc><arc id="ID1144" orientation="TtoP"><transend idref="ID1139"/><placeend idref="ID1137"/><annot><posattr x="271.0" y="198.0"/><text>c</text></annot></arc><place id="ID1145"><posattr x="261" y="18"/><text/><ellipse h="25" w="150"/><type><posattr x="321.0" y="38.0"/><text>CASE</text></type><initmark id="ID1146"><text/></initmark></place><trans id="ID1147"><posattr x="261" y="90"/><text/><box h="25" w="150"/><cond id="ID1148"><text/></cond><time id="ID1149"><text/></time><code id="ID1150"><posattr x="421.0" y="110.0"/><text/></code></trans><arc id="ID1151" orientation="PtoT"><transend idref="ID1147"/><placeend idref="ID1137"/><annot><posattr x="271.0" y="126.0"/><text>c</text></annot></arc><arc id="ID1152" orientation="TtoP"><transend idref="ID1147"/><placeend idref="ID1145"/><annot><posattr x="271.0" y="54.0"/><text>c</text></annot></arc><place id="ID1153"><posattr x="39" y="162"/><text/><ellipse h="25" w="150"/><type><posattr x="99.0" y="182.0"/><text>CASE</text></type><initmark id="ID1154"><text/></initmark></place><trans id="ID1155"><posattr x="39" y="234"/><text/><box h="25" w="150"/><cond id="ID1156"><text/></cond><time id="ID1157"><text/></time><code id="ID1158"><posattr x="199.0" y="254.0"/><text/></code></trans><arc id="ID1159" orientation="PtoT"><transend idref="ID1155"/><placeend idref="ID1096"/><annot><posattr x="49.0" y="270.0"/><text>c</text></annot></arc><arc id="ID1160" orientation="TtoP"><transend idref="ID1155"/><placeend idref="ID1153"/><annot><posattr x="49.0" y="198.0"/><text>c</text></annot></arc><place id="ID1166"><text>RESOURCES (ID1166)</text><type><text>RES</text></type><initmark id="ID1167"><text/></initmark></place></page>
+    <page id="PAGE_GENERATOR">
+      <pageattr name="Generator"/>
+      <place id="ID1264233943">
+        <posattr x="-544.000000" y="9.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <text>Counter</text>
+        <ellipse w="82.000000" h="54.000000"/>
+        <token x="-10.000000" y="0.000000"/>
+        <marking x="0.000000" y="0.000000" hidden="false"/>
+        <type id="ID1264233944">
+          <posattr x="-515.000000" y="-19.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">ID</text>
+        </type>
+        <initmark id="ID1264233945">
+          <posattr x="-500.000000" y="37.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">1`1</text>
+        </initmark>
+      </place>
+      <place id="ID1264234111">
+        <posattr x="22.000000" y="99.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <text>gen_start</text>
+        <ellipse w="46.000000" h="40.000000"/>
+        <token x="-10.000000" y="0.000000"/>
+        <marking x="0.000000" y="0.000000" hidden="false"/>
+        <type id="ID1264234112">
+          <posattr x="57.500000" y="75.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">CASE</text>
+        </type>
+        <initmark id="PORT_GENERATOR">
+          <posattr x="73.000000" y="122.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0"/>
+        </initmark>
+        <port id="PORT_GENERATOR" type="Out">
+          <posattr x="2.000000" y="82.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </port>
+      </place>
+      <trans id="ID1264233938" explicit="false">
+        <posattr x="-209.000000" y="99.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="solid"/>
+        <textattr colour="Black" bold="false"/>
+        <text>Generator</text>
+        <box w="90.000000" h="36.000000"/>
+        <binding x="7.200000" y="-3.000000"/>
+        <cond id="ID1264301103">
+          <posattr x="-341.500000" y="128.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">[generatorGuard(i) = true]</text>
+        </cond>
+        <time id="ID1264233940">
+          <posattr x="-149.500000" y="128.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0"/>
+        </time>
+        <code id="ID1264233941">
+          <posattr x="-104.500000" y="35.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">input (i);
+output (c);
+action
+(
+  generateCase(i)
+);</text>
+        </code>
+        <channel id="ID1264233942">
+          <posattr x="-287.500000" y="99.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0"/>
+        </channel>
+      </trans>
+      <arc id="ID1264233946" orientation="TtoP" order="1">
+        <posattr x="0.000000" y="0.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <arrowattr headsize="1.200000" currentcyckle="2"/>
+        <transend idref="ID1264233938"/>
+        <placeend idref="ID1264233943"/>
+        <bendpoint id="ID1264283551" serial="1">
+          <posattr x="-224.000000" y="9.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </bendpoint>
+        <annot id="ID1264233947">
+          <posattr x="-311.000000" y="-37.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">i+1@+
+(
+  if i mod noOfTokensPerBundle = 0
+    then calcDisValue(timeBetweenBundles)
+  else 0
+)</text>
+        </annot>
+      </arc>
+      <arc id="ID1264233948" orientation="PtoT" order="1">
+        <posattr x="0.000000" y="0.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <arrowattr headsize="1.200000" currentcyckle="2"/>
+        <transend idref="ID1264233938"/>
+        <placeend idref="ID1264233943"/>
+        <bendpoint id="ID1264276323" serial="1">
+          <posattr x="-544.000000" y="99.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </bendpoint>
+        <annot id="ID1264233949">
+          <posattr x="-549.500000" y="67.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">i</text>
+        </annot>
+      </arc>
+      <arc id="ID1264234259" orientation="TtoP" order="1">
+        <posattr x="0.000000" y="0.000000"/>
+        <fillattr colour="White" pattern="" filled="false"/>
+        <lineattr colour="Black" thick="1" type="Solid"/>
+        <textattr colour="Black" bold="false"/>
+        <arrowattr headsize="1.200000" currentcyckle="2"/>
+        <transend idref="ID1264233938"/>
+        <placeend idref="ID1264234111"/>
+        <bendpoint id="ID1264279865" serial="1">
+          <posattr x="-46.000000" y="99.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+        </bendpoint>
+        <annot id="ID1264234260">
+          <posattr x="-105.000000" y="110.000000"/>
+          <fillattr colour="White" pattern="Solid" filled="false"/>
+          <lineattr colour="Black" thick="0" type="Solid"/>
+          <textattr colour="Black" bold="false"/>
+          <text tool="CPN Tools" version="2.2.0">c</text>
+        </annot>
+      </arc>
+    </page>
+    <instances>
+      <instance id="ID1264218879" page="PAGE_PROCESS"><instance id="ID1037" trans="ID1029"/></instance>
+    </instances>
+    <options>
+      <option name="outputdirectory">
+        <value>
+          <text>&lt;same as model></text>
+        </value>
+      </option>
+      <option name="repavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repciavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repcount">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repfirstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="replastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repmax">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repmin">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repstddev">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repsum">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repvariance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="avg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="ciavg">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="count">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="firstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="lastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="max">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="min">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="ssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="ssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="stddev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="sum">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="variance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="firstupdate">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="interval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="lastupdate">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedciavg">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedcount">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedfirstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedlastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedmax">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedmin">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedstddev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedsum">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedvariance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+    </options>
+    <binders>
+      <cpnbinder id="ID1264219689" x="358" y="58" width="704" height="733">
+        <sheets>
+          <cpnsheet id="ID1264219682" panx="-44.000000" pany="-128.000000" zoom="1.000000" instance="ID1264218879">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+        </sheets>
+        <zorder>
+          <position value="0"/>
+        </zorder>
+      </cpnbinder>
+    </binders>
+    <monitorblock name="Monitors"/>
+    <IndexNode expanded="true">
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false">
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+            <IndexNode expanded="false">
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="true"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+          </IndexNode>
+        </IndexNode>
+      </IndexNode>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+      </IndexNode>
+      <IndexNode expanded="true">
+        <IndexNode expanded="false">
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+        <IndexNode expanded="true">
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
+      </IndexNode>
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="true"/>
+      <IndexNode expanded="true"/>
+    </IndexNode>
+  </cpnet>
+</workspaceElements>

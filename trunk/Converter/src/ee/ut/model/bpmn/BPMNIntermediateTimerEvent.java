@@ -10,8 +10,7 @@ public class BPMNIntermediateTimerEvent extends BPMNElement {
 	private String outputPlaceId;
 	private int timerDelay;
 
-	public BPMNIntermediateTimerEvent(BProcess pr, Parser p, Object o)
-			throws Exception {
+	public BPMNIntermediateTimerEvent(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -41,13 +40,19 @@ public class BPMNIntermediateTimerEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		return inputPlaceId;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
 		return outputPlaceId;
+	}
+
+	@Override
+	public String getOutputPID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

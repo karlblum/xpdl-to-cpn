@@ -5,7 +5,6 @@
 // Generated on: 2010.06.02 at 10:31:06 AM EEST 
 //
 
-
 package ee.ut.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for SimulationData complex type.
+ * <p>
+ * Java class for SimulationData complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="SimulationData">
@@ -38,144 +39,124 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SimulationData", propOrder = {
-    "simulationProfile",
-    "tasks",
-    "gateways",
-    "resources",
-    "messageEvents"
-})
+@XmlType(name = "SimulationData", propOrder = { "simulationProfile", "tasks",
+		"gateways", "resources", "messageEvents" })
 public class SimulationData {
 
-    @XmlElement(name = "SimulationProfile", required = true)
-    protected SimulationProfile simulationProfile;
-    @XmlElement(name = "Tasks")
-    protected Tasks tasks;
-    @XmlElement(name = "Gateways")
-    protected Gateways gateways;
-    @XmlElement(name = "Resources")
-    protected Resources resources;
-    @XmlElement(name = "MessageEvents")
-    protected MessageEvents messageEvents;
+	@XmlElement(name = "SimulationProfile", required = true)
+	protected SimulationProfile simulationProfile;
+	@XmlElement(name = "Tasks")
+	protected Tasks tasks;
+	@XmlElement(name = "Gateways")
+	protected Gateways gateways;
+	@XmlElement(name = "Resources")
+	protected Resources resources;
+	@XmlElement(name = "MessageEvents")
+	protected MessageEvents messageEvents;
 
-    /**
-     * Gets the value of the simulationProfile property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SimulationProfile }
-     *     
-     */
-    public SimulationProfile getSimulationProfile() {
-        return simulationProfile;
-    }
+	/**
+	 * Gets the value of the simulationProfile property.
+	 * 
+	 * @return possible object is {@link SimulationProfile }
+	 * 
+	 */
+	public SimulationProfile getSimulationProfile() {
+		return simulationProfile;
+	}
 
-    /**
-     * Sets the value of the simulationProfile property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SimulationProfile }
-     *     
-     */
-    public void setSimulationProfile(SimulationProfile value) {
-        this.simulationProfile = value;
-    }
+	/**
+	 * Sets the value of the simulationProfile property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link SimulationProfile }
+	 * 
+	 */
+	public void setSimulationProfile(SimulationProfile value) {
+		this.simulationProfile = value;
+	}
 
-    /**
-     * Gets the value of the tasks property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Tasks }
-     *     
-     */
-    public Tasks getTasks() {
-        return tasks;
-    }
+	/**
+	 * Gets the value of the tasks property.
+	 * 
+	 * @return possible object is {@link Tasks }
+	 * 
+	 */
+	public Tasks getTasks() {
+		return tasks;
+	}
 
-    /**
-     * Sets the value of the tasks property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Tasks }
-     *     
-     */
-    public void setTasks(Tasks value) {
-        this.tasks = value;
-    }
+	/**
+	 * Sets the value of the tasks property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Tasks }
+	 * 
+	 */
+	public void setTasks(Tasks value) {
+		this.tasks = value;
+	}
 
-    /**
-     * Gets the value of the gateways property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Gateways }
-     *     
-     */
-    public Gateways getGateways() {
-        return gateways;
-    }
+	/**
+	 * Gets the value of the gateways property.
+	 * 
+	 * @return possible object is {@link Gateways }
+	 * 
+	 */
+	public Gateways getGateways() {
+		return gateways;
+	}
 
-    /**
-     * Sets the value of the gateways property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Gateways }
-     *     
-     */
-    public void setGateways(Gateways value) {
-        this.gateways = value;
-    }
+	/**
+	 * Sets the value of the gateways property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Gateways }
+	 * 
+	 */
+	public void setGateways(Gateways value) {
+		this.gateways = value;
+	}
 
-    /**
-     * Gets the value of the resources property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Resources }
-     *     
-     */
-    public Resources getResources() {
-        return resources;
-    }
+	/**
+	 * Gets the value of the resources property.
+	 * 
+	 * @return possible object is {@link Resources }
+	 * 
+	 */
+	public Resources getResources() {
+		return resources;
+	}
 
-    /**
-     * Sets the value of the resources property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Resources }
-     *     
-     */
-    public void setResources(Resources value) {
-        this.resources = value;
-    }
+	/**
+	 * Sets the value of the resources property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Resources }
+	 * 
+	 */
+	public void setResources(Resources value) {
+		this.resources = value;
+	}
 
-    /**
-     * Gets the value of the messageEvents property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MessageEvents }
-     *     
-     */
-    public MessageEvents getMessageEvents() {
-        return messageEvents;
-    }
+	/**
+	 * Gets the value of the messageEvents property.
+	 * 
+	 * @return possible object is {@link MessageEvents }
+	 * 
+	 */
+	public MessageEvents getMessageEvents() {
+		return messageEvents;
+	}
 
-    /**
-     * Sets the value of the messageEvents property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MessageEvents }
-     *     
-     */
-    public void setMessageEvents(MessageEvents value) {
-        this.messageEvents = value;
-    }
+	/**
+	 * Sets the value of the messageEvents property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link MessageEvents }
+	 * 
+	 */
+	public void setMessageEvents(MessageEvents value) {
+		this.messageEvents = value;
+	}
 
 }

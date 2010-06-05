@@ -9,8 +9,7 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 	private String taskId;
 	private String outputPlaceId;
 
-	public BPMNBoundTimerEvent(BProcess pr, Parser p, Object o)
-			throws Exception {
+	public BPMNBoundTimerEvent(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -18,7 +17,7 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 		taskId = parser.getElementParser().getBoundaryEventTaskId(o);
 
 		BPMNTask task = (BPMNTask) process.getElement(taskId);
-		String placeId = task.getBoundTimerPlaceId();
+		String placeId = task.getBoundTimerPID();
 		String transId = process.getCpnet().addTrans(elementName + " EVENT")
 				.getId();
 		outputPlaceId = process.getCpnet().addPlace(elementName + " OUT")
@@ -41,13 +40,18 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
+		return outputPlaceId;
+	}
+
+	@Override
+	public String getOutputPID() {
 		return outputPlaceId;
 	}
 

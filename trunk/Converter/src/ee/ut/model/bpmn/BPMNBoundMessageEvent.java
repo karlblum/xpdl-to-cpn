@@ -12,8 +12,7 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 	private String inputPlaceId;
 	private String delayArcId;
 
-	public BPMNBoundMessageEvent(BProcess pr, Parser p, Object o)
-			throws Exception {
+	public BPMNBoundMessageEvent(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -41,12 +40,13 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 		BPMNTask task = (BPMNTask) process.getElement(taskId);
 		task.setBoundMessageEventProbability(elementId, probability);
 
+		// TODO: This is currently depending on the order of elements!
+		// If message event is before timer, then no delay is specified!
 		int i = task.getBoundTimer();
 		if (i > 0) {
 			process.getCpnet().setArcAnnot(delayArcId,
 					"@+round(uniform(0.0," + i + ".0))");
 		}
-
 	}
 
 	public int getPercentage() {
@@ -54,12 +54,17 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		return inputPlaceId;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
+		return outputPlaceId;
+	}
+
+	@Override
+	public String getOutputPID() {
 		return outputPlaceId;
 	}
 }

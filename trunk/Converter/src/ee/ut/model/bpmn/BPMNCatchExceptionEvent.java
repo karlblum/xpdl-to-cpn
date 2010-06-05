@@ -23,12 +23,17 @@ public class BPMNCatchExceptionEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		return ioID;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) throws Exception {
+	public String getOutputPID(String ref) {
+		return ioID;
+	}
+
+	@Override
+	public String getOutputPID() {
 		return ioID;
 	}
 

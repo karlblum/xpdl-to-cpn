@@ -31,10 +31,11 @@ public abstract class Element {
 		return elementName;
 	}
 
-	public abstract void addSimulationData(SimDataParser simDataParser)
-			throws Exception;
+	public abstract void addSimulationData(SimDataParser simDataParser);
 
-	public abstract String getInputPlaceId() throws Exception;
+	public abstract String getInputPID();
 
-	public abstract String getOutputPlaceId(String ref) throws Exception;
+	public abstract String getOutputPID(String ref);
+
+	public abstract String getOutputPID();
 }

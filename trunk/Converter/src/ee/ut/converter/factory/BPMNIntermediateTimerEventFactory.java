@@ -12,7 +12,7 @@ public class BPMNIntermediateTimerEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(BProcess pr, Object obj) throws Exception {
+	public Element create(BProcess pr, Object obj) {
 		return new BPMNIntermediateTimerEvent(pr, parser, obj);
 	}
 

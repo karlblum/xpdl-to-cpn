@@ -14,8 +14,7 @@ public class BPMNEndEvent extends BPMNElement {
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
 
-		this.endPlaceId = process.getCpnet().addPlace().getId();
-		elementId = parser.getElementParser().getId(o);
+		this.endPlaceId = process.getCpnet().addPlace(elementName).getId();
 	}
 
 	@Override
@@ -25,12 +24,17 @@ public class BPMNEndEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		return endPlaceId;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
+		return endPlaceId;
+	}
+
+	@Override
+	public String getOutputPID() {
 		return endPlaceId;
 	}
 

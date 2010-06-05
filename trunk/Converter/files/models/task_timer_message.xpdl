@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:g360="http://www.global360.com/XPDL2.0alpha" Id="task_timer_message.xpdl" Name="task_timer_message.xpdl">
+  <PackageHeader>
+    <XPDLVersion>2.1</XPDLVersion>
+    <Vendor>Global 360</Vendor>
+    <Created>2010-06-05T11:45:11+03:00</Created>
+    <ModificationDate>2010-06-05T11:48:33+03:00</ModificationDate>
+    <LayoutInfo PixelsPerMillimeter="18.2" />
+  </PackageHeader>
+  <ConformanceClass BPMNModelPortabilityConformance="STANDARD" />
+  <Pages>
+    <Page Id="1" Name="Page 1" Width="2400" Height="2400">
+      <g360:PageInfo g360:PaperWidth="792.0" g360:PaperHeight="612.0" g360:PaperOrientation="0" g360:MarginBottom="36.0" g360:MarginLeft="36.0" g360:MarginRight="36.0" g360:MarginTop="36.0" />
+    </Page>
+  </Pages>
+  <Pools>
+    <Pool Id="2" Orientation="HORIZONTAL" BoundaryVisible="false" Process="1">
+      <Lanes>
+        <Lane Id="3" Name="Lane-7" ParentLane="2">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="2400.0" Width="2400.0" LaneId="3">
+              <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+      </Lanes>
+      <NodeGraphicsInfos>
+        <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="2400.0" Width="2400.0">
+          <Coordinates XCoordinate="0.0" YCoordinate="0.0" />
+        </NodeGraphicsInfo>
+      </NodeGraphicsInfos>
+    </Pool>
+  </Pools>
+  <WorkflowProcesses>
+    <WorkflowProcess Id="1" Name="p1">
+      <ProcessHeader />
+      <Activities>
+        <Activity Id="4" Name="Start">
+          <Event>
+            <StartEvent Trigger="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="40.0" YCoordinate="260.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="6" Name="Task">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="120.0" Width="180.0" LaneId="3">
+              <Coordinates XCoordinate="170.0" YCoordinate="230.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="14" g360:Style="1" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="7" Name="End">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="440.0" YCoordinate="260.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="8" Name="End">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="440.0" YCoordinate="370.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="9" Name="End">
+          <Event>
+            <EndEvent Result="None" />
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="440.0" YCoordinate="480.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="226" Name="Message">
+          <Event>
+            <IntermediateEvent Trigger="Message" Target="6">
+              <TriggerResultMessage />
+            </IntermediateEvent>
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="180.0" YCoordinate="310.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="227" Name="Timer">
+          <Event>
+            <IntermediateEvent Trigger="Timer" Target="6">
+              <TriggerTimer>
+                <TimeDate>1000</TimeDate>
+              </TriggerTimer>
+            </IntermediateEvent>
+          </Event>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
+              <Coordinates XCoordinate="250.0" YCoordinate="310.0" />
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition Id="225" From="6" To="7">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="350.5" YCoordinate="290.5755615234375" />
+              <Coordinates XCoordinate="440.0003662109375" YCoordinate="290.151123046875" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="224" From="4" To="6">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="99.99942016601562" YCoordinate="290.1865539550781" />
+              <Coordinates XCoordinate="170.5" YCoordinate="290.6049499511719" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="237" From="226" To="9">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="210.0" YCoordinate="370.0" />
+              <Coordinates XCoordinate="210.0" YCoordinate="510.0" />
+              <Coordinates XCoordinate="440.0" YCoordinate="510.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="240" From="227" To="8">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="280.0" YCoordinate="370.0" />
+              <Coordinates XCoordinate="280.0" YCoordinate="400.0" />
+              <Coordinates XCoordinate="440.0" YCoordinate="400.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes>
+    <ExtendedAttribute Name="Creator" Value="SketchpadBPMN v1.4 A1" />
+    <ExtendedAttribute Name="System" Value="Global 360" />
+  </ExtendedAttributes>
+</Package>
+

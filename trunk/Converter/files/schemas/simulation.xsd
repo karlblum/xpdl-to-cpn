@@ -86,6 +86,7 @@
 		<xs:sequence>
 			<xs:element name="Id" type="xs:string"/>
 			<xs:element name="Time" type="xs:string"/>
+			<xs:element name="Probability" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

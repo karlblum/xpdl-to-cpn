@@ -253,7 +253,6 @@ public class XPDL2ElementParser implements ElementParser {
 				if (ie != null && ie.getTarget() != null) {
 					boundEvents.put(a, ie.getTarget());
 				}
-
 			}
 		}
 	}
@@ -306,9 +305,13 @@ public class XPDL2ElementParser implements ElementParser {
 							if (getElementType(targetActivity) == BPMNElement.SUB_PROCESS) {
 								return BPMNElement.SUB_PROCESS_EXCEPTION;
 							}
-						} else {
-							return BPMNElement.BOUND_MESSAGE_EVENT;
-						}
+						} else if (trigger.equals("Message")) {
+							if (getElementType(targetActivity) == BPMNElement.SUB_PROCESS) {
+								return BPMNElement.SUB_PROCESS_MESSAGE;
+							} else {
+								return BPMNElement.BOUND_MESSAGE_EVENT;
+							}
+						} 
 					} else {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
@@ -425,9 +428,10 @@ public class XPDL2ElementParser implements ElementParser {
 	@Override
 	public int getEventTimer(Object obj) {
 		Event e = (Event) ((Activity) obj).getContent().get(0);
-		if(e == null || e.getIntermediateEvent() == null || e.getIntermediateEvent().getTriggerTimer() == null) return 0;
-		String timer = e
-				.getIntermediateEvent().getTriggerTimer().getTimeDate()
+		if (e == null || e.getIntermediateEvent() == null
+				|| e.getIntermediateEvent().getTriggerTimer() == null)
+			return 0;
+		String timer = e.getIntermediateEvent().getTriggerTimer().getTimeDate()
 				.getContent().get(0).toString();
 		return Integer.valueOf(timer).intValue();
 	}
@@ -481,5 +485,13 @@ public class XPDL2ElementParser implements ElementParser {
 				return t.getId();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean isNext(Object o, int elementType) {
+		for (Object e: getNextElements(o)){
+			if(getElementType(e) == elementType) return true;
+		}
+		return false;
 	}
 }

@@ -27,4 +27,6 @@ public interface ElementParser {
 	public String getSubprocessId(Object o);
 
 	public String getXorGWOutputIdentifier(String id, String id2);
+
+	public boolean isNext(Object o, int elementType);
 }

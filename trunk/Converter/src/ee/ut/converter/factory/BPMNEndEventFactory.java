@@ -12,7 +12,7 @@ public class BPMNEndEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(BProcess pr, Object obj) throws Exception {
+	public Element create(BProcess pr, Object obj) {
 		return new BPMNEndEvent(pr, parser, obj);
 	}
 

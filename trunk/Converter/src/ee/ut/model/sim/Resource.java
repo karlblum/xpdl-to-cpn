@@ -5,7 +5,6 @@
 // Generated on: 2010.06.02 at 10:31:06 AM EEST 
 //
 
-
 package ee.ut.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Resource complex type.
+ * <p>
+ * Java class for Resource complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Resource">
@@ -35,55 +36,49 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Resource", propOrder = {
-    "resourceType",
-    "resourceAmount"
-})
+@XmlType(name = "Resource", propOrder = { "resourceType", "resourceAmount" })
 public class Resource {
 
-    @XmlElement(name = "ResourceType", required = true)
-    protected String resourceType;
-    @XmlElement(name = "ResourceAmount")
-    protected int resourceAmount;
+	@XmlElement(name = "ResourceType", required = true)
+	protected String resourceType;
+	@XmlElement(name = "ResourceAmount")
+	protected int resourceAmount;
 
-    /**
-     * Gets the value of the resourceType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getResourceType() {
-        return resourceType;
-    }
+	/**
+	 * Gets the value of the resourceType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResourceType() {
+		return resourceType;
+	}
 
-    /**
-     * Sets the value of the resourceType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setResourceType(String value) {
-        this.resourceType = value;
-    }
+	/**
+	 * Sets the value of the resourceType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setResourceType(String value) {
+		this.resourceType = value;
+	}
 
-    /**
-     * Gets the value of the resourceAmount property.
-     * 
-     */
-    public int getResourceAmount() {
-        return resourceAmount;
-    }
+	/**
+	 * Gets the value of the resourceAmount property.
+	 * 
+	 */
+	public int getResourceAmount() {
+		return resourceAmount;
+	}
 
-    /**
-     * Sets the value of the resourceAmount property.
-     * 
-     */
-    public void setResourceAmount(int value) {
-        this.resourceAmount = value;
-    }
+	/**
+	 * Sets the value of the resourceAmount property.
+	 * 
+	 */
+	public void setResourceAmount(int value) {
+		this.resourceAmount = value;
+	}
 
 }

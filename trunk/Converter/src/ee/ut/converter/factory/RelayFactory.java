@@ -25,26 +25,27 @@ public abstract class RelayFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(BProcess pr, Object obj) throws Exception {
+	public Element create(BProcess pr, Object obj) {
 		Object key = parser.getElementParser().getElementType(obj);
 		AbstractElementFactory concrete = factories.get(key);
 		if (concrete == null)
-			throw new Exception("Factory missing for object: " + obj
-					+ ", type:" + key);
+			System.err.println("Factory missing for object: " + obj + ", type:"
+					+ key);
 		return concrete.create(pr, obj);
 	}
 
 	public void connectElements(BProcess pr, Element convertedElement,
-			Element element){
-			try {
-				if (connectorFactory == null)
+			Element element) {
+		try {
+			if (connectorFactory == null)
 				throw new Exception("Missing connector factory!");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		try {
-			connectorFactory.create(pr, new Object[] { convertedElement, element });
+			connectorFactory.create(pr, new Object[] { convertedElement,
+					element });
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
