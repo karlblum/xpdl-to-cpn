@@ -296,12 +296,27 @@
           <layout>colset TRANSPARAMS  = record 
 transitionName:STRING * pt: DISTRIBUTION * pCost:DISTRIBUTION * sCost:DISTRIBUTION * revenue:DISTRIBUTION * pWaitTimeDur:INT * pWaitTimeCost:INT * NoOfResources:INT;</layout>
         </color>
+        <color id="ID1264333728">
+          <id>CASExEXPATH</id>
+          <timed/>
+          <record>
+            <recordfield>
+              <id>pr</id>
+              <id>CASE</id>
+            </recordfield>
+            <recordfield>
+              <id>path</id>
+              <id>INT</id>
+            </recordfield>
+          </record>
+          <layout>colset CASExEXPATH = record pr:CASE * path:INT timed;</layout>
+        </color>
       </block>
     </globbox>
     <page id="PAGE_PROCESS">
       <pageattr name="Process"/>
     </page>
-    <page id="PAGE_GENERATOR">
+   <page id="PAGE_GENERATOR">
       <pageattr name="Generator"/>
       <place id="ID1264233943">
         <posattr x="-544.000000"
@@ -840,8 +855,8 @@ action
     </options>
     <binders>
       <cpnbinder id="ID1264219689"
-                 x="358"
-                 y="58"
+                 x="421"
+                 y="59"
                  width="704"
                  height="733">
         <sheets>
@@ -916,9 +931,7 @@ action
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false">
-        <IndexNode expanded="false"/>
-      </IndexNode>
+      <IndexNode expanded="false"/>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>
@@ -927,26 +940,29 @@ action
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
         </IndexNode>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false"/>
         <IndexNode expanded="true">
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
         </IndexNode>
       </IndexNode>
       <IndexNode expanded="false"/>
-      <IndexNode expanded="true"/>
       <IndexNode expanded="true"/>
     </IndexNode>
   </cpnet>

@@ -35,6 +35,8 @@ public class BPMNRelayFactory extends RelayFactory {
 				new BPMNCatchExceptionEventFactory(parser));
 		registerFactory(BPMNElement.THROW_EXCEPTION,
 				new BPMNThrowExceptionEventFactory(parser));
+		registerFactory(BPMNElement.SUB_PROCESS_MESSAGE,
+				new BPMNSubprocessMessageFactory(parser));
 
 		registerConnectorFactory(new BPMNTransitionFactory(parser));
 

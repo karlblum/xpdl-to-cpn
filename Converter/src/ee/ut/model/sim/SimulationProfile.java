@@ -5,7 +5,6 @@
 // Generated on: 2010.06.02 at 10:31:06 AM EEST 
 //
 
-
 package ee.ut.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for SimulationProfile complex type.
+ * <p>
+ * Java class for SimulationProfile complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="SimulationProfile">
@@ -40,166 +41,151 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SimulationProfile", propOrder = {
-    "startTime",
-    "endTime",
-    "tokensInBundle",
-    "totalTokens",
-    "costPerToken",
-    "timeBetweenBundles",
-    "resources"
-})
+@XmlType(name = "SimulationProfile", propOrder = { "startTime", "endTime",
+		"tokensInBundle", "totalTokens", "costPerToken", "timeBetweenBundles",
+		"resources" })
 public class SimulationProfile {
 
-    @XmlElement(name = "StartTime", required = true)
-    protected String startTime;
-    @XmlElement(name = "EndTime", required = true)
-    protected String endTime;
-    @XmlElement(name = "TokensInBundle")
-    protected int tokensInBundle;
-    @XmlElement(name = "TotalTokens")
-    protected int totalTokens;
-    @XmlElement(name = "CostPerToken")
-    protected int costPerToken;
-    @XmlElement(name = "TimeBetweenBundles")
-    protected int timeBetweenBundles;
-    @XmlElement(name = "Resources", required = true)
-    protected Resources resources;
+	@XmlElement(name = "StartTime", required = true)
+	protected String startTime;
+	@XmlElement(name = "EndTime", required = true)
+	protected String endTime;
+	@XmlElement(name = "TokensInBundle")
+	protected int tokensInBundle;
+	@XmlElement(name = "TotalTokens")
+	protected int totalTokens;
+	@XmlElement(name = "CostPerToken")
+	protected int costPerToken;
+	@XmlElement(name = "TimeBetweenBundles")
+	protected int timeBetweenBundles;
+	@XmlElement(name = "Resources", required = true)
+	protected Resources resources;
 
-    /**
-     * Gets the value of the startTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStartTime() {
-        return startTime;
-    }
+	/**
+	 * Gets the value of the startTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getStartTime() {
+		return startTime;
+	}
 
-    /**
-     * Sets the value of the startTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStartTime(String value) {
-        this.startTime = value;
-    }
+	/**
+	 * Sets the value of the startTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setStartTime(String value) {
+		this.startTime = value;
+	}
 
-    /**
-     * Gets the value of the endTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEndTime() {
-        return endTime;
-    }
+	/**
+	 * Gets the value of the endTime property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getEndTime() {
+		return endTime;
+	}
 
-    /**
-     * Sets the value of the endTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEndTime(String value) {
-        this.endTime = value;
-    }
+	/**
+	 * Sets the value of the endTime property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setEndTime(String value) {
+		this.endTime = value;
+	}
 
-    /**
-     * Gets the value of the tokensInBundle property.
-     * 
-     */
-    public int getTokensInBundle() {
-        return tokensInBundle;
-    }
+	/**
+	 * Gets the value of the tokensInBundle property.
+	 * 
+	 */
+	public int getTokensInBundle() {
+		return tokensInBundle;
+	}
 
-    /**
-     * Sets the value of the tokensInBundle property.
-     * 
-     */
-    public void setTokensInBundle(int value) {
-        this.tokensInBundle = value;
-    }
+	/**
+	 * Sets the value of the tokensInBundle property.
+	 * 
+	 */
+	public void setTokensInBundle(int value) {
+		this.tokensInBundle = value;
+	}
 
-    /**
-     * Gets the value of the totalTokens property.
-     * 
-     */
-    public int getTotalTokens() {
-        return totalTokens;
-    }
+	/**
+	 * Gets the value of the totalTokens property.
+	 * 
+	 */
+	public int getTotalTokens() {
+		return totalTokens;
+	}
 
-    /**
-     * Sets the value of the totalTokens property.
-     * 
-     */
-    public void setTotalTokens(int value) {
-        this.totalTokens = value;
-    }
+	/**
+	 * Sets the value of the totalTokens property.
+	 * 
+	 */
+	public void setTotalTokens(int value) {
+		this.totalTokens = value;
+	}
 
-    /**
-     * Gets the value of the costPerToken property.
-     * 
-     */
-    public int getCostPerToken() {
-        return costPerToken;
-    }
+	/**
+	 * Gets the value of the costPerToken property.
+	 * 
+	 */
+	public int getCostPerToken() {
+		return costPerToken;
+	}
 
-    /**
-     * Sets the value of the costPerToken property.
-     * 
-     */
-    public void setCostPerToken(int value) {
-        this.costPerToken = value;
-    }
+	/**
+	 * Sets the value of the costPerToken property.
+	 * 
+	 */
+	public void setCostPerToken(int value) {
+		this.costPerToken = value;
+	}
 
-    /**
-     * Gets the value of the timeBetweenBundles property.
-     * 
-     */
-    public int getTimeBetweenBundles() {
-        return timeBetweenBundles;
-    }
+	/**
+	 * Gets the value of the timeBetweenBundles property.
+	 * 
+	 */
+	public int getTimeBetweenBundles() {
+		return timeBetweenBundles;
+	}
 
-    /**
-     * Sets the value of the timeBetweenBundles property.
-     * 
-     */
-    public void setTimeBetweenBundles(int value) {
-        this.timeBetweenBundles = value;
-    }
+	/**
+	 * Sets the value of the timeBetweenBundles property.
+	 * 
+	 */
+	public void setTimeBetweenBundles(int value) {
+		this.timeBetweenBundles = value;
+	}
 
-    /**
-     * Gets the value of the resources property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Resources }
-     *     
-     */
-    public Resources getResources() {
-        return resources;
-    }
+	/**
+	 * Gets the value of the resources property.
+	 * 
+	 * @return possible object is {@link Resources }
+	 * 
+	 */
+	public Resources getResources() {
+		return resources;
+	}
 
-    /**
-     * Sets the value of the resources property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Resources }
-     *     
-     */
-    public void setResources(Resources value) {
-        this.resources = value;
-    }
+	/**
+	 * Sets the value of the resources property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Resources }
+	 * 
+	 */
+	public void setResources(Resources value) {
+		this.resources = value;
+	}
 
 }

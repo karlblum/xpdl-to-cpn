@@ -12,7 +12,7 @@ public class BPMNCatchExceptionEventFactory extends AbstractElementFactory {
 	}
 
 	@Override
-	public Element create(BProcess pr, Object obj) throws Exception {
+	public Element create(BProcess pr, Object obj) {
 		return new BPMNCatchExceptionEvent(pr, parser, obj);
 	}
 }

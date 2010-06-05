@@ -5,7 +5,6 @@
 // Generated on: 2010.06.02 at 10:31:06 AM EEST 
 //
 
-
 package ee.ut.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Gateway complex type.
+ * <p>
+ * Java class for Gateway complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Gateway">
@@ -35,63 +36,54 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Gateway", propOrder = {
-    "id",
-    "gateRefs"
-})
+@XmlType(name = "Gateway", propOrder = { "id", "gateRefs" })
 public class Gateway {
 
-    @XmlElement(name = "Id", required = true)
-    protected String id;
-    @XmlElement(name = "GateRefs", required = true)
-    protected GateRefs gateRefs;
+	@XmlElement(name = "Id", required = true)
+	protected String id;
+	@XmlElement(name = "GateRefs", required = true)
+	protected GateRefs gateRefs;
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the gateRefs property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link GateRefs }
-     *     
-     */
-    public GateRefs getGateRefs() {
-        return gateRefs;
-    }
+	/**
+	 * Gets the value of the gateRefs property.
+	 * 
+	 * @return possible object is {@link GateRefs }
+	 * 
+	 */
+	public GateRefs getGateRefs() {
+		return gateRefs;
+	}
 
-    /**
-     * Sets the value of the gateRefs property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GateRefs }
-     *     
-     */
-    public void setGateRefs(GateRefs value) {
-        this.gateRefs = value;
-    }
+	/**
+	 * Sets the value of the gateRefs property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link GateRefs }
+	 * 
+	 */
+	public void setGateRefs(GateRefs value) {
+		this.gateRefs = value;
+	}
 
 }

@@ -13,7 +13,7 @@ public class BPMNStartEvent extends BPMNElement {
 	private String outputPlaceId;
 	private String transitionId;
 
-	public BPMNStartEvent(BProcess pr, Parser p, Object o) throws Exception {
+	public BPMNStartEvent(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -72,13 +72,19 @@ public class BPMNStartEvent extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		return null;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
 		return outputPlaceId;
+	}
+
+	@Override
+	public String getOutputPID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

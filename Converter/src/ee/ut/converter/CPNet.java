@@ -50,7 +50,7 @@ public class CPNet {
 	private int currentId = 1000;
 	private List<Block> varBlocks = new ArrayList<Block>();
 	private int numberOfVarBolcks = 3;
-	private boolean cancelNaming = true;
+	private boolean cancelNaming = false;
 
 	private String flowObjectType = "CASE";
 	private String flowObjectVariable = "c";
@@ -76,11 +76,12 @@ public class CPNet {
 
 	private void initCPNetDeclarations() {
 		addVar("p", "INT", "var p:INT;", 1);
+		addVar("dl", "INT", "var dl:INT;", 1);
 		// createOrUpdateDef("colset TRIG_TOKEN = INT timed;", 1);
 		addVar("tt", "TRIG_TOKEN", "var tt:TRIG_TOKEN;", 1);
-		//createOrUpdateDef("val FILE = \"logs/logsCPN\"", 1);
-		//createOrUpdateDef("val FILE_EXTENSION = \".cpnxml\"", 1);
-		//createOrUpdateDef("use \"loggingFunctionsMultipleFiles.sml\";", 1);
+		// createOrUpdateDef("val FILE = \"logs/logsCPN\"", 1);
+		// createOrUpdateDef("val FILE_EXTENSION = \".cpnxml\"", 1);
+		// createOrUpdateDef("use \"loggingFunctionsMultipleFiles.sml\";", 1);
 		addVar("pt", "INT", "var pt:INT;", 1);
 		createOrUpdateDef("fun et(mean:INT,stdD:INT)=\n" + "let\n"
 				+ "val realMean = Real.fromInt mean\n"
@@ -91,6 +92,8 @@ public class CPNet {
 		// createOrUpdateDef("colset DISTRIBUTION = record dtype:DTYPE * specificValue:INT * mean:INT * std:INT;",
 		// 1);
 		createOrUpdateDef("fun intTime() = IntInf.toInt (time());", 1);
+		createOrUpdateDef("fun minFromList(L,LA) = if L=[] then hd(LA) else Int.min(hd(L), minFromList(tl(L),L));", 1);
+		createOrUpdateDef("fun locInList(L,LA,W) = if LA=hd(L) then W else locInList(tl(L),LA,W+1);", 1);
 		createOrUpdateDef(
 				"fun dateFromString(s:STRING) =\n"
 						+ "let\n"
@@ -128,6 +131,7 @@ public class CPNet {
 		// 1);
 		addVar("c", "CASE", "var c:CASE;", 1);
 		addVar("c1", "CASE", "var c1:CASE;", 1);
+		addVar("cp", "CASExEXPATH", "var cp:CASExEXPATH;", 1);
 		createOrUpdateDef(
 				"fun calcDisValue(value:DISTRIBUTION) =\r\n"
 						+ "let\r\n"
@@ -340,7 +344,8 @@ public class CPNet {
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
-		if (cancelNaming) name = "";
+		if (cancelNaming)
+			name = "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
 
 		Initmark im = place.addNewInitmark();
@@ -372,7 +377,8 @@ public class CPNet {
 		Trans trans = page.addNewTrans();
 		trans.setId(id);
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
-		if (cancelNaming) name = "";
+		if (cancelNaming)
+			name = "";
 		trans.addNewText().set(XmlString.Factory.newValue(name));
 
 		Cond cond = trans.addNewCond();
@@ -400,10 +406,18 @@ public class CPNet {
 	 * @return
 	 * @throws Exception
 	 */
-	public Arc addArc(String sourceId, String targetId) throws Exception {
+	public Arc addArc(String sourceId, String targetId) {
 		return addArc(sourceId, targetId, flowObjectVariable);
 	}
+	
+	public Arc addArc(String sourceId, String targetId,boolean bothDirection) {
+		return addArc(sourceId, targetId, flowObjectVariable,bothDirection);
+	}
 
+	public Arc addArc(String sourceId, String targetId, String variable) {
+		return addArc(sourceId, targetId, variable,false);
+	}
+	
 	/**
 	 * Generates a new arc between a Place and a Transition. The type is
 	 * determined by the objects the id's are referring.
@@ -414,23 +428,28 @@ public class CPNet {
 	 * @return
 	 * @throws Exception
 	 */
-	public Arc addArc(String sourceId, String targetId, String variable)
-			throws Exception {
+	public Arc addArc(String sourceId, String targetId, String variable,boolean bothDirection) {
 		String id = createId();
 		Arc arc = page.addNewArc();
 		arc.setId(id);
-
+		
 		if (places.get(sourceId) != null && transs.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(sourceId);
 			arc.addNewTransend().setIdref(targetId);
-			arc.setOrientation("PtoT");
+			if(bothDirection) arc.setOrientation("BOTHDIR");
+			else arc.setOrientation("PtoT");
 		} else if (transs.get(sourceId) != null && places.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(targetId);
 			arc.addNewTransend().setIdref(sourceId);
-			arc.setOrientation("TtoP");
+			if(bothDirection) arc.setOrientation("BOTHDIR");
+			else arc.setOrientation("TtoP");
 		} else {
-			throw new Exception("ERROR in CPNet.addArc  source: " + sourceId
-					+ " target: " + targetId);
+			try {
+				throw new Exception("ERROR in CPNet.addArc  source: " + sourceId
+						+ " target: " + targetId);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		Annot annot = arc.addNewAnnot();
@@ -730,11 +749,21 @@ public class CPNet {
 		}
 	}
 
-	public String getTransitionGuard(String taskTransitionId) {
-		Trans trans = transs.get(taskTransitionId);
+	public String getTransitionGuard(String tID) {
+		Trans trans = transs.get(tID);
 		Text t = trans.getCondArray()[0].getText();
 		XmlCursor c = t.newCursor();
-		if (c.hasNextToken()){
+		if (c.hasNextToken()) {
+			return c.getTextValue();
+		}
+		return "";
+	}
+
+	public String getTransitionAction(String tID) {
+		Trans trans = transs.get(tID);
+		Text t = trans.getCodeArray()[0].getText();
+		XmlCursor c = t.newCursor();
+		if (c.hasNextToken()) {
 			return c.getTextValue();
 		}
 		return "";

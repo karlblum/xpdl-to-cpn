@@ -31,10 +31,4 @@
 			</GateRefs>
 		</Gateway>
 	</Gateways>
-	   	<Resources>
-    	<Resource>
-      	<ResourceType>WORKER</ResourceType>
-        <ResourceAmount>3</ResourceAmount>
-    	</Resource>
-  	</Resources>
 </SimulationData>

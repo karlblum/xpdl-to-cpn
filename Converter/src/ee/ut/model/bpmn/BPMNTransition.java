@@ -7,7 +7,7 @@ import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNTransition extends BPMNElement {
 
-	public BPMNTransition(BProcess pr, Parser p, Object o) throws Exception {
+	public BPMNTransition(BProcess pr, Parser p, Object o) {
 		super(p, pr);
 
 		elementId = parser.getElementParser().getId(o);
@@ -17,7 +17,7 @@ public class BPMNTransition extends BPMNElement {
 		Element objectTo = (Element) ((Object[]) o)[0];
 
 		if (objectFrom == null || objectTo == null) {
-			throw new Exception("Error making transition between:"
+			System.err.println("Error making transition between:"
 					+ objectFrom.getId() + " AND " + objectTo.getId());
 		}
 
@@ -29,11 +29,17 @@ public class BPMNTransition extends BPMNElement {
 					.setBoundTimer((BPMNSubprocessTimer) objectTo);
 			return;
 		}
+		
+		if (objectTo instanceof BPMNSubprocessMessage) {
+			((BPMNSubprocess) objectFrom)
+					.setBoundMessage((BPMNSubprocessMessage) objectTo);
+			return;
+		}
 
 		if (objectTo instanceof BPMNCatchExceptionEvent) {
 			((BPMNSubprocess) objectFrom)
 					.addExceptionHandler(((BPMNCatchExceptionEvent) objectTo)
-							.getInputPlaceId());
+							.getInputPID());
 			return;
 		}
 
@@ -66,8 +72,8 @@ public class BPMNTransition extends BPMNElement {
 			tId = parser.getElementParser().getXorGWOutputIdentifier(
 					objectFrom.getId(), objectTo.getId());
 
-		process.getCpnet().addArc(objectFrom.getOutputPlaceId(tId), transId);
-		process.getCpnet().addArc(transId, objectTo.getInputPlaceId());
+		process.getCpnet().addArc(objectFrom.getOutputPID(tId), transId);
+		process.getCpnet().addArc(transId, objectTo.getInputPID());
 	}
 
 	@Override
@@ -77,13 +83,19 @@ public class BPMNTransition extends BPMNElement {
 	}
 
 	@Override
-	public String getInputPlaceId() {
+	public String getInputPID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getOutputPlaceId(String ref) {
+	public String getOutputPID(String ref) {
+		return null;
+	}
+
+	@Override
+	public String getOutputPID() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
