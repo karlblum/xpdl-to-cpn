@@ -140,6 +140,7 @@
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
               <Coordinates XCoordinate="70.0" YCoordinate="290.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="14" g360:Style="0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
@@ -149,11 +150,12 @@
           </Event>
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="700.0" YCoordinate="290.0" />
+              <Coordinates XCoordinate="670.0" YCoordinate="290.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="14" g360:Style="0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="531">
+        <Activity Id="531" Name="Timer">
           <Event>
             <IntermediateEvent Trigger="Timer" Target="5">
               <TriggerTimer>
@@ -167,7 +169,7 @@
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="532">
+        <Activity Id="532" Name="Message2">
           <Event>
             <IntermediateEvent Trigger="Message" Target="5">
               <TriggerResultMessage />
@@ -175,54 +177,67 @@
           </Event>
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="460.0" YCoordinate="330.0" />
+              <Coordinates XCoordinate="440.0" YCoordinate="330.0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="533">
+        <Activity Id="533" Name="End">
           <Event>
             <EndEvent Result="None" />
           </Event>
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="700.0" YCoordinate="380.0" />
+              <Coordinates XCoordinate="670.0" YCoordinate="400.0" />
+              <g360:Font g360:Domain="Java" g360:Family="SansSerif" g360:Size="14" g360:Style="0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="534">
+        <Activity Id="657" Name="Message1">
+          <Description />
           <Event>
-            <EndEvent Result="None" />
+            <IntermediateEvent Trigger="Message" Target="5">
+              <TriggerResultMessage />
+            </IntermediateEvent>
           </Event>
           <NodeGraphicsInfos>
             <NodeGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1" Height="60.0" Width="60.0" LaneId="3">
-              <Coordinates XCoordinate="700.0" YCoordinate="410.0" />
+              <Coordinates XCoordinate="340.0" YCoordinate="330.0" />
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
       </Activities>
       <Transitions>
-        <Transition Id="516" From="8" To="5">
-          <ConnectorGraphicsInfos>
-            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="129.9999237060547" YCoordinate="319.9315490722656" />
-              <Coordinates XCoordinate="180.5" YCoordinate="319.8162841796875" />
-            </ConnectorGraphicsInfo>
-          </ConnectorGraphicsInfos>
-        </Transition>
         <Transition Id="517" From="5" To="9">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="600.5" YCoordinate="319.141357421875" />
-              <Coordinates XCoordinate="700.0006713867188" YCoordinate="319.80108642578125" />
+              <Coordinates XCoordinate="600.5" YCoordinate="319.0166015625" />
+              <Coordinates XCoordinate="670.0015869140625" YCoordinate="319.6888122558594" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>
-        <Transition Id="588" From="532" To="534">
+        <Transition Id="516" From="8" To="5">
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
-              <Coordinates XCoordinate="490.0" YCoordinate="390.0" />
-              <Coordinates XCoordinate="490.0" YCoordinate="440.0" />
-              <Coordinates XCoordinate="700.0" YCoordinate="440.0" />
+              <Coordinates XCoordinate="129.99911499023438" YCoordinate="319.77001953125" />
+              <Coordinates XCoordinate="180.5" YCoordinate="319.3526916503906" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="680" From="657" To="533">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="370.0" YCoordinate="390.0" />
+              <Coordinates XCoordinate="370.0" YCoordinate="430.0" />
+              <Coordinates XCoordinate="670.0" YCoordinate="430.0" />
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="679" From="532" To="533">
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
+              <Coordinates XCoordinate="470.0" YCoordinate="390.0" />
+              <Coordinates XCoordinate="470.0" YCoordinate="430.0" />
+              <Coordinates XCoordinate="670.0" YCoordinate="430.0" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>
@@ -230,8 +245,8 @@
           <ConnectorGraphicsInfos>
             <ConnectorGraphicsInfo ToolId="G360_PMAE" IsVisible="true" PageId="1">
               <Coordinates XCoordinate="560.0" YCoordinate="390.0" />
-              <Coordinates XCoordinate="560.0" YCoordinate="410.0" />
-              <Coordinates XCoordinate="700.0" YCoordinate="410.0" />
+              <Coordinates XCoordinate="560.0" YCoordinate="430.0" />
+              <Coordinates XCoordinate="670.0" YCoordinate="430.0" />
             </ConnectorGraphicsInfo>
           </ConnectorGraphicsInfos>
         </Transition>

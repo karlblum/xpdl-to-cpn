@@ -58,21 +58,22 @@ public class BPMNSubprocess extends BPMNElement {
 		return subProcess.getId();
 	}
 
-	
-	private void addExceptionPath(String path, String timerFunction){
+	private void addExceptionPath(String path, String timerFunction) {
 		String s = process.getCpnet().getTransitionAction(exceptionRelayTID);
-		
+
 		boolean isFirst = s.contains("paths = []");
-		
+
 		int posPaths = s.indexOf("val paths = [");
-		String s2 = s.substring(0, posPaths+13) + path + (isFirst ? "" : ",") + s.substring(posPaths+13);
-		
+		String s2 = s.substring(0, posPaths + 13) + path + (isFirst ? "" : ",")
+				+ s.substring(posPaths + 13);
+
 		int posTimer = s2.indexOf("val timings = [");
-		String s3 = s2.substring(0, posTimer+15) + timerFunction + (isFirst ? "" : ",") + s2.substring(posTimer+15);
-		
+		String s3 = s2.substring(0, posTimer + 15) + timerFunction
+				+ (isFirst ? "" : ",") + s2.substring(posTimer + 15);
+
 		process.getCpnet().setTransitionAction(exceptionRelayTID, s3);
 	}
-	
+
 	public void addSkippingFunctions() {
 		skippingFunctionsPresent = true;
 		String s = process.getCpnet().addPlace().getId();
@@ -80,29 +81,29 @@ public class BPMNSubprocess extends BPMNElement {
 
 		exceptionRelayTID = process.getCpnet().addTrans("EXCEPTION_RELAY")
 				.getId();
-		
-		process.getCpnet().setTransitionAction(exceptionRelayTID, 
-				"input (c);\r\n" + 
-				"output (cp,dl);\r\n" + 
-				"action\r\n" + 
-				"(\r\n" + 
-				"let\r\n" + 
-				"  val paths = []  \r\n" + 
-				"  val timings = []\r\n" + 
-				"\r\n" + 
-				"   val delay = minFromList(timings,[])\r\n" + 
-				"   val p = List.nth(paths, locInList(timings,delay,0))\r\n" + 
-				"   val result : CASExEXPATH = {pr=c,path=p}\r\n" + 
-				"in\r\n" + 
-				"   (result,delay)\r\n" + 
-				"end\r\n" + 
-				");");
-		
-		
+
+		process
+				.getCpnet()
+				.setTransitionAction(
+						exceptionRelayTID,
+						"input (c);\r\n"
+								+ "output (cp,dl);\r\n"
+								+ "action\r\n"
+								+ "(\r\n"
+								+ "let\r\n"
+								+ "  val paths = []  \r\n"
+								+ "  val timings = []\r\n"
+								+ "\r\n"
+								+ "   val delay = minFromList(timings,[])\r\n"
+								+ "   val p = List.nth(paths, locInList(timings,delay,0))\r\n"
+								+ "   val result : CASExEXPATH = {pr=c,path=p}\r\n"
+								+ "in\r\n" + "   (result,delay)\r\n"
+								+ "end\r\n" + ");");
+
 		process.getCpnet().addArc(s, exceptionRelayTID);
 
-		timerTokenPID = process.getCpnet().addPlace("CASExEXPATH",elementName + "TIMER")
-				.getId();
+		timerTokenPID = process.getCpnet().addPlace("CASExEXPATH",
+				elementName + "TIMER").getId();
 
 		String arcId = process.getCpnet().addArc(exceptionRelayTID,
 				timerTokenPID, "cp").getId();
@@ -111,13 +112,15 @@ public class BPMNSubprocess extends BPMNElement {
 		String exeptionTransId = process.getCpnet().addTrans(
 				elementName + "EXCEPTION").getId();
 
-		process.getCpnet().addArc(timerTokenPID, exeptionTransId,"cp");
+		process.getCpnet().addArc(timerTokenPID, exeptionTransId, "cp");
 
-		okPID = process.getCpnet().addPlace("CASExEXPATH",elementName + "OK").getId();
-		process.getCpnet().addArc(okPID, exeptionTransId,"cp");
+		okPID = process.getCpnet().addPlace("CASExEXPATH", elementName + "OK")
+				.getId();
+		process.getCpnet().addArc(okPID, exeptionTransId, "cp");
 		process.getCpnet().addArc(exceptionRelayTID, okPID, "cp");
 
-		nokPID = process.getCpnet().addPlace("CASExEXPATH",elementName + "NOK").getId();
+		nokPID = process.getCpnet()
+				.addPlace("CASExEXPATH", elementName + "NOK").getId();
 		process.getCpnet().addArc(exeptionTransId, nokPID, "cp");
 
 		ArrayList<Element> lastTasks = subProcess.getLastBeforeSink();
@@ -127,7 +130,7 @@ public class BPMNSubprocess extends BPMNElement {
 			if (e instanceof BPMNTask) {
 				BPMNTask task = (BPMNTask) e;
 				if (!lastTasks.contains(task)) {
-					task.addSubprocessSkipper(nokPID, okPID,null);
+					task.addSubprocessSkipper(nokPID, okPID, null);
 				} else {
 					task.addSubprocessSkipper(nokPID, okPID, skipperFinalPlace);
 				}
@@ -142,7 +145,7 @@ public class BPMNSubprocess extends BPMNElement {
 
 		// update exception relay function
 
-		addExceptionPath(messageEvent.getId(),messageEvent.getTimeFunction());
+		addExceptionPath(messageEvent.getId(), messageEvent.getTimeFunction());
 		String t = process.getCpnet().addTrans("OUT" + messageEvent.getId())
 				.getId();
 
@@ -160,8 +163,9 @@ public class BPMNSubprocess extends BPMNElement {
 		if (!skippingFunctionsPresent)
 			addSkippingFunctions();
 
-		addExceptionPath(bpmnSubprocessTimer.getId(),String.valueOf(bpmnSubprocessTimer.getTimerTime()));
-		
+		addExceptionPath(bpmnSubprocessTimer.getId(), String
+				.valueOf(bpmnSubprocessTimer.getTimerTime()));
+
 		String t = process.getCpnet().addTrans(
 				"OUT" + bpmnSubprocessTimer.getId()).getId();
 		process.getCpnet().addArc(skipperFinalPlace, t);

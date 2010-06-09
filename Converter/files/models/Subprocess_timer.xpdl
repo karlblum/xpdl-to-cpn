@@ -153,11 +153,11 @@
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="531">
+        <Activity Id="531" Name="Timer">
           <Event>
             <IntermediateEvent Trigger="Timer" Target="5">
               <TriggerTimer>
-                <TimeDate />
+                <TimeDate>1000</TimeDate>
               </TriggerTimer>
             </IntermediateEvent>
           </Event>
@@ -167,7 +167,8 @@
             </NodeGraphicsInfo>
           </NodeGraphicsInfos>
         </Activity>
-        <Activity Id="532">
+        <Activity Id="532" Name="End">
+          <Description />
           <Event>
             <EndEvent Result="None" />
           </Event>
