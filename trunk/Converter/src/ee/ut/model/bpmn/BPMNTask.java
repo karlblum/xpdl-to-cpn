@@ -2,9 +2,7 @@ package ee.ut.model.bpmn;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
-import noNamespace.Place;
 import ee.ut.converter.BProcess;
 import ee.ut.converter.parser.Parser;
 import ee.ut.converter.parser.SimDataParser;
@@ -36,7 +34,6 @@ public final class BPMNTask extends BPMNElement {
 
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
-
 		// Main input
 		inputPID = process.getCpnet().addPlace(elementName + " IN").getId();
 
@@ -52,7 +49,7 @@ public final class BPMNTask extends BPMNElement {
 			lastPlaceId = addBoundTimerSupport(lastPlaceId);
 
 		skipperFunctionPID = lastPlaceId;
-		
+
 		taskTID = process.getCpnet().addTrans(elementName).getId();
 
 		taskInAID = process.getCpnet().addArc(lastPlaceId, taskTID).getId();
@@ -207,33 +204,34 @@ public final class BPMNTask extends BPMNElement {
 	public int getBoundTimer() {
 		return boundTimerTime;
 	}
-	
+
 	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId,
 			String pID) {
 		// Create a skipper transition and connect it to the task and NOK place
 		// in subprocess timer
 		String skipTrans = process.getCpnet().addTrans(elementName + " SKIP")
 				.getId();
-		process.getCpnet().setTransitionGuard(skipTrans, "[#ID c = (#ID (#pr cp))]");
+		process.getCpnet().setTransitionGuard(skipTrans,
+				"[#ID c = (#ID (#pr cp))]");
 
 		process.getCpnet().addArc(skipperFunctionPID, skipTrans);
 		boolean bothDir = false;
-		if(pID == null) {
+		if (pID == null) {
 			pID = outPID;
 			bothDir = true;
 		}
 		process.getCpnet().addArc(skipTrans, pID);
 
-		process.getCpnet().addArc(nokPlaceId, skipTrans, "cp",true);
+		process.getCpnet().addArc(nokPlaceId, skipTrans, "cp", true);
 
 		// Connect the transition to subprocess timer OK place.
-		process.getCpnet().addArc(okPlaceId, taskTID, "cp",bothDir);
+		process.getCpnet().addArc(okPlaceId, taskTID, "cp", bothDir);
 
 		String currentGuard = process.getCpnet().getTransitionGuard(taskTID);
 		if (currentGuard.length() > 3) {
 			currentGuard = currentGuard.substring(0, currentGuard.length() - 1)
 					+ " andalso ";
-		} 
+		}
 
 		process.getCpnet().setTransitionGuard(taskTID,
 				currentGuard + "[#ID c = (#ID (#pr cp))]");
@@ -259,12 +257,9 @@ public final class BPMNTask extends BPMNElement {
 
 	}
 
-
-
 	@Override
 	public String getOutputPID() {
-		// TODO Auto-generated method stub
-		return null;
+		return getOutputPID(null);
 	}
 
 }

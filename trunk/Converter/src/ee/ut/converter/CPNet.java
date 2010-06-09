@@ -40,9 +40,11 @@ import org.apache.xmlbeans.XmlString;
  */
 public class CPNet {
 
+	private static final String CPN_TEMPLATE_FILE = "./files/cpn/blank.cpn";
+
 	private WorkspaceElementsDocument cpnWorkspace;
 	private Cpnet cpnet;
-	private Page page;
+	private Page rootPage;
 	private HashMap<String, Place> places = new HashMap<String, Place>();
 	private HashMap<String, Arc> arcs = new HashMap<String, Arc>();
 	private HashMap<String, Trans> transs = new HashMap<String, Trans>();
@@ -55,8 +57,12 @@ public class CPNet {
 	private String flowObjectType = "CASE";
 	private String flowObjectVariable = "c";
 
+	/**
+	 * Constructor initializes a new in-memory cpn file from the specified
+	 * template. This is where all the cpn constructs will be added.
+	 */
 	public CPNet() {
-		File blankCPN = new File("./files/cpn/blank.cpn");
+		File blankCPN = new File(CPN_TEMPLATE_FILE);
 
 		try {
 			cpnWorkspace = WorkspaceElementsDocument.Factory.parse(blankCPN);
@@ -65,16 +71,22 @@ public class CPNet {
 		}
 
 		cpnet = cpnWorkspace.getWorkspaceElements().getCpnet();
-		page = cpnet.getPageArray()[0];
-
-		for (int i = 0; i < numberOfVarBolcks; i++) {
-			varBlocks.add(cpnet.getGlobbox().addNewBlock());
-		}
+		rootPage = cpnet.getPageArray()[0];
 
 		initCPNetDeclarations();
 	}
 
+	/**
+	 * This method adds needed CPN declarations to the template.
+	 * 
+	 */
 	private void initCPNetDeclarations() {
+
+		// Here we initialize the number of needed declaration blocks.
+		for (int i = 0; i < numberOfVarBolcks; i++) {
+			varBlocks.add(cpnet.getGlobbox().addNewBlock());
+		}
+
 		addVar("p", "INT", "var p:INT;", 1);
 		addVar("dl", "INT", "var dl:INT;", 1);
 		// createOrUpdateDef("colset TRIG_TOKEN = INT timed;", 1);
@@ -92,8 +104,12 @@ public class CPNet {
 		// createOrUpdateDef("colset DISTRIBUTION = record dtype:DTYPE * specificValue:INT * mean:INT * std:INT;",
 		// 1);
 		createOrUpdateDef("fun intTime() = IntInf.toInt (time());", 1);
-		createOrUpdateDef("fun minFromList(L,LA) = if L=[] then hd(LA) else Int.min(hd(L), minFromList(tl(L),L));", 1);
-		createOrUpdateDef("fun locInList(L,LA,W) = if LA=hd(L) then W else locInList(tl(L),LA,W+1);", 1);
+		createOrUpdateDef(
+				"fun minFromList(L,LA) = if L=[] then hd(LA) else Int.min(hd(L), minFromList(tl(L),L));",
+				1);
+		createOrUpdateDef(
+				"fun locInList(L,LA,W) = if LA=hd(L) then W else locInList(tl(L),LA,W+1);",
+				1);
 		createOrUpdateDef(
 				"fun dateFromString(s:STRING) =\n"
 						+ "let\n"
@@ -317,10 +333,23 @@ public class CPNet {
 						+ "in\r\n" + "  (procTime)\r\n" + "end", 1);
 	}
 
+	/**
+	 * Adds a new place to the root cpnet with the default flowobject type.
+	 * 
+	 * @return new place
+	 */
 	public Place addPlace() {
 		return addPlace(flowObjectType, "");
 	}
 
+	/**
+	 * Adds a new place to the root cpnet with the default flowobject type and
+	 * with a name.
+	 * 
+	 * @param name
+	 *            place name
+	 * @return created place
+	 */
 	public Place addPlace(String name) {
 		return addPlace(flowObjectType, name);
 	}
@@ -332,11 +361,11 @@ public class CPNet {
 	 *            Place type
 	 * @param name
 	 *            Place name
-	 * @return
+	 * @return created place
 	 */
 	public Place addPlace(String placeType, String name) {
 		String id = createId();
-		Place place = page.addNewPlace();
+		Place place = rootPage.addNewPlace();
 		place.setId(id);
 		places.put(id, place);
 
@@ -374,7 +403,7 @@ public class CPNet {
 	 */
 	public Trans addTrans(String name) {
 		String id = createId();
-		Trans trans = page.addNewTrans();
+		Trans trans = rootPage.addNewTrans();
 		trans.setId(id);
 		name = name != null && name != "" ? name + " (" + id + ")" : "";
 		if (cancelNaming)
@@ -409,15 +438,27 @@ public class CPNet {
 	public Arc addArc(String sourceId, String targetId) {
 		return addArc(sourceId, targetId, flowObjectVariable);
 	}
-	
-	public Arc addArc(String sourceId, String targetId,boolean bothDirection) {
-		return addArc(sourceId, targetId, flowObjectVariable,bothDirection);
+
+	/**
+	 * @param sourceId
+	 * @param targetId
+	 * @param bothDirection
+	 * @return
+	 */
+	public Arc addArc(String sourceId, String targetId, boolean bothDirection) {
+		return addArc(sourceId, targetId, flowObjectVariable, bothDirection);
 	}
 
+	/**
+	 * @param sourceId
+	 * @param targetId
+	 * @param variable
+	 * @return
+	 */
 	public Arc addArc(String sourceId, String targetId, String variable) {
-		return addArc(sourceId, targetId, variable,false);
+		return addArc(sourceId, targetId, variable, false);
 	}
-	
+
 	/**
 	 * Generates a new arc between a Place and a Transition. The type is
 	 * determined by the objects the id's are referring.
@@ -428,25 +469,30 @@ public class CPNet {
 	 * @return
 	 * @throws Exception
 	 */
-	public Arc addArc(String sourceId, String targetId, String variable,boolean bothDirection) {
+	public Arc addArc(String sourceId, String targetId, String variable,
+			boolean bothDirection) {
 		String id = createId();
-		Arc arc = page.addNewArc();
+		Arc arc = rootPage.addNewArc();
 		arc.setId(id);
-		
+
 		if (places.get(sourceId) != null && transs.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(sourceId);
 			arc.addNewTransend().setIdref(targetId);
-			if(bothDirection) arc.setOrientation("BOTHDIR");
-			else arc.setOrientation("PtoT");
+			if (bothDirection)
+				arc.setOrientation("BOTHDIR");
+			else
+				arc.setOrientation("PtoT");
 		} else if (transs.get(sourceId) != null && places.get(targetId) != null) {
 			arc.addNewPlaceend().setIdref(targetId);
 			arc.addNewTransend().setIdref(sourceId);
-			if(bothDirection) arc.setOrientation("BOTHDIR");
-			else arc.setOrientation("TtoP");
+			if (bothDirection)
+				arc.setOrientation("BOTHDIR");
+			else
+				arc.setOrientation("TtoP");
 		} else {
 			try {
-				throw new Exception("ERROR in CPNet.addArc  source: " + sourceId
-						+ " target: " + targetId);
+				throw new Exception("ERROR in CPNet.addArc  source: "
+						+ sourceId + " target: " + targetId);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -460,6 +506,14 @@ public class CPNet {
 
 	}
 
+	/**
+	 * Sets an a new arc annotation.
+	 * 
+	 * @param arcId
+	 *            Arc ID
+	 * @param annotation
+	 *            new annotation
+	 */
 	public void setArcAnnot(String arcId, String annotation) {
 		Arc arc = arcs.get(arcId);
 		arc.getAnnot().getText().set(XmlString.Factory.newValue(annotation));
@@ -485,10 +539,21 @@ public class CPNet {
 		return subst;
 	}
 
+	/**
+	 * Creates a new unique ID
+	 * 
+	 * @return
+	 */
 	public String createId() {
 		return "ID" + (currentId++);
 	};
 
+	/**
+	 * Saves the cpnet to an output file
+	 * 
+	 * @param file
+	 * @param layouting
+	 */
 	public void saveToFile(String file, Boolean layouting) {
 		if (layouting) {
 			for (Page p : cpnet.getPageArray()) {
@@ -511,10 +576,20 @@ public class CPNet {
 
 	}
 
+	/**
+	 * Method returns the default flow object type.
+	 * 
+	 * @return
+	 */
 	public String getFlowObjectType() {
 		return flowObjectType;
 	}
 
+	/**
+	 * Method returns default flow object variable.
+	 * 
+	 * @return
+	 */
 	public String getFlowObjectVariable() {
 		return flowObjectVariable;
 	}
@@ -584,6 +659,18 @@ public class CPNet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void addPage(String name) {
+		String id = createId();
+		Trans t = rootPage.addNewTrans();
+		t.setId(id);
+		t.addNewText().set(XmlString.Factory.newValue("KATSE"));
+
+		Page childpage = cpnet.addNewPage();
+		childpage.setId(createId());
+		childpage.addNewPageattr().setName(name);
+
 	}
 
 	public void setStartTime(String startTime) {

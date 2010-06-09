@@ -34,28 +34,28 @@ import ee.ut.model.xpdl2.Transitions;
  */
 public class XPDL2ElementParser implements ElementParser {
 
-	ProcessType xpdlProcess;
+	private ProcessType xpdlProcess;
 
 	// <Process,<Key,Activity>> - Process to activities mappings.
-	protected Map<String, HashMap<String, Activity>> activities = new HashMap<String, HashMap<String, Activity>>();
+	private Map<String, HashMap<String, Activity>> activities = new HashMap<String, HashMap<String, Activity>>();
 
 	// <Activity ID, Process ID> - Activity to process mappings.
-	protected Map<String, String> activityToProcess = new HashMap<String, String>();
+	private Map<String, String> activityToProcess = new HashMap<String, String>();
 
 	// <Transition> - List of all transitions (Boundary events excluded)
-	protected ArrayList<Transition> transitions = new ArrayList<Transition>();
+	private ArrayList<Transition> transitions = new ArrayList<Transition>();
 
 	// <Activity,<Next Activities>> - Adjacency list
-	protected Map<Activity, List<Activity>> adjList = new HashMap<Activity, List<Activity>>();
+	private Map<Activity, List<Activity>> adjList = new HashMap<Activity, List<Activity>>();
 
 	// <Process,<Sink Activities>> - Process to end activities mappings.
-	protected HashMap<String, List<Activity>> sinks = new HashMap<String, List<Activity>>();
+	private HashMap<String, List<Activity>> sinks = new HashMap<String, List<Activity>>();
 
 	// <Process,<Source Activities>> - Process to start activities mappings.
-	protected HashMap<String, List<Activity>> sources = new HashMap<String, List<Activity>>();
+	private HashMap<String, List<Activity>> sources = new HashMap<String, List<Activity>>();
 
 	// <Event Activity,Target Activity ID> - Event to target activities
-	// mappings.
+	// private.
 	private HashMap<Activity, String> boundEvents = new HashMap<Activity, String>();
 
 	/**
@@ -311,7 +311,7 @@ public class XPDL2ElementParser implements ElementParser {
 							} else {
 								return BPMNElement.BOUND_MESSAGE_EVENT;
 							}
-						} 
+						}
 					} else {
 						String trigger = ((Event) aContent)
 								.getIntermediateEvent().getTrigger();
@@ -361,16 +361,6 @@ public class XPDL2ElementParser implements ElementParser {
 			}
 		}
 		return false;
-	}
-
-	@Override
-	public String getTransitionFrom(Object object) {
-		return ((Transition) object).getFrom();
-	}
-
-	@Override
-	public String getTransitionTo(Object object) {
-		return ((Transition) object).getTo();
 	}
 
 	@Override
@@ -489,8 +479,9 @@ public class XPDL2ElementParser implements ElementParser {
 
 	@Override
 	public boolean isNext(Object o, int elementType) {
-		for (Object e: getNextElements(o)){
-			if(getElementType(e) == elementType) return true;
+		for (Object e : getNextElements(o)) {
+			if (getElementType(e) == elementType)
+				return true;
 		}
 		return false;
 	}

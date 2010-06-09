@@ -41,7 +41,6 @@ public class BPMNBoundTimerEvent extends BPMNElement {
 
 	@Override
 	public String getInputPID() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

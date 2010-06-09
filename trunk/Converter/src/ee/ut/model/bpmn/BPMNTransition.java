@@ -29,7 +29,7 @@ public class BPMNTransition extends BPMNElement {
 					.setBoundTimer((BPMNSubprocessTimer) objectTo);
 			return;
 		}
-		
+
 		if (objectTo instanceof BPMNSubprocessMessage) {
 			((BPMNSubprocess) objectFrom)
 					.setBoundMessage((BPMNSubprocessMessage) objectTo);

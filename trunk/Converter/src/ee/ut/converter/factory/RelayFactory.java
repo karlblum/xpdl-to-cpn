@@ -9,17 +9,35 @@ import ee.ut.converter.parser.Parser;
 
 public abstract class RelayFactory extends AbstractElementFactory {
 
+	/**
+	 * Hashmap of factories to be used for element generation.
+	 */
 	protected Map<Object, AbstractElementFactory> factories = new HashMap<Object, AbstractElementFactory>();
+
+	/**
+	 * Factory for generating connections between different elements.
+	 */
 	protected AbstractElementFactory connectorFactory = null;
 
 	public RelayFactory(Parser p) {
 		super(p);
 	}
 
+	/**
+	 * Method registers a new factory.
+	 * 
+	 * @param key
+	 *            Element identifier.
+	 * @param concrete
+	 *            Concrete element factory.
+	 */
 	public void registerFactory(Object key, AbstractElementFactory concrete) {
 		factories.put(key, concrete);
 	}
 
+	/**
+	 * Method clears the list of element factories.
+	 */
 	public void resetFactoryMap() {
 		factories.clear();
 	}
@@ -34,6 +52,16 @@ public abstract class RelayFactory extends AbstractElementFactory {
 		return concrete.create(pr, obj);
 	}
 
+	/**
+	 * Method connects two elements.
+	 * 
+	 * @param pr
+	 *            Process
+	 * @param convertedElement
+	 *            Element from.
+	 * @param element
+	 *            Element to.
+	 */
 	public void connectElements(BProcess pr, Element convertedElement,
 			Element element) {
 		try {
@@ -51,6 +79,9 @@ public abstract class RelayFactory extends AbstractElementFactory {
 		}
 	}
 
+	/**
+	 * @param concrete
+	 */
 	public void registerConnectorFactory(AbstractElementFactory concrete) {
 		connectorFactory = concrete;
 

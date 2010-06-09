@@ -41,7 +41,7 @@ public class BPMNSubprocessTimer extends BPMNElement {
 	@Override
 	public String getOutputPID() {
 		return getOutputPID(null);
-		
+
 	}
 
 }

@@ -14,7 +14,7 @@ public class TestCPNModel {
 
 	public static void main(String[] args) throws Exception {
 
-		test("subprocess_message_timer");
+		test("test");
 		// testAll();
 	}
 

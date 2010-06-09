@@ -9,7 +9,6 @@ public class BPMNSubprocessStart extends BPMNElement {
 	private String startPID;
 	private String exceptionTID;
 	private String outputPID;
-	
 
 	public BPMNSubprocessStart(BProcess pr, Parser p, Object o) {
 		super(p, pr);
@@ -18,7 +17,8 @@ public class BPMNSubprocessStart extends BPMNElement {
 		elementName = parser.getElementParser().getName(o);
 
 		startPID = process.getCpnet().addPlace(elementName).getId();
-		exceptionTID = process.getCpnet().addTrans(elementName + "EXCEPTION_INPUT").getId();
+		exceptionTID = process.getCpnet().addTrans(
+				elementName + "EXCEPTION_INPUT").getId();
 		outputPID = process.getCpnet().addPlace(elementName).getId();
 		process.getCpnet().addArc(startPID, exceptionTID);
 		process.getCpnet().addArc(exceptionTID, outputPID);
@@ -43,8 +43,8 @@ public class BPMNSubprocessStart extends BPMNElement {
 	public String getOutputPID() {
 		return outputPID;
 	}
-	
-	public String getExceptionTID(){
+
+	public String getExceptionTID() {
 		return exceptionTID;
 	}
 
