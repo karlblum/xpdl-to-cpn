@@ -20,7 +20,6 @@ public class BPMNEndEvent extends BPMNElement {
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
