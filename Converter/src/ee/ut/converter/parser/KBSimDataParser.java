@@ -130,15 +130,15 @@ public class KBSimDataParser implements SimDataParser {
 	}
 
 	@Override
-	public int getBoundMessageEventProbability(String elementId) {
-		// TODO: Not implemented
-		return 10;
-	}
-
-	@Override
-	public int getBoundTimer(String elementId) {
-		// TODO: Not implemented
-		return 20;
+	public String getBoundMessageEventProbability(String elementId) {
+		MessageEvents me = simDataRoot.getValue().getMessageEvents();
+		if (me != null) {
+			for (MessageEvent e : me.getMessageEvent()) {
+				if (e.getId().equals(elementId))
+					return e.getProbability();
+			}
+		}
+		return "0";
 	}
 
 	@Override

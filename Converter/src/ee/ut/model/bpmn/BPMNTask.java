@@ -176,7 +176,8 @@ public final class BPMNTask extends BPMNElement {
 	}
 
 	public void setBoundMessageEventProbability(String elementId,
-			int probability) {
+			String p) {
+		int probability = Integer.parseInt(p);
 		process.getCpnet().setArcAnnot(
 				boundMessageEventArcs.get(elementId),
 				"if p>=" + prevBoundMessageEventTreshold + " andalso p<"
@@ -231,10 +232,10 @@ public final class BPMNTask extends BPMNElement {
 		if (currentGuard.length() > 3) {
 			currentGuard = currentGuard.substring(0, currentGuard.length() - 1)
 					+ " andalso ";
-		}
+		} else currentGuard = "[";
 
 		process.getCpnet().setTransitionGuard(taskTID,
-				currentGuard + "[#ID c = (#ID (#pr cp))]");
+				currentGuard + "(#ID c = (#ID (#pr cp)))]");
 
 	}
 

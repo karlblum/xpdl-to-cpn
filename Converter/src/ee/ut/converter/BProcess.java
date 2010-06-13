@@ -19,9 +19,9 @@ public class BProcess {
 
 	protected HashMap<String, BProcess> subprocesses = new HashMap<String, BProcess>();
 
-	public BProcess(CPNet c, String s) {
+	public BProcess(CPNet c, String s,String cpn_template) {
 		if (c == null)
-			c = new CPNet();
+			c = new CPNet(cpn_template);
 		cpnet = c;
 		id = s;
 	}
@@ -70,7 +70,7 @@ public class BProcess {
 	}
 
 	public BProcess createSubprocess(String id) {
-		BProcess p = new BProcess(cpnet, id);
+		BProcess p = new BProcess(cpnet, id,null);
 		subprocesses.put(id, p);
 		return p;
 	}
@@ -79,8 +79,8 @@ public class BProcess {
 		return subprocesses.get(id);
 	}
 
-	public void saveToCPN(String location, Boolean layouting) {
-		cpnet.saveToFile(location, layouting);
+	public void saveToCPN(String location, Boolean layouting, String layouter) {
+		cpnet.saveToFile(location, layouting,layouter);
 	}
 
 	public CPNet getCpnet() {

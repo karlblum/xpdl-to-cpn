@@ -21,7 +21,7 @@ public class Parser {
 	private RelayFactory relayFactory;
 
 	// Root process instance with id=0
-	private BProcess rootProcess = new BProcess(null, "0");
+	private BProcess rootProcess;
 
 	public void setElementParser(ElementParser p) {
 		elementParser = p;
@@ -35,6 +35,9 @@ public class Parser {
 		relayFactory = f;
 	}
 
+	public Parser(String cpn_template){
+		rootProcess = new BProcess(null, "0",cpn_template);
+	}
 	/**
 	 * Method starts parsing from the root process.
 	 * 
@@ -126,8 +129,8 @@ public class Parser {
 		return p;
 	}
 
-	public void save(String s, Boolean layouting) {
-		rootProcess.saveToCPN(s, layouting);
+	public void save(String s, Boolean layouting, String layouter) {
+		rootProcess.saveToCPN(s, layouting,layouter);
 	}
 
 	public ElementParser getElementParser() {

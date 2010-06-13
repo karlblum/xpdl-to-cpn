@@ -86,16 +86,7 @@ public interface SimDataParser {
 	 *            Bound event.
 	 * @return Probability of receiving the message.
 	 */
-	public int getBoundMessageEventProbability(String elementId);
-
-	/**
-	 * Boundary timer time.
-	 * 
-	 * @param elementId
-	 *            Boundary element.
-	 * @return Time.
-	 */
-	public int getBoundTimer(String elementId);
+	public String getBoundMessageEventProbability(String elementId);
 
 	/**
 	 * Whether or not the simulation data is included.

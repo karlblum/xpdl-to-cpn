@@ -21,6 +21,9 @@ public class BPMNTransition extends BPMNElement {
 					+ objectFrom.getId() + " AND " + objectTo.getId());
 		}
 
+		if (objectTo instanceof BPMNBoundMessageEvent)
+			return;
+		
 		if (objectTo instanceof BPMNBoundTimerEvent)
 			return;
 
