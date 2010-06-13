@@ -40,8 +40,6 @@ import org.apache.xmlbeans.XmlString;
  */
 public class CPNet {
 
-	private static final String CPN_TEMPLATE_FILE = "./files/cpn/blank.cpn";
-
 	private WorkspaceElementsDocument cpnWorkspace;
 	private Cpnet cpnet;
 	private Page rootPage;
@@ -61,8 +59,8 @@ public class CPNet {
 	 * Constructor initializes a new in-memory cpn file from the specified
 	 * template. This is where all the cpn constructs will be added.
 	 */
-	public CPNet() {
-		File blankCPN = new File(CPN_TEMPLATE_FILE);
+	public CPNet(String template_path) {
+		File blankCPN = new File(template_path);
 
 		try {
 			cpnWorkspace = WorkspaceElementsDocument.Factory.parse(blankCPN);
@@ -372,7 +370,7 @@ public class CPNet {
 		Type type = place.addNewType();
 		type.addNewText().set(XmlString.Factory.newValue(placeType));
 
-		name = name != null && name != "" ? name + " (" + id + ")" : "";
+		name = name != null && name != "" ? id + " " + name : "";
 		if (cancelNaming)
 			name = "";
 		place.addNewText().set(XmlString.Factory.newValue(name));
@@ -405,7 +403,7 @@ public class CPNet {
 		String id = createId();
 		Trans trans = rootPage.addNewTrans();
 		trans.setId(id);
-		name = name != null && name != "" ? name + " (" + id + ")" : "";
+		name = name != null && name != "" ? id + " " + name : "";
 		if (cancelNaming)
 			name = "";
 		trans.addNewText().set(XmlString.Factory.newValue(name));
@@ -554,12 +552,12 @@ public class CPNet {
 	 * @param file
 	 * @param layouting
 	 */
-	public void saveToFile(String file, Boolean layouting) {
+	public void saveToFile(String file, Boolean layouting, String layouter) {
 		if (layouting) {
 			for (Page p : cpnet.getPageArray()) {
 				if (!p.getId().equals("PAGE_GENERATOR")) {
 					try {
-						doLayouting(p);
+						doLayouting(p, layouter);
 					} catch (Exception e) {
 						System.err.println("LAYOUTING FAILED!");
 					}
@@ -670,7 +668,6 @@ public class CPNet {
 		Page childpage = cpnet.addNewPage();
 		childpage.setId(createId());
 		childpage.addNewPageattr().setName(name);
-
 	}
 
 	public void setStartTime(String startTime) {
@@ -724,9 +721,9 @@ public class CPNet {
 
 	}
 
-	public static void doLayouting(Page page) throws IOException {
+	public static void doLayouting(Page page, String layouter_path) throws IOException {
 
-		FileWriter fstream = new FileWriter("./files/cpn/dot_input.txt");
+		FileWriter fstream = new FileWriter("dot_input.txt");
 		BufferedWriter out = new BufferedWriter(fstream);
 
 		HashMap<String, String[]> layoutData = new HashMap<String, String[]>();
@@ -750,7 +747,7 @@ public class CPNet {
 		Process pr = Runtime
 				.getRuntime()
 				.exec(
-						"\"c:\\Program Files\\Graphviz2.26.3\\bin\\dot.exe\" .\\files\\cpn\\dot_input.txt");
+						" "+ layouter_path + " dot_input.txt");
 
 		String line;
 		BufferedReader input = new BufferedReader(new InputStreamReader(pr

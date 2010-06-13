@@ -35,7 +35,7 @@ public class BPMNBoundMessageEvent extends BPMNElement {
 
 	@Override
 	public void addSimulationData(SimDataParser simDataParser) {
-		int probability = simDataParser
+		String probability = simDataParser
 				.getBoundMessageEventProbability(elementId);
 		BPMNTask task = (BPMNTask) process.getElement(taskId);
 		task.setBoundMessageEventProbability(elementId, probability);
