@@ -9,16 +9,15 @@ public class BPMNThrowExceptionEvent extends BPMNElement {
 	String inputPID;
 	String errorTID;
 
-
 	public BPMNThrowExceptionEvent(BProcess pr, Parser parser, Object o) {
 		super(parser, pr);
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
-	
-		inputPID = process.getCpnet().addPlace(elementName + "ERR_IN")
-				.getId();
+
+		inputPID = process.getCpnet().addPlace(elementName + "ERR_IN").getId();
 		errorTID = process.getCpnet().addTrans("ERR").getId();
-		process.getCpnet().setTransitionGuard(errorTID, "[#ID c = (#ID (#pr cp))]");
+		process.getCpnet().setTransitionGuard(errorTID,
+				"[#ID c = (#ID (#pr cp))]");
 		process.getCpnet().addArc(inputPID, errorTID);
 	}
 
@@ -42,8 +41,8 @@ public class BPMNThrowExceptionEvent extends BPMNElement {
 	public String getOutputPID() {
 		return null;
 	}
-	
-	public String getErrorTID(){
+
+	public String getErrorTID() {
 		return errorTID;
 	}
 }

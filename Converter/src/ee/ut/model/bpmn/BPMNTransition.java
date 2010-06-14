@@ -23,7 +23,7 @@ public class BPMNTransition extends BPMNElement {
 
 		if (objectTo instanceof BPMNBoundMessageEvent)
 			return;
-		
+
 		if (objectTo instanceof BPMNBoundTimerEvent)
 			return;
 

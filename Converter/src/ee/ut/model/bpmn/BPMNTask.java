@@ -175,8 +175,7 @@ public final class BPMNTask extends BPMNElement {
 		boundMessageEventArcs.put(bpmnBoundEvent.getId(), eventArcId);
 	}
 
-	public void setBoundMessageEventProbability(String elementId,
-			String p) {
+	public void setBoundMessageEventProbability(String elementId, String p) {
 		int probability = Integer.parseInt(p);
 		process.getCpnet().setArcAnnot(
 				boundMessageEventArcs.get(elementId),
@@ -207,7 +206,7 @@ public final class BPMNTask extends BPMNElement {
 	}
 
 	public void addSubprocessSkipper(String nokPlaceId, String okPlaceId,
-			String pID) {
+			String pID, Boolean bothDir) {
 		// Create a skipper transition and connect it to the task and NOK place
 		// in subprocess timer
 		String skipTrans = process.getCpnet().addTrans(elementName + " SKIP")
@@ -216,10 +215,8 @@ public final class BPMNTask extends BPMNElement {
 				"[#ID c = (#ID (#pr cp))]");
 
 		process.getCpnet().addArc(skipperFunctionPID, skipTrans);
-		boolean bothDir = false;
 		if (pID == null) {
 			pID = outPID;
-			bothDir = true;
 		}
 		process.getCpnet().addArc(skipTrans, pID);
 
@@ -232,7 +229,8 @@ public final class BPMNTask extends BPMNElement {
 		if (currentGuard.length() > 3) {
 			currentGuard = currentGuard.substring(0, currentGuard.length() - 1)
 					+ " andalso ";
-		} else currentGuard = "[";
+		} else
+			currentGuard = "[";
 
 		process.getCpnet().setTransitionGuard(taskTID,
 				currentGuard + "(#ID c = (#ID (#pr cp)))]");

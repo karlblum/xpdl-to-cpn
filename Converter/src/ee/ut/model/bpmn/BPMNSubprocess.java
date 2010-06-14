@@ -2,7 +2,6 @@ package ee.ut.model.bpmn;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
@@ -125,16 +124,20 @@ public class BPMNSubprocess extends BPMNElement {
 				.addPlace("CASExEXPATH", elementName + "NOK").getId();
 		process.getCpnet().addArc(exeptionTransId, nokPID, "cp");
 
-		ArrayList<Element> lastTasks = subProcess.getLastBeforeSink();
+		HashMap<Element, Element> lastTasks = subProcess.getLastBeforeSink();
 
 		skipperFinalPlace = process.getCpnet().addPlace().getId();
 		for (Element e : subProcess.getElements().values()) {
 			if (e instanceof BPMNTask) {
 				BPMNTask task = (BPMNTask) e;
-				if (!lastTasks.contains(task)) {
-					task.addSubprocessSkipper(nokPID, okPID, null);
+				if (!lastTasks.keySet().contains(task)) {
+					task.addSubprocessSkipper(nokPID, okPID, null, true);
 				} else {
-					task.addSubprocessSkipper(nokPID, okPID, skipperFinalPlace);
+					boolean backToOKPlace = false;
+					if (lastTasks.get(task) instanceof BPMNThrowExceptionEvent)
+						backToOKPlace = true;
+					task.addSubprocessSkipper(nokPID, okPID, skipperFinalPlace,
+							backToOKPlace);
 				}
 			}
 		}
@@ -154,7 +157,6 @@ public class BPMNSubprocess extends BPMNElement {
 			addSkippingFunctions();
 
 		// update exception relay function
-
 		addExceptionPath(messageEvent.getId(), messageEvent.getTimeFunction());
 		String t = process.getCpnet().addTrans("OUT" + messageEvent.getId())
 				.getId();
