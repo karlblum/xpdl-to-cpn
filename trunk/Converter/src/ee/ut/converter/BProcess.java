@@ -15,15 +15,17 @@ public class BProcess {
 	protected Map<Element, List<Element>> adjList = new HashMap<Element, List<Element>>();
 	protected ArrayList<Element> sinks = new ArrayList<Element>();
 	protected Element source;
+	private Element processElement; //Only used for sub-processes to identify the main modelling element. 
 	private String id;
 
 	protected HashMap<String, BProcess> subprocesses = new HashMap<String, BProcess>();
 
-	public BProcess(CPNet c, String s,String cpn_template) {
+	public BProcess(CPNet c, String s,String cpn_template,Element e) {
 		if (c == null)
 			c = new CPNet(cpn_template);
 		cpnet = c;
 		id = s;
+		processElement = e;
 	}
 
 	public void addEdge(Element v1, Element v2) {
@@ -69,8 +71,8 @@ public class BProcess {
 		return elements;
 	}
 
-	public BProcess createSubprocess(String id) {
-		BProcess p = new BProcess(cpnet, id,null);
+	public BProcess createSubprocess(String id,Element e) {
+		BProcess p = new BProcess(cpnet, id,null,e);
 		subprocesses.put(id, p);
 		return p;
 	}
@@ -140,4 +142,7 @@ public class BProcess {
 		return source;
 	}
 
+	public Element getProcessElment(){
+		return processElement;
+	}
 }

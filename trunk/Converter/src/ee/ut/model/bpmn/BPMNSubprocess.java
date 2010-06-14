@@ -1,6 +1,8 @@
 package ee.ut.model.bpmn;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 import ee.ut.converter.BProcess;
 import ee.ut.converter.Element;
@@ -28,7 +30,7 @@ public class BPMNSubprocess extends BPMNElement {
 		elementName = parser.getElementParser().getName(o);
 		String pid = parser.getElementParser().getSubprocessId(o);
 
-		subProcess = process.createSubprocess(pid);
+		subProcess = process.createSubprocess(pid, this);
 
 		// Here we will recursively parse the subprocess.
 		parser.parse(subProcess);
@@ -137,6 +139,14 @@ public class BPMNSubprocess extends BPMNElement {
 			}
 		}
 
+		String t = process.getCpnet().addTrans("CLEANER").getId();
+
+		process.getCpnet().addArc(skipperFinalPlace, t);
+		process.getCpnet().addArc(nokPID, t, "cp");
+
+		process.getCpnet().setTransitionGuard(t,
+				"[#ID c= (#ID (#pr cp)), (#path cp) = 0]");
+
 	}
 
 	public void setBoundMessage(BPMNSubprocessMessage messageEvent) {
@@ -189,13 +199,19 @@ public class BPMNSubprocess extends BPMNElement {
 	}
 
 	public void addExceptionHandler(String handlerId) {
+		BPMNThrowExceptionEvent error = null;
 		for (Element e : subProcess.getSinks()) {
 			if (e instanceof BPMNThrowExceptionEvent) {
-				String t = process.getCpnet().addTrans().getId();
-				process.getCpnet().addArc(e.getOutputPID(null), t);
-				process.getCpnet().addArc(t, handlerId);
+				error = (BPMNThrowExceptionEvent) e;
 			}
 		}
+		if (!skippingFunctionsPresent)
+			addSkippingFunctions();
+		String t = error.getErrorTID();
+		process.getCpnet().addArc(okPID, t, "cp");
+		process.getCpnet().addArc(t, nokPID, "CASExEXPATH.set_path cp 0");
+		process.getCpnet().addArc(t, handlerId);
+
 	}
 
 	@Override

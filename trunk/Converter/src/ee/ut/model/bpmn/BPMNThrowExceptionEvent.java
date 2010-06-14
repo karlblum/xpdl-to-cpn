@@ -6,14 +6,20 @@ import ee.ut.converter.parser.SimDataParser;
 
 public class BPMNThrowExceptionEvent extends BPMNElement {
 
-	String ioID;
+	String inputPID;
+	String errorTID;
+
 
 	public BPMNThrowExceptionEvent(BProcess pr, Parser parser, Object o) {
 		super(parser, pr);
 		elementId = parser.getElementParser().getId(o);
 		elementName = parser.getElementParser().getName(o);
-		ioID = process.getCpnet().addPlace(elementName + "THROW EXCEPTION")
+	
+		inputPID = process.getCpnet().addPlace(elementName + "ERR_IN")
 				.getId();
+		errorTID = process.getCpnet().addTrans("ERR").getId();
+		process.getCpnet().setTransitionGuard(errorTID, "[#ID c = (#ID (#pr cp))]");
+		process.getCpnet().addArc(inputPID, errorTID);
 	}
 
 	@Override
@@ -24,17 +30,20 @@ public class BPMNThrowExceptionEvent extends BPMNElement {
 
 	@Override
 	public String getInputPID() {
-		return ioID;
+		return inputPID;
 	}
 
 	@Override
 	public String getOutputPID(String ref) {
-		return ioID;
+		return null;
 	}
 
 	@Override
 	public String getOutputPID() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String getErrorTID(){
+		return errorTID;
 	}
 }
