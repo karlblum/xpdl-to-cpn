@@ -36,7 +36,7 @@ public class Parser {
 	}
 
 	public Parser(String cpn_template){
-		rootProcess = new BProcess(null, "0",cpn_template);
+		rootProcess = new BProcess(null, "0",cpn_template,null);
 	}
 	/**
 	 * Method starts parsing from the root process.
