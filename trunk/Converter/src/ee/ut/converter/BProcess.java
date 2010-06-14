@@ -8,19 +8,35 @@ import java.util.Map;
 
 import ee.ut.model.bpmn.BPMNEndEvent;
 
+/**
+ * @author karl This class represents a single process instance and it may have
+ *         references to one or more sub-processes
+ */
 public class BProcess {
 
+	// CPN model
 	private CPNet cpnet;
+
+	// Elements in the process instance
 	protected HashMap<String, Element> elements = new HashMap<String, Element>();
+
+	// Adjacency list of all the elements in this process
 	protected Map<Element, List<Element>> adjList = new HashMap<Element, List<Element>>();
+
+	// List of all process sinks
 	protected ArrayList<Element> sinks = new ArrayList<Element>();
+
+	// Source element
 	protected Element source;
-	private Element processElement; //Only used for sub-processes to identify the main modelling element. 
+	private Element processElement; // Only used for sub-processes to identify
+	// the main modelling element.
+
+	// Process identificator
 	private String id;
 
 	protected HashMap<String, BProcess> subprocesses = new HashMap<String, BProcess>();
 
-	public BProcess(CPNet c, String s,String cpn_template,Element e) {
+	public BProcess(CPNet c, String s, String cpn_template, Element e) {
 		if (c == null)
 			c = new CPNet(cpn_template);
 		cpnet = c;
@@ -28,6 +44,12 @@ public class BProcess {
 		processElement = e;
 	}
 
+	/**
+	 * Method adds a new edge to the adjacency list
+	 * 
+	 * @param v1
+	 * @param v2
+	 */
 	public void addEdge(Element v1, Element v2) {
 		if (!adjList.containsKey(v1))
 			adjList.put(v1, new LinkedList<Element>());
@@ -36,6 +58,9 @@ public class BProcess {
 		adjList.get(v1).add(v2);
 	}
 
+	/**
+	 * Method finds all the sinks
+	 */
 	public void findSinks() {
 		for (Element i : adjList.keySet()) {
 			if (adjList.get(i).isEmpty()) {
@@ -44,6 +69,9 @@ public class BProcess {
 		}
 	}
 
+	/**
+	 * Method finds all the source elements
+	 */
 	public void findSource() {
 		List<Element> potentialSources = new ArrayList<Element>();
 		List<Element> targets = new ArrayList<Element>();
@@ -59,20 +87,29 @@ public class BProcess {
 		source = potentialSources.get(0);
 	}
 
-	public ArrayList<Element> getLastBeforeSink() {
-		ArrayList<Element> elements = new ArrayList<Element>();
+	public HashMap<Element, Element> getLastBeforeSink() {
+		HashMap<Element, Element> elements = new HashMap<Element, Element>();
 		for (Element e : adjList.keySet()) {
 			for (Element s : sinks) {
 				if (adjList.get(e).contains(s)) {
-					elements.add(e);
+					elements.put(e, s);
 				}
 			}
 		}
 		return elements;
 	}
 
-	public BProcess createSubprocess(String id,Element e) {
-		BProcess p = new BProcess(cpnet, id,null,e);
+	/**
+	 * Method generates a new sub-process within current process.
+	 * 
+	 * @param id
+	 *            new process identificator
+	 * @param e
+	 *            new sub-process element
+	 * @return
+	 */
+	public BProcess createSubprocess(String id, Element e) {
+		BProcess p = new BProcess(cpnet, id, null, e);
 		subprocesses.put(id, p);
 		return p;
 	}
@@ -82,7 +119,7 @@ public class BProcess {
 	}
 
 	public void saveToCPN(String location, Boolean layouting, String layouter) {
-		cpnet.saveToFile(location, layouting,layouter);
+		cpnet.saveToFile(location, layouting, layouter);
 	}
 
 	public CPNet getCpnet() {
@@ -142,7 +179,7 @@ public class BProcess {
 		return source;
 	}
 
-	public Element getProcessElment(){
+	public Element getProcessElment() {
 		return processElement;
 	}
 }

@@ -5,7 +5,6 @@
 // Generated on: 2010.06.13 at 11:53:32 AM EEST 
 //
 
-
 package ee.ut.model.sim;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for MessageEvent complex type.
+ * <p>
+ * Java class for MessageEvent complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="MessageEvent">
@@ -36,90 +37,77 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MessageEvent", propOrder = {
-    "id",
-    "time",
-    "probability"
-})
+@XmlType(name = "MessageEvent", propOrder = { "id", "time", "probability" })
 public class MessageEvent {
 
-    @XmlElement(name = "Id", required = true)
-    protected String id;
-    @XmlElement(name = "Time")
-    protected String time;
-    @XmlElement(name = "Probability")
-    protected String probability;
+	@XmlElement(name = "Id", required = true)
+	protected String id;
+	@XmlElement(name = "Time")
+	protected String time;
+	@XmlElement(name = "Probability")
+	protected String probability;
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the time property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTime() {
-        return time;
-    }
+	/**
+	 * Gets the value of the time property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTime() {
+		return time;
+	}
 
-    /**
-     * Sets the value of the time property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTime(String value) {
-        this.time = value;
-    }
+	/**
+	 * Sets the value of the time property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTime(String value) {
+		this.time = value;
+	}
 
-    /**
-     * Gets the value of the probability property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getProbability() {
-        return probability;
-    }
+	/**
+	 * Gets the value of the probability property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getProbability() {
+		return probability;
+	}
 
-    /**
-     * Sets the value of the probability property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setProbability(String value) {
-        this.probability = value;
-    }
+	/**
+	 * Sets the value of the probability property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setProbability(String value) {
+		this.probability = value;
+	}
 
 }

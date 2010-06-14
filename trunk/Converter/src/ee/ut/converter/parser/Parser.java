@@ -35,9 +35,10 @@ public class Parser {
 		relayFactory = f;
 	}
 
-	public Parser(String cpn_template){
-		rootProcess = new BProcess(null, "0",cpn_template,null);
+	public Parser(String cpn_template) {
+		rootProcess = new BProcess(null, "0", cpn_template, null);
 	}
+
 	/**
 	 * Method starts parsing from the root process.
 	 * 
@@ -130,7 +131,7 @@ public class Parser {
 	}
 
 	public void save(String s, Boolean layouting, String layouter) {
-		rootProcess.saveToCPN(s, layouting,layouter);
+		rootProcess.saveToCPN(s, layouting, layouter);
 	}
 
 	public ElementParser getElementParser() {

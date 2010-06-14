@@ -721,7 +721,8 @@ public class CPNet {
 
 	}
 
-	public static void doLayouting(Page page, String layouter_path) throws IOException {
+	public static void doLayouting(Page page, String layouter_path)
+			throws IOException {
 
 		FileWriter fstream = new FileWriter("dot_input.txt");
 		BufferedWriter out = new BufferedWriter(fstream);
@@ -744,10 +745,8 @@ public class CPNet {
 		out.write("}");
 		out.close();
 
-		Process pr = Runtime
-				.getRuntime()
-				.exec(
-						" "+ layouter_path + " dot_input.txt");
+		Process pr = Runtime.getRuntime().exec(
+				" " + layouter_path + " dot_input.txt");
 
 		String line;
 		BufferedReader input = new BufferedReader(new InputStreamReader(pr
